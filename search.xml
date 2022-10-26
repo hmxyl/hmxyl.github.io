@@ -176,9 +176,9 @@
 </table>
 <h3 id="设置菜单：menu">设置菜单：<code>menu</code></h3>
 <ol>
-<li><strong>主题配置文件</strong> 设定菜单内容：</li>
-</ol>
-   <figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">  home: /</span><br><span class="line">  archives: /archives</span><br></pre></td></tr></table></figure>
+<li>
+<p><strong>主题配置文件</strong> 设定菜单内容：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">menu</span>:</span><br><span class="line">  home: / || fa fa-home</span><br><span class="line">  friendlink: /friendlink/ || fa fa-briefcase</span><br><span class="line">  <span class="selector-id">#about</span>: /about/ || fa fa-user</span><br><span class="line">  tags: /tags/ || fa fa-tags</span><br><span class="line">  categories: /categories/ || fa fa-<span class="selector-tag">th</span></span><br><span class="line">  archives: /archives/ || fa fa-archive</span><br><span class="line">  <span class="selector-id">#schedule</span>: /schedule/ || fa fa-calendar</span><br><span class="line">  <span class="selector-id">#sitemap</span>: /sitemap<span class="selector-class">.xml</span> || fa fa-sitemap</span><br><span class="line">  <span class="selector-id">#commonweal</span>: /<span class="number">404</span>/ || fa fa-heartbeat</span><br></pre></td></tr></table></figure>
 <p>NexT 默认的菜单</p>
 <table>
 <thead>
@@ -230,19 +230,17 @@
 </table>
 <p>菜单配置包括三个部分，第一是菜单项（名称和链接），第二是菜单项的显示文本，第三是菜单项对应的图标。</p>
 <p>NexT 使用的是 <a href="http://fontawesome.io/">Font Awesome</a> 提供的图标。若你的站点运行在子目录中，请将链接前缀的 <code>/</code> 去掉。</p>
-<ol start="2">
+</li>
 <li>
 <p>设置菜单项的显示文本</p>
 <p>在第一步中设置的菜单的名称并不直接用于界面上的展示。Hexo 在生成的时候将使用 这个名称查找对应的语言翻译，并提取显示文本。这些翻译文本放置在 NexT 主题目录下的 <code>languages/&#123;language&#125;.yml</code> （<code>&#123;language&#125;</code> 为你所使用的语言）。</p>
-<p>以简体中文为例，若你需要添加一个菜单项，比如 <code>something</code>。那么就需要修改简体中文对应的翻译文件 <code>languages/zh-Hans.yml</code>，在 <code>menu</code> 字段下添加一项：</p>
+<p>以简体中文为例，若你需要添加一个菜单项，比如 <code>something</code>。那么就需要修改简体中文对应的翻译文件 <code>languages/zh-CN.yml</code>，在 <code>menu</code> 字段下添加一项：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: 首页</span><br><span class="line">  archives: 归档</span><br><span class="line">  categories: 分类</span><br><span class="line">  tags: 标签</span><br><span class="line">  about: 关于</span><br><span class="line">  search: 搜索</span><br><span class="line">  commonweal: 公益404</span><br><span class="line">  something: 有料</span><br></pre></td></tr></table></figure>
 </li>
 <li>
-<p>设定菜单项的图标：<code>menu_icons</code></p>
-<p>此设定格式是 <code>item name: icon name</code>，其中 <code>item name</code> 与上一步所配置的菜单名字对应，<code>icon name</code> 是 Font Awesome 图标的 名字。而 <code>enable</code> 可用于控制是否显示图标，你可以设置成 <code>false</code> 来去掉图标。</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 菜单图标配置示例</span></span><br><span class="line"><span class="attr">menu_icons:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Icon Mapping.</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">home</span></span><br><span class="line">  <span class="attr">about:</span> <span class="string">user</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="string">th</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">tags</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">archive</span></span><br><span class="line">  <span class="attr">commonweal:</span> <span class="string">heartbeat</span></span><br></pre></td></tr></table></figure>
-<p>在菜单图标开启的情况下，如果菜单项与菜单未匹配（没有设置或者无效的  <a href="http://fontawesome.io/">Font Awesome</a>  图标名字） 的情况下，NexT 将会使用默认图标。</p>
-<p>请注意键值（如 <code>home</code>）的大小写要严格匹配</p>
+<p>设定菜单项的图标开关：<code>menu_icons</code></p>
+<p>图标配置在“||” 之后。可从主题文件夹<code>source\lib\font-awesome\css\all.min.css</code>中搜索到需要的图标</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 菜单图标配置示例</span></span><br><span class="line"><span class="attr">menu_icons:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># 將值badge設置為true可以在主題配置文件的menu_settings部分的菜單項中顯示帖子/類別/標籤的計數</span></span><br><span class="line">  <span class="attr">badges:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h3 id="配置分类：categories">配置分类：<code>categories</code></h3>
@@ -369,158 +367,6 @@
       </categories>
       <tags>
         <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>导航</title>
-    <url>/2022/10/25/%E5%AF%BC%E8%88%AA/</url>
-    <content><![CDATA[<h2 id="资源导航">资源导航</h2>
-<table>
-<thead>
-<tr>
-<th>资源导航</th>
-<th>官网</th>
-<th>代码托管</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://www.code-nav.cn">编程导航</a></td>
-<td><a href="https://mvnrepository.com/">Maven Repository（mvnrepository.com）</a></td>
-<td><a href="https://gitee.com/dashboard/projects">Gitee</a></td>
-</tr>
-<tr>
-<td><a href="https://www.ituring.com.cn/onjava/main">图灵社区（ituring.com.cn）</a></td>
-<td><a href="https://docs.oracle.com/javase/8/docs/api/">Java Platform SE 8  (oracle.com)</a></td>
-<td><a href="https://github.com/">Github</a></td>
-</tr>
-<tr>
-<td><a href="https://blog.csdn.net/">CSDN博客（csdn.net）</a></td>
-<td><a href="https://redis.io/docs/data-types/">Redis（redis.io）</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.imooc.com/">慕课网（mooc.com）</a></td>
-<td><a href="https://hexo.io/zh-cn/docs/">Hexo语法-中文</a>、<a href="https://hexo.io">Hexo官网</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://juejin.cn/course">掘金（juejin.cn）</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://developer.aliyun.com/ebook">阿里云开发者社区（aliyun.com）</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.xz577.com/">计算机电子书下载网</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="http://www.java1234.com/">JAVA知识分享网（java1234.com）</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://edu.aliyun.com/lab/courses?spm=5176.11105637.0.0.GkpM8W">基于阿里云的IT实验平台 (aliyun.com)</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="在线工具">在线工具</h2>
-<table>
-<thead>
-<tr>
-<th>在线工具</th>
-<th>在线工具</th>
-<th>收藏</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://1024tools.com/uuid">UUID在线生成</a></td>
-<td><a href="http://tool.chacuo.net/crypt3des">3DES在线加密解密</a></td>
-<td><a href="https://c.runoob.com/">菜鸟工具（runoob.com）</a></td>
-</tr>
-<tr>
-<td><a href="http://tool.chinaz.com/tools/imgtobase">Base64图片在线转换工具-站长工具</a></td>
-<td><a href="http://ocr.space/">在线OCR</a></td>
-<td><a href="https://tool.lu/">在线工具（tool.lu）</a></td>
-</tr>
-<tr>
-<td><a href="https://suijimimashengcheng.bmcx.com/">生成随机密码</a></td>
-<td><a href="https://www.uupoop.com/ps/?hmsr=ps_menu">在线P图</a></td>
-<td><a href="https://tool.chinaz.com">站长工具 （chinaz.com）</a></td>
-</tr>
-<tr>
-<td><a href="https://tool.chinaz.com/tools/md5.aspx">MD5在线加密-站长工具</a></td>
-<td><a href="https://www.ilovepdf.com/zh-cn">PDF文件在线处理工具</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://tool.chinaz.com/tools/urlencode.aspx">UrlEncode编码/UrlDecode解码-站长工具</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://tool.oschina.net/codeformat/xml">代码在线格式化</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="http://www.jsons.cn/quartzcron/">QuartzCron表达式在线生成</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://regexr.com/">正则表达式在线测试</a></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="网站收藏">网站收藏</h2>
-<table>
-<thead>
-<tr>
-<th>个人博客</th>
-<th>其他</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1281319474561057">廖雪峰博客</a></td>
-<td><a href="https://mp.weixin.qq.com">微信公众平台</a></td>
-</tr>
-<tr>
-<td><a href="http://xinyeshuaiqi.cn/">汪明鑫博客</a></td>
-<td><a href="https://www.yuedu.pro">阅读链</a></td>
-</tr>
-<tr>
-<td><a href="https://pdai.tech/">PDAI博客</a></td>
-<td><a href="https://natapp.cn/tunnel/lists">NATAPP -内网穿透工具</a></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-]]></content>
-      <categories>
-        <category>文档整理</category>
-      </categories>
-      <tags>
-        <tag>网站导航</tag>
       </tags>
   </entry>
   <entry>
