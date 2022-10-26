@@ -73,9 +73,9 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-从零开始使用Hexo搭建博客" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-文档整理/Hexo搭建博客" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2022/10/25/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="article-date">
+    <a href="/2022/10/25/%E6%96%87%E6%A1%A3%E6%95%B4%E7%90%86/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="article-date">
   <time class="dt-published" datetime="2022-10-25T11:52:44.000Z" itemprop="datePublished">2022-10-25</time>
 </a>
     
@@ -91,7 +91,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/25/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">从零开始使用Hexo搭建博客</a>
+      <a class="p-name article-title" href="/2022/10/25/%E6%96%87%E6%A1%A3%E6%95%B4%E7%90%86/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">从零开始使用Hexo搭建博客</a>
     </h1>
   
 
@@ -197,119 +197,11 @@
 <p>每次部署完，Github通常需要几分钟更新网站，此时多刷新几次网站即可</p>
 </li>
 </ol>
-<h2 id="Markdown渲染器">Markdown渲染器</h2>
-<h3 id="安装">安装</h3>
-<p>卸载 <code>hexo-renderer-marked</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm un hexo-renderer-marked --save</span><br></pre></td></tr></table></figure>
-<p>安装 <code>hexo-renderer-markdown-it</code></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-renderer-markdown-it --save</span><br></pre></td></tr></table></figure>
-<h3 id="配置">配置</h3>
-<p>将如下文本复制粘贴到 <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Hexo&amp;spm=1001.2101.3001.7020">Hexo</a> 的配置文件 <code>_config.yml</code> 的尾部</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">markdown:</span></span><br><span class="line">  <span class="attr">preset:</span> <span class="string">&quot;default&quot;</span></span><br><span class="line">  <span class="attr">render:</span></span><br><span class="line">    <span class="attr">html:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">xhtmlOut:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">langPrefix:</span> <span class="string">&quot;language-&quot;</span></span><br><span class="line">    <span class="attr">breaks:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">linkify:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">typographer:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">quotes:</span> <span class="string">&quot;“”‘’&quot;</span></span><br><span class="line">  <span class="attr">enable_rules:</span></span><br><span class="line">  <span class="attr">disable_rules:</span></span><br><span class="line">  <span class="attr">plugins:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-abbr</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-cjk-breaks</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-deflist</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-emoji</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-footnote</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-ins</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-mark</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-sub</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-sup</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-checkbox</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-imsize</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">markdown-it-expandable</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">markdown-it-container</span></span><br><span class="line">      <span class="attr">options:</span> <span class="string">success</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">markdown-it-container</span></span><br><span class="line">      <span class="attr">options:</span> <span class="string">tips</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">markdown-it-container</span></span><br><span class="line">      <span class="attr">options:</span> <span class="string">warning</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">markdown-it-container</span></span><br><span class="line">      <span class="attr">options:</span> <span class="string">danger</span></span><br><span class="line">  <span class="attr">anchors:</span></span><br><span class="line">    <span class="attr">level:</span> <span class="number">2</span></span><br><span class="line">    <span class="attr">collisionSuffix:</span> <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="attr">permalink:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">permalinkClass:</span> <span class="string">&quot;header-anchor&quot;</span></span><br><span class="line">    <span class="attr">permalinkSide:</span> <span class="string">&quot;left&quot;</span></span><br><span class="line">    <span class="attr">permalinkSymbol:</span> <span class="string">&quot;¶&quot;</span></span><br><span class="line">    <span class="attr">case:</span> <span class="number">0</span></span><br><span class="line">    <span class="attr">separator:</span> <span class="string">&quot;-&quot;</span></span><br></pre></td></tr></table></figure>
-<h2 id="插件安装">插件安装</h2>
-<p>分别使用 <code>npm</code> 命令安装以下三个插件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm i markdown-it-checkbox</span><br><span class="line">npm i markdown-it-imsize</span><br><span class="line">npm i markdown-it-expandable</span><br></pre></td></tr></table></figure>
-<p>其它插件 <code>hexo-renderer-markdown-it</code> 渲染器自带的有，不要安装。</p>
-<p>|名称 | 描述 | 语法 | 示例|</p>
-<p>|markdown-it-abbr | 注释 | *[HTML]: 超文本标记语言 | HTML|</p>
-<p>|markdown-it-emoji | 表情 | 😃 | 😃|</p>
-<p>|markdown-it-footnote | 脚注 | 参考文献[^1] | 参考文献1|</p>
-<p>|markdown-it-ins | 下划线 | <ins>下划线</ins> | 下划线|</p>
-<p>|markdown-it-mark | 突出显示 | <mark>标记</mark> | 标记|</p>
-<p>|markdown-it-sub | 下标 | H<sub>2</sub>O | H2O|</p>
-<p>|markdown-it-sup | 上标 | X<sup>2</sup> | X2|</p>
-<p>|markdown-it-checkbox | 复选框 | 未选：- [ ]<br/><input type="checkbox" id="checkbox0" checked="true"><label for="checkbox0">| |</label></p>
-<h3 id="用法">用法</h3>
-<h2 id="Hexo-写文件规范">Hexo 写文件规范</h2>
-<h3 id="文件头">文件头</h3>
-<p>使用— — 的模块，如</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: test</span><br><span class="line">date: 2022-01-11 15:17:25</span><br><span class="line">tags:</span><br><span class="line">  - PS3</span><br><span class="line">  - Games</span><br><span class="line">categories:</span><br><span class="line">  - [Diary, PlayStation]</span><br><span class="line">  - [Diary, Games]</span><br><span class="line">  - [Life]</span><br><span class="line">index_img: /img/thumb-1920-991454.jpg</span><br><span class="line">banner_img: /img/thumb-1920-991454.jpg</span><br><span class="line">description：博客首页显示的文章摘要</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">参数</th>
-<th style="text-align:left">描述</th>
-<th style="text-align:left">默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>layout</code></td>
-<td style="text-align:left">布局</td>
-<td style="text-align:left"><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration#%E6%96%87%E7%AB%A0"><code>config.default_layout</code></a></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>title</code></td>
-<td style="text-align:left">标题</td>
-<td style="text-align:left">文章的文件名</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>date</code></td>
-<td style="text-align:left">建立日期</td>
-<td style="text-align:left">文件建立日期</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>updated</code></td>
-<td style="text-align:left">更新日期</td>
-<td style="text-align:left">文件更新日期</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>comments</code></td>
-<td style="text-align:left">开启文章的评论功能</td>
-<td style="text-align:left">true</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>tags</code></td>
-<td style="text-align:left">标签（不适用于分页）</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>categories</code></td>
-<td style="text-align:left">分类（不适用于分页）</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>permalink</code></td>
-<td style="text-align:left">覆盖文章网址</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>excerpt</code></td>
-<td style="text-align:left">Page excerpt in plain text. Use <a target="_blank" rel="noopener" href="https://hexo.io/docs/tag-plugins#Post-Excerpt">this plugin</a> to format the text</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>disableNunjucks</code></td>
-<td style="text-align:left">Disable rendering of Nunjucks tag <code>&#123;&#123; &#125;&#125;</code>/<code>&#123;% %&#125;</code> and <a target="_blank" rel="noopener" href="https://hexo.io/docs/tag-plugins">tag plugins</a> when enabled</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>lang</code></td>
-<td style="text-align:left">Set the language to override <a target="_blank" rel="noopener" href="https://hexo.io/docs/internationalization#Path">auto-detection</a></td>
-<td style="text-align:left">Inherited from <code>_config.yml</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>index_img</code></td>
-<td style="text-align:left">博客主页显示的博文缩略图</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>banner_img</code></td>
-<td style="text-align:left">是显示在文章页上方的大图。图片相对路径是从主目录下的<code>source</code> 开始算起的。如引用<code>source</code> 文件夹下的<code>test.jpg</code> 图片，可直接写为 <code>/test.jpg</code> 。</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>description</code></td>
-<td style="text-align:left">是在博客首页显示的文章摘要</td>
-<td style="text-align:left"></td>
-</tr>
-</tbody>
-</table>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/25/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" data-id="cl9ozaewu0000o4qi02fya9tc" data-title="从零开始使用Hexo搭建博客" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2022/10/25/%E6%96%87%E6%A1%A3%E6%95%B4%E7%90%86/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" data-id="cl9p0z16r0005qsqidrm04hii" data-title="从零开始使用Hexo搭建博客" class="article-share-link">分享</a>
       
       
       
@@ -349,12 +241,11 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h3 id="资源导航">## 资源导航</h3>
+        <h2 id="资源导航">资源导航</h2>
 <table>
 <thead>
 <tr>
 <th>资源导航</th>
-<th>学习教程</th>
 <th>官网</th>
 <th>代码托管</th>
 </tr>
@@ -362,31 +253,26 @@
 <tbody>
 <tr>
 <td><a target="_blank" rel="noopener" href="https://www.code-nav.cn">编程导航</a></td>
-<td><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">hexo语法（hexo.io）</a></td>
 <td><a target="_blank" rel="noopener" href="https://mvnrepository.com/">Maven Repository（mvnrepository.com）</a></td>
 <td><a target="_blank" rel="noopener" href="https://gitee.com/dashboard/projects">Gitee</a></td>
 </tr>
 <tr>
 <td><a target="_blank" rel="noopener" href="https://www.ituring.com.cn/onjava/main">图灵社区（ituring.com.cn）</a></td>
-<td></td>
 <td><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/">Java Platform SE 8  (oracle.com)</a></td>
 <td><a target="_blank" rel="noopener" href="https://github.com/">Github</a></td>
 </tr>
 <tr>
 <td><a target="_blank" rel="noopener" href="https://blog.csdn.net/">CSDN博客（csdn.net）</a></td>
-<td></td>
 <td><a target="_blank" rel="noopener" href="https://redis.io/docs/data-types/">Redis（redis.io）</a></td>
 <td></td>
 </tr>
 <tr>
 <td><a target="_blank" rel="noopener" href="https://www.imooc.com/">慕课网（mooc.com）</a></td>
-<td></td>
-<td></td>
+<td><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo语法（hexo.io）</a></td>
 <td></td>
 </tr>
 <tr>
 <td><a target="_blank" rel="noopener" href="https://juejin.cn/course">掘金（juejin.cn）</a></td>
-<td></td>
 <td></td>
 <td></td>
 </tr>
@@ -394,11 +280,9 @@
 <td><a target="_blank" rel="noopener" href="https://developer.aliyun.com/ebook">阿里云开发者社区（aliyun.com）</a></td>
 <td></td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td><a target="_blank" rel="noopener" href="https://www.xz577.com/">计算机电子书下载网</a></td>
-<td></td>
 <td></td>
 <td></td>
 </tr>
@@ -406,16 +290,13 @@
 <td><a target="_blank" rel="noopener" href="http://www.java1234.com/">JAVA知识分享网（java1234.com）</a></td>
 <td></td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td><a target="_blank" rel="noopener" href="https://edu.aliyun.com/lab/courses?spm=5176.11105637.0.0.GkpM8W">基于阿里云的IT实验平台 (aliyun.com)</a></td>
 <td></td>
 <td></td>
-<td></td>
 </tr>
 <tr>
-<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -427,59 +308,48 @@
 <thead>
 <tr>
 <th>在线工具</th>
+<th>在线工具</th>
 <th>收藏</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a target="_blank" rel="noopener" href="https://1024tools.com/uuid">UUID在线生成</a></td>
+<td><a target="_blank" rel="noopener" href="http://tool.chacuo.net/crypt3des">3DES在线加密解密</a></td>
 <td><a target="_blank" rel="noopener" href="https://c.runoob.com/">菜鸟工具（runoob.com）</a></td>
 </tr>
 <tr>
 <td><a target="_blank" rel="noopener" href="http://tool.chinaz.com/tools/imgtobase">Base64图片在线转换工具-站长工具</a></td>
+<td><a target="_blank" rel="noopener" href="http://ocr.space/">在线OCR</a></td>
 <td><a target="_blank" rel="noopener" href="https://tool.lu/">在线工具（tool.lu）</a></td>
 </tr>
 <tr>
 <td><a target="_blank" rel="noopener" href="https://suijimimashengcheng.bmcx.com/">生成随机密码</a></td>
+<td><a target="_blank" rel="noopener" href="https://www.uupoop.com/ps/?hmsr=ps_menu">在线P图</a></td>
 <td><a target="_blank" rel="noopener" href="https://tool.chinaz.com">站长工具 （chinaz.com）</a></td>
 </tr>
 <tr>
-<td><a target="_blank" rel="noopener" href="http://ocr.space/">在线OCR</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="http://tool.chacuo.net/crypt3des">3DES在线加密解密</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.uupoop.com/ps/?hmsr=ps_menu">在线P图</a></td>
-<td></td>
-</tr>
-<tr>
 <td><a target="_blank" rel="noopener" href="https://tool.chinaz.com/tools/md5.aspx">MD5在线加密-站长工具</a></td>
+<td><a target="_blank" rel="noopener" href="https://www.ilovepdf.com/zh-cn">PDF文件在线处理工具</a></td>
 <td></td>
 </tr>
 <tr>
 <td><a target="_blank" rel="noopener" href="https://tool.chinaz.com/tools/urlencode.aspx">UrlEncode编码/UrlDecode解码-站长工具</a></td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td><a target="_blank" rel="noopener" href="https://tool.oschina.net/codeformat/xml">代码在线格式化</a></td>
+<td></td>
 <td></td>
 </tr>
 <tr>
 <td><a target="_blank" rel="noopener" href="http://www.jsons.cn/quartzcron/">QuartzCron表达式在线生成</a></td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td><a target="_blank" rel="noopener" href="https://regexr.com/">正则表达式在线测试</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://www.ilovepdf.com/zh-cn">PDF文件在线处理工具</a></td>
-<td></td>
-</tr>
-<tr>
 <td></td>
 <td></td>
 </tr>
@@ -516,7 +386,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/25/%E5%AF%BC%E8%88%AA/" data-id="cl9ozaexp0005o4qicfmxhk42" data-title="导航" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2022/10/25/%E5%AF%BC%E8%88%AA/" data-id="cl9p0z1680000qsqi5ci6ao95" data-title="导航" class="article-share-link">分享</a>
       
       
       
@@ -582,7 +452,7 @@
       <ul>
         
           <li>
-            <a href="/2022/10/25/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">从零开始使用Hexo搭建博客</a>
+            <a href="/2022/10/25/%E6%96%87%E6%A1%A3%E6%95%B4%E7%90%86/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">从零开始使用Hexo搭建博客</a>
           </li>
         
           <li>
