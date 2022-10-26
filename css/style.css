@@ -128,9 +128,9 @@ body {
   -webkit-text-size-adjust: 100%;
 }
 .outer {
-  max-width: 1220px;
+  max-width: 1590px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 30px;
 }
 .outer:before,
 .outer:after {
@@ -143,8 +143,8 @@ body {
 .inner {
   display: inline;
   float: left;
-  width: 98.33333333333333%;
-  margin: 0 0.833333333333333%;
+  width: 98.07692307692307%;
+  margin: 0 0.961538461538462%;
 }
 .left,
 .alignleft {
@@ -183,12 +183,13 @@ body {
   #main {
     display: inline;
     float: left;
-    width: 73.33333333333333%;
-    margin: 0 0.833333333333333%;
+    width: 73.07692307692307%;
+    margin: 0 0.961538461538462%;
   }
 }
 .article-date,
 .article-category-link,
+.gide-title,
 .archive-year,
 .widget-title {
   text-decoration: none;
@@ -622,7 +623,6 @@ a.article-title:hover {
 }
 .article-entry blockquote {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.4em;
   margin: 1.6em 20px;
   text-align: center;
 }
@@ -938,6 +938,49 @@ a.article-title:hover {
   display: block;
   max-width: 100%;
   margin: 0 auto;
+}
+@media screen and (min-width: 768px) {
+  .article-gide {
+    display: inline;
+    float: left;
+    width: 23.076923076923077%;
+    margin: 0 0.961538461538462%;
+  }
+}
+.gide-wrap {
+  margin: 50px 0;
+}
+.gide-content {
+  color: #777;
+  text-shadow: 0 1px #fff;
+  background: #ddd;
+  -webkit-box-shadow: 0 -1px 4px #ccc inset;
+  box-shadow: 0 -1px 4px #ccc inset;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 3px;
+}
+.gide-content a {
+  color: #258fb8;
+  text-decoration: none;
+}
+.gide-content a:hover {
+  text-decoration: underline;
+}
+.gide-content ul ul,
+.gide-content ol ul,
+.gide-content dl ul,
+.gide-content ul ol,
+.gide-content ol ol,
+.gide-content dl ol,
+.gide-content ul dl,
+.gide-content ol dl,
+.gide-content dl dl {
+  margin-left: 15px;
+  list-style: disc;
+}
+.gide-content .toc-child {
+  list-style: none;
 }
 #comments {
   background: #fff;
@@ -1289,8 +1332,8 @@ pre .javascript .function {
   #sidebar {
     display: inline;
     float: left;
-    width: 23.333333333333332%;
-    margin: 0 0.833333333333333%;
+    width: 23.076923076923077%;
+    margin: 0 0.961538461538462%;
   }
 }
 .widget-wrap {
