@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>IDEA使用记录</title>
-    <url>/2022/10/30/%E5%B7%A5%E5%85%B7/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</url>
+    <title>IDEA快捷方式</title>
+    <url>/2022/10/30/%E5%B7%A5%E5%85%B7/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/</url>
     <content><![CDATA[]]></content>
       <categories>
-        <category>未分类</category>
+        <category>工具</category>
+        <category>开发工具</category>
+        <category>IDEA</category>
       </categories>
+      <tags>
+        <tag>IDEA</tag>
+      </tags>
   </entry>
   <entry>
     <title>IDEA插件</title>
@@ -53,19 +58,6 @@
 <h1>MybatisLog</h1>
 <!-- 程序运行的SQL语句可以直接拷贝运行 -->
 ]]></content>
-      <categories>
-        <category>工具</category>
-        <category>开发工具</category>
-        <category>IDEA</category>
-      </categories>
-      <tags>
-        <tag>IDEA</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>IDEA快捷方式</title>
-    <url>/2022/10/30/%E5%B7%A5%E5%85%B7/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[]]></content>
       <categories>
         <category>工具</category>
         <category>开发工具</category>
@@ -447,6 +439,14 @@
       <tags>
         <tag>博客搭建</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>IDEA使用记录</title>
+    <url>/2022/10/30/%E5%B7%A5%E5%85%B7/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>未分类</category>
+      </categories>
   </entry>
   <entry>
     <title>Hexo搭建博客</title>
