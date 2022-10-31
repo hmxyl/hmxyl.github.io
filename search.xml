@@ -1,70 +1,1188 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>IDEA快捷方式</title>
-    <url>/2022/10/30/%E5%B7%A5%E5%85%B7/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[]]></content>
+    <title>Linux日常使用</title>
+    <url>/2022/10/30/%E5%B7%A5%E5%85%B7&amp;%E7%B3%BB%E7%BB%9F/Linux/Linux%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h1>不同Linux操作系统的安装命令</h1>
+<table>
+<thead>
+<tr>
+<th><strong>系统</strong></th>
+<th><strong>命令</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CentOS</td>
+<td>yum</td>
+</tr>
+<tr>
+<td>Debian或Ubuntu Linux</td>
+<td>apt-get</td>
+</tr>
+</tbody>
+</table>
+<h1>Centos防火墙开放端口/关闭端口</h1>
+<ul>
+<li>
+<p>查看</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone= public --query-port=3306/tcp</span><br><span class="line">或</span><br><span class="line">firewall-cmd --zone=public --list-ports</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>重新载入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>添加</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=3306/tcp --permanent</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>关闭</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl stop firewalld.service </span><br><span class="line">或者</span><br><span class="line">systemctl disable firewalld.service</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1>Linux系统增加zysong字体</h1>
+<ul>
+<li>
+<p>问题发生 ：在开发项目中，使用到了Jfreechart，在本机环境测试正常，部署到服务器上Linux，发现Jfreechart里面的中文不能正常显示。</p>
+</li>
+<li>
+<p>问题解决：</p>
+</li>
+</ul>
+<ol>
+<li>首先确认你的服务器上的javahome ，执行命令 echo $JAVA_HOME ,显示出java的目录</li>
+<li>将zysong.ttf文件拷贝到%JavaHome%/jre/lib/fonts目录下 zysong.ttf 需要网上下载</li>
+<li>在%JavaHome%/jre/lib/fonts目录下执行&quot;ttmkfdir -o fonts.dir&quot;命令,重新生成fonts.dir文件</li>
+<li>确认/usr/share/zh_CN/TrueType目录存在,如果不存在则mkdir创建 ，，一般开始是没有的，所有这样执行：到/usr/share/fonts下，“mkdir zh_CN” 命令创建 zh_CN文件夹，到zh_CN目录下 &quot;mkdir TrueType&quot;命令创建TrueType文件夹</li>
+<li>把zysong.ttf文件拷贝到TrueType下</li>
+<li>在%JavaHome%/jre/lib目录下,执行 cp fontconfig.RedHat.3.properties.src fontconfig.properties 7、重新启动tomcat（resin等web容器）,现在再看看，中文显示正常了</li>
+</ol>
+<h1>提高打开文件限制量（ulimit命令）</h1>
+<ol>
+<li>
+<p>解除 Linux 系统的最大进程数和最大文件打开数限制</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vi /etc/security/limits.conf</span><br><span class="line"></span><br><span class="line"># 添加如下的行</span><br><span class="line">     * soft noproc 11000</span><br><span class="line"></span><br><span class="line">     * hard noproc 11000</span><br><span class="line">     * soft nofile 4100</span><br><span class="line">     * hard nofile 4100</span><br><span class="line">     </span><br><span class="line"> 说明：* 代表针对所有用户</span><br><span class="line">     noproc 是代表最大进程数</span><br><span class="line">     nofile 是代表最大文件打开数</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>让 SSH 接受 Login 程式的登入，方便在 ssh 客户端查看 ulimit -a 资源限制：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vi /etc/ssh/sshd_config </span><br><span class="line"> </span><br><span class="line">把 UserLogin 的值改为 yes，并把 # 注释去掉</span><br><span class="line">重启 sshd 服务： /etc/init.d/sshd restart</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>修改所有 linux 用户的环境变量文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vi /etc/profile</span><br><span class="line"></span><br><span class="line">ulimit -u 10000</span><br><span class="line">ulimit -n 4096</span><br><span class="line">ulimit -d unlimited</span><br><span class="line">ulimit -m unlimited</span><br><span class="line">ulimit -s unlimited</span><br><span class="line">ulimit -t unlimited</span><br><span class="line">ulimit -v unlimited</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1>虚拟机之间，SSH免密连接</h1>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br><span class="line">cd /root/.ssh</span><br><span class="line">mv id_rsa.pub authorized_keys_master.pub</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">scp  authorized_keys_node1.pub root@master:/root/.ssh</span><br><span class="line">scp  authorized_keys_node2.pub root@master:/root/.ssh</span><br><span class="line"></span><br><span class="line">cat authorized_keys_master.pub&gt;&gt; authorized_keys</span><br><span class="line">cat authorized_keys_node1.pub&gt;&gt; authorized_keys</span><br><span class="line">cat authorized_keys_node2.pub&gt;&gt; authorized_keys</span><br><span class="line"></span><br><span class="line">scp authorized_keys  root@node1:/root/.ssh</span><br><span class="line">scp authorized_keys  root@node2:/root/.ssh</span><br></pre></td></tr></table></figure>
+<h1>非root权限启用80端口</h1>
+<p>服务器一开始重启的时候报错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">严重: Failed to initialize end point associated with ProtocolHandler [&quot;http-bio-80&quot;]</span><br><span class="line">java.net.BindException: Permission denied &lt;null&gt;:80</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>因为服务器非root权限用户只能使用1024以下端口。(重启服务时，使用的用户，是非root权限的cxdev用户)：参考，<a href="http://blog.csdn.net/mchdba/article/details/46335861">http://blog.csdn.net/mchdba/article/details/46335861</a></p>
+</li>
+<li>
+<p>解决：重新使用root用户重启服务</p>
+</li>
+</ul>
+<h1>清空catalina.out文件</h1>
+<ul>
+<li>
+<p>使用 truncate 命令清空文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">truncate -s 0 catalina.out  </span><br><span class="line"></span><br><span class="line">-s参数是设置文件的大小，清空文件的话，就设定为0</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>重定向方法清空文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@localhost logs]# du -h catalina.out 查看文件大小17M catalina.out</span><br><span class="line">[root@localhost logs]# &gt; catalina.out  重定向清空文件</span><br><span class="line">[root@localhost logs]# du -h catalina.out  查看文件大小0 catalina.out</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>使用 true 命令重定向清空文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@localhost logs]# du -h catalina.out448K catalina.out</span><br><span class="line">[root@localhost logs]# true &gt; catalina.out</span><br><span class="line">[root@localhost logs]# du -h catalina.out0 catalina.out</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>使用 echo 命令清空文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo -n &quot; &quot; &gt; catalina.out  </span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1>Centos系统安装</h1>
+<h2 id="安装系统">安装系统</h2>
+<ol>
+<li>
+<p>准备安装VMware和下载Centos</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">安装VMware Workstation 15 Pro （永久激活密钥）</span><br><span class="line"> YG5H2-ANZ0H-M8ERY-TXZZZ-YKRV8</span><br><span class="line"> UG5J2-0ME12-M89WY-NPWXX-WQH88</span><br><span class="line"> UA5DR-2ZD4H-089FY-6YQ5T-YPRX6</span><br><span class="line"> GA590-86Y05-4806Y-X4PEE-ZV8E0</span><br><span class="line"> ZF582-0NW5N-H8D2P-0XZEE-Z22VA</span><br><span class="line"> YA18K-0WY8P-H85DY-L4NZG-X7RAD</span><br><span class="line"></span><br><span class="line"> 安装VMware Workstation 16 （永久激活密钥）</span><br><span class="line"> ZF3R0-FHED2-M80TY-8QYGC-NPKYFYF390-0HF8P-M81RQ-2DXQE-M2UT6ZF71R-DMX85-08DQY-8YMNC-PPHV8</span><br><span class="line"></span><br><span class="line"> 下载虚拟机Centos：https://www.centos.org/download/</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>虚拟网络说明</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>VMNet1</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">使用的是host-only的链接模式，即虚拟机只能与主机构成内部通信，无法对外网进行访问。</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>VMNet0</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">模式：使用桥接模式，安装VM后，在VM里建立虚拟机 默认 就是该模式。</span><br><span class="line">场景：如果你只是需要一台虚拟机可以和宿主互通，并可以访问外网，此模式即可。</span><br><span class="line">描述：安装虚拟机系统后不需要调整网络，物理网络中的 “路由” 所包含的DHCP服务器会自动识别该虚拟机并为其分配IP地址；</span><br><span class="line">如果没有路由，可以自己手动在系统分配，原则是和宿主机在同一网段并指向相同的网关即可通信。</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>VMNet8</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">模式：NAT网络模式</span><br><span class="line">场景：在宿主机安装多台虚拟机，和宿主组成一个小局域网，宿主机，虚拟机之间都可以互相通信，虚拟机也可访问外网，例如 搭建 hadoop 集群，分布式服务</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="安装图形界面">安装图形界面</h2>
+<ul>
+<li>
+<p>命令安装</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum groupinstall &quot;X Window System&quot;</span><br><span class="line"></span><br><span class="line">yum groupinstall &quot;GNOME Desktop&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>进入图形界面</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">startx 或者 init 5 </span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>修改图形界面为默认启动方式</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">命令行输入命令后重启系统 </span><br><span class="line"></span><br><span class="line">systemctl set-default graphical.target </span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>安装中文支持</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum groupinstall &quot;Chinese Support&quot; -y </span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>修改系统默认语言为中文</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">命令行输入命令后重启系统</span><br><span class="line"></span><br><span class="line">localectl set-locale LANG=zh_CN.UTF-8 </span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>图形界面想要卸载</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum groupremove &quot;GNOME Desktop Environment&quot;</span><br><span class="line">yum groupremove &quot;X Window System&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="系统基础配置">系统基础配置</h2>
+<h3 id="修改-hotsname">修改 hotsname</h3>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hostnamectl --static set-hostname 名称 </span><br><span class="line">vi /etc/hostname(缓存？)，要先把这个改好了，下面的配置文件才会生效。 </span><br><span class="line">vi  /etc/sysconfig/network（重启，永久） </span><br><span class="line">echo hostname &gt; /proc/sys/kernel/hostname（即时生效，临时）</span><br></pre></td></tr></table></figure>
+<h3 id="基础工具安装">基础工具安装</h3>
+<ul>
+<li>yum -y install wget        (wget)</li>
+<li>yum -y install net-tools   (ifconfig)</li>
+<li>yum -y install lrzsz   (sz和rz)</li>
+</ul>
+<h3 id="默认ROOT用户登录">默认ROOT用户登录</h3>
+<p>使用root账户进入系统后，打开’/etc/gdm/custom.conf’文件，在[daemon]下添加两行：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">AutomaticLoginEnable=True</span><br><span class="line">AutomaticLogin=root</span><br></pre></td></tr></table></figure>
+<h3 id="虚拟机手动配置静态IP">虚拟机手动配置静态IP</h3>
+<ol>
+<li>
+<p><code>cat</code> `/etc/sysconfig/network-scripts/ifcfg-ens32</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">TYPE</span>=<span class="string">Ethernet</span></span><br><span class="line"><span class="attr">PROXY_METHOD</span>=<span class="string">none</span></span><br><span class="line"><span class="attr">BROWSER_ONLY</span>=<span class="string">no</span></span><br><span class="line"><span class="attr">BOOTPROTO</span>=<span class="string">static</span></span><br><span class="line"><span class="attr">DEFROUTE</span>=<span class="string">yes</span></span><br><span class="line"><span class="attr">IPV4_FAILURE_FATAL</span>=<span class="string">no</span></span><br><span class="line"><span class="attr">IPV6INIT</span>=<span class="string">yes</span></span><br><span class="line"><span class="attr">IPV6_AUTOCONF</span>=<span class="string">yes</span></span><br><span class="line"><span class="attr">IPV6_DEFROUTE</span>=<span class="string">yes</span></span><br><span class="line"><span class="attr">IPV6_FAILURE_FATAL</span>=<span class="string">no</span></span><br><span class="line"><span class="attr">IPV6_ADDR_GEN_MODE</span>=<span class="string">stable-privacy</span></span><br><span class="line"><span class="attr">NAME</span>=<span class="string">ens32</span></span><br><span class="line"><span class="attr">UUID</span>=<span class="string">066b4926-b40c-4c28-a5b4-2310d2b96613</span></span><br><span class="line"><span class="attr">DEVICE</span>=<span class="string">ens32</span></span><br><span class="line"><span class="attr">ONBOOT</span>=<span class="string">yes</span></span><br><span class="line"><span class="attr">IPADDR</span>=<span class="string">192.168.1.200</span></span><br><span class="line"><span class="attr">NETMASK</span>=<span class="string">255.255.255.0</span></span><br><span class="line"><span class="attr">GATEWAY</span>=<span class="string">192.168.1.254</span></span><br><span class="line"><span class="attr">DNS1</span>=<span class="string">223.5.5.5</span></span><br><span class="line"><span class="attr">PREFIX</span>=<span class="string">24</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>使用nmcli重新回载网络配置：<code>nmcli c reload</code></p>
+</li>
+<li>
+<p>查看IP：<code>nmcli</code></p>
+</li>
+</ol>
+<h3 id="Centos8-时钟同步">Centos8 时钟同步</h3>
+<ol>
+<li>
+<p>cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</p>
+</li>
+<li>
+<p>vim /etc/chrony.conf</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">注释掉 </span><br><span class="line">  pool 2.centos.pool.ntp.org iburst  </span><br><span class="line">加入新的的时间服务器</span><br><span class="line">  server 210.72.145.44 iburst</span><br><span class="line">  server ntp.aliyun.com iburst</span><br></pre></td></tr></table></figure>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125155904615.png" alt="image-20211125155904615"></p>
+<p>​</p>
+<ol start="3">
+<li>
+<p>重启服务，此时时间已经与网络时间同步</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl restart chronyd.service</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>设置开机自启</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl enable chronyd.service</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="CentOS-8修改yum源为国内源">CentOS 8修改yum源为国内源</h3>
+<ol>
+<li>
+<p>备份</p>
+<p>目录<code>/etc/yum.repos.d</code>下新建文件夹<code>repo_back_all</code>，内容备份新建的文件夹中</p>
+</li>
+<li>
+<p>修改为阿里云</p>
+<p><code>wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-8.repo</code></p>
+</li>
+<li>
+<p>清理&amp;拉取</p>
+<p><code>yum clean all</code></p>
+<p><code>yum makecache</code></p>
+<blockquote>
+<p>异常：提示镜像地址404</p>
+<p>排查：repo文件中<code>$releasever</code>映射为8，对应的镜像不存在</p>
+<p>说明：yum中的变量<code>$releasever</code>是由/etc/yum.conf中的distroverpkg定义的。centos-release为一个rpm包，所谓“distroverpkg=centos-release”的意思，其实是将 $releasever设置为centos-release 这个RPM包的版本号。查看版本号命令：<code>rpm -q centos-release</code></p>
+<p>解决：修改yum源文件，把$releasever全部替换为8-strea</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="安装过程中的问题以及解决措施">安装过程中的问题以及解决措施</h2>
+<h3 id="虚拟机ping不通主机，但是主机可以ping通虚拟机">虚拟机ping不通主机，但是主机可以ping通虚拟机</h3>
+<ol>
+<li>Windows10的防火墙没有打开ICMPv4-in这个规则
+<ul>
+<li>打开WIN10防火墙-&gt;选择高级设置-&gt;入站规则</li>
+<li>找到配置文件类型为<code>公用</code>的<code>文件和打印共享（回显请求 – ICMPv4-In）</code>规则，设置为允许</li>
+</ul>
+</li>
+<li>确认本地主机IP
+<ul>
+<li>Vmware-&gt;编辑-&gt;虚拟网络编辑器</li>
+<li>查看VMnet8-&gt;NAT模式-&gt;NAT设置中网段信息</li>
+<li>本地windows主机打开：网络和Internet设置-&gt;以太网-&gt;更改适配器选项</li>
+<li>打开VMnet8，设置IPV4地址</li>
+</ul>
+</li>
+</ol>
+]]></content>
       <categories>
-        <category>工具</category>
-        <category>开发工具</category>
-        <category>IDEA</category>
+        <category>系统</category>
+        <category>Linux</category>
+        <category>系统命令</category>
       </categories>
       <tags>
-        <tag>IDEA</tag>
+        <tag>系统命令</tag>
       </tags>
   </entry>
   <entry>
-    <title>IDEA插件</title>
-    <url>/2022/10/30/%E5%B7%A5%E5%85%B7/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA%E6%8F%92%E4%BB%B6/</url>
-    <content><![CDATA[<h1>CamelCase</h1>
-<!-- 使用快捷键转换驼峰、下划线等命名规则-->
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092234688.png" alt="image-20211125092234688"></p>
-<p>光标放在要修改的名称上（如：变量名，或者mapper.xml里的字段名,会自动识别光标所在单词），按control+alt+U,则进行按命名规则进行转换，会按配置中选择的命名规则列表来回切换。</p>
-<p>如图，如果只选择了CamelCase to camelCase、camelCase to snake_case，则可以在两者之间来回切换，适合公司对命名的要求。</p>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092300247.png" alt="image-20211125092300247"></p>
-<h1>RestfulToolkit</h1>
-<!--  API查找工具 --> 
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092703437.png" alt="image-20211125092703437"></p>
-<h1>Free Mybatis plugin</h1>
-<!-- 快速从代码跳转到mapper及从mapper返回代码-->
-<h1>EasyCode</h1>
-<!-- 代码生成插件 --> 
-<ol>
-<li>下载插件，安装后重启</li>
-</ol>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092413929.png" alt="image-20211125092413929"></p>
-<ol start="2">
-<li>在idea右侧选择Database，选择自己的数据库</li>
-</ol>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092433296.png" alt="image-20211125092433296"></p>
-<ol start="3">
-<li>输入账号密码，连接成功</li>
-</ol>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092518334.png" alt="image-20211125092518334"></p>
-<ol start="4">
+    <title>Urban使用问题记录</title>
+    <url>/2022/10/30/%E5%B7%A5%E5%85%B7&amp;%E7%B3%BB%E7%BB%9F/Urban/Urban%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<h1>基础工具安装</h1>
+<ul>
 <li>
-<p>选择自己所需的表，鼠标右键-&gt;EasyCode-&gt;Generate Code</p>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092538684.png" alt="image-20211125092538684"></p>
+<p>apt-get -y install wget        (wget)</p>
 </li>
 <li>
-<p>选择自己需要生成的，勾选，然后OK就行</p>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092616622.png" alt="image-20211125092616622"></p>
+<p>apt-get -y install net-tools   (ifconfig)</p>
 </li>
 <li>
-<p>系统自己生成了entity包，以及实体类。</p>
+<p>snap install curl</p>
 </li>
-</ol>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092639951.png" alt="image-20211125092639951"></p>
-<h1>MybatisLog</h1>
-<!-- 程序运行的SQL语句可以直接拷贝运行 -->
+</ul>
+<span id="more"></span>
+<h1>Urban 首次登录切换root</h1>
+<p>su切换至root权限时报错<code>su: Authentication failure</code></p>
+<p>分析原因：<strong>可能是初次使用此命令，需要更新root密码</strong></p>
+<p>解决方法：执行<code>sudo passwd root</code>命令，完成后再次输入su即可切换权限</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20220505102534819.png" alt="image-20220505102534819"></p>
+<h1>安装软件</h1>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">teamviewer_linux.deb</span><br><span class="line"></span><br><span class="line">sudo dpkg --install teamviewer_linux.deb</span><br></pre></td></tr></table></figure>
+<h1>安装ssh服务器端</h1>
+<ul>
+<li>
+<p>执行<code>apt-get install openssh-server</code> ，安装服务端</p>
+</li>
+<li>
+<p>允许远程使用root账号ssh登入</p>
+<p>修改/etc/ssh/sshd_config文件，修改如下：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#PermitRootLogin prohibit-password</span></span><br><span class="line">PermitRootLogin <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
+<p>需要重启系统或者sshd服务</p>
+<ul>
+<li>sudo /etc/init.d/ssh stop</li>
+<li>sudo /etc/init.d/ssh start</li>
+<li>sudo service ssh start</li>
+</ul>
+</li>
+<li>
+<p>开机启动<code>sudo systemctl enable ssh</code></p>
+</li>
+<li>
+<p>重启之后，<code>/usr/bin/xauth: file /root/.Xauthority does not exist</code> 错误消失</p>
+</li>
+</ul>
+<h1>Ubuntu中防火墙的使用和开放、关闭端口</h1>
+<h2 id="查看防火墙的状态">查看防火墙的状态</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo ufw status</span><br></pre></td></tr></table></figure>
+<p><code>inactive</code>表示防火墙没有开启，并不是没有安装防火墙。</p>
+<p>安装防火墙（Ubuntu系统默认是安装了ufw防火墙的）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-get install ufw</span><br></pre></td></tr></table></figure>
+<h2 id="Ubuntu开启防火墙">Ubuntu开启防火墙</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo ufw <span class="built_in">enable</span></span><br></pre></td></tr></table></figure>
+<p>命令可能会中断现有的ssh连接。继续操作(y|n)?</p>
+<p>因为是在远程的Xshell进行连接开启防火墙的，有的系统是没有将SSH的22端口设置为public的，所以会有这样的提示.</p>
+<p>这里分为两种情况，如果开启防火墙时在防火墙之中检测到22端口已添加为防火墙的开放端口，那么输入y继续操作以后，当前Xshell会自动断开连接；相反，如果开启防火墙时在防火墙之中没有检测到22端口，那么输入y继续操作以后22端口将会不再支持其他连接，只支持当前已有的这个连接，保持当前连接的原因是可以通过该连接开放22端口。</p>
+<p>这里之前没有设置过，直接输入y继续执行</p>
+<h2 id="Ubuntu防火墙添加开放普通端口">Ubuntu防火墙添加开放普通端口</h2>
+<p>开放22端口</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo ufw allow 22</span><br></pre></td></tr></table></figure>
+<p>开启完成，需要重启防火墙生效：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo ufw reload</span><br></pre></td></tr></table></figure>
+<p>查看防火墙的状态</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">root@ubuntu:/opt/docker/elasticsearch<span class="comment"># sudo ufw status</span></span><br><span class="line">Status: active</span><br><span class="line"></span><br><span class="line">To                         Action      From</span><br><span class="line">--                         ------      ----</span><br><span class="line">22                         ALLOW       Anywhere               </span><br><span class="line">22 (v6)                    ALLOW       Anywhere (v6)               </span><br></pre></td></tr></table></figure>
+<p>查看22端口的监听状态</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">root@ubuntu:/opt/docker/elasticsearch<span class="comment"># sudo netstat -tunlp | grep 22</span></span><br><span class="line">tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      839/sshd: /usr/sbin </span><br><span class="line">tcp6       0      0 :::22                   :::*                    LISTEN      839/sshd: /usr/sbin </span><br></pre></td></tr></table></figure>
+<h2 id="Ubuntu防火墙关闭普通端口">Ubuntu防火墙关闭普通端口</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo ufw delete allow 21</span><br></pre></td></tr></table></figure>
+<h2 id="Ubuntu防火墙开放规定协议的端口">Ubuntu防火墙开放规定协议的端口</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo ufw allow 8001/tcp</span><br></pre></td></tr></table></figure>
+<h2 id="Ubuntu防火墙关闭指定协议端口">Ubuntu防火墙关闭指定协议端口</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo ufw delete allow 8001/tcp</span><br></pre></td></tr></table></figure>
+<h2 id="Ubuntu防火墙开放限定ip地址端口">Ubuntu防火墙开放限定ip地址端口</h2>
+<ul>
+<li>
+<p>开放指定ip所有操作</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo ufw allow from 192.168.1.11</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>关闭指定ip所有操作</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo ufw delete allow from 192.168.1.11</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>开放指定ip对应端口操作</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo ufw allow from 192.168.1.12 to any port 3306</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>开放指定ip对应端口操作</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo ufw delete allow from 192.168.1.12 to any port 3306</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1>安装Docker</h1>
+<h2 id="1-卸载旧版本Docker">1.卸载旧版本Docker</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#卸载旧版本docker</span></span><br><span class="line">sudo apt-get remove docker docker-engine docker-ce docker.io  </span><br><span class="line"></span><br><span class="line"><span class="comment">#清空旧版docker占用的内存</span></span><br><span class="line">sudo apt-get remove --auto-remove docker</span><br><span class="line"></span><br><span class="line"><span class="comment">#更新系统源</span></span><br><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<h2 id="2-配置安装环境">2.配置安装环境</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common</span><br></pre></td></tr></table></figure>
+<h2 id="3-添加阿里云的docker-GPG密钥">3. 添加阿里云的docker GPG密钥</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -</span><br></pre></td></tr></table></figure>
+<h2 id="4-添加阿里镜像源">4. 添加阿里镜像源</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo add-apt-repository <span class="string">&quot;deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu <span class="subst">$(lsb_release -cs)</span> stable&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#更新</span></span><br><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<h2 id="5-查看有哪些版本">5. 查看有哪些版本</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">apt-cache madison docker-ce</span><br></pre></td></tr></table></figure>
+<p><a href="https://img-blog.csdnimg.cn/20200613220949677.png"><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5C20200613220949677.png" alt="img"></a></p>
+<h2 id="6-安装最新版-指定版本">6. 安装最新版/指定版本</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装最新版</span></span><br><span class="line">sudo apt-get install -y docker-ce</span><br><span class="line"></span><br><span class="line"><span class="comment">#安装5:19.03.6~3-0~ubuntu-bionic版</span></span><br><span class="line">sudo apt-get install -y docker-ce=5:19.03.6~3-0~ubuntu-bionic</span><br></pre></td></tr></table></figure>
+<h2 id="7-重启Docker">7. 重启Docker</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo service docker restart</span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+<h2 id="8-查看Docke版本">8. 查看Docke版本</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo docker version</span><br></pre></td></tr></table></figure>
+<h2 id="9-配置阿里容器镜像加速器">9. 配置阿里容器镜像加速器</h2>
+<p><a href="https://img-blog.csdnimg.cn/20200613205549846.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0NkcmVhbWZseQ==,size_16,color_FFFFFF,t_70"><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cwatermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0NkcmVhbWZseQ==,size_16,color_FFFFFF,t_70.png" alt="img"></a></p>
+<ul>
+<li>针对Docker客户端版本大于 1.10.0 的用户</li>
+<li>您可以通过修改daemon配置文件/etc/docker/daemon.json来使用加速器</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">mkdir</span> -p /etc/docker</span><br><span class="line">sudo <span class="built_in">tee</span> /etc/docker/daemon.json &lt;&lt;-<span class="string">&#x27;EOF&#x27;</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;registry-mirrors&quot;</span>: [<span class="string">&quot;https://7ixh250y.mirror.aliyuncs.com&quot;</span>]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+<h2 id="10-运行hello-world验证docker-ce是否安装成功">10. 运行hello-world验证docker-ce是否安装成功</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo docker run hello-world</span><br></pre></td></tr></table></figure>
+<p>安装成功显示</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cwatermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0NkcmVhbWZseQ==,size_16,color_FFFFFF,t_70-16517204075342.png" alt="img"></p>
+<h2 id="11-安装docker-compose">11. 安装docker-compose</h2>
+<ul>
+<li>安装pip</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo apt install python3-pip</span><br></pre></td></tr></table></figure>
+<ul>
+<li>更新一下库</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<ul>
+<li>更新一下pip</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo pip3 install --upgrade pip</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装docker-compose</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo pip3 install docker-compose</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>如果出错</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5C2020061322045958.png" alt="img"></p>
+</li>
+<li>
+<p>就更新一下 six</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">pip3 install six --user -U</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看docker-compose版本</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">docker-compose --version</span><br></pre></td></tr></table></figure>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5C20200613220759470.png" alt="img"></p>
 ]]></content>
       <categories>
-        <category>工具</category>
-        <category>开发工具</category>
-        <category>IDEA</category>
+        <category>系统</category>
+        <category>Urban</category>
+        <category>系统配置</category>
       </categories>
       <tags>
-        <tag>IDEA</tag>
+        <tag>系统配置</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux系统命令</title>
+    <url>/2022/10/30/%E5%B7%A5%E5%85%B7&amp;%E7%B3%BB%E7%BB%9F/Linux/Linux%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h1>查看信息</h1>
+<h2 id="“！”命令">“！”命令</h2>
+<p>! 符号在 Linux 中不但可以用作否定符号，还可以用来从历史命令记录中取出命令或不加修改的执行之前运行的命令。</p>
+<ol>
+<li>
+<p>执行上一条命令：<code>!!</code></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@hots java]<span class="comment"># whereis java</span></span><br><span class="line">java: /usr/bin/java /usr/lib/java /etc/java /usr/share/java /opt/soft/jdk1.8.0_211/bin/java /usr/share/man/man1/java.1.gz</span><br><span class="line">[root@hots java]<span class="comment"># !! </span></span><br><span class="line">whereis java</span><br><span class="line">java: /usr/bin/java /usr/lib/java /etc/java /usr/share/java /opt/soft/jdk1.8.0_211/bin/java /usr/share/man/man1/java.1.gz</span><br><span class="line">[root@hots java]<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<p>==!!代表了上一条执行的命令。可以看到，当输入两个感叹号时，它显示上条命令的同时会执行上一条命令。==当然了，通常我们还会想到使用“UP”键来完成这个事情。但是如果是基于上条命令扩充，!!就来得更加方便了。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@hots java]<span class="comment"># ExitCapture #忘记输入java</span></span><br><span class="line">bash: ExitCapture: <span class="built_in">command</span> not found...</span><br><span class="line">[root@hots java]<span class="comment"># java !!</span></span><br><span class="line">java ExitCapture </span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>使用上条命令最后一个参数：<code>!$</code></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">root<span class="meta">@hots</span> java]# ls /root/java/</span><br><span class="line">ExitCapture.<span class="keyword">class</span>  <span class="title class_">ExitCapture</span>.java  nohup.out</span><br><span class="line">[root<span class="meta">@hots</span> java]# ls -al !$</span><br><span class="line">ls -al /root/java/</span><br><span class="line">total <span class="number">16</span></span><br><span class="line">drwxr-xr-x.  <span class="number">2</span> root root   <span class="number">72</span> Dec <span class="number">28</span> <span class="number">14</span>:<span class="number">43</span> .</span><br><span class="line">dr-xr-x---. <span class="number">16</span> root root <span class="number">4096</span> Dec <span class="number">28</span> <span class="number">14</span>:<span class="number">13</span> ..</span><br><span class="line">-rw-r--r--.  <span class="number">1</span> root root  <span class="number">934</span> Dec <span class="number">28</span> <span class="number">14</span>:<span class="number">46</span> test.java</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>使用上条命令第一个参数：<code>!^</code></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[root<span class="meta">@hots</span> java]# ls /root/java/</span><br><span class="line">ExitCapture.<span class="keyword">class</span>  <span class="title class_">ExitCapture</span>.java  nohup.out</span><br><span class="line">[root<span class="meta">@hots</span> java]# ls -al !^</span><br><span class="line">ls -al /root/java/</span><br><span class="line">total <span class="number">16</span></span><br><span class="line">drwxr-xr-x.  <span class="number">2</span> root root   <span class="number">72</span> Dec <span class="number">28</span> <span class="number">14</span>:<span class="number">43</span> .</span><br><span class="line">dr-xr-x---. <span class="number">16</span> root root <span class="number">4096</span> Dec <span class="number">28</span> <span class="number">14</span>:<span class="number">13</span> ..</span><br><span class="line">-rw-r--r--.  <span class="number">1</span> root root  <span class="number">934</span> Dec <span class="number">28</span> <span class="number">14</span>:<span class="number">46</span> test.java</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>去掉上一条命令最后一个参数，再次执行 <code>!:-</code></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@hots java]<span class="comment"># ls -al /root/java/</span></span><br><span class="line">total 16</span><br><span class="line">drwxr-xr-x.  2 root root   72 Dec 28 14:43 .</span><br><span class="line">dr-xr-x---. 16 root root 4096 Dec 28 14:13 ..</span><br><span class="line">-rw-r--r--.  1 root root  934 Dec 28 14:46 test.java</span><br><span class="line">-rw-------.  1 root root  369 Dec 28 14:44 nohup.out</span><br><span class="line">[root@hots java]<span class="comment"># !:-</span></span><br><span class="line"><span class="built_in">ls</span> -al</span><br><span class="line">total 16</span><br><span class="line">drwxr-xr-x.  2 root root   72 Dec 28 14:43 .</span><br><span class="line">dr-xr-x---. 16 root root 4096 Dec 28 14:13 ..</span><br><span class="line">-rw-r--r--.  1 root root  934 Dec 28 14:46 test.java</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>使用上一条命令的所有参数：<code>!*</code></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@hots java]<span class="comment"># finsd -name &quot;foo.zip&quot; # 这里特意输错了find命令</span></span><br><span class="line">bash: finsd: <span class="built_in">command</span> not found...</span><br><span class="line">[root@hots java]<span class="comment"># find !*</span></span><br><span class="line">find -name <span class="string">&quot;foo.zip&quot;</span></span><br><span class="line">[root@hots java]<span class="comment"># </span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>使用上条命令指定的参数：<code>![命令名]:[参数号]</code></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@hots java]<span class="comment"># ls -al /root/java/</span></span><br><span class="line">total 16</span><br><span class="line">drwxr-xr-x.  2 root root   72 Dec 28 14:43 .</span><br><span class="line">dr-xr-x---. 16 root root 4096 Dec 28 14:13 ..</span><br><span class="line">-rw-r--r--.  1 root root  934 Dec 28 14:46 test.java</span><br><span class="line">[root@hots java]<span class="comment"># pwd !ls:2</span></span><br><span class="line"><span class="built_in">pwd</span> /root/java/</span><br><span class="line">/root/java</span><br><span class="line">[root@hots java]<span class="comment"># </span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>执行上一条以关键字开头的命令：<code>!关键字</code></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[root@hots java]<span class="comment"># !find #执行上条以find开头的命令</span></span><br><span class="line">find -name <span class="string">&quot;foo.zip&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>逻辑非的作用</p>
+<p>这个是它最为人所熟悉的作用，例如删除除了cfg结尾以外的所有文件：<code>rm !(*.cfg)</code></p>
+</li>
+</ol>
+<p><strong>小结</strong></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>!!</td>
+<td>上一条命令</td>
+</tr>
+<tr>
+<td>!$</td>
+<td>上一条命令中的最后一个参数</td>
+</tr>
+<tr>
+<td>!:-</td>
+<td>上一命令除了最后一个参数</td>
+</tr>
+<tr>
+<td>!*</td>
+<td>上一条命令中的所有参数</td>
+</tr>
+<tr>
+<td>!str</td>
+<td>最近一条以str开头的命令</td>
+</tr>
+<tr>
+<td>!?str?</td>
+<td>最近一条包含str的命令</td>
+</tr>
+<tr>
+<td>!n</td>
+<td>顺数第n条命令</td>
+</tr>
+<tr>
+<td>!-n</td>
+<td>倒数第n条命令</td>
+</tr>
+<tr>
+<td><code>^old^new</code></td>
+<td>将上一命令中的old替换为new</td>
+</tr>
+<tr>
+<td>!!:gs/old/new</td>
+<td>将上一命令中的old替换为new</td>
+</tr>
+<tr>
+<td>!scp:gs/old/new</td>
+<td>将上一scp命令中的old替换为new</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="查看系统内存条信息">查看系统内存条信息</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">dmidecode -t memory</span><br></pre></td></tr></table></figure>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125171541505.png" alt="image-20211125171541505"></p>
+<h2 id="查看linux机器是32位还是64位">查看linux机器是32位还是64位</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">getconf LONG_BIT</span><br></pre></td></tr></table></figure>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125172057979.png" alt="image-20211125172057979"></p>
+<h2 id="查看系统版本号">查看系统版本号</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">lsb_release -a</span><br></pre></td></tr></table></figure>
+<h2 id="查看进程状态：ps">查看进程状态：ps</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">格式：ps [options] [--<span class="built_in">help</span>]</span><br><span class="line">参数：</span><br><span class="line">-A 列出所有的线程</span><br><span class="line">-e 列出所有的进程</span><br><span class="line">-f 显示详细的信息（包括命令行参数）</span><br><span class="line"></span><br><span class="line">例子: 查看java进程信息</span><br><span class="line">ps -ef|grep java</span><br></pre></td></tr></table></figure>
+<h2 id="查看系统磁盘信息：df">查看系统磁盘信息：df</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">df -lm</span><br></pre></td></tr></table></figure>
+<h2 id="查看内存使用情况">查看内存使用情况</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">free -g</span><br></pre></td></tr></table></figure>
+<h2 id="查看系统内核信息">查看系统内核信息</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">uname</span> -a</span><br></pre></td></tr></table></figure>
+<h2 id="显示系统用户信息：who">显示系统用户信息：who</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">格式 : <span class="built_in">who</span> - [husfV] [user]</span><br><span class="line">说明 : 显示有哪些用户登录到系统中，显示的信息包含用户ID，使用的终端，上线时间，呆滞时间，CPU使用量，动作等等。</span><br><span class="line">参数说明 :</span><br><span class="line">    -H : 显示标题列</span><br><span class="line">    -u : 显示用户的闲置时间</span><br><span class="line">    -s : 使用简短的格式来显示</span><br><span class="line">    --version : 显示程式版本</span><br><span class="line">    -r 查看当前系统运行时间</span><br><span class="line">    -b 查看最后一次系统启动的时间。</span><br><span class="line"></span><br><span class="line">相关命令 : <span class="built_in">who</span> am i  显示当前用户是谁</span><br><span class="line"></span><br><span class="line">例子： 查看最后启动时间</span><br><span class="line">          <span class="built_in">who</span> -b</span><br></pre></td></tr></table></figure>
+<h1>文件操作命令</h1>
+<h2 id="du：查看文件和目录磁盘使用的空间">du：查看文件和目录磁盘使用的空间</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">格式：<span class="built_in">du</span> [选项] [文件]</span><br><span class="line">参数:</span><br><span class="line">    -a或-all 显示目录中个别文件的大小</span><br><span class="line">    -b或-bytes 显示目录或文件大小时，以byte为单位</span><br><span class="line">    -c或--total 除了显示个别目录或文件的大小外，同时也显示所有目录或文件的总和</span><br><span class="line">    -k或--kilobytes 以KB(1024bytes)为单位输出</span><br><span class="line">    -m或--megabytes 以MB为单位输出</span><br><span class="line">    -s或--summarize 仅显示总计，只列出最后加总的值</span><br><span class="line">    -h或--human-readable 以K，M，G为单位，提高信息的可读性</span><br><span class="line">    -x或--one-file-xystem 以一开始处理时的文件系统为准，若遇上其它不同的文件系统目录则略过</span><br><span class="line">    -L&lt;符号链接&gt;或--dereference&lt;符号链接&gt; 显示选项中所指定符号链接的源文件大小</span><br><span class="line">    -S或--separate-dirs 显示个别目录的大小时，并不含其子目录的大小</span><br><span class="line">    -X&lt;文件&gt;或--exclude-from=&lt;文件&gt; 在&lt;文件&gt;指定目录或文件</span><br><span class="line">    --exclude=&lt;目录或文件&gt; 略过指定的目录或文件</span><br><span class="line">    -D或--dereference-args 显示指定符号链接的源文件大小</span><br><span class="line">    -H或--si 与-h参数相同，但是K，M，G是以1000为换算单位</span><br><span class="line">    -l或--count-links 重复计算硬件链接的文件。</span><br><span class="line">范例：<span class="built_in">du</span> -hm 目录名称</span><br></pre></td></tr></table></figure>
+<h2 id="文件操作-find-将符合-expression-的文件列出来">文件操作-find 将符合 expression 的文件列出来</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">格式 : find [path...] [expression]</span><br><span class="line">说明 : 将符合 expression 的文件列出来。                    </span><br><span class="line">  -amin n : 在过去 n 分钟内被读取过的文件</span><br><span class="line">  -anewer file : 比文件 file 更晚被读取过的文件</span><br><span class="line">  -atime n : 在过去 n 天被读取过的文件</span><br><span class="line">  -cmin n : 在过去 n 分钟内被修改过的文件</span><br><span class="line">  -cnewer file :比文件 file 更新的文件</span><br><span class="line">  -ctime n : 在过去 n 天过修改过的文件</span><br><span class="line">  -name filename, -iname filename : 符合 filename 的文件。iname 会忽略大小写</span><br><span class="line">  -size n : 档案大小 是 n 单位，b 代表 512 位元组的区块，c 表示字元数，k表示 kilo bytes，w 是二个位元组。</span><br><span class="line">  -<span class="built_in">type</span> c : 档案类型是 c 的档案。</span><br></pre></td></tr></table></figure>
+<p>范例:</p>
+<ol>
+<li>
+<p>将当前目录及其子目录下所有扩展名是 c 的文件列出来。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">find . -name <span class="string">&quot;*.c&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>将当前目录及其子目录下所有最近 20 分钟内更新过的文件列出</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">find . -cmin -20</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>查找包含字符串的文件</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">find /opt/Tomcat7  -name <span class="string">&quot;system.properties&quot;</span>|xargs grep -ri <span class="string">&quot;BASCI_SCI_UPDATE&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>将/usr/local/backups目录下所有10天前带&quot;.&quot;的文件删除</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">find /usr/local/backups -mtime +10 -name <span class="string">&quot;*.*&quot;</span> |xargs <span class="built_in">rm</span> -rf</span><br><span class="line">或者</span><br><span class="line">find /usr/local/backups -mtime +10 -name <span class="string">&quot;*.*&quot;</span> -<span class="built_in">exec</span> <span class="built_in">rm</span> -rf &#123;&#125; \;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">说明： 　　</span><br><span class="line">find：linux的查找命令，用户查找指定条件的文件 　　</span><br><span class="line">/usr/local/backups：想要进行清理的任意目录 　　</span><br><span class="line">-mtime：标准语句写法 　　</span><br><span class="line">＋10：查找10天前的文件，这里用数字代表天数，＋30表示查找30天前的文件</span><br><span class="line"><span class="string">&quot;*.*&quot;</span>：希望查找的数据类型，<span class="string">&quot;*.jpg&quot;</span>表示查找扩展名为jpg的所有文件，<span class="string">&quot;*&quot;</span>表示查找所有文件，这个可以灵活运用，举一反三 　　</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-<span class="built_in">exec</span> <span class="built_in">rm</span> -rf &#123;&#125; \; ：find发现的结果一次性传给<span class="built_in">exec</span>选项，删除</span><br><span class="line">|xargs <span class="built_in">rm</span> -rf : 分批次的处理删除（推荐）</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="文件操作-grep：-搜索字符串命令">文件操作-grep： 搜索字符串命令</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">格式：grep [-no] pattern files</span><br><span class="line">参数：</span><br><span class="line">     -n 显示行号</span><br><span class="line">     -o 只显示匹配的串</span><br></pre></td></tr></table></figure>
+<p>范例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">grep  printf *</span><br><span class="line">    file1.c:   printf(&quot;\nHello\n&quot;);</span><br><span class="line">    file2.c:   printf(&quot;\nSample\n&quot;);</span><br><span class="line"></span><br><span class="line">grep -n  printf *</span><br><span class="line">    file1.c:4   printf(&quot;\nHello\n&quot;);</span><br><span class="line">    file2.c:9   printf(&quot;\nSample\n&quot;);</span><br><span class="line"></span><br><span class="line">grep -o  printf *</span><br><span class="line">   file1.c:   printf</span><br><span class="line">   file2.c:   printf</span><br><span class="line"></span><br><span class="line">如果搜索的串中有空格，则用引号括起来</span><br><span class="line"></span><br><span class="line">grep &quot;asd abc&quot; *</span><br></pre></td></tr></table></figure>
+<h2 id="wc：统计指定文件中的字节数、字数、行数，并将统计结果显示输出">wc：统计指定文件中的字节数、字数、行数，并将统计结果显示输出</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">格式：<span class="built_in">wc</span> [选项] 文件名称</span><br><span class="line">选项 ：</span><br><span class="line">   -c 统计字节数。</span><br><span class="line">   -l 统计行数。</span><br><span class="line">   -m 统计字符数。这个标志不能与 -c 标志一起使用。</span><br><span class="line">   -w 统计字数。一个字被定义为由空白、跳格或换行字符分隔的字符串。</span><br><span class="line">   -L 打印最长行的长度。</span><br><span class="line">   -<span class="built_in">help</span> 显示帮助信息</span><br><span class="line">   --version 显示版本信息</span><br></pre></td></tr></table></figure>
+<h2 id="cp：-源文件存在-将一个文件拷贝至另一文件，或将数个文件拷贝至另一目录">cp：(源文件存在)将一个文件拷贝至另一文件，或将数个文件拷贝至另一目录</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">格式：<span class="built_in">cp</span> [-arf] <span class="built_in">source</span> dest</span><br><span class="line">参数:</span><br><span class="line">   -a 将文件状态、权限等信息都照原状予以复制。</span><br><span class="line">   -r  若 <span class="built_in">source</span> 中含有目录名，则将目录下的文件顺序拷贝至目的地。</span><br><span class="line">   -f  若目的地已经有相同的文件名存在，则在复制前先予以删除再行复制。</span><br></pre></td></tr></table></figure>
+<p>范例：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">1. 将文件 aaa 复制一份名字为 bbb 的文件:         </span><br><span class="line">   <span class="built_in">cp</span> aaa bbb   </span><br><span class="line">2. 将当前目录下的所有C程序拷贝到当前目录下的Finished 子目录中：</span><br><span class="line">   <span class="built_in">cp</span> *.c Finished</span><br></pre></td></tr></table></figure>
+<h2 id="mv：-源文件不存在-将一个文件改名为另一文件，或将数个文件移至另一目录。">mv：(源文件不存在)将一个文件改名为另一文件，或将数个文件移至另一目录。</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">格式： <span class="built_in">mv</span> [-i] <span class="built_in">source</span> dest</span><br><span class="line">        <span class="built_in">mv</span> [-i] <span class="built_in">source</span>... directory</span><br><span class="line">参数：-i 若目的地已有同名文件，则先询问是否覆盖旧文件</span><br></pre></td></tr></table></figure>
+<p>范例：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">1. 将文件 aaa 改名为 bbb :</span><br><span class="line">   <span class="built_in">mv</span> aaa bbb</span><br><span class="line">2. 将所有的C程序移至 Finished 子目录中：</span><br><span class="line">   <span class="built_in">mv</span> -i *.c  Finished</span><br></pre></td></tr></table></figure>
+<h2 id="rm：删除文件及目录">rm：删除文件及目录</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">格式：<span class="built_in">rm</span> [-ifr] name...</span><br><span class="line">   -i  删除前逐一询问确认。</span><br><span class="line">   -f  即使原文件属性设为只读，也直接删除，无需逐一确认。</span><br><span class="line">   -r  将目录及以下之文件逐一删除。</span><br></pre></td></tr></table></figure>
+<p>范例</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">1.  删除所有C程序文件并删除前逐一询问确认 :</span><br><span class="line"><span class="built_in">rm</span> -i *.c</span><br><span class="line">2. 将 Finished 子目录及子目录中所有文件删除 :</span><br><span class="line"><span class="built_in">rm</span> -r Finished</span><br></pre></td></tr></table></figure>
+<h2 id="tail条件查看文件内容">tail条件查看文件内容</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">格式：<span class="built_in">tail</span> [ -f ] [ -c Number | -n Number | -m Number | -b Number | -k Number ]  文件名称</span><br><span class="line">-f  该参数用于监视File文件增长。</span><br><span class="line">-c  Number 从 Number 字节位置读取指定文件</span><br><span class="line">-n  Number 从 Number 行位置读取指定文件。</span><br><span class="line">-m  Number 从 Number 多字节字符位置读取指定文件，比方你的文件假设包括中文字，假设指定-c参数，可能导致截断，但使用-m则会避免该问题。</span><br><span class="line">-b  Number 从 Number 表示的512字节块位置读取指定文件。</span><br><span class="line">-k  Number 从 Number 表示的1KB块位置读取指定文件。</span><br><span class="line">上述命令中，都涉及到number，假设不指定，默认显示10行。</span><br><span class="line">Number前面可使用正负号，表示该偏移从顶部还是从尾部開始计算。</span><br><span class="line"><span class="built_in">tail</span>可运行文件一般在/usr/bin/以下。</span><br></pre></td></tr></table></figure>
+<p>示例</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">1、  <span class="built_in">tail</span> -f filename </span><br><span class="line">说明：监视filename文件的尾部内容（默认10行，相当于增加参数 -n 10），刷新显示在屏幕上。退出，按下CTRL+C。 </span><br><span class="line">2、  <span class="built_in">tail</span> -n 20 filename </span><br><span class="line">说明：显示filename最后20行。</span><br></pre></td></tr></table></figure>
+<h2 id="cat：-查看文件-文件拼接">cat： 查看文件(文件拼接)</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">格式：<span class="built_in">cat</span> [-AbeEnstTuv] [--<span class="built_in">help</span>] [--version] fileName</span><br><span class="line">说明：把文件串连接后输出到荧幕或加 &gt; fileName 到另一个档案</span><br><span class="line">参数：</span><br><span class="line">    -A 等价于 -vET</span><br><span class="line">    -n或 --number 由 1 开始对所有输出的行数编号</span><br><span class="line">    -b或 --number-nonblank和 -n 相似，只不过对于空白行不编号</span><br><span class="line">    -e 等价于 –vE</span><br><span class="line">    -E 每行末尾显示一个$符号</span><br><span class="line">    -s或 --squeeze-blank 当遇到有连续两行以上的空白行，就代换为一行的空白行</span><br><span class="line">    -t 等价于 –vT</span><br><span class="line">    -T 显示制表符为 ^I</span><br><span class="line">    -v或 --show-nonprinting,  dos格式的回车换行显示为^M</span><br></pre></td></tr></table></figure>
+<p>范例：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">1. 把 textfile1 的文件内容加上行号后输入到 textfile2 文件里：</span><br><span class="line"> <span class="built_in">cat</span> -n textfile1 &gt; textfile2</span><br><span class="line">2. 把 textfile1 和 textfile2 的文件内容加上行号（空白行不加）之后将内容附加到 textfile3 ：</span><br><span class="line"> <span class="built_in">cat</span> -b textfile1 textfile2 &gt;&gt; textfile3</span><br><span class="line">（ &gt; 为重定向操作符， &gt;&gt;为重定向追加操作符 ）</span><br></pre></td></tr></table></figure>
+<h2 id="more：文件查看">more：文件查看</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">格式：more  [-num] [+linenum] [fileNames..]</span><br><span class="line">说明：类似 <span class="built_in">cat</span> ，不过是以一页一页的方式显示。而最基本的指令就是按空白键（space）就往下一页显示，按 b 键就会往回（back）一页显示。</span><br><span class="line">参数：</span><br><span class="line">   -num 一次显示的行数</span><br><span class="line">    +linenum 从第 num 行开始显示</span><br><span class="line">         fileNames 欲显示内容的文件，可为多个文件</span><br></pre></td></tr></table></figure>
+<p>范例：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">从第 20 行开始显示 testfile 之文件内容。</span><br><span class="line"></span><br><span class="line">more +20 testfile</span><br></pre></td></tr></table></figure>
+<h2 id="less：文件查看">less：文件查看</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">格式： less [Option]  filename</span><br><span class="line">说明： less 的作用与 more 十分相似，都可以用来浏览文本文件的内容，不同的是 less 允许使用者往回卷动（PageUp PageDown）以浏览已经看过的部份，同时因为 less 并未在一开始就读入整个文件，因此在遇上大型文件的开启时，会比一般的文本编辑器(如  vi)来的快速。</span><br></pre></td></tr></table></figure>
+<h2 id="touch：新建文件">touch：新建文件</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> 文件名</span><br></pre></td></tr></table></figure>
+<h2 id="mkdir：创建目录">mkdir：创建目录</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span>  dirName</span><br></pre></td></tr></table></figure>
+<h1>Linux系统其他命令</h1>
+<h2 id="systemctl">systemctl</h2>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">以firewalld.service为例</span><br><span class="line"></span><br><span class="line">启动一个服务：systemctl start firewalld.service</span><br><span class="line">关闭一个服务：systemctl stop firewalld.service</span><br><span class="line">重启一个服务：systemctl restart firewalld.service</span><br><span class="line"></span><br><span class="line">显示一个服务的状态：systemctl status firewalld.service</span><br><span class="line"></span><br><span class="line">在开机时启用一个服务：systemctl enable firewalld.service</span><br><span class="line">在开机时禁用一个服务：systemctl disable firewalld.service</span><br><span class="line"></span><br><span class="line">查看服务是否开机启动：systemctl is-enabled firewalld.service</span><br><span class="line">查看开机启动的服务列表：systemctl list-unit-files|grep enabled</span><br><span class="line">查看启动失败的服务列表：systemctl --failed</span><br></pre></td></tr></table></figure>
+<h2 id="ssh：远程登陆">ssh：远程登陆</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">格式: ssh 用户名@机器名</span><br><span class="line">范例: ssh rd@build01</span><br></pre></td></tr></table></figure>
+<h2 id="chown：变更文件夹的所有者">chown：变更文件夹的所有者</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chown</span> 用户名 文件名 -R</span><br></pre></td></tr></table></figure>
+<h2 id="命令行执行sh文件">命令行执行sh文件</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">【步骤一】<span class="built_in">cd</span>到.sh文件所在目录</span><br><span class="line">【步骤二】给.sh文件添加x执行权限 <span class="built_in">chmod</span> u+x hello.sh</span><br><span class="line">【步骤三】 ./hello.sh 或者 sh hello.sh</span><br></pre></td></tr></table></figure>
+<h2 id="curl：查看网页结果">curl：查看网页结果</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">curl ipinfo.io/ip</span><br><span class="line">curl cip.cc</span><br></pre></td></tr></table></figure>
+<h2 id="scp：从其他机器拷贝文件夹">scp：从其他机器拷贝文件夹</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">scp -r 文件夹名(源) 用户名@机器名:/路径（目的）</span><br><span class="line">之后输入，目标机器的用户密码。</span><br><span class="line">举例： scp -r /index1/DAYAIR/Lucene/20160930  root@117.122.222.74:/index1/dayalib</span><br></pre></td></tr></table></figure>
+<h2 id="SFTP：上传文件-下载">SFTP：上传文件/下载</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">上传： put -r  本地文件夹/上传文件夹</span><br><span class="line">put local-file  [remote-file]</span><br><span class="line">下载： get remote-file  [local-file]</span><br></pre></td></tr></table></figure>
+<h2 id="kill">kill</h2>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">格式： <span class="built_in">kill</span> [ -s signal ] pid ...</span><br><span class="line">      <span class="built_in">kill</span> -l [ signal ]</span><br><span class="line">说明：<span class="built_in">kill</span> 送出一个特定的信号 (signal) 给进程号为 pid 的进程。根据该信号而做特定的动作, 若没有指定,默认是送出终止 (TERM) 信号</span><br><span class="line"></span><br><span class="line">参数：</span><br><span class="line">    -s (signal) : 其中常用的一个信号(9) 杀死进程; 详细的信号可以用 <span class="built_in">kill</span> -l</span><br><span class="line">    -l (signal) : 列出所有可用的信号名称</span><br><span class="line"></span><br><span class="line">范例：</span><br><span class="line">  1. 将 pid 为 323 的进程杀死 ： <span class="built_in">kill</span> -9 323</span><br><span class="line">  2. 将 pid 为 456 的进程重跑 (restart) : <span class="built_in">kill</span> -HUP 456</span><br></pre></td></tr></table></figure>
+<h1>ulimit：控制shell程序的资源#</h1>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">语　　法：<span class="built_in">ulimit</span> [-aHS][-c &lt;core文件上限&gt;][-d &lt;数据节区大小&gt;][-f &lt;文件大 小&gt;][-m &lt;内存大小&gt;][-n &lt;文件数目&gt;][-p &lt;缓冲区大小&gt;][-s &lt;堆栈大小&gt;][-t &lt;CPU时间&gt;][-u &lt;程序数目&gt;][-v &lt;虚拟内存大小&gt;]</span><br><span class="line">补充说明：<span class="built_in">ulimit</span>为shell内建指令，可用来控制shell执行程序的资源。</span><br><span class="line">参　　数：</span><br><span class="line">        -a 显示目前资源限制的设定。</span><br><span class="line">        -c &lt;core文件上限&gt; 　设定core文件的最大值，单位为区块。</span><br><span class="line">        -d &lt;数据节区大小&gt; 　程序数据节区的最大值，单位为KB。</span><br><span class="line">        -f &lt;文件大小&gt; 　shell所能建立的最大文件，单位为区块。</span><br><span class="line">        -H 　设定资源的硬性限制，也就是管理员所设下的限制。</span><br><span class="line">        -m &lt;内存大小&gt; 　指定可使用内存的上限，单位为KB。</span><br><span class="line">        -n &lt;文件数目&gt; 　指定同一时间最多可打开的文件数。</span><br><span class="line">        -p &lt;缓冲区大小&gt; 　指定管道缓冲区的大小，单位512字节。</span><br><span class="line">        -s &lt;堆栈大小&gt; 　指定堆叠的上限，单位为KB。</span><br><span class="line">        -S 　设定资源的弹性限制。</span><br><span class="line">        -t &lt;CPU时间&gt; 　指定CPU使用时间的上限，单位为秒。</span><br><span class="line">        -u &lt;进程数目&gt; 　用户最多可启动的进程数目。</span><br><span class="line">        -v &lt;虚拟内存大小&gt; 　指定可使用的虚拟内存上限，单位为KB。</span><br></pre></td></tr></table></figure>
+<h2 id="top：实时显示系统中各个进程的资源占用状况">top：实时显示系统中各个进程的资源占用状况</h2>
+<p>top命令是Linux下常用的性能分析工具，能够实时显示系统中各个进程的资源占用状况，类似于Windows的任务管理器。</p>
+<blockquote>
+<p>下面详细介绍它的使用方法。</p>
+</blockquote>
+<p>top是一个动态显示过程,即可以通过用户按键来不断刷新当前状态.如果在前台执行该命令,它将独占前台,直到用户终止该程序为止.比较准确的说,top命令提供了实时的对系统处理器的状态监视.它将显示系统中CPU最“敏感”的任务列表.该命令可以按CPU使用.内存使用和执行时间对任务进行排序；而且该命令的很多特性都可以通过交互式命令或者在个人定制文件中进行设定</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">命令说明</span><br><span class="line">1.  命令格式： top [参数]</span><br><span class="line">2.  命令功能： 显示当前系统正在执行的进程的相关信息，包括进程ID、内存占用率、CPU占用率等</span><br><span class="line">3.  命令参数</span><br><span class="line">        -b 批处理</span><br><span class="line">        -c 显示完整的治命令</span><br><span class="line">        -I 忽略失效过程</span><br><span class="line">        -s 保密模式</span><br><span class="line">        -S 累积模式</span><br><span class="line">        -i&lt;时间&gt; 设置更新间隔时间</span><br><span class="line">        -u&lt;用户名&gt; 指定用户名</span><br><span class="line">        -p&lt;进程号&gt; 指定进程</span><br><span class="line">        -n&lt;次数&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>补充top使用技巧</p>
+</blockquote>
+<ul>
+<li>
+<p>多核CPU监控在top基本视图中，按键盘数字“1”，可监控每个逻辑CPU的状况：</p>
+</li>
+<li>
+<p>高亮显示当前运行进程敲击键盘“b”（打开/关闭加亮效果 ）</p>
+</li>
+<li>
+<p>通过”shift + &gt;”或”shift + &lt;”可以向右或左改变排序列下图是按一次”shift + &gt;”的效果图,视图现在已经按照%MEM来排序。</p>
+</li>
+</ul>
+<blockquote>
+<p>使用实例</p>
+</blockquote>
+<ul>
+<li>
+<p>实例1：显示指定的进程信息</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">top -p 2885</span><br></pre></td></tr></table></figure>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125180715469.png" alt="image-20211125180715469"></p>
+</li>
+<li>
+<p>实例2: 循环显示的次数</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">命令：  top -n 2</span><br><span class="line">说明：表示更新两次后终止更新显示</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>实例3：显示进程信息，并具体说明</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5C20211125181146934.png" alt="20211125181146934"></p>
+</li>
+</ul>
+<blockquote>
+<p>下面我们看每一行信息的具体意义</p>
+</blockquote>
+<ol>
+<li>第一行，任务队列信息，同 <strong>uptime</strong> 命令的执行结果</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">top - 18:10:32 up  2:39,  2 <span class="built_in">users</span>,  load average: 0.23, 0.11, 0.06</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>18:10:32</td>
+<td>当前系统时间</td>
+</tr>
+<tr>
+<td>up   2:39</td>
+<td>系统已经运行了2小时39分钟（在这期间系统没有重启过）</td>
+</tr>
+<tr>
+<td>2 users</td>
+<td>当前有2个用户登录系统</td>
+</tr>
+<tr>
+<td>load average: 0.23, 0.11, 0.06</td>
+<td>load average后面的三个数分别是1分钟、5分钟、15分钟的负载情况。<br>load average数据是每隔5秒钟检查一次活跃的进程数，然后按特定算法计算出的数值。如果这个数除以逻辑CPU的数量，结果高于5的时候就表明系统在超负荷运转了。</td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li>第二行，Tasks — 任务（进程）</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">Tasks: 213 total,   1 running, 210 sleeping,   0 stopped,   2 zombie</span><br><span class="line"></span><br><span class="line">具体信息说明如下：</span><br><span class="line">系统现在共有213个进程，其中处于运行中的有1个，210个在休眠，stoped状态的有0个，zombie状态（僵尸）的有2个</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>第三行：cpu状态信息</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">%Cpu(s):  0.7 us,  0.6 sy,  0.0 ni, 98.7 <span class="built_in">id</span>,  0.0 wa,  0.0 hi,  0.1 si,  0.0 st</span><br><span class="line"></span><br><span class="line">备注：在这里CPU的使用比率和windows概念不同，需要理解linux系统用户空间和内核空间的相关知识</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.7 us</td>
+<td>用户空间占用CPU的百分比。</td>
+</tr>
+<tr>
+<td>0.6 sy</td>
+<td>内核空间占用CPU的百分比。</td>
+</tr>
+<tr>
+<td>0.0 ni</td>
+<td>改变过优先级的进程占用CPU的百分比</td>
+</tr>
+<tr>
+<td>98.7 id</td>
+<td>空闲CPU百分比</td>
+</tr>
+<tr>
+<td>0.0 wa</td>
+<td>IO等待占用CPU的百分比</td>
+</tr>
+<tr>
+<td>0.0 hi</td>
+<td>硬中断（Hardware IRQ）占用CPU的百分比</td>
+</tr>
+<tr>
+<td>0.1 si</td>
+<td>软中断（Software Interrupts）占用CPU的百分比</td>
+</tr>
+<tr>
+<td>0.0 st</td>
+<td>虚拟机占用百分比</td>
+</tr>
+</tbody>
+</table>
+<ol start="4">
+<li>第四行,内存状态</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">KiB Mem : 16212604 total,  4243632 free, 10135032 used,  1833940 buff/cache</span><br><span class="line"></span><br><span class="line">第四行中使用中的内存总量（used）指的是现在系统内核控制的内存数，空闲内存总量（free）是内核还未纳入其管控范围的数量。</span><br><span class="line">纳入内核管理的内存不见得都在使用中，还包括过去使用过的现在可以被重复利用的内存，内核并不把这些可被重新使用的内存交还到free中去，因此在linux上free内存会越来越少，但不用为此担心。</span><br><span class="line"></span><br><span class="line">若需要计算可用内存数，这里有个近似的计算公式：第四行的free + 第四行的buffers + 第五行的cached/avail Mem</span><br><span class="line"></span><br><span class="line">对于内存监控，在top里我们要时刻监控第五行swap交换分区的used，如果这个数值在不断的变化，说明内核在不断进行内存和swap的数据交换，这是真正的内存不够用了</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16212604 total</td>
+<td>物理内存总量</td>
+</tr>
+<tr>
+<td>10135032 used</td>
+<td>使用中的内存总量</td>
+</tr>
+<tr>
+<td>4243632 free</td>
+<td>空闲内存总量</td>
+</tr>
+<tr>
+<td>1833940 buff/cache</td>
+<td>缓存的内存量</td>
+</tr>
+</tbody>
+</table>
+<ol start="5">
+<li>第五行，swap交换分区信息</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">KiB Swap:  8126460 total,  8126460 free,        0 used.  5577340 avail Mem</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8126460 total</td>
+<td>交换区总量</td>
+</tr>
+<tr>
+<td>0 used</td>
+<td>使用的交换区总量</td>
+</tr>
+<tr>
+<td>8126460 free</td>
+<td>空闲交换区总量</td>
+</tr>
+<tr>
+<td>5577340 avail Mem</td>
+<td>可用交换取总量</td>
+</tr>
+</tbody>
+</table>
+<ol start="6">
+<li>
+<p>第六行，空行</p>
+</li>
+<li>
+<p>第七行以下：各进程（任务）的状态监控：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND                                                                                                                                                                     </span><br><span class="line">944 root      20   0  565168  10532   7440 S   0.7  0.1   0:36.70 NetworkManager</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PID</td>
+<td>进程id</td>
+</tr>
+<tr>
+<td>USER</td>
+<td>进程所有者</td>
+</tr>
+<tr>
+<td>PR</td>
+<td>进程优先级</td>
+</tr>
+<tr>
+<td>NI</td>
+<td>nice值。负值表示高优先级，正值表示低优先级</td>
+</tr>
+<tr>
+<td>VIRT</td>
+<td>进程使用的虚拟内存总量，单位kb。VIRT=SWAP+RES</td>
+</tr>
+<tr>
+<td>RES</td>
+<td>进程使用的、未被换出的物理内存大小，单位kb。RES=CODE+DATA</td>
+</tr>
+<tr>
+<td>SHR</td>
+<td>共享内存大小，单位kb</td>
+</tr>
+<tr>
+<td>S</td>
+<td>进程状态。D=不可中断的睡眠状态 R=运行 S=睡眠 T=跟踪/停止 Z=僵尸进程</td>
+</tr>
+<tr>
+<td>%CPU</td>
+<td>上次更新到现在的CPU时间占用百分比</td>
+</tr>
+<tr>
+<td>%MEM</td>
+<td>进程使用的物理内存百分比</td>
+</tr>
+<tr>
+<td>TIME+</td>
+<td>进程使用的CPU时间总计，单位1/100秒</td>
+</tr>
+<tr>
+<td>COMMAND</td>
+<td>进程名称（命令名/命令行）</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<h2 id="netstat-显示各种网络相关信息">netstat:显示各种网络相关信息</h2>
+<p>Netstat 命令用于显示各种网络相关信息如网络连接，路由表，接口状态，端口信息，masquerade 连接，多播成员 等等。<br>
+例如：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">找出程序运行的端口：netstat -ap|grep ssh</span><br><span class="line">找出端口运行的精细化进程: netstat -an|grep <span class="string">&#x27;:80&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>执行<strong>netstat</strong>后，其输出结果为</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125185454741.png" alt="image-20211125185454741"></p>
+<p>从整体上看，netstat的输出结果可以分为两个部分：</p>
+<p>一个是<strong>Active Internet connections</strong>，称为有源TCP连接，其中&quot;Recv-Q&quot;和&quot;Send-Q&quot;指%0A的是接收队列和发送队列。这些数字一般都应该是0。如果不是则表示软件包正在队列中堆积。这种情况只能在非常少的情况见到。</p>
+<p>另一个是<strong>Active UNIX domain sockets</strong>，称为有源Unix域套接口（和网络套接字一样，但是只能用于本机通信，性能可以提高一倍）</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Proto</td>
+<td>显示连接使用的协议</td>
+</tr>
+<tr>
+<td>RefCnt</td>
+<td>表示连接到本套接口上的进程号</td>
+</tr>
+<tr>
+<td>Types</td>
+<td>显示套接口的类型</td>
+</tr>
+<tr>
+<td>State</td>
+<td>显示套接口当前的状态</td>
+</tr>
+<tr>
+<td>Path</td>
+<td>表示连接到套接口的其它进程使用的路径名。</td>
+</tr>
+</tbody>
+</table>
+<p>常见参数</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">-a (all)显示所有选项，默认不显示LISTEN相关</span><br><span class="line">-t (tcp)仅显示tcp相关选项</span><br><span class="line">-u (udp)仅显示udp相关选项</span><br><span class="line">-n 拒绝显示别名，能显示数字的全部转化成数字。</span><br><span class="line">-l 仅列出有在 Listen (监听) 的服務状态</span><br><span class="line">-p 显示建立相关链接的程序名</span><br><span class="line">-r 显示路由信息，路由表</span><br><span class="line">-e 显示扩展信息，例如uid等</span><br><span class="line">-s 按各个协议进行统计</span><br><span class="line">-c 每隔一个固定时间，执行该netstat命令。</span><br><span class="line"></span><br><span class="line">提示：LISTEN和LISTENING的状态只有用-a或者-l才能看到</span><br></pre></td></tr></table></figure>
+<p>实用命令实例</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">netstat -a ：列出所有端口 (包括监听和未监听的) </span><br><span class="line">netstat -at ：列出所有 tcp 端口</span><br><span class="line">netstat -au : 列出所有 udp 端口</span><br><span class="line">netstat -p : 在 netstat 输出中显示 PID 和进程名称 </span><br><span class="line"></span><br><span class="line">netstat -p 可以与其它开关一起使用，就可以添加 “PID/进程名称” 到 netstat 输出中，这样 debugging 的时候可以很方便的发现特定端口运行的程序。</span><br></pre></td></tr></table></figure>
+<h2 id="nmcli">nmcli</h2>
+<p>nmcli使用方法非常类似linux ip命令、cisco交换机命令，并且支持tab补全（详见本文最后的Tips），也可在命令最后通过-h、–help、help查看帮助。</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">nmcli</span> <span class="string">--help</span></span><br><span class="line"><span class="attr">Usage</span>: <span class="string">nmcli [OPTIONS] OBJECT &#123; COMMAND | help &#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="attr">OPTIONS</span></span><br><span class="line"><span class="attr">-o[verview]</span> <span class="string">overview mode (hide default values)</span></span><br><span class="line"><span class="attr">-t[erse]</span> <span class="string">terse output</span></span><br><span class="line"><span class="attr">-p[retty]</span> <span class="string">pretty output</span></span><br><span class="line"><span class="attr">-m[ode]</span> <span class="string">tabular|multiline output mode</span></span><br><span class="line"><span class="attr">-c[olors]</span> <span class="string">auto|yes|no whether to use colors in output</span></span><br><span class="line"><span class="attr">-f[ields]</span> <span class="string">&lt;field1,field2,...&gt;|all|common specify fields to output</span></span><br><span class="line"><span class="attr">-g[et-values]</span> <span class="string">&lt;field1,field2,...&gt;|all|common shortcut for -m tabular -t -f</span></span><br><span class="line"><span class="attr">-e[scape]</span> <span class="string">yes|no escape columns separators in values</span></span><br><span class="line"><span class="attr">-a[sk]</span> <span class="string">ask for missing parameters</span></span><br><span class="line"><span class="attr">-s[how-secrets]</span> <span class="string">allow displaying passwords</span></span><br><span class="line"><span class="attr">-w[ait]</span> <span class="string">&lt;seconds&gt; set timeout waiting for finishing operations</span></span><br><span class="line"><span class="attr">-v[ersion]</span> <span class="string">show program version</span></span><br><span class="line"><span class="attr">-h[elp]</span> <span class="string">print this help</span></span><br><span class="line"> </span><br><span class="line"><span class="attr">OBJECT</span></span><br><span class="line"><span class="attr">g[eneral]</span> <span class="string">NetworkManager&#x27;s general status and operations</span></span><br><span class="line"><span class="attr">n[etworking]</span> <span class="string">overall networking control</span></span><br><span class="line"><span class="attr">r[adio]</span> <span class="string">NetworkManager radio switches</span></span><br><span class="line"><span class="attr">c[onnection]</span> <span class="string">NetworkManager&#x27;s connections</span></span><br><span class="line"><span class="attr">d[evice]</span> <span class="string">devices managed by NetworkManager</span></span><br><span class="line"><span class="attr">a[gent]</span> <span class="string">NetworkManager secret agent or polkit agent</span></span><br><span class="line"><span class="attr">m[onitor]</span> <span class="string">monitor NetworkManager changes</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>常用命令</li>
+</ul>
+<blockquote>
+<p>nmcli connection</p>
+</blockquote>
+<p>译作连接，可理解为配置文件，相当于ifcfg-ethX。可以简写为nmcli c</p>
+<blockquote>
+<p>nmcli device</p>
+</blockquote>
+<p>译作设备，可理解为实际存在的网卡（包括物理网卡和虚拟网卡）。可以简写为nmcli d</p>
+<p>在NM里，有2个维度：连接（connection）和设备（device），这是多对一的关系。想给某个网卡配ip，首先NM要能纳管这个网卡。设备里存在的网卡（即nmcli d可以看到的），就是NM纳管的。接着，可以为一个设备配置多个连接（即nmcli c可以看到的），每个连接可以理解为一个ifcfg配置文件。同一时刻，一个设备只能有一个连接活跃。可以通过nmcli c up切换连接。</p>
+<p>connection有2种状态：</p>
+<p>▷ 活跃（带颜色字体）：表示当前该connection生效</p>
+<p>▷ 非活跃（正常字体）：表示当前该connection不生效</p>
+<ul>
+<li>nmcli常用命令一览</li>
+</ul>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看ip（类似于ifconfig、ip addr）</span></span><br><span class="line"><span class="attr">nmcli</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 创建connection，配置静态ip（等同于配置ifcfg，其中BOOTPROTO=none，并ifup启动）</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">c add type ethernet con-name ens32 ifname ens32 ipv4.addr 192.168.1.100/24 ipv4.gateway 192.168.1.1 ipv4.method manual</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 创建connection，配置动态ip（等同于配置ifcfg，其中BOOTPROTO=dhcp，并ifup启动）</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">c add type ethernet con-name ens32 ifname ens32 ipv4.method auto</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 修改ip（非交互式）</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">c modify ens32 ipv4.addr &#x27;192.168.1.200/24&#x27;</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">c up ens32</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 修改ip（交互式）</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">c edit ens32</span></span><br><span class="line"><span class="attr">nmcli&gt;</span> <span class="string">goto ipv4.addresses</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">ipv4.addresses&gt; change</span></span><br><span class="line"><span class="attr">Edit</span> <span class="string">&#x27;addresses&#x27; value: 192.168.1.200/24</span></span><br><span class="line"><span class="attr">Do</span> <span class="string">you also want to set &#x27;ipv4.method&#x27; to &#x27;manual&#x27;? [yes]: yes</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">ipv4&gt; save</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">ipv4&gt; activate</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">ipv4&gt; quit</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 启用connection（相当于ifup）</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">c up ens32</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 停止connection（相当于ifdown）</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">c down</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 删除connection（类似于ifdown并删除ifcfg）</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">c delete ens32</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 查看connection列表</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">c show</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 查看connection详细信息</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">c show ens32</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 重载所有ifcfg或route到connection（不会立即生效）</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">c reload</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 重载指定ifcfg或route到connection（不会立即生效）</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">c load /etc/sysconfig/network-scripts/ifcfg-ens32</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">c load /etc/sysconfig/network-scripts/route-ens32</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 立即生效connection，有3种方法</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">c up ens32</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">d reapply ens32</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">d connect ens32</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 查看device列表</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">d</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 查看所有device详细信息</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">d show&lt;br&gt;&lt;br&gt;# 查看指定device的详细信息</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">d show ens3　　</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 激活网卡</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">d connect ens3 </span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 关闭无线网络（NM默认启用无线网络）</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">r all off</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 查看NM纳管状态</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">n</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 开启NM纳管</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">n on</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 关闭NM纳管（谨慎执行）</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">n off</span></span><br><span class="line"><span class="comment">　　</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 监听事件</span></span><br><span class="line"><span class="attr">nmcli</span> <span class="string">m</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 查看NM本身状态</span></span><br><span class="line"><span class="attr">nmcli</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 检测NM是否在线可用</span></span><br><span class="line"><span class="attr">nm-online</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>系统</category>
+        <category>Linux</category>
+        <category>系统命令</category>
+      </categories>
+      <tags>
+        <tag>系统命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Windows系统配置</title>
+    <url>/2022/10/30/%E5%B7%A5%E5%85%B7&amp;%E7%B3%BB%E7%BB%9F/Windows/Windows%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h1>设置系统护眼色</h1>
+<h2 id="豆沙绿：RGB（202，234，206），-CAEACE">豆沙绿：RGB（202，234，206），#CAEACE</h2>
+<h2 id="淡黄色：RGB（253，246，227），-FDF6E3-【选用】">淡黄色：RGB（253，246，227），#FDF6E3 【选用】</h2>
+<ol>
+<li>
+<p>首先使用 Win + R 组合快捷键，打开“运行”，然后键入打开注册表命令「regedit」，按回车键确认打开，如图所示</p>
+</li>
+<li>
+<p>打开Win10注册表之后，依次在左侧树状菜单中展开：HKEY_CURRENT_USER\Control Panel\Colors然后再右侧找到「Windows」值，并双击打开，将默认的255 255 255（默认是白色背景）三组颜色数值改成 253，246，227完成后，点击下方的“确定”保存，如图所示。</p>
+<span id="more"></span>
+</li>
+</ol>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211124002345774.png" alt="image.png"></p>
+<ol start="3">
+<li>继续找到注册表的路径：HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\DefaultColors\Standard同样再在右侧找到「Windows」双击打开，将默认的数据值 ffffff 改成  FDF6E3 完成后，点击下方的确定保存如下图所示。</li>
+</ol>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211124002408921.png" alt="image.png"></p>
+<p>完成以上三步操作后，需要重启电脑生效</p>
+<h1>Windows查看端口占用</h1>
+<ol>
+<li>获取占用端口的进程ID  <code>netstat -ano|findstr 10001</code></li>
+<li>获取进程信息 <code>tasklist|findstr 9352</code></li>
+<li>关闭进程（强行关闭） <code>taskkill /PID 9140 /T /F</code></li>
+</ol>
+<h1>windows开机启动程序路径</h1>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup</span><br></pre></td></tr></table></figure>
+<h1>windows的host文件位置</h1>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\Windows\System32\drivers\etc</span><br></pre></td></tr></table></figure>
+<h1>Windows刷新DNS命令</h1>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ipconfig /flushdns</span><br></pre></td></tr></table></figure>
+<p>win+r可执行的命令</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mstsc</td>
+<td>打开远程连接</td>
+</tr>
+<tr>
+<td>services.msc</td>
+<td>本地服务设置</td>
+</tr>
+<tr>
+<td>calc</td>
+<td>计算器</td>
+</tr>
+<tr>
+<td>dxdiag</td>
+<td>系统配置查看命令</td>
+</tr>
+</tbody>
+</table>
+<h1>Windows命令行打开防火墙</h1>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">win10：netsh advfirewall firewall add rule name=&quot;ES Port 9300&quot; dir=in action=allow protocol=TCP localport=9300</span><br></pre></td></tr></table></figure>
+<h1>Windows 开放服务器端口</h1>
+<p>win7下打开端口测试端口时 可用telnet 命令侦听端口：<code>C:\Documents and Settings\administrator&gt;netstat -na</code></p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211124112102739.png" alt="image-20211124112102739"></p>
+<p>测试端口是否开放：<br>
+<code>C:\Documents and Settings\administrator&gt;telnet 127.0.0.1 8500</code><br>
+正在连接到127.0.0.1…不能打开到主机的连接， 在端口 8500: 连接失败</p>
+<p>下面开始打开端口（Win7）</p>
+<p>Win7的防火墙做了比较大升级 设置已经分为入站和出站。下面以开通Tomcat的远程访问8080作为例子。<strong>控制面板–所有控制面板项–Windows 防火墙</strong> 进入</p>
+<p>入站规则设置<br>
+第一步 选择 入站规则 然后 新建规则，选择 端口，然后下一步<br>
+第二步 选择TCP 选择特定端口 然后输入端口，如有多个端口需要用逗号隔开了 例如:88,8080<br>
+第三步，选择允许连接<br>
+第四步 选择应用规则的范围<br>
+第五步 输入规则名称</p>
+<p>出站规则设置<br>
+第一步 选择 入站规则 然后 新建规则，选择 端口，然后下一步<br>
+第二步 选择TCP 选择特定端口 然后输入端口，如有多个端口需要用逗号隔开了 例如:88,8080<br>
+第三步，选择允许连接<br>
+第四步 选择应用规则的范围<br>
+第五步 输入规则名称<br>
+至此，防火墙规则设置完毕，启用即可！<br>
+另外win7的 IIS7，只需启用 入站规则：BranchCache 内容检索(HTTP-In)<br>
+出站规则： BranchCache 内容检索(HTTP-Out) 即可。</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211124112849477.png" alt="image-20211124112849477"><br>
+<img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211124113626250.png" alt="image-20211124113626250"><br>
+<img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211124113803236.png" alt="image-20211124113803236"><br>
+<img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211124113911637.png" alt="image-20211124113911637"></p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211124114010436.png" alt="image-20211124114010436"></p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211124114015918.png" alt="image-20211124114015918"></p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211124114021360.png" alt="image-20211124114021360"></p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211124114030488.png" alt="image-20211124114030488"></p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211124114034567.png" alt="image-20211124114034567"></p>
+<p>输出规则也一样的设置 可以看到</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211124114043841.png" alt="image-20211124114043841"></p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211124114050299.png" alt="image-20211124114050299"></p>
+<h1>Windows系统快捷键记录</h1>
+<h2 id="常用记录">常用记录</h2>
+<table>
+<thead>
+<tr>
+<th><strong>快捷键</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl+Shift+Esc</td>
+<td>打开任务管理器</td>
+</tr>
+<tr>
+<td>Esc</td>
+<td>取消当前任务</td>
+</tr>
+<tr>
+<td>Shift+delete</td>
+<td>永久删除所选的项目（删除之后无法从回收站还原）</td>
+</tr>
+<tr>
+<td>Ctrl+shiff+tab</td>
+<td>在选项卡上向后移动</td>
+</tr>
+<tr>
+<td>Tab</td>
+<td>在选项上向后移动</td>
+</tr>
+<tr>
+<td>Shift+Tab</td>
+<td>在选项卡上向前移动</td>
+</tr>
+</tbody>
+</table>
+<h1>Windows资源管理器中的快捷键</h1>
+<table>
+<thead>
+<tr>
+<th><strong>快捷键</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alt+P</td>
+<td>显示预览窗格</td>
+</tr>
+<tr>
+<td>Alt+←</td>
+<td>切换到前一次打开的文件夹</td>
+</tr>
+<tr>
+<td>Alt+→</td>
+<td>切换到下一次后打开的文件夹</td>
+</tr>
+<tr>
+<td>Alt+↑</td>
+<td>打开上层文件夹</td>
+</tr>
+<tr>
+<td>Backspace</td>
+<td>打开上层文件夹</td>
+</tr>
+</tbody>
+</table>
+<h1>Windows徽标键相关的快捷键</h1>
+<table>
+<thead>
+<tr>
+<th><strong>快捷键</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Win</td>
+<td>打开或者关闭开始菜单</td>
+</tr>
+<tr>
+<td>Win+Pause</td>
+<td>显示系统属性对话框</td>
+</tr>
+<tr>
+<td>Win+d</td>
+<td>显示桌面</td>
+</tr>
+<tr>
+<td>Win+m</td>
+<td>最小化所有窗口</td>
+</tr>
+<tr>
+<td>Win+Shift+m</td>
+<td>还原最小化窗口到桌面上</td>
+</tr>
+<tr>
+<td>Win+E</td>
+<td>打开我的电脑</td>
+</tr>
+<tr>
+<td>Win+F</td>
+<td>搜索文件或文件夹</td>
+</tr>
+<tr>
+<td>Win+L</td>
+<td>锁定您的计算机或切换用户</td>
+</tr>
+<tr>
+<td>Win+R</td>
+<td>打开运行对话框</td>
+</tr>
+<tr>
+<td>Win+↓</td>
+<td>最小化窗口</td>
+</tr>
+<tr>
+<td>Win+↑</td>
+<td>最大化当前窗口</td>
+</tr>
+<tr>
+<td>Win+←</td>
+<td>最大化到窗口左侧的屏幕上</td>
+</tr>
+<tr>
+<td>Win+→</td>
+<td>最大化到窗口右侧的屏幕上</td>
+</tr>
+<tr>
+<td>Win+home</td>
+<td>最小化所有窗口，除了当前激活窗口</td>
+</tr>
+</tbody>
+</table>
+<h1>Windows定时执行任务脚本</h1>
+<ol>
+<li>第一步：打开控制面板-》系统和安全-》管理工具</li>
+<li></li>
+</ol>
+]]></content>
+      <categories>
+        <category>系统</category>
+        <category>Windows</category>
+        <category>系统配置</category>
+      </categories>
+      <tags>
+        <tag>系统配置</tag>
       </tags>
   </entry>
   <entry>
@@ -441,12 +1559,1098 @@
       </tags>
   </entry>
   <entry>
-    <title>IDEA使用记录</title>
-    <url>/2022/10/30/%E5%B7%A5%E5%85%B7/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[]]></content>
+    <title>IDEA使用技巧</title>
+    <url>/2022/10/30/%E5%B7%A5%E5%85%B7&amp;%E7%B3%BB%E7%BB%9F/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<h1>插件</h1>
+<h2 id="CamelCase">CamelCase</h2>
+<!-- 使用快捷键转换驼峰、下划线等命名规则-->
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125092234688.png" alt="image-20211125092234688"></p>
+<p>光标放在要修改的名称上（如：变量名，或者mapper.xml里的字段名,会自动识别光标所在单词），按control+alt+U,则进行按命名规则进行转换，会按配置中选择的命名规则列表来回切换。</p>
+<p>如图，如果只选择了CamelCase to camelCase、camelCase to snake_case，则可以在两者之间来回切换，适合公司对命名的要求。</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125092300247.png" alt="image-20211125092300247"></p>
+<h2 id="RestfulToolkit">RestfulToolkit</h2>
+<!--  API查找工具 --> 
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125092703437.png" alt="image-20211125092703437"></p>
+<h2 id="Free-Mybatis-plugin">Free Mybatis plugin</h2>
+<!-- 快速从代码跳转到mapper及从mapper返回代码-->
+<h2 id="EasyCode">EasyCode</h2>
+<p>代码生成插件</p>
+<ol>
+<li>下载插件，安装后重启</li>
+</ol>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125092413929.png" alt="image-20211125092413929"></p>
+<ol start="2">
+<li>在idea右侧选择Database，选择自己的数据库</li>
+</ol>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125092433296.png" alt="image-20211125092433296"></p>
+<ol start="3">
+<li>输入账号密码，连接成功</li>
+</ol>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125092518334.png" alt="image-20211125092518334"></p>
+<ol start="4">
+<li>
+<p>选择自己所需的表，鼠标右键-&gt;EasyCode-&gt;Generate Code</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125092538684.png" alt="image-20211125092538684"></p>
+</li>
+<li>
+<p>选择自己需要生成的，勾选，然后OK就行</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125092616622.png" alt="image-20211125092616622"></p>
+</li>
+<li>
+<p>系统自己生成了entity包，以及实体类。</p>
+</li>
+</ol>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125092639951.png" alt="image-20211125092639951"></p>
+<h2 id="MybatisLog">MybatisLog</h2>
+<!-- 程序运行的SQL语句可以直接拷贝运行 -->
+<h1>快捷键</h1>
+<h2 id="Editing">Editing</h2>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>英文说明</th>
+<th>中文说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><s>Ctrl + Space</s> Ctrl + ,</td>
+<td>Basic code completion (the name of any class, method or variable)</td>
+<td>基本代码完成（任何类、方法或变量的名称）</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + Space</td>
+<td>Smart code completion (filters the list of methods and variables by expected type)</td>
+<td>智能代码完成（按预期类型筛选方法和变量列表）</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + Enter</td>
+<td>Complete statement</td>
+<td>完整声明</td>
+</tr>
+<tr>
+<td>Ctrl + P</td>
+<td>Parameter info (within method call arguments)</td>
+<td>调用方法时，列出全部参数信息</td>
+</tr>
+<tr>
+<td>Ctrl + Q</td>
+<td>Quick documentation lookup</td>
+<td>光标放在类/方法上，快速显示Java doc 信息</td>
+</tr>
+<tr>
+<td>Ctrl +hover</td>
+<td>Brief Info</td>
+<td>鼠标放到类/方法上，提示基本信息</td>
+</tr>
+<tr>
+<td>Ctrl + F1</td>
+<td>Show descriptions of error or warning at caret</td>
+<td>显示光标处的错误或警告的处理提示信息</td>
+</tr>
+<tr>
+<td>Alt + Insert</td>
+<td>Generate code… (Getters, Setters, Constructors, hashCode/equals, toString)</td>
+<td>弹出可生成代码列表（getter、setter、constructor、hashCode/equals、toString）</td>
+</tr>
+<tr>
+<td>Ctrl + O</td>
+<td>Override methods</td>
+<td>弹出可覆写的方法列表</td>
+</tr>
+<tr>
+<td>Ctrl + I</td>
+<td>Implement methods</td>
+<td>弹出要实现的方法列表</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + T</td>
+<td>Surround with…(if…else,try…catch, for,  synchronized, etc.)</td>
+<td>代码块快选（要放在插入点上的代码结束分号上）</td>
+</tr>
+<tr>
+<td>Ctrl + /</td>
+<td>Comment/uncomment with line comment</td>
+<td>代码行注释</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + /</td>
+<td>Comment/uncomment with block comment</td>
+<td>代码块注释</td>
+</tr>
+<tr>
+<td>Ctrl + W</td>
+<td>Select successively increasing code blocks</td>
+<td>选择连续递增的代码块</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + W</td>
+<td>Decrease current selection to previous state</td>
+<td>取消选择代码块</td>
+</tr>
+<tr>
+<td>Alt + Enter</td>
+<td>Show intention actions and quick-fixes</td>
+<td>展示意图行动<br/>快速修复</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + L</td>
+<td>Reformat code</td>
+<td>代码格式化</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + O</td>
+<td>Optimize imports</td>
+<td>优化类的import</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + I</td>
+<td>Auto-indent line(s)</td>
+<td>自动缩进行</td>
+</tr>
+<tr>
+<td>Tab / Shift + Tab</td>
+<td>Indent/unindent selected lines</td>
+<td>缩进/取消缩进选定行</td>
+</tr>
+<tr>
+<td>Ctrl+X</td>
+<td>Cut current line or selected block to clipboard</td>
+<td>将当前行或选定块剪切到剪贴板</td>
+</tr>
+<tr>
+<td>Ctrl+C</td>
+<td>Copy current line or selected block to clipboard</td>
+<td>将当前行或选定块复制到剪贴板</td>
+</tr>
+<tr>
+<td>Ctrl+V</td>
+<td>Paste from clipboard</td>
+<td>粘贴</td>
+</tr>
+<tr>
+<td>Ctrl+Shift + V</td>
+<td>Paste from recent buffers…</td>
+<td>打开剪贴板，选择要粘贴的内容</td>
+</tr>
+<tr>
+<td>Ctrl+D</td>
+<td>Duplicate current line or selected block</td>
+<td>复制并粘贴当前行或选定块</td>
+</tr>
+<tr>
+<td>Ctrl+Y</td>
+<td>Delete line at caret</td>
+<td>删除光标处的行</td>
+</tr>
+<tr>
+<td>Ctrl+Shift + J</td>
+<td>Smart line join</td>
+<td>光标所在行和其下一行，或者选择的代码块，合并到一行</td>
+</tr>
+<tr>
+<td>Ctrl+Enter</td>
+<td>Smart line split</td>
+<td>行拆分</td>
+</tr>
+<tr>
+<td>Shift + Enter</td>
+<td>Start new line</td>
+<td>打开新的一行</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + U</td>
+<td>Toggle case for word at caret or selected block</td>
+<td>在光标所在词语或选定块中切换单词的大小写</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + ]/[</td>
+<td>Select till code block end/start</td>
+<td>选择直到代码块结束/开始</td>
+</tr>
+<tr>
+<td>Ctrl + Delete/Backspace</td>
+<td>Delete to word end/start</td>
+<td>删除至单词结束/开始</td>
+</tr>
+<tr>
+<td>Ctrl + NumPad+/-</td>
+<td>Expand/collapse code block</td>
+<td>展开/折叠代码块</td>
+</tr>
+<tr>
+<td>Ctrl + Shift+NumPad+</td>
+<td>Expand all</td>
+<td>展开所有代码块</td>
+</tr>
+<tr>
+<td>Ctrl + Shift+NumPad-</td>
+<td>Collapse all</td>
+<td>折叠所有代码块</td>
+</tr>
+<tr>
+<td>Ctrl + F4</td>
+<td>Close active editor tab</td>
+<td>关闭当前活动的编辑窗口</td>
+</tr>
+<tr>
+<td>Ctrl + F12</td>
+<td></td>
+<td>当前类内搜索方法</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>英文说明</th>
+<th>中文说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alt + Q</td>
+<td>Context info</td>
+<td><em>上下文信息</em></td>
+</tr>
+<tr>
+<td>Shift + F1</td>
+<td>External Doc</td>
+<td><em>外部文件</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Usage-Search">Usage Search</h2>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>英文说明</th>
+<th>中文说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alt + F7/Ctrl + F7</td>
+<td>Find usages/Find usages in file</td>
+<td>查找用法/在文件中查找【参数/方法】使用到的地方</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + F7</td>
+<td>Highlight usages in file</td>
+<td>高亮【参数/方法】使用到的地方</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + F7</td>
+<td>Show usages</td>
+<td>弹出【参数/方法】使用到的列表</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Navigation">Navigation</h2>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>英文说明</th>
+<th>中文说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alt + Right/Left</td>
+<td>Go to next / previous editor tab</td>
+<td>左边的编辑框/右边的编辑框</td>
+</tr>
+<tr>
+<td>F12</td>
+<td>Go back to previous tool window</td>
+<td>项目结构中，选中当前文件</td>
+</tr>
+<tr>
+<td>Esc</td>
+<td>Go to editor (from tool window)</td>
+<td>光标回到编辑栏</td>
+</tr>
+<tr>
+<td>Shift + Esc</td>
+<td>Hide active or last active window</td>
+<td>关闭最新打开的工具栏</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+F4</td>
+<td>Close active run / messages / find / … tab</td>
+<td>关闭活动的工具栏</td>
+</tr>
+<tr>
+<td>Ctrl+G</td>
+<td>Go to line</td>
+<td>跳转到指定行</td>
+</tr>
+<tr>
+<td>Ctrl+E</td>
+<td>Recent files popup</td>
+<td>弹框显示最近使用过的文件</td>
+</tr>
+<tr>
+<td>Ctrl+Alt + Left/Right</td>
+<td>Navigate back / forward</td>
+<td>后退/前进</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+Backspace</td>
+<td>Navigate to last edit location</td>
+<td>关闭工具窗口，光标回到最后编辑的文件（类似Esc）</td>
+</tr>
+<tr>
+<td>Alt + F1</td>
+<td>Select current file or symbol in any view</td>
+<td>选择一个视图，显示当前文件或符号（资源管理器、浏览器、结构图等）</td>
+</tr>
+<tr>
+<td>Ctrl + B , Ctrl + Click</td>
+<td>Go to declaration</td>
+<td>跳转到声明或者用例处</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + B</td>
+<td>Go to implementation(s)</td>
+<td>跳转到实现处</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + I</td>
+<td>Open quick definition lookup</td>
+<td>弹框中查看类文件</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + B</td>
+<td>Go to type declaration</td>
+<td>跳转类型声明处</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + T</td>
+<td></td>
+<td>转到测试类</td>
+</tr>
+<tr>
+<td>Ctrl + U</td>
+<td>Go to super-method / super-class</td>
+<td>跳转父方法/父类</td>
+</tr>
+<tr>
+<td>Alt + Up/Down</td>
+<td>Go to previous / next method</td>
+<td>光标转到前/后一个方法</td>
+</tr>
+<tr>
+<td>Ctrl + ]/[</td>
+<td>Move to code block end/start</td>
+<td>光标跳转到代码块的结尾/开头</td>
+</tr>
+<tr>
+<td>Ctrl + F12</td>
+<td>File structure popup</td>
+<td>弹出类结构</td>
+</tr>
+<tr>
+<td>Ctrl + H</td>
+<td>Type hierarchy</td>
+<td>打开类型层次结构</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + H</td>
+<td>Method hierarchy</td>
+<td>打开方法层次结构</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + H</td>
+<td>Call hierarchy</td>
+<td>打开调用层次结构</td>
+</tr>
+<tr>
+<td>F2 / Shift + F2</td>
+<td>Next/previous highlighted error</td>
+<td>下一个/前一个 error</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>Edit source / View source</td>
+<td>编辑/查看文件</td>
+</tr>
+<tr>
+<td>Alt + Home</td>
+<td>Show navigation bar</td>
+<td>显示代码导航栏</td>
+</tr>
+<tr>
+<td>F11</td>
+<td>Toggle bookmark</td>
+<td>加上/去掉书签</td>
+</tr>
+<tr>
+<td>Ctrl + F11</td>
+<td>Toggle bookmark with mnemonic</td>
+<td>添加标记书签</td>
+</tr>
+<tr>
+<td>Ctrl + #[0-9]</td>
+<td>Go to numbered bookmark</td>
+<td>转到编号书签</td>
+</tr>
+<tr>
+<td>Shift + F11</td>
+<td>Show bookmarks</td>
+<td>弹框，列出书签</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Search-Replace">Search/Replace</h2>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>英文说明</th>
+<th>中文说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Double Shift</td>
+<td>Search everywhere</td>
+<td>搜索任意文件</td>
+</tr>
+<tr>
+<td>Ctrl + F</td>
+<td>Find</td>
+<td>当前文件查找</td>
+</tr>
+<tr>
+<td>F3 / Shift + F3</td>
+<td>Find next / Find previous</td>
+<td>配合“Ctrl + F” 查找下一个/前一个</td>
+</tr>
+<tr>
+<td>Ctrl + R</td>
+<td>Replace</td>
+<td>当前文件替换</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + F</td>
+<td>Find in pathqu</td>
+<td>全局查找</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + R</td>
+<td>Replace in path</td>
+<td>全局替换</td>
+</tr>
+<tr>
+<td>Ctrl + N</td>
+<td>Go to class</td>
+<td>搜索类</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + N</td>
+<td>Go to file</td>
+<td>搜索文件</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + Shift + N</td>
+<td>Go to symbol</td>
+<td>搜索符号</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + A</td>
+<td>Find Action</td>
+<td>搜索操作</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Live-Templates">Live Templates</h2>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>英文说明</th>
+<th>中文说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl + Alt + J</td>
+<td>Surround with Live Template</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl + J</td>
+<td>Insert Live Template</td>
+<td>弹出模板选择需要的代码片段</td>
+</tr>
+<tr>
+<td>iter</td>
+<td>Iteration according to Java SDK 1.5 style</td>
+<td>for (Object o : ) {      }</td>
+</tr>
+<tr>
+<td>inst</td>
+<td>Checkobjecttype with instanceof and downcast it</td>
+<td>if (name instanceof Object) {     Object o = (Object) name;      }</td>
+</tr>
+<tr>
+<td>itco</td>
+<td>Iterate elements of java.util.Collection</td>
+<td>for (Iterator iterator = collection.iterator(); iterator.hasNext(); ) {     Object next =  iterator.next();      }</td>
+</tr>
+<tr>
+<td>itit</td>
+<td>Iterate elements of java.util.Iterator</td>
+<td>while (iterator.hasNext()) {     Object next =  iterator.next();      }</td>
+</tr>
+<tr>
+<td>itli</td>
+<td>Iterate elements of java.util.List</td>
+<td>for (int i = 0; i &lt; list.size(); i++) {     Object o =  list.get(i);</td>
+</tr>
+<tr>
+<td>thr</td>
+<td>throw new</td>
+<td>throw new</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Refactoring：重构">Refactoring：重构</h2>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>英文说明</th>
+<th>中文说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F5</td>
+<td>Copy</td>
+<td>复制文件</td>
+</tr>
+<tr>
+<td>F6</td>
+<td>Move</td>
+<td>移动文件</td>
+</tr>
+<tr>
+<td>Alt + Delete</td>
+<td>Safe Delete</td>
+<td></td>
+</tr>
+<tr>
+<td>Shift + F6</td>
+<td>Rename</td>
+<td>重命名（F12 先选中）</td>
+</tr>
+<tr>
+<td>Ctrl + F6</td>
+<td>Change Signature</td>
+<td>更改签名</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + N</td>
+<td>Inline</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl + Alt + M</td>
+<td>Extract Method</td>
+<td>提取代码块为一个method</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + V</td>
+<td>Extract Variable</td>
+<td>提取变量（定义一个新变量，保留当前变量的值）<br/>修改前：<br/>return name;<br/>修改后：<br/>String name1 = name; <br/>return name1;</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + F</td>
+<td>Extract Field</td>
+<td>提取变量为类的一个字段。</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + C</td>
+<td>Extract Constant</td>
+<td>提取静态变量</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + P</td>
+<td>Extract Parameter</td>
+<td>提取方法入参</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Debugging">Debugging</h2>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>英文说明</th>
+<th>中文说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F7 / F8</td>
+<td>Step into / Step over</td>
+<td>步入/步出（F5/F6）</td>
+</tr>
+<tr>
+<td>Shift + F7 / Shift + F8</td>
+<td>Smart step into/Step out</td>
+<td></td>
+</tr>
+<tr>
+<td>Alt + F9</td>
+<td>Run to cursor</td>
+<td>跑到下一断点</td>
+</tr>
+<tr>
+<td>Alt + F8</td>
+<td>Evaluate expression</td>
+<td>计算表达式</td>
+</tr>
+<tr>
+<td>F9</td>
+<td>Resume program</td>
+<td>重新开始程序（F11）</td>
+</tr>
+<tr>
+<td>Ctrl + F8</td>
+<td>Toggle breakpoint</td>
+<td>加上/去掉 断点</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + F8</td>
+<td>View breakpoints</td>
+<td>查看断点</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Compile-and-Run">Compile and Run</h2>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>英文说明</th>
+<th>中文说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl + F9</td>
+<td>Make project (compile modifed and dependent)</td>
+<td>构建项目</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + F9</td>
+<td>Compile selected file, package or module</td>
+<td>重新编译</td>
+</tr>
+<tr>
+<td>Alt + Shift + F10/F9</td>
+<td>Select configuration and run/and debug</td>
+<td>打开run/debug的配置文件</td>
+</tr>
+<tr>
+<td>Shift + F10/F9</td>
+<td>Run/Debug</td>
+<td>Run/Debug 程序</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + F10</td>
+<td>Run context configuration from editor</td>
+<td>从编辑器运行上下文配置</td>
+</tr>
+<tr>
+<td>Ctrl + F2</td>
+<td></td>
+<td>stop 程序</td>
+</tr>
+</tbody>
+</table>
+<h2 id="VCS-Local-History">VCS/Local History</h2>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>英文说明</th>
+<th>中文说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl + K</td>
+<td>Commit project to VCS</td>
+<td>提交</td>
+</tr>
+<tr>
+<td>Ctrl + T</td>
+<td>Update from VCS</td>
+<td>更新</td>
+</tr>
+<tr>
+<td>Alt + Shift + C</td>
+<td>View recent changes</td>
+<td>打开最近变更内容列表</td>
+</tr>
+<tr>
+<td>Alt + BackQuote (`)</td>
+<td>VCS Operations Popup</td>
+<td>弹出版本控制选项框</td>
+</tr>
+</tbody>
+</table>
+<h2 id="General">General</h2>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>英文说明</th>
+<th>中文说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alt + #[0-9]</td>
+<td>Open corresponding tool window</td>
+<td>打开相应的工具窗口</td>
+</tr>
+<tr>
+<td>Ctrl + S</td>
+<td>Save all</td>
+<td>保存</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + Y</td>
+<td>Synchronize</td>
+<td>同步（reload）</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + F12</td>
+<td>Toggle maximizing editor</td>
+<td>最大化/恢复 编辑窗口</td>
+</tr>
+<tr>
+<td>Alt + Shift + F</td>
+<td>Add to Favorites</td>
+<td>添加收藏</td>
+</tr>
+<tr>
+<td>Alt + Shift + I</td>
+<td>Inspect current file with current profile</td>
+<td>使用当前配置文件检查当前文件</td>
+</tr>
+<tr>
+<td>Ctrl + BackQuote (`)</td>
+<td>Quick switch current scheme</td>
+<td>切换IDEA主题模式</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + S</td>
+<td>Open Settings dialog</td>
+<td>打开设置</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + Shift + S</td>
+<td>Open Project Structure dialog</td>
+<td>打开项目结构</td>
+</tr>
+<tr>
+<td>Ctrl + Tab</td>
+<td>Switch between tabs and tool window</td>
+<td>打开切换器（类似于windows的任务栏）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="查看当前类的父类（Ctrl-Alt-Shift-u）">查看当前类的父类（Ctrl+Alt+Shift+u）</h2>
+<p>下面看这个编辑器怎么以图解的形式，查看这种继承关系。</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211127223845078.png" alt="image-20211127223845078"></p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211127223909961.png" alt="image-20211127223909961"></p>
+<h2 id="打开子类工具栏：F4">打开子类工具栏：F4</h2>
+<p>利用的： 顶部菜单 <code>Navigate --&gt; Type Hierarchy</code></p>
+<h2 id="弹出子类UML图：Ctrl-Alt-u">弹出子类UML图：Ctrl+Alt+u</h2>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211127224042688.png" alt="image-20211127224042688"></p>
+<p>设置相关快捷键</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211127225955330.png" alt="image-20211127225955330"></p>
+<h2 id="弹出层显示的记录文件个数（Ctrl-E）">弹出层显示的记录文件个数（Ctrl + E）</h2>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211127231134179.png" alt="image-20211127231134179"></p>
+<h2 id="行拷贝（Ctrl-Alt-⬇）">行拷贝（Ctrl+Alt+⬇）</h2>
+<p>Duplicate Line Or Selection</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cclip_image002-16380260866347.png" alt="30f63f77a3c8b29426f7f6411d13f4b9.png"></p>
+<h1>基础配置</h1>
+<h2 id="编码配置">编码配置</h2>
+<h3 id="全局编码">全局编码</h3>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cclip_image001-163802678409512.png" alt="57826dd953a5c863292bed5462025d60.png"></p>
+<h3 id="文件编码">文件编码</h3>
+<p>打开需要设置编码的文件，在右下角进行设置</p>
+<h3 id="编码统一">编码统一</h3>
+<h4 id="File-Encodings">File Encodings</h4>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125093711347.png" alt="image-20211125093711347"></p>
+<h2 id="文件默认打开方式">文件默认打开方式</h2>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cclip_image002-16380266644219.png" alt="fce0704d161bda7eec8a5cc4743cc062.png"></p>
+<p>如上图标注 1 所示，该区域的后缀类型文件在 IntelliJ IDEA 中将以标注 2 的方式进行打开。</p>
+<p>如上图标注 3 所示，我们可以在 IntelliJ IDEA 中忽略某些后缀的文件或是文件夹，比如我一般会把 .idea 这个文件夹忽略。</p>
+<h2 id="字体设置">字体设置</h2>
+<h3 id="界面字体">界面字体</h3>
+<p>Settings-&gt;Appearance</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cclip_image001-163802676145910.png" alt="e8ad5d669969dbce8a1e35d6269013df.png"></p>
+<h3 id="程序字体">程序字体</h3>
+<p>Editor -&gt; Colors &amp; Fonts -&gt; Font</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cclip_image002-163802676145911.png" alt="5e3013e5dad6b0e05e97274216472a90.png"></p>
+<h1>使用技巧</h1>
+<h2 id="代码提示快捷键（Ctrl-逗号）">代码提示快捷键（Ctrl+逗号）</h2>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211127232203726.png" alt="image-20211127232203726"></p>
+<p>如上所示，默认 Ctrl + 空格 快捷键是基础代码提示、补充快捷键，但是由于我们中文系统基本这个快捷键都被输入法占用了，所以我们发现不管怎么按都是没有提示代码效果的，原因就是在此。我个人建议修改此快捷键为 Ctrl + 逗号。</p>
+<h2 id="鼠标放上去提示参数">鼠标放上去提示参数</h2>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cclip_image002-163802681052513.png" alt="0e6d5bfa29683800dc3eae4602afc8a8.png"></p>
+<p>软分行查看代码</p>
+<p>右键</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cclip_image001.png" alt="9fff17978c4752eeb8d4c127c9e2a554.png"></p>
+<h2 id="编译增加堆内存">编译增加堆内存</h2>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211127225848686.png" alt="image-20211127225848686"></p>
+<h2 id="格式化代码，后多行空行转为一行">格式化代码，后多行空行转为一行</h2>
+<p>idea格式化代码后会出现最多2行空行，不能像eclipse一样最多只保留一行空行，要想设置的和eclipse效果一样，设置如下</p>
+<p>File --&gt; setting --&gt; 搜索 code style --&gt; 选择 blank lines标签项 --&gt; 保留最大空行数设置为1</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211127230244828.png" alt="image-20211127230244828"></p>
+<h2 id="文件打开超过一行，多行显示">文件打开超过一行，多行显示</h2>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211127230844516.png" alt="image-20211127230844516"></p>
+<p>如上图标注 1 所示，在打开很多文件的时候，IntelliJ IDEA 默认是把所有打开的文件名 Tab 单行显示的。可以修改为多行</p>
+<h2 id="修改类注释模板">修改类注释模板</h2>
+<p><code>File-&gt;Settings-&gt;File and Code Templates 找到Includes</code></p>
+<h2 id="添加自定义方法">添加自定义方法</h2>
+<ol>
+<li>
+<p>首先，点击File–&gt;Settings–&gt;Editor–&gt;Live Templates</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211127230339392.png" alt="image-20211127230339392"></p>
+</li>
+<li>
+<p>接着，点击右上角“+”添加“Template Group”模板组，如Java</p>
+</li>
+</ol>
+<p>​        ​<img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211127230357335.png" alt="image-20211127230357335"></p>
+<ol start="3">
+<li>
+<p>在新增的模板组内添加模板，点击右上角“+”添加“Live Template”</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211127230437624.png" alt="image-20211127230437624"></p>
+</li>
+<li>
+<p>填写模板内容，定义出发快捷键选择 Enter</p>
+</li>
+</ol>
+<p>​        <img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211127230500953.png" alt="image-20211127230500953"></p>
+<ol start="5">
+<li>
+<p>定义作用域</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211127230524523.png" alt="image-20211127230524523"></p>
+<p>这样就OK了，可以仿照这种方式，自定义很多快捷输入的语句，比如输入，输出等：</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211127230606315.png" alt="image-20211127230606315"></p>
+</li>
+</ol>
+<h2 id="默认代码展示形式（折叠-展开）">默认代码展示形式（折叠/展开）</h2>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211127230751897.png" alt="image-20211127230751897"></p>
+<p>如上图标注红圈所示，我们可以对指定代码类型进行默认折叠或是展开的设置，勾选上的表示该类型的代码在文件被打开的时候默认是被折叠的，去掉勾选则反之。</p>
+<h2 id="行号和方法分割线">行号和方法分割线</h2>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cclip_image002.png" alt="2c9d0deb2e32bea240016e879acd4cb7.png"><br>
+如上图红圈所示，默认 IntelliJ IDEA 是没有勾选 Show line numbers 显示行数的，但是我建议一般这个要勾选上。<br>
+如上图红圈所示，默认 IntelliJ IDEA 是没有勾选 Show method separators 显示方法线的，这种线有助于我们区分开方法，所以也是建议勾选上的。</p>
+<h2 id="单行注释、注释块">单行注释、注释块</h2>
+<p>搜索：<code>Add a space at line comment start</code></p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20220304151518515.png" alt="image-20220304151518515"></p>
+<h2 id="显示内存回收">显示内存回收</h2>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cclip_image002-16380258373592.png" alt="2bf7deb86f42bcbdd32876423cdbe6b5.png"></p>
+<p>IntelliJ IDEA 14 版本默认是不显示内存使用情况的，对于大内存的机器来讲不显示也无所谓，但是如果是内存小的机器最好还是显示下。如上图演示，点击后可以进行部分内存的回收。</p>
+<h2 id="拼写检查">拼写检查</h2>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cclip_image002-16380258506663.png" alt="29916ac8772ea1af0367ee55106b713d.png"></p>
+<h2 id="增加打开的文件-Tab-个数">增加打开的文件 Tab 个数</h2>
+<p>Tab limit</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cclip_image002-16380259713575.png" alt="3a13ec2347321bd1c23131c75e5f6808.png"></p>
+<h2 id="单文件多窗口打开">单文件多窗口打开</h2>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cclip_image002-16380260699266.png" alt="a1f9f345240dd5190a929ffc0fe14de1.png"></p>
+<h2 id="SpringBoot实现服务器自动重启">SpringBoot实现服务器自动重启</h2>
+<ul>
+<li>
+<p>导入devtools依赖即可</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>然后到setting框中，输入compiler，然后勾选<strong>Build project automatically</strong></p>
+</li>
+<li>
+<p>然后按住<strong>shift+alt+ctrl+/</strong>，进入<strong>maintenance</strong>,然后选择进入<strong>Registry</strong></p>
+</li>
+<li>
+<p>勾选c<strong>ompiler.automake.when.app.running</strong></p>
+</li>
+</ul>
+<h2 id="IDEA-开启RunDashboard">IDEA 开启RunDashboard</h2>
+<ul>
+<li>修改 .idea/workspace.xml 文件</li>
+</ul>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cclip_image002-163802692934114.png" alt="b8b40c372c3114cb88d98abdc1621768.png"></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">找到<span class="tag">&lt;<span class="name">component</span> <span class="attr">name</span>=<span class="string">&quot;RunDashboard&quot;</span>&gt;</span> 添加配置：</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span> <span class="attr">name</span>=<span class="string">&quot;configurationTypes&quot;</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">set</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;SpringBootApplicationConfigurationType&quot;</span> /&gt;</span> </span><br><span class="line">  <span class="tag">&lt;/<span class="name">set</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>最终配置：<br>
+<img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cclip_image004.png" alt="c8e483b781cfd443e68a15b94345844b.png"><br>
+显示效果：<br>
+<img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cclip_image005.png" alt="511e587a5be1655e22f23d7981c2b8c8.png"></p>
+<h2 id="忽略提交文件到Git（-ignore）">忽略提交文件到Git（.ignore）</h2>
+<ol>
+<li>
+<p>点击<strong>File-&gt;Settings-&gt;Plugins</strong>，点击Browse repositories…</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cclip_image002-163802704819915.png" alt="3b2f62bb2f51c955400f9d9ff9945a6e.png"></p>
+</li>
+<li>
+<p>搜索**.ignore**，点击<strong>Install</strong>，安装完成后，重启IDEA</p>
+</li>
+<li>
+<p>在 项目上 右键-&gt;New -&gt;.ignore file -&gt;.gitignore file(Git)</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cclip_image004-163802704820016.png" alt="bdd020c028cf2b207232d1c58ac45f66.png"></p>
+</li>
+<li>
+<p>先选择Example user template好了，以后有什么想过滤的可以自行添加，~最后点击Generate生成</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cclip_image006.png" alt="3e4705d5b72a8e3944b7e70d4f967e89.png"></p>
+</li>
+<li>
+<p>然后就会发现被忽略的文件名变成了灰色</p>
+</li>
+<li>
+<p>也可以右键文件将其加入忽略的名单中</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cclip_image008.png" alt="89c2f940c462b9558a9158f433a6e13b.png"></p>
+</li>
+<li>
+<p>以下是一些.gitignore文件忽略的匹配规则：</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>通配符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.a</td>
+<td>忽略所有 .a 结尾的文件</td>
+</tr>
+<tr>
+<td>!lib.a</td>
+<td>但 lib.a 除外</td>
+</tr>
+<tr>
+<td>/TODO</td>
+<td>仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO</td>
+</tr>
+<tr>
+<td>build/</td>
+<td>忽略 build/ 目录下的所有文件</td>
+</tr>
+<tr>
+<td>doc/.txt</td>
+<td>会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</td>
+</tr>
+</tbody>
+</table>
+<ol start="8">
+<li>注意</li>
+</ol>
+<p>.gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。<br>
+那么解决方法就是先把本地缓存删除（改变成未track状态），然后再提交：</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：</span><br><span class="line">git rm -r –cached filePath</span><br><span class="line">git commit -m “remove xx”</span><br><span class="line"></span><br><span class="line">或者：</span><br><span class="line">git rm -r –cached .</span><br><span class="line">git add .</span><br><span class="line">git commit -m “update .gitignore”</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">来解释下几个参数</span><br><span class="line">-r 是删除文件夹及其子目录</span><br><span class="line">–cached 是删除暂存区里的文件而不删除工作区里的文件，</span><br><span class="line"></span><br><span class="line">第一种是删除某个文件，第二种方法就把所有暂存区里的文件删了，再加一遍，相当于更新了一遍。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
       <categories>
-        <category>未分类</category>
+        <category>工具</category>
+        <category>开发工具</category>
+        <category>IDEA</category>
       </categories>
+      <tags>
+        <tag>IDEA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>IDEA使用记录</title>
+    <url>/2022/10/30/%E5%B7%A5%E5%85%B7&amp;%E7%B3%BB%E7%BB%9F/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<h1>报错:找不到包或者找不到符号</h1>
+<h2 id="利用Maven-Reimport">利用Maven-Reimport</h2>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125093632598-1667118386299-59.png" alt="image-20211125093632598"></p>
+<h2 id="Invalidate-and-Restart">Invalidate and Restart</h2>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125093653072-1667118386300-60.png" alt="image-20211125093653072"></p>
+<h2 id="重新编译">重新编译</h2>
+<h3 id="点开Project-Structure-找到项目编译输出目录">点开Project Structure 找到项目编译输出目录</h3>
+<h3 id="将target目录下文件清空">将target目录下文件清空</h3>
+<h3 id="右键项目重新build">右键项目重新build</h3>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125093733929-1667118386300-61.png" alt="image-20211125093733929"></p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125093748957-1667118386300-62.png" alt="image-20211125093748957"></p>
+<h2 id="利用Maven-Install">利用Maven-Install</h2>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125093759368-1667118386300-63.png" alt="image-20211125093759368"></p>
+<h1>清除安装数据</h1>
+<p>删除安装包（也可以重新安装时删除版本文件）<br>
+C:\Program Files\JetBrains  下面的目录<br>
+删除安装数据<br>
+C:\Users\Administrator\AppData\Local\JetBrains<br>
+C:\Users\Administrator\AppData\Roaming\JetBrains<br>
+C:\Users\Administrator\已安装版本</p>
+<h1>JUnit单元测试%MODULE_WORKING_DIR%’ does not exist</h1>
+<p>解决办法：idea &gt; Run -&gt; Edit Configurations&gt;JUnit（或者application，根据自己报错的类型选择）<br>
+单独设置<br>
+选中有单元测试的类 把working directory 原先为:%MODULE_WORKING_DIR% 设置为 . （表示当前目录）或者直接填写项目绝对路径（eg:P:\ideatestspace\zztPro）<br>
+全局设置<br>
+也可以点击defaults(全局配置) ，找到testng 同样把working directory 设置为.或者项目的绝对路径（eg:P:\ideatestspace\zztPro）</p>
+<h1>idea一直刷新索引：updating index</h1>
+<p>File -&gt;Invalidate Caches/restart -&gt; Invalidate and Restart</p>
+<h1>IDEA配置tomcat日志乱码</h1>
+<ol>
+<li>
+<p>第一步（tomcat7/8）tomcat：<br>
+找到tomcat文件夹下的conf文件夹，去修改里面的logging.properties文件两种修改方式（第一种方法不行再用第二种）：</p>
+<ol>
+<li>
+<p>将文件中的5个UTF-8修改为GBK</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125093935522-1667118386300-64.png" alt="image-20211125093935522"></p>
+</li>
+<li>
+<p>将文件中的有关UTF-8的行用’#'注释掉</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125094101237-1667118386301-65.png" alt="image-20211125094101237"></p>
+</li>
+</ol>
+</li>
+<li>
+<p>第二步（IDEA2019）<br>
+进入文件后添加一段代码：-Dfile.encoding=UTF-8</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125094120088-1667118386301-66.png" alt="image-20211125094120088"></p>
+</li>
+<li>
+<p>第三步</p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125094148869-1667118386301-67.png" alt="image-20211125094148869"></p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125094213607-1667118386301-68.png" alt="image-20211125094213607"></p>
+</li>
+<li>
+<p>第四步重启IDEA</p>
+</li>
+</ol>
+<h1>搜狗输入法候选字不跟随光标在怎么办</h1>
+<p>ctrl+shift+a 输入 switch IDE Boot JDK, 换一个 jdk 就行了</p>
+]]></content>
+      <categories>
+        <category>工具</category>
+        <category>开发工具</category>
+        <category>IDEA</category>
+      </categories>
+      <tags>
+        <tag>IDEA</tag>
+      </tags>
   </entry>
   <entry>
     <title>Hexo搭建博客</title>
@@ -2606,7 +4810,7 @@ A[方形] --> B(圆角)
 <ol>
 <li>
 <p><font color=" #FFC000">【推荐】</font>根据业务架构实践，结合业界分层规范与流行技术框架分析，推荐分层结构如图所示， 默认上层依赖于下层，箭头关系表示可直接依赖，如：开放 API 层可以依赖于 Web 层 （Controller 层），也可以直接依赖于 Service 层，依此类推</p>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/c1388515-ad59-431d-8473-6b507ce22f68.jpeg" alt=""></p>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cc1388515-ad59-431d-8473-6b507ce22f68.jpeg" alt=""></p>
 <ul>
 <li>
 <p>开放 API 层：可直接封装 Service 接口暴露成 RPC 接口；通过 Web 封装成 http 接口；网关控制层等。</p>

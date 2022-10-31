@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hmxyl.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Linux系统命令记录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux日常使用">
+<meta property="og:url" content="https://hmxyl.github.io/2022/10/30/%E5%B7%A5%E5%85%B7&%E7%B3%BB%E7%BB%9F/Linux/Linux%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="Alisa&#39;s Home">
+<meta property="og:description" content="Linux系统命令记录">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="d:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125155904615.png">
+<meta property="article:published_time" content="2022-10-30T07:39:23.000Z">
+<meta property="article:modified_time" content="2022-10-30T09:20:54.971Z">
+<meta property="article:author" content="Alisa">
+<meta property="article:tag" content="系统命令">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125155904615.png">
+
+<link rel="canonical" href="https://hmxyl.github.io/2022/10/30/%E5%B7%A5%E5%85%B7&%E7%B3%BB%E7%BB%9F/Linux/Linux%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Linux日常使用 | Alisa's Home</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Alisa's Home</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-friendlink">
+
+    <a href="/friendlink/" rel="section"><i class="fa fa-briefcase fa-fw"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">7</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">13</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">11</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/10/30/%E5%B7%A5%E5%85%B7&%E7%B3%BB%E7%BB%9F/Linux/Linux%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Alisa">
+      <meta itemprop="description" content="学习笔记、工作心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alisa's Home">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux日常使用
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-10-30 15:39:23 / 修改时间：17:20:54" itemprop="dateCreated datePublished" datetime="2022-10-30T15:39:23+08:00">2022-10-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">系统</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%B3%BB%E7%BB%9F/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%B3%BB%E7%BB%9F/Linux/%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">系统命令</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">Linux系统命令记录</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1>不同Linux操作系统的安装命令</h1>
+<table>
+<thead>
+<tr>
+<th><strong>系统</strong></th>
+<th><strong>命令</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CentOS</td>
+<td>yum</td>
+</tr>
+<tr>
+<td>Debian或Ubuntu Linux</td>
+<td>apt-get</td>
+</tr>
+</tbody>
+</table>
+<h1>Centos防火墙开放端口/关闭端口</h1>
+<ul>
+<li>
+<p>查看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone= public --query-port=3306/tcp</span><br><span class="line">或</span><br><span class="line">firewall-cmd --zone=public --list-ports</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>重新载入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=3306/tcp --permanent</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>关闭</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld.service </span><br><span class="line">或者</span><br><span class="line">systemctl disable firewalld.service</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1>Linux系统增加zysong字体</h1>
+<ul>
+<li>
+<p>问题发生 ：在开发项目中，使用到了Jfreechart，在本机环境测试正常，部署到服务器上Linux，发现Jfreechart里面的中文不能正常显示。</p>
+</li>
+<li>
+<p>问题解决：</p>
+</li>
+</ul>
+<ol>
+<li>首先确认你的服务器上的javahome ，执行命令 echo $JAVA_HOME ,显示出java的目录</li>
+<li>将zysong.ttf文件拷贝到%JavaHome%/jre/lib/fonts目录下 zysong.ttf 需要网上下载</li>
+<li>在%JavaHome%/jre/lib/fonts目录下执行&quot;ttmkfdir -o fonts.dir&quot;命令,重新生成fonts.dir文件</li>
+<li>确认/usr/share/zh_CN/TrueType目录存在,如果不存在则mkdir创建 ，，一般开始是没有的，所有这样执行：到/usr/share/fonts下，“mkdir zh_CN” 命令创建 zh_CN文件夹，到zh_CN目录下 &quot;mkdir TrueType&quot;命令创建TrueType文件夹</li>
+<li>把zysong.ttf文件拷贝到TrueType下</li>
+<li>在%JavaHome%/jre/lib目录下,执行 cp fontconfig.RedHat.3.properties.src fontconfig.properties 7、重新启动tomcat（resin等web容器）,现在再看看，中文显示正常了</li>
+</ol>
+<h1>提高打开文件限制量（ulimit命令）</h1>
+<ol>
+<li>
+<p>解除 Linux 系统的最大进程数和最大文件打开数限制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/security/limits.conf</span><br><span class="line"></span><br><span class="line"># 添加如下的行</span><br><span class="line">     * soft noproc 11000</span><br><span class="line"></span><br><span class="line">     * hard noproc 11000</span><br><span class="line">     * soft nofile 4100</span><br><span class="line">     * hard nofile 4100</span><br><span class="line">     </span><br><span class="line"> 说明：* 代表针对所有用户</span><br><span class="line">     noproc 是代表最大进程数</span><br><span class="line">     nofile 是代表最大文件打开数</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>让 SSH 接受 Login 程式的登入，方便在 ssh 客户端查看 ulimit -a 资源限制：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/ssh/sshd_config </span><br><span class="line"> </span><br><span class="line">把 UserLogin 的值改为 yes，并把 # 注释去掉</span><br><span class="line">重启 sshd 服务： /etc/init.d/sshd restart</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>修改所有 linux 用户的环境变量文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/profile</span><br><span class="line"></span><br><span class="line">ulimit -u 10000</span><br><span class="line">ulimit -n 4096</span><br><span class="line">ulimit -d unlimited</span><br><span class="line">ulimit -m unlimited</span><br><span class="line">ulimit -s unlimited</span><br><span class="line">ulimit -t unlimited</span><br><span class="line">ulimit -v unlimited</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1>虚拟机之间，SSH免密连接</h1>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br><span class="line">cd /root/.ssh</span><br><span class="line">mv id_rsa.pub authorized_keys_master.pub</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">scp  authorized_keys_node1.pub root@master:/root/.ssh</span><br><span class="line">scp  authorized_keys_node2.pub root@master:/root/.ssh</span><br><span class="line"></span><br><span class="line">cat authorized_keys_master.pub&gt;&gt; authorized_keys</span><br><span class="line">cat authorized_keys_node1.pub&gt;&gt; authorized_keys</span><br><span class="line">cat authorized_keys_node2.pub&gt;&gt; authorized_keys</span><br><span class="line"></span><br><span class="line">scp authorized_keys  root@node1:/root/.ssh</span><br><span class="line">scp authorized_keys  root@node2:/root/.ssh</span><br></pre></td></tr></table></figure>
+<h1>非root权限启用80端口</h1>
+<p>服务器一开始重启的时候报错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">严重: Failed to initialize end point associated with ProtocolHandler [&quot;http-bio-80&quot;]</span><br><span class="line">java.net.BindException: Permission denied &lt;null&gt;:80</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>因为服务器非root权限用户只能使用1024以下端口。(重启服务时，使用的用户，是非root权限的cxdev用户)：参考，<a target="_blank" rel="noopener" href="http://blog.csdn.net/mchdba/article/details/46335861">http://blog.csdn.net/mchdba/article/details/46335861</a></p>
+</li>
+<li>
+<p>解决：重新使用root用户重启服务</p>
+</li>
+</ul>
+<h1>清空catalina.out文件</h1>
+<ul>
+<li>
+<p>使用 truncate 命令清空文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">truncate -s 0 catalina.out  </span><br><span class="line"></span><br><span class="line">-s参数是设置文件的大小，清空文件的话，就设定为0</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>重定向方法清空文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost logs]# du -h catalina.out 查看文件大小17M catalina.out</span><br><span class="line">[root@localhost logs]# &gt; catalina.out  重定向清空文件</span><br><span class="line">[root@localhost logs]# du -h catalina.out  查看文件大小0 catalina.out</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>使用 true 命令重定向清空文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost logs]# du -h catalina.out448K catalina.out</span><br><span class="line">[root@localhost logs]# true &gt; catalina.out</span><br><span class="line">[root@localhost logs]# du -h catalina.out0 catalina.out</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>使用 echo 命令清空文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo -n &quot; &quot; &gt; catalina.out  </span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1>Centos系统安装</h1>
+<h2 id="安装系统">安装系统</h2>
+<ol>
+<li>
+<p>准备安装VMware和下载Centos</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">安装VMware Workstation 15 Pro （永久激活密钥）</span><br><span class="line"> YG5H2-ANZ0H-M8ERY-TXZZZ-YKRV8</span><br><span class="line"> UG5J2-0ME12-M89WY-NPWXX-WQH88</span><br><span class="line"> UA5DR-2ZD4H-089FY-6YQ5T-YPRX6</span><br><span class="line"> GA590-86Y05-4806Y-X4PEE-ZV8E0</span><br><span class="line"> ZF582-0NW5N-H8D2P-0XZEE-Z22VA</span><br><span class="line"> YA18K-0WY8P-H85DY-L4NZG-X7RAD</span><br><span class="line"></span><br><span class="line"> 安装VMware Workstation 16 （永久激活密钥）</span><br><span class="line"> ZF3R0-FHED2-M80TY-8QYGC-NPKYFYF390-0HF8P-M81RQ-2DXQE-M2UT6ZF71R-DMX85-08DQY-8YMNC-PPHV8</span><br><span class="line"></span><br><span class="line"> 下载虚拟机Centos：https://www.centos.org/download/</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>虚拟网络说明</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>VMNet1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用的是host-only的链接模式，即虚拟机只能与主机构成内部通信，无法对外网进行访问。</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>VMNet0</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">模式：使用桥接模式，安装VM后，在VM里建立虚拟机 默认 就是该模式。</span><br><span class="line">场景：如果你只是需要一台虚拟机可以和宿主互通，并可以访问外网，此模式即可。</span><br><span class="line">描述：安装虚拟机系统后不需要调整网络，物理网络中的 “路由” 所包含的DHCP服务器会自动识别该虚拟机并为其分配IP地址；</span><br><span class="line">如果没有路由，可以自己手动在系统分配，原则是和宿主机在同一网段并指向相同的网关即可通信。</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>VMNet8</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">模式：NAT网络模式</span><br><span class="line">场景：在宿主机安装多台虚拟机，和宿主组成一个小局域网，宿主机，虚拟机之间都可以互相通信，虚拟机也可访问外网，例如 搭建 hadoop 集群，分布式服务</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="安装图形界面">安装图形界面</h2>
+<ul>
+<li>
+<p>命令安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum groupinstall &quot;X Window System&quot;</span><br><span class="line"></span><br><span class="line">yum groupinstall &quot;GNOME Desktop&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>进入图形界面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">startx 或者 init 5 </span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>修改图形界面为默认启动方式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">命令行输入命令后重启系统 </span><br><span class="line"></span><br><span class="line">systemctl set-default graphical.target </span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>安装中文支持</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum groupinstall &quot;Chinese Support&quot; -y </span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>修改系统默认语言为中文</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">命令行输入命令后重启系统</span><br><span class="line"></span><br><span class="line">localectl set-locale LANG=zh_CN.UTF-8 </span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>图形界面想要卸载</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum groupremove &quot;GNOME Desktop Environment&quot;</span><br><span class="line">yum groupremove &quot;X Window System&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="系统基础配置">系统基础配置</h2>
+<h3 id="修改-hotsname">修改 hotsname</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hostnamectl --static set-hostname 名称 </span><br><span class="line">vi /etc/hostname(缓存？)，要先把这个改好了，下面的配置文件才会生效。 </span><br><span class="line">vi  /etc/sysconfig/network（重启，永久） </span><br><span class="line">echo hostname &gt; /proc/sys/kernel/hostname（即时生效，临时）</span><br></pre></td></tr></table></figure>
+<h3 id="基础工具安装">基础工具安装</h3>
+<ul>
+<li>yum -y install wget        (wget)</li>
+<li>yum -y install net-tools   (ifconfig)</li>
+<li>yum -y install lrzsz   (sz和rz)</li>
+</ul>
+<h3 id="默认ROOT用户登录">默认ROOT用户登录</h3>
+<p>使用root账户进入系统后，打开’/etc/gdm/custom.conf’文件，在[daemon]下添加两行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AutomaticLoginEnable=True</span><br><span class="line">AutomaticLogin=root</span><br></pre></td></tr></table></figure>
+<h3 id="虚拟机手动配置静态IP">虚拟机手动配置静态IP</h3>
+<ol>
+<li>
+<p><code>cat</code> `/etc/sysconfig/network-scripts/ifcfg-ens32</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">TYPE</span>=<span class="string">Ethernet</span></span><br><span class="line"><span class="attr">PROXY_METHOD</span>=<span class="string">none</span></span><br><span class="line"><span class="attr">BROWSER_ONLY</span>=<span class="string">no</span></span><br><span class="line"><span class="attr">BOOTPROTO</span>=<span class="string">static</span></span><br><span class="line"><span class="attr">DEFROUTE</span>=<span class="string">yes</span></span><br><span class="line"><span class="attr">IPV4_FAILURE_FATAL</span>=<span class="string">no</span></span><br><span class="line"><span class="attr">IPV6INIT</span>=<span class="string">yes</span></span><br><span class="line"><span class="attr">IPV6_AUTOCONF</span>=<span class="string">yes</span></span><br><span class="line"><span class="attr">IPV6_DEFROUTE</span>=<span class="string">yes</span></span><br><span class="line"><span class="attr">IPV6_FAILURE_FATAL</span>=<span class="string">no</span></span><br><span class="line"><span class="attr">IPV6_ADDR_GEN_MODE</span>=<span class="string">stable-privacy</span></span><br><span class="line"><span class="attr">NAME</span>=<span class="string">ens32</span></span><br><span class="line"><span class="attr">UUID</span>=<span class="string">066b4926-b40c-4c28-a5b4-2310d2b96613</span></span><br><span class="line"><span class="attr">DEVICE</span>=<span class="string">ens32</span></span><br><span class="line"><span class="attr">ONBOOT</span>=<span class="string">yes</span></span><br><span class="line"><span class="attr">IPADDR</span>=<span class="string">192.168.1.200</span></span><br><span class="line"><span class="attr">NETMASK</span>=<span class="string">255.255.255.0</span></span><br><span class="line"><span class="attr">GATEWAY</span>=<span class="string">192.168.1.254</span></span><br><span class="line"><span class="attr">DNS1</span>=<span class="string">223.5.5.5</span></span><br><span class="line"><span class="attr">PREFIX</span>=<span class="string">24</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>使用nmcli重新回载网络配置：<code>nmcli c reload</code></p>
+</li>
+<li>
+<p>查看IP：<code>nmcli</code></p>
+</li>
+</ol>
+<h3 id="Centos8-时钟同步">Centos8 时钟同步</h3>
+<ol>
+<li>
+<p>cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</p>
+</li>
+<li>
+<p>vim /etc/chrony.conf</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">注释掉 </span><br><span class="line">  pool 2.centos.pool.ntp.org iburst  </span><br><span class="line">加入新的的时间服务器</span><br><span class="line">  server 210.72.145.44 iburst</span><br><span class="line">  server ntp.aliyun.com iburst</span><br></pre></td></tr></table></figure>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125155904615.png" alt="image-20211125155904615"></p>
+<p>​</p>
+<ol start="3">
+<li>
+<p>重启服务，此时时间已经与网络时间同步</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart chronyd.service</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>设置开机自启</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable chronyd.service</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="CentOS-8修改yum源为国内源">CentOS 8修改yum源为国内源</h3>
+<ol>
+<li>
+<p>备份</p>
+<p>目录<code>/etc/yum.repos.d</code>下新建文件夹<code>repo_back_all</code>，内容备份新建的文件夹中</p>
+</li>
+<li>
+<p>修改为阿里云</p>
+<p><code>wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-8.repo</code></p>
+</li>
+<li>
+<p>清理&amp;拉取</p>
+<p><code>yum clean all</code></p>
+<p><code>yum makecache</code></p>
+<blockquote>
+<p>异常：提示镜像地址404</p>
+<p>排查：repo文件中<code>$releasever</code>映射为8，对应的镜像不存在</p>
+<p>说明：yum中的变量<code>$releasever</code>是由/etc/yum.conf中的distroverpkg定义的。centos-release为一个rpm包，所谓“distroverpkg=centos-release”的意思，其实是将 $releasever设置为centos-release 这个RPM包的版本号。查看版本号命令：<code>rpm -q centos-release</code></p>
+<p>解决：修改yum源文件，把$releasever全部替换为8-strea</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="安装过程中的问题以及解决措施">安装过程中的问题以及解决措施</h2>
+<h3 id="虚拟机ping不通主机，但是主机可以ping通虚拟机">虚拟机ping不通主机，但是主机可以ping通虚拟机</h3>
+<ol>
+<li>Windows10的防火墙没有打开ICMPv4-in这个规则
+<ul>
+<li>打开WIN10防火墙-&gt;选择高级设置-&gt;入站规则</li>
+<li>找到配置文件类型为<code>公用</code>的<code>文件和打印共享（回显请求 – ICMPv4-In）</code>规则，设置为允许</li>
+</ul>
+</li>
+<li>确认本地主机IP
+<ul>
+<li>Vmware-&gt;编辑-&gt;虚拟网络编辑器</li>
+<li>查看VMnet8-&gt;NAT模式-&gt;NAT设置中网段信息</li>
+<li>本地windows主机打开：网络和Internet设置-&gt;以太网-&gt;更改适配器选项</li>
+<li>打开VMnet8，设置IPV4地址</li>
+</ul>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4/" rel="tag"># 系统命令</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/10/30/%E5%B7%A5%E5%85%B7&%E7%B3%BB%E7%BB%9F/Urban/Urban%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" rel="prev" title="Urban使用问题记录">
+      <i class="fa fa-chevron-left"></i> Urban使用问题记录
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">不同Linux操作系统的安装命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Centos防火墙开放端口&#x2F;关闭端口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">Linux系统增加zysong字体</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">提高打开文件限制量（ulimit命令）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">虚拟机之间，SSH免密连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">非root权限启用80端口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text">清空catalina.out文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">8.</span> <span class="nav-text">Centos系统安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="nav-number">8.1.</span> <span class="nav-text">安装系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2"><span class="nav-number">8.2.</span> <span class="nav-text">安装图形界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE"><span class="nav-number">8.3.</span> <span class="nav-text">系统基础配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-hotsname"><span class="nav-number">8.3.1.</span> <span class="nav-text">修改 hotsname</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85"><span class="nav-number">8.3.2.</span> <span class="nav-text">基础工具安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4ROOT%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95"><span class="nav-number">8.3.3.</span> <span class="nav-text">默认ROOT用户登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%89%8B%E5%8A%A8%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81IP"><span class="nav-number">8.3.4.</span> <span class="nav-text">虚拟机手动配置静态IP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Centos8-%E6%97%B6%E9%92%9F%E5%90%8C%E6%AD%A5"><span class="nav-number">8.3.5.</span> <span class="nav-text">Centos8 时钟同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CentOS-8%E4%BF%AE%E6%94%B9yum%E6%BA%90%E4%B8%BA%E5%9B%BD%E5%86%85%E6%BA%90"><span class="nav-number">8.3.6.</span> <span class="nav-text">CentOS 8修改yum源为国内源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E9%97%AE%E9%A2%98%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%8E%AA%E6%96%BD"><span class="nav-number">8.4.</span> <span class="nav-text">安装过程中的问题以及解决措施</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BAping%E4%B8%8D%E9%80%9A%E4%B8%BB%E6%9C%BA%EF%BC%8C%E4%BD%86%E6%98%AF%E4%B8%BB%E6%9C%BA%E5%8F%AF%E4%BB%A5ping%E9%80%9A%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">8.4.1.</span> <span class="nav-text">虚拟机ping不通主机，但是主机可以ping通虚拟机</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Alisa</p>
+  <div class="site-description" itemprop="description">学习笔记、工作心得</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Alisa</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
