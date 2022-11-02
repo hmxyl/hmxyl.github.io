@@ -126,9 +126,9 @@ menu:
   tags: /tags/ || fa fa-tags                    # 标签
   categories: /categories/ || fa fa-th          # 分类
   archives: /archives/ || fa fa-archive         # 归档
-  schedule: /schedule/ || fa fa-calendar        # 日历
-  sitemap: /sitemap.xml || fa fa-sitemap        # 站点地图
-  commonweal: /404/ || fa fa-heartbeat          # 404
+  # schedule: /schedule/ || fa fa-calendar        # 日历
+  # sitemap: /sitemap.xml || fa fa-sitemap        # 站点地图
+  # commonweal: /404/ || fa fa-heartbeat          # 404
   
 
 # Enable / Disable menu icons / item badges.
