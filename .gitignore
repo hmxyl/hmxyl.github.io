@@ -8,4 +8,6 @@ public/
 _multiconfig.yml
 /.github/
 /.idea/
-/source/note/
+/source/_images/
+/source/_posts/
+/.deploy_git/
