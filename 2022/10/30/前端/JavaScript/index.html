@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|monospace:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hmxyl.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="JavaScript日常使用记录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript日常使用记录">
+<meta property="og:url" content="https://hmxyl.github.io/2022/10/30/%E5%89%8D%E7%AB%AF/JavaScript/index.html">
+<meta property="og:site_name" content="Alisa&#39;s Home">
+<meta property="og:description" content="JavaScript日常使用记录">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-10-30T07:39:23.000Z">
+<meta property="article:modified_time" content="2022-11-02T06:00:05.985Z">
+<meta property="article:author" content="Alisa">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hmxyl.github.io/2022/10/30/%E5%89%8D%E7%AB%AF/JavaScript/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>JavaScript日常使用记录 | Alisa's Home</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Alisa's Home</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-friendlink">
+
+    <a href="/friendlink/" rel="section"><i class="fa fa-briefcase fa-fw"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">31</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">46</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">53</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/10/30/%E5%89%8D%E7%AB%AF/JavaScript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Alisa">
+      <meta itemprop="description" content="学习笔记、工作心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alisa's Home">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript日常使用记录
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-10-30 15:39:23" itemprop="dateCreated datePublished" datetime="2022-10-30T15:39:23+08:00">2022-10-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-11-02 14:00:05" itemprop="dateModified" datetime="2022-11-02T14:00:05+08:00">2022-11-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">JavaScript日常使用记录</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1>页面浏览统计</h1>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">onbeforeunload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (event.<span class="property">clientX</span> &gt; <span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">clientWidth</span> &amp;&amp; event.<span class="property">clientY</span> &lt; <span class="number">0</span> || event.<span class="property">altKey</span>) &#123;</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        $.<span class="title function_">ajax</span>(&#123;</span><br><span class="line">            <span class="attr">type</span>: <span class="string">&quot;POST&quot;</span></span><br><span class="line">            , <span class="attr">data</span>: &#123; <span class="attr">resource_id</span>: <span class="string">&quot;$&#123;infoTarget.resource_id&#125;&quot;</span>, <span class="attr">id</span>: <span class="string">&quot;$&#123;infoTarget.id&#125;&quot;</span> &#125;</span><br><span class="line">            , <span class="attr">url</span>: <span class="string">&quot;$&#123;pageContext.request.contextPath&#125;/publicResWarehouse/addWarePageView&quot;</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">onkeydown</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> ((<span class="variable language_">window</span>.<span class="property">event</span>.<span class="property">keyCode</span> == <span class="number">116</span>)) &#123;</span><br><span class="line">        $.<span class="title function_">ajax</span>(&#123;</span><br><span class="line">            <span class="attr">type</span>: <span class="string">&quot;POST&quot;</span></span><br><span class="line">            , <span class="attr">data</span>: &#123; <span class="attr">resource_id</span>: <span class="string">&quot;$&#123;infoTarget.resource_id&#125;&quot;</span>, <span class="attr">id</span>: <span class="string">&quot;$&#123;infoTarget.id&#125;&quot;</span> &#125;</span><br><span class="line">            , <span class="attr">url</span>: <span class="string">&quot;$&#123;pageContext.request.contextPath&#125;/publicResWarehouse/addWarePageView&quot;</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1>FormData，异步提交表单</h1>
+<p>FormData的主要用途有两个：<br>
+1、将form表单元素的name与value进行组合，实现表单数据的序列化，从而减少表单元素的拼接，提高工作效率。<br>
+2、异步上传文件</p>
+<h2 id="创建formData对象">创建formData对象</h2>
+<p>创建一个空对象：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过FormData构造函数创建一个空对象 </span></span><br><span class="line"><span class="keyword">var</span> formdata=<span class="keyword">new</span> <span class="title class_">FormData</span>();</span><br><span class="line"><span class="comment">//可以通过append()方法来追加数据 </span></span><br><span class="line">formdata.<span class="title function_">append</span>(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;laotie&quot;</span>);</span><br><span class="line"><span class="comment">//通过get方法对值进行读取 </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(formdata.<span class="title function_">get</span>(<span class="string">&quot;name&quot;</span>));<span class="comment">//laotie </span></span><br><span class="line"><span class="comment">//通过set方法对值进行设置 </span></span><br><span class="line">formdata.<span class="title function_">set</span>(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;laoliu&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(formdata.<span class="title function_">get</span>(<span class="string">&quot;name&quot;</span>));<span class="comment">//laoliu</span></span><br></pre></td></tr></table></figure>
+<p>通过表单对formData进行初始化</p>
+<p>创建表单：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">&quot;advForm&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>广告名称：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;advName&quot;</span> <span class="attr">value</span>=<span class="string">&quot;xixi&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>广告类别：<span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">&quot;advType&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span>轮播图<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;2&quot;</span>&gt;</span>轮播图底部广告<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;3&quot;</span>&gt;</span>热门回收广告<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;4&quot;</span>&gt;</span>优品精选广告<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">select</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">id</span>=<span class="string">&quot;btn&quot;</span> <span class="attr">value</span>=<span class="string">&quot;添加&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>通过表单元素作为参数，实现对formData的初始化：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获得表单按钮元素 </span></span><br><span class="line"><span class="keyword">var</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#btn&quot;</span>);</span><br><span class="line"><span class="comment">//为按钮添加点击事件 </span></span><br><span class="line">btn.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">//根据ID获得页面当中的form表单元素 </span></span><br><span class="line">    <span class="keyword">var</span> form = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#advForm&quot;</span>);</span><br><span class="line">    <span class="comment">//将获得的表单元素作为参数，对formData进行初始化 </span></span><br><span class="line">    <span class="keyword">var</span> formdata = <span class="keyword">new</span> <span class="title class_">FormData</span>(form);</span><br><span class="line">    <span class="comment">//通过get方法获得name为advName元素的value值 </span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(formdata.<span class="title function_">get</span>(<span class="string">&quot;advName&quot;</span>));</span><br><span class="line">    <span class="comment">//xixi </span></span><br><span class="line">    <span class="comment">//通过get方法获得name为advType元素的value值 </span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(formdata.<span class="title function_">get</span>(<span class="string">&quot;advType&quot;</span>));<span class="comment">//1 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="操作方法">操作方法</h2>
+<p>1、通过get(key)与getAll(key)来获取相对应的值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取key为age的第一个值 </span></span><br><span class="line">formdata.<span class="title function_">get</span>(<span class="string">&quot;age&quot;</span>); </span><br><span class="line"><span class="comment">// 获取key为age的所有值，返回值为数组类型 </span></span><br><span class="line">formdata.<span class="title function_">getAll</span>(<span class="string">&quot;age&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>2、通过append(key,value)在数据末尾追加数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过FormData构造函数创建一个空对象 </span></span><br><span class="line"><span class="keyword">var</span> formdata=<span class="keyword">new</span> <span class="title class_">FormData</span>(); </span><br><span class="line"><span class="comment">//通过append()方法在末尾追加key为name值为laoliu的数据 </span></span><br><span class="line">formdata.<span class="title function_">append</span>(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;laoliu&quot;</span>); </span><br><span class="line"><span class="comment">//通过append()方法在末尾追加key为name值为laoli的数据 </span></span><br><span class="line">formdata.<span class="title function_">append</span>(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;laoli&quot;</span>); </span><br><span class="line"><span class="comment">//通过append()方法在末尾追加key为name值为laotie的数据 </span></span><br><span class="line">formdata.<span class="title function_">append</span>(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;laotie&quot;</span>); </span><br><span class="line"><span class="comment">//通过get方法读取key为name的第一个值 </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(formdata.<span class="title function_">get</span>(<span class="string">&quot;name&quot;</span>));<span class="comment">//laoliu </span></span><br><span class="line"><span class="comment">//通过getAll方法读取key为name的所有值 </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(formdata.<span class="title function_">getAll</span>(<span class="string">&quot;name&quot;</span>));<span class="comment">//[&quot;laoliu&quot;, &quot;laoli&quot;, &quot;laotie&quot;]</span></span><br></pre></td></tr></table></figure>
+<p>3、通过set(key, value)来设置修改数据</p>
+<p>key的值不存在，会添加一条数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过FormData构造函数创建一个空对象</span></span><br><span class="line"> <span class="keyword">var</span> formdata=<span class="keyword">new</span> <span class="title class_">FormData</span>(); </span><br><span class="line"><span class="comment">//如果key的值不存在会为数据添加一个key为name值为laoliu的数据 </span></span><br><span class="line">formdata.<span class="title function_">set</span>(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;laoli&quot;</span>); </span><br><span class="line"><span class="comment">//通过get方法读取key为name的第一个值 </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(formdata.<span class="title function_">get</span>(<span class="string">&quot;name&quot;</span>));<span class="comment">//laoli key的值存在，会修改对应的value值 </span></span><br><span class="line"><span class="comment">//通过FormData构造函数创建一个空对象</span></span><br><span class="line"> <span class="keyword">var</span> formdata=<span class="keyword">new</span> <span class="title class_">FormData</span>(); </span><br><span class="line"><span class="comment">//通过append()方法在末尾追加key为name值为laoliu的数据 </span></span><br><span class="line">formdata.<span class="title function_">append</span>(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;laoliu&quot;</span>); </span><br><span class="line"><span class="comment">//通过append()方法在末尾追加key为name值为laoliu2的数据 </span></span><br><span class="line">formdata.<span class="title function_">append</span>(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;laoliu2&quot;</span>); </span><br><span class="line"><span class="comment">//通过get方法读取key为name的第一个值 </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(formdata.<span class="title function_">get</span>(<span class="string">&quot;name&quot;</span>));<span class="comment">//laoliu </span></span><br><span class="line"><span class="comment">//通过getAll方法读取key为name的所有值 </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(formdata.<span class="title function_">getAll</span>(<span class="string">&quot;name&quot;</span>));<span class="comment">//[&quot;laoliu&quot;, &quot;laoliu2&quot;] </span></span><br><span class="line"><span class="comment">//将存在的key为name的值修改为laoli </span></span><br><span class="line">formdata.<span class="title function_">set</span>(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;laoli&quot;</span>); </span><br><span class="line"><span class="comment">//通过get方法读取key为name的第一个值</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(formdata.<span class="title function_">get</span>(<span class="string">&quot;name&quot;</span>));<span class="comment">//laoli </span></span><br><span class="line"><span class="comment">//通过getAll方法读取key为name的所有值 </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(formdata.<span class="title function_">getAll</span>(<span class="string">&quot;name&quot;</span>));<span class="comment">//[&quot;laoli&quot;]</span></span><br></pre></td></tr></table></figure>
+<p>4、通过has(key)来判断是否存在对应的key值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过FormData构造函数创建一个空对象 </span></span><br><span class="line"><span class="keyword">var</span> formdata=<span class="keyword">new</span> <span class="title class_">FormData</span>(); </span><br><span class="line"><span class="comment">//通过append()方法在末尾追加key为name值为laoliu的数据 </span></span><br><span class="line">formdata.<span class="title function_">append</span>(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;laoliu&quot;</span>); </span><br><span class="line"><span class="comment">//判断是否包含key为name的数据 </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(formdata.<span class="title function_">has</span>(<span class="string">&quot;name&quot;</span>));<span class="comment">//true </span></span><br><span class="line"><span class="comment">//判断是否包含key为age的数据 </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(formdata.<span class="title function_">has</span>(<span class="string">&quot;age&quot;</span>));<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<p>5、通过delete(key)可以删除数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过FormData构造函数创建一个空对象 </span></span><br><span class="line"><span class="keyword">var</span> formdata=<span class="keyword">new</span> <span class="title class_">FormData</span>(); </span><br><span class="line"><span class="comment">//通过append()方法在末尾追加key为name值为laoliu的数据 </span></span><br><span class="line">formdata.<span class="title function_">append</span>(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;laoliu&quot;</span>); </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(formdata.<span class="title function_">get</span>(<span class="string">&quot;name&quot;</span>));<span class="comment">//laoliu </span></span><br><span class="line"><span class="comment">//删除key为name的值 </span></span><br><span class="line">formdata.<span class="title function_">delete</span>(<span class="string">&quot;name&quot;</span>); </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(formdata.<span class="title function_">get</span>(<span class="string">&quot;name&quot;</span>));<span class="comment">//null</span></span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>
+<p>form异步提交</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$.<span class="title function_">ajax</span>(&#123;</span><br><span class="line">	<span class="attr">url</span>: <span class="string">&quot;myUrl&quot;</span>,</span><br><span class="line">	<span class="attr">type</span>: <span class="string">&#x27;post&#x27;</span>,</span><br><span class="line">	<span class="attr">data</span>: <span class="keyword">new</span> <span class="title class_">FormData</span>($(<span class="string">&#x27;#myForm&#x27;</span>)[<span class="number">0</span>]),</span><br><span class="line">	<span class="attr">processData</span>: <span class="literal">false</span>,</span><br><span class="line">	<span class="attr">contentType</span>: <span class="literal">false</span>,</span><br><span class="line">	<span class="attr">success</span>: <span class="keyword">function</span> (<span class="params">data</span>) &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(data.<span class="property">status</span>);</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">error</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1>正则: (?i) (?s) (?m) (?is) (?im) 是什么意思？</h1>
+<p>内联匹配模式，通常用内联匹配模式代替使用枚举值RegexOptions指定的全局匹配模式，写起来更简洁。可以组合使用，比如(?is),(?im)。</p>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(?i)</td>
+<td>表示所在位置右侧的表达式开启忽略大小写模式</td>
+</tr>
+<tr>
+<td>(?s)</td>
+<td>表示所在位置右侧的表达式开启单行模式</td>
+</tr>
+<tr>
+<td>(?m)</td>
+<td>表示所在位置右侧的表示式开启指定多行模式</td>
+</tr>
+<tr>
+<td>(?is)</td>
+<td>更改句点字符 (.) 的含义，以使它与每个字符（而不是除 \n 之外的所有字符）匹配</td>
+</tr>
+<tr>
+<td>(?im)</td>
+<td>更改 ^ 和 $ 的含义，以使它们分别与任何行的开头和结尾匹配,而不只是与整个字符串的开头和结尾匹配</td>
+</tr>
+</tbody>
+</table>
+<p>注意：(?s) 通常在匹配有换行的文本时使用<br>
+注意：(?m) 只有在正则表达式中涉及到多行的“^”和“$”的匹配时，才使用Multiline模式,上面的匹配模式可以组合使用，比如(?is),(?im)<br>
+另外，还可以用(?i:exp)或者(?i)exp(?-i)来指定匹配的有效范围</p>
+<p>附：</p>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.</td>
+<td>表示除\n之外的任意字符</td>
+</tr>
+<tr>
+<td>*</td>
+<td>表示匹配0-无穷</td>
+</tr>
+<tr>
+<td>+</td>
+<td>表示匹配1-无穷</td>
+</tr>
+</tbody>
+</table>
+<h1>获取兄弟级元素</h1>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>var chils= s.childNodes;</td>
+<td>得到s的全部子节点</td>
+</tr>
+<tr>
+<td>var par=s.parentNode;</td>
+<td>得到s的父节点</td>
+</tr>
+<tr>
+<td>var ns=s.nextSibling;</td>
+<td>获得s的下一个兄弟节点</td>
+</tr>
+<tr>
+<td>var ps=s.previousSibling;</td>
+<td>得到s的上一个兄弟节点</td>
+</tr>
+<tr>
+<td>var fc=s.firstChild;</td>
+<td>获得s的第一个子节点</td>
+</tr>
+<tr>
+<td>var lc=s.lastChild;</td>
+<td>获得s的最后一个子节点</td>
+</tr>
+</tbody>
+</table>
+<p>JS获取节点父级，子级元素：JS的方法会比JQUERY麻烦很多，主要则是因为FF、谷歌浏览器会把你的换行也当作DOM元素：空的text元素，目前IE也是这样</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;test&quot;</span>&gt;</span> 　　</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>原生的JS获取ID为test的元素下的子元素。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = docuemnt.<span class="title function_">getElementById</span>(<span class="string">&quot;test&quot;</span>).<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;div&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>这样是没有问题的，此时 a.length=2；但是如果我们换另一种方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b =<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;test&quot;</span>).<span class="property">childNodes</span>;</span><br></pre></td></tr></table></figure>
+<p>​		此时b.length 在IE浏览器中没问题，其依旧等于2，但是在FF和谷歌浏览器中则会是5，是因为FF把换行也当做一个元素了（目前新版本IE也是这样）。所以，在此，我们就要做处理了。</p>
+<p>解决方案：</p>
+<p>（1）获取子节点时，可以通过node.getElementsByTagName()来回避这个问题。但是 getElementsByTagName对复杂的DOM结构遍历明显不如用childNodes，因为childNodes能更好的处理DOM的层次结构。</p>
+<p>（2）在实际运用中，Firefox在遍历子节点时，不妨在for循环里加上：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(childNode.<span class="property">nodeName</span>==<span class="string">&quot;#text&quot;</span>) <span class="keyword">continue</span>;<span class="comment">//或者使用nodeType == 1</span></span><br></pre></td></tr></table></figure>
+<p>这样可以跳过一些文本节点。</p>
+<p>(3）遍历这些元素，把元素类型为文本而且是空格的都删除。对于获取兄弟元素也是需要一样处理。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">del_ff</span>(<span class="params">elem</span>) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> elem_child = elem.<span class="property">childNodes</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; elem_child.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (elem_child[i].<span class="property">nodeName</span> == <span class="string">&quot;#text&quot;</span> &amp;&amp; !<span class="regexp">/\s/</span>.<span class="title function_">test</span>(elem_child.<span class="property">nodeValue</span>)) &#123;</span><br><span class="line">            elem.<span class="title function_">removeChild</span>(elem_child[i]) ；</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述函数遍历子元素，当元素里面有节点类型是文本并且文本类型节点的节点值是空的，就把他删除。</p>
+<p><code>nodeNames</code>可以得到一个节点的节点类型，<code>/\s/</code>是非空字符在JS里的正则表达式。前面加<code>！</code>,则表示是空字符</p>
+<p><code>test() </code>方法用于检测一个字符串是否匹配某个模式，语法是： <code>RegExpObject.test(string)</code>，</p>
+<p>如果字符串 string 中含有与 RegExpObject 匹配的文本，则返回 true，否则返回 false。</p>
+<p><code>nodeValue </code>表示得到这个节点里的值。</p>
+<p><code>removeChild </code>则是删除元素的子元素。</p>
+<p>之后，在调用子，父，兄，这些属性之前，调用上面的函数把空格清理一下就可以了</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/10/30/%E5%89%8D%E7%AB%AF/JQuery/" rel="prev" title="JQuery日常使用记录">
+      <i class="fa fa-chevron-left"></i> JQuery日常使用记录
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/10/30/%E5%89%8D%E7%AB%AF/HTML/" rel="next" title="HTML日常使用记录">
+      HTML日常使用记录 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">页面浏览统计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">FormData，异步提交表单</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAformData%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.1.</span> <span class="nav-text">创建formData对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">操作方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">正则: (?i) (?s) (?m) (?is) (?im) 是什么意思？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">获取兄弟级元素</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Alisa</p>
+  <div class="site-description" itemprop="description">学习笔记、工作心得</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">46</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fab fa-apple"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Alisa</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
