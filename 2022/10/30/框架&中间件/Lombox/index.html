@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|monospace:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hmxyl.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Logback日常使用记录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lombox日常使用记录">
+<meta property="og:url" content="https://hmxyl.github.io/2022/10/30/%E6%A1%86%E6%9E%B6&%E4%B8%AD%E9%97%B4%E4%BB%B6/Lombox/index.html">
+<meta property="og:site_name" content="Alisa&#39;s Home">
+<meta property="og:description" content="Logback日常使用记录">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="d:%5C0_Notes%5CHexo%5Chmxyl%5Csource%5Cnote%5Cimages%5Cclip_image002-16383492487521.png">
+<meta property="article:published_time" content="2022-10-30T07:39:23.000Z">
+<meta property="article:modified_time" content="2022-11-02T06:58:22.673Z">
+<meta property="article:author" content="Alisa">
+<meta property="article:tag" content="Lombox">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:%5C0_Notes%5CHexo%5Chmxyl%5Csource%5Cnote%5Cimages%5Cclip_image002-16383492487521.png">
+
+<link rel="canonical" href="https://hmxyl.github.io/2022/10/30/%E6%A1%86%E6%9E%B6&%E4%B8%AD%E9%97%B4%E4%BB%B6/Lombox/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Lombox日常使用记录 | Alisa's Home</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Alisa's Home</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-friendlink">
+
+    <a href="/friendlink/" rel="section"><i class="fa fa-briefcase fa-fw"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">31</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">46</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">53</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/10/30/%E6%A1%86%E6%9E%B6&%E4%B8%AD%E9%97%B4%E4%BB%B6/Lombox/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Alisa">
+      <meta itemprop="description" content="学习笔记、工作心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alisa's Home">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Lombox日常使用记录
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-10-30 15:39:23" itemprop="dateCreated datePublished" datetime="2022-10-30T15:39:23+08:00">2022-10-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-11-02 14:58:22" itemprop="dateModified" datetime="2022-11-02T14:58:22+08:00">2022-11-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%A1%86%E6%9E%B6-%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">框架&中间件</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%A1%86%E6%9E%B6-%E4%B8%AD%E9%97%B4%E4%BB%B6/Lombox/" itemprop="url" rel="index"><span itemprop="name">Lombox</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">Logback日常使用记录</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1>安装插件&amp;项目引入</h1>
+<h2 id="Idea里需要安装lombok插件">Idea里需要安装lombok插件</h2>
+<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource%5Cnote%5Cimages%5Cclip_image002-16383492487521.png" alt="78761c9df7b21539df3352c198d274cf.png"></p>
+<h2 id="pom-xml中引用">pom.xml中引用</h2>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1>Lombok工作原理分析</h1>
+<p>会发现在Lombok使用的过程中，只需要添加相应的注解，无需再为此写任何代码。自动生成的代码到底是如何产生的呢？核心之处就是对于注解的解析上。JDK5引入了注解的同时，也提供了两种解析方式。</p>
+<ol>
+<li>运行时解析</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">运行时能够解析的注解，必须将@Retention设置为RUNTIME，这样就可以通过反射拿到该注解。java.lang,reflect反射包中提供了一个接口AnnotatedElement，该接口定义了获取注解信息的几个方法，Class、Constructor、Field、Method、Package等都实现了该接口，对反射熟悉的朋友应该都会很熟悉这种解析方式。</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>编译时解析<br>
+编译时解析有两种机制，分别简单描述下：
+<ul>
+<li>Annotation Processing Tool<br>
+apt自JDK5产生，JDK7已标记为过期，不推荐使用，JDK8中已彻底删除，自JDK6开始，可以使用Pluggable Annotation Processing API来替换它，apt被替换主要有2点原因：
+<ol>
+<li>api都在com.sun.mirror非标准包下</li>
+<li>没有集成到javac中，需要额外运行</li>
+</ol>
+</li>
+<li>Pluggable Annotation Processing API<br>
+JSR 269自JDK6加入，作为apt的替代方案，它解决了apt的两个问题，javac在执行的时候会调用实现了该API的程序，这样我们就可以对编译器做一些增强</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Lombok本质上就是一个实现了“JSR 269 API”的程序。在使用javac的过程中，它产生作用的具体流程如下：</span><br><span class="line">1. javac对源代码进行分析，生成了一棵抽象语法树（AST）</span><br><span class="line"></span><br><span class="line">2. 运行过程中调用实现了“JSR 269 API”的Lombok程序</span><br><span class="line">此时Lombok就对第一步骤得到的AST进行处理，找到@Data注解所在类对应的语法树（AST），然后修改该语法树（AST），增加getter和setter方法定义的相应树节点</span><br><span class="line"></span><br><span class="line">3. javac使用修改后的抽象语法树（AST）生成字节码文件，即给class增加新的节点（代码块）</span><br></pre></td></tr></table></figure>
+<h1>Lombok的优缺点</h1>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">优点：</span><br><span class="line">1. 能通过注解的形式自动生成构造器、getter/setter、equals、hashcode、toString等方法，提高了一定的开发效率</span><br><span class="line">2. 让代码变得简洁，不用过多的去关注相应的方法</span><br><span class="line">3. 属性做修改时，也简化了维护为这些属性所生成的getter/setter方法等</span><br><span class="line"> </span><br><span class="line">缺点：</span><br><span class="line">1. 不支持多种参数构造器的重载</span><br><span class="line">2. 虽然省去了手动创建getter/setter方法的麻烦，但大大降低了源代码的可读性和完整性，降低了阅读源代码的舒适度</span><br></pre></td></tr></table></figure>
+<h1>注解</h1>
+<h2 id="Slf4j">@Slf4j</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注解在类上；为类提供一个 属性名为log 的 log4j 日志对像</span><br></pre></td></tr></table></figure>
+<h2 id="Data">@Data</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Data注解在类上，会为类的所有属性自动生成setter/getter、equals、canEqual、hashCode、toString方法，如为final属性，则不会为该属性生成setter方法。</span><br></pre></td></tr></table></figure>
+<p>官方实例如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.AccessLevel;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.Setter;</span><br><span class="line"><span class="keyword">import</span> lombok.ToString;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DataExample</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> String name;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Setter(AccessLevel.PACKAGE)</span></span><br><span class="line">  <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="type">double</span> score;</span><br><span class="line">  <span class="keyword">private</span> String[] tags;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@ToString(includeFieldNames = true)</span></span><br><span class="line">  <span class="meta">@Data(staticConstructor = &quot;of&quot;)</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Exercise</span>&lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> T value;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如不使用Lombok，则实现如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DataExample</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">double</span> score;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String[] tags;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">DataExample</span><span class="params">(String name)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">setAge</span><span class="params">(<span class="type">int</span> age)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getAge</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setScore</span><span class="params">(<span class="type">double</span> score)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.score = score;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getScore</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.score;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String[] getTags() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.tags;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setTags</span><span class="params">(String[] tags)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.tags = tags;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;DataExample(&quot;</span> + <span class="built_in">this</span>.getName() + <span class="string">&quot;, &quot;</span> + <span class="built_in">this</span>.getAge() + <span class="string">&quot;, &quot;</span> + <span class="built_in">this</span>.getScore() + <span class="string">&quot;, &quot;</span> + Arrays.deepToString(<span class="built_in">this</span>.getTags());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> <span class="type">boolean</span> <span class="title function_">canEqual</span><span class="params">(Object other)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> other <span class="keyword">instanceof</span> DataExample;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equals</span><span class="params">(Object o)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (o == <span class="built_in">this</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (!(o <span class="keyword">instanceof</span> DataExample)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="type">DataExample</span> <span class="variable">other</span> <span class="operator">=</span> (DataExample) o;</span><br><span class="line">        <span class="keyword">if</span> (!other.canEqual((Object) <span class="built_in">this</span>)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.getName() == <span class="literal">null</span> ? other.getName() != <span class="literal">null</span> : !<span class="built_in">this</span>.getName().equals(other.getName())) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">this</span>.getAge() != other.getAge()) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (Double.compare(<span class="built_in">this</span>.getScore(), other.getScore()) != <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (!Arrays.deepEquals(<span class="built_in">this</span>.getTags(), other.getTags())) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">hashCode</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="type">int</span> <span class="variable">PRIME</span> <span class="operator">=</span> <span class="number">59</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">final</span> <span class="type">long</span> <span class="variable">temp1</span> <span class="operator">=</span> Double.doubleToLongBits(<span class="built_in">this</span>.getScore());</span><br><span class="line">        result = (<span class="built_in">this</span>.getName() == <span class="literal">null</span> ? <span class="number">43</span> : <span class="built_in">this</span>.getName().hashCode());</span><br><span class="line">        result = <span class="built_in">this</span>.getAge();</span><br><span class="line">        result = (<span class="type">int</span>) (temp1 ^ (temp1 &gt;&gt;&gt; <span class="number">32</span>));</span><br><span class="line">        result = Arrays.deepHashCode(<span class="built_in">this</span>.getTags());</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Exercise</span>&lt;T&gt; &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">final</span> String name;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">final</span> T value;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="title function_">Exercise</span><span class="params">(String name, T value)</span> &#123;</span><br><span class="line">            <span class="built_in">this</span>.name = name;</span><br><span class="line">            <span class="built_in">this</span>.value = value;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; Exercise&lt;T&gt; <span class="title function_">of</span><span class="params">(String name, T value)</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Exercise</span>&lt;T&gt;(name, value);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">this</span>.name;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> T <span class="title function_">getValue</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">this</span>.value;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;Exercise(name=&quot;</span> + <span class="built_in">this</span>.getName() + <span class="string">&quot;, value=&quot;</span> + <span class="built_in">this</span>.getValue() + <span class="string">&quot;)&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">protected</span> <span class="type">boolean</span> <span class="title function_">canEqual</span><span class="params">(Object other)</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> other <span class="keyword">instanceof</span> Exercise;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equals</span><span class="params">(Object o)</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (o == <span class="built_in">this</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span> (!(o <span class="keyword">instanceof</span> Exercise)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            Exercise&lt;?&gt; other = (Exercise&lt;?&gt;) o;</span><br><span class="line">            <span class="keyword">if</span> (!other.canEqual((Object) <span class="built_in">this</span>)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">this</span>.getName() == <span class="literal">null</span> ? other.getValue() != <span class="literal">null</span> : !<span class="built_in">this</span>.getName().equals(other.getName()))</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">this</span>.getValue() == <span class="literal">null</span> ? other.getValue() != <span class="literal">null</span> : !<span class="built_in">this</span>.getValue().equals(other.getValue()))</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">hashCode</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">final</span> <span class="type">int</span> <span class="variable">PRIME</span> <span class="operator">=</span> <span class="number">59</span>;</span><br><span class="line">            <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">            result = (<span class="built_in">this</span>.getName() == <span class="literal">null</span> ? <span class="number">43</span> : <span class="built_in">this</span>.getName().hashCode());</span><br><span class="line">            result = (<span class="built_in">this</span>.getValue() == <span class="literal">null</span> ? <span class="number">43</span> : <span class="built_in">this</span>.getValue().hashCode());</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Getter-Setter">@Getter/@Setter</h2>
+<p>如果觉得<code>@Data</code>太过残暴（因为<code>@Data</code>集合了<code>@ToString</code>、<code>@EqualsAndHashCode</code>、<code>@Getter/@Setter</code>、<code>@RequiredArgsConstructor</code>的所有特性）<code> </code>不够精细，可以使用<code>@Getter/@Setter</code>注解，此注解在属性上，可以为相应的属性自动生成<code>Getter/Setter</code>方法，示例如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.AccessLevel;</span><br><span class="line"><span class="keyword">import</span> lombok.Getter;</span><br><span class="line"><span class="keyword">import</span> lombok.Setter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GetterSetterExample</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Getter</span></span><br><span class="line">  <span class="meta">@Setter</span></span><br><span class="line">  <span class="keyword">private</span> <span class="type">int</span> <span class="variable">age</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Setter(AccessLevel.PROTECTED)</span></span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> String.format(<span class="string">&quot;%s (age: %d)&quot;</span>, name, age);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果不使用Lombok：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GetterSetterExample</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="type">int</span> <span class="variable">age</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> String.format(<span class="string">&quot;%s (age: %d)&quot;</span>, name, age);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getAge</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> age;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setAge</span><span class="params">(<span class="type">int</span> age)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="NonNull">@NonNull</h2>
+<p>该注解用在属性或构造器上，Lombok会生成一个非空的声明，可用于校验参数，能帮助避免空指针。<strong>主要作用于成员变量和参数中，标识不能为空，否则抛出空指针异常</strong>。 示例如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.NonNull;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">NonNullExample</span> <span class="keyword">extends</span> <span class="title class_">Something</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">NonNullExample</span><span class="params">(<span class="meta">@NonNull</span> Person person)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">    <span class="built_in">this</span>.name = person.getName();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不使用Lombok</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.NonNull;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">NonNullExample</span> <span class="keyword">extends</span> <span class="title class_">Something</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">NonNullExample</span><span class="params">(<span class="meta">@NonNull</span> Person person)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (person == <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">NullPointerException</span>(<span class="string">&quot;person&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">this</span>.name = person.getName();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Cleanup">@Cleanup</h2>
+<p>@Cleanup：自动关闭资源，针对实现了<strong>java.io.Closeable</strong>接口的对象有效，如：典型的<strong>IO流对象</strong><br>
+示例如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> lombok.Cleanup;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CleanupExample</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="meta">@Cleanup</span></span><br><span class="line">    <span class="type">InputStream</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(args[<span class="number">0</span>]);</span><br><span class="line">    <span class="meta">@Cleanup</span></span><br><span class="line">    <span class="type">OutputStream</span> <span class="variable">out</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(args[<span class="number">1</span>]);</span><br><span class="line">    <span class="type">byte</span>[] b = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">10000</span>];</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">      <span class="type">int</span> <span class="variable">r</span> <span class="operator">=</span> in.read(b);</span><br><span class="line">      <span class="keyword">if</span> (r == -<span class="number">1</span>) <span class="keyword">break</span>;</span><br><span class="line">      out.write(b, <span class="number">0</span>, r);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如不使用Lombok，则需如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CleanupExample</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="type">InputStream</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(args[<span class="number">0</span>]);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="type">OutputStream</span> <span class="variable">out</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(args[<span class="number">1</span>]);</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">byte</span>[] b = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">10000</span>];</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">          <span class="type">int</span> <span class="variable">r</span> <span class="operator">=</span> in.read(b);</span><br><span class="line">          <span class="keyword">if</span> (r == -<span class="number">1</span>) <span class="keyword">break</span>;</span><br><span class="line">          out.write(b, <span class="number">0</span>, r);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (out != <span class="literal">null</span>) &#123;</span><br><span class="line">          out.close();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (in != <span class="literal">null</span>) &#123;</span><br><span class="line">        in.close();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="EqualsAndHashCodes">@EqualsAndHashCodes</h2>
+<p>​		默认情况下，会使用所有非静态（non-static）和非瞬态（non-transient）属性来生成equals和hasCode，也能通过exclude注解来排除一些属性。<strong>作用于类，覆盖默认的equals和hashCode</strong><br>
+示例如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.EqualsAndHashCode;</span><br><span class="line"></span><br><span class="line"><span class="meta">@EqualsAndHashCode(exclude = &#123; &quot;id&quot;, &quot;shape&quot; &#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EqualsAndHashCodeExample</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">transient</span> <span class="type">int</span> <span class="variable">transientVar</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line">  <span class="keyword">private</span> <span class="type">double</span> score;</span><br><span class="line">  <span class="keyword">private</span> <span class="type">Shape</span> <span class="variable">shape</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Square</span>(<span class="number">5</span>, <span class="number">10</span>);</span><br><span class="line">  <span class="keyword">private</span> String[] tags;</span><br><span class="line">  <span class="keyword">private</span> <span class="type">int</span> id;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.name;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@EqualsAndHashCode(callSuper = true)</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Square</span> <span class="keyword">extends</span> <span class="title class_">Shape</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">int</span> width, height;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Square</span><span class="params">(<span class="type">int</span> width, <span class="type">int</span> height)</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>.width = width;</span><br><span class="line">      <span class="built_in">this</span>.height = height;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ToString">@ToString</h2>
+<p>类使用@ToString注解，Lombok会生成一个toString()方法，默认情况下，会输出类名、所有属性（会按照属性定义顺序），用逗号来分割。<br>
+通过将includeFieldNames参数设为true，就能明确的输出toString()属性。这一点是不是有点绕口，通过代码来看会更清晰些。</p>
+<p>使用Lombok的示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.ToString;</span><br><span class="line"></span><br><span class="line"><span class="meta">@ToString(exclude = &quot;id&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ToStringExample</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">STATIC_VAR</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line">  <span class="keyword">private</span> <span class="type">Shape</span> <span class="variable">shape</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Square</span>(<span class="number">5</span>, <span class="number">10</span>);</span><br><span class="line">  <span class="keyword">private</span> String[] tags;</span><br><span class="line">  <span class="keyword">private</span> <span class="type">int</span> id;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.getName();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@ToString(callSuper = true, includeFieldNames = true)</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Square</span> <span class="keyword">extends</span> <span class="title class_">Shape</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">int</span> width, height;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Square</span><span class="params">(<span class="type">int</span> width, <span class="type">int</span> height)</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>.width = width;</span><br><span class="line">      <span class="built_in">this</span>.height = height;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不使用Lombok的示例如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hots;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ToStringExample</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">STATIC_VAR</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">Shape</span> <span class="variable">shape</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Square</span>(<span class="number">5</span>, <span class="number">10</span>);</span><br><span class="line">    <span class="keyword">private</span> String[] tags;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.getName();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Square</span> <span class="keyword">extends</span> <span class="title class_">Shape</span> &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">int</span> width, height;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="title function_">Square</span><span class="params">(<span class="type">int</span> width, <span class="type">int</span> height)</span> &#123;</span><br><span class="line">            <span class="built_in">this</span>.width = width;</span><br><span class="line">            <span class="built_in">this</span>.height = height;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;Square(super=&quot;</span> + <span class="built_in">super</span>.toString() + <span class="string">&quot;, width=&quot;</span> + <span class="built_in">this</span>.width + <span class="string">&quot;, height=&quot;</span> + <span class="built_in">this</span>.height + <span class="string">&quot;)&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;ToStringExample(&quot;</span> + <span class="built_in">this</span>.getName() + <span class="string">&quot;, &quot;</span> + <span class="built_in">this</span>.shape + <span class="string">&quot;, &quot;</span> + Arrays.deepToString(<span class="built_in">this</span>.tags) + <span class="string">&quot;)&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="NoArgsConstructor、-RequiredArgsConstructor、-AllArgsConstructor">@NoArgsConstructor、@RequiredArgsConstructor、@AllArgsConstructor</h2>
+<p>无参构造器、部分参数构造器、全参构造器。作用于类上，用于生成构造函数。有staticName、access等属性。staticName属性一旦设定，将采用静态方法的方式生成实例，access属性可以限定访问权限。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@NoArgsConstructor</span>：生成无参构造器；</span><br><span class="line"><span class="meta">@RequiredArgsConstructor</span>：生成包含<span class="keyword">final</span>和<span class="meta">@NonNull</span>注解的成员变量的构造器；</span><br><span class="line"><span class="meta">@AllArgsConstructor</span>：生成全参构造器</span><br></pre></td></tr></table></figure>
+<p>Lombok没法实现多种参数构造器的重载。<br>
+Lombok示例代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.AccessLevel;</span><br><span class="line"><span class="keyword">import</span> lombok.AllArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.NonNull;</span><br><span class="line"><span class="keyword">import</span> lombok.RequiredArgsConstructor;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequiredArgsConstructor(staticName = &quot;of&quot;)</span></span><br><span class="line"><span class="meta">@AllArgsConstructor(access = AccessLevel.PROTECTED)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConstructorExample</span>&lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="type">int</span> x, y;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@NonNull</span></span><br><span class="line">  <span class="keyword">private</span> T description;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@NoArgsConstructor</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">NoArgsExample</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="keyword">private</span> String field;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>不使用Lombok的示例如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConstructorExample</span>&lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="type">int</span> x, y;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@NonNull</span></span><br><span class="line">  <span class="keyword">private</span> T description;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="title function_">ConstructorExample</span><span class="params">(T description)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (description == <span class="literal">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">NullPointerException</span>(<span class="string">&quot;description&quot;</span>);</span><br><span class="line">    <span class="built_in">this</span>.description = description;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; ConstructorExample&lt;T&gt; <span class="title function_">of</span><span class="params">(T description)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ConstructorExample</span>&lt;T&gt;(description);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@java</span>.beans.ConstructorProperties(&#123; <span class="string">&quot;x&quot;</span>, <span class="string">&quot;y&quot;</span>, <span class="string">&quot;description&quot;</span> &#125;)</span><br><span class="line">  <span class="keyword">protected</span> <span class="title function_">ConstructorExample</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y, T description)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (description == <span class="literal">null</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">NullPointerException</span>(<span class="string">&quot;description&quot;</span>);</span><br><span class="line">    <span class="built_in">this</span>.x = x;</span><br><span class="line">    <span class="built_in">this</span>.y = y;</span><br><span class="line">    <span class="built_in">this</span>.description = description;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">NoArgsExampmle</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="keyword">private</span> String field;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">NoArgsExample</span><span class="params">()</span> &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="Log">@Log</h2>
+<p>作用于类上，生成日志变量。针对不同的日志实现产品，有不同的注解</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Lombox/" rel="tag"># Lombox</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/10/30/%E5%89%8D%E7%AB%AF/CSS/" rel="prev" title="CSS日常使用记录">
+      <i class="fa fa-chevron-left"></i> CSS日常使用记录
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/10/30/%E6%A1%86%E6%9E%B6&%E4%B8%AD%E9%97%B4%E4%BB%B6/Junit/" rel="next" title="Junit日常使用记录">
+      Junit日常使用记录 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">安装插件&amp;项目引入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Idea%E9%87%8C%E9%9C%80%E8%A6%81%E5%AE%89%E8%A3%85lombok%E6%8F%92%E4%BB%B6"><span class="nav-number">1.1.</span> <span class="nav-text">Idea里需要安装lombok插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pom-xml%E4%B8%AD%E5%BC%95%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">pom.xml中引用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Lombok工作原理分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">Lombok的优缺点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">注解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Slf4j"><span class="nav-number">4.1.</span> <span class="nav-text">@Slf4j</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data"><span class="nav-number">4.2.</span> <span class="nav-text">@Data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Getter-Setter"><span class="nav-number">4.3.</span> <span class="nav-text">@Getter&#x2F;@Setter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NonNull"><span class="nav-number">4.4.</span> <span class="nav-text">@NonNull</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cleanup"><span class="nav-number">4.5.</span> <span class="nav-text">@Cleanup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EqualsAndHashCodes"><span class="nav-number">4.6.</span> <span class="nav-text">@EqualsAndHashCodes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ToString"><span class="nav-number">4.7.</span> <span class="nav-text">@ToString</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NoArgsConstructor%E3%80%81-RequiredArgsConstructor%E3%80%81-AllArgsConstructor"><span class="nav-number">4.8.</span> <span class="nav-text">@NoArgsConstructor、@RequiredArgsConstructor、@AllArgsConstructor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Log"><span class="nav-number">4.9.</span> <span class="nav-text">@Log</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Alisa</p>
+  <div class="site-description" itemprop="description">学习笔记、工作心得</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">46</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fab fa-apple"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Alisa</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

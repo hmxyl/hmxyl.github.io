@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|monospace:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hmxyl.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="HTML日常使用记录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML日常使用记录">
+<meta property="og:url" content="https://hmxyl.github.io/2022/10/30/%E5%89%8D%E7%AB%AF/HTML/index.html">
+<meta property="og:site_name" content="Alisa&#39;s Home">
+<meta property="og:description" content="HTML日常使用记录">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-10-30T07:39:23.000Z">
+<meta property="article:modified_time" content="2022-11-02T05:58:48.037Z">
+<meta property="article:author" content="Alisa">
+<meta property="article:tag" content="HTML">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hmxyl.github.io/2022/10/30/%E5%89%8D%E7%AB%AF/HTML/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>HTML日常使用记录 | Alisa's Home</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Alisa's Home</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-friendlink">
+
+    <a href="/friendlink/" rel="section"><i class="fa fa-briefcase fa-fw"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">31</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">46</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">53</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/10/30/%E5%89%8D%E7%AB%AF/HTML/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Alisa">
+      <meta itemprop="description" content="学习笔记、工作心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alisa's Home">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HTML日常使用记录
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-10-30 15:39:23" itemprop="dateCreated datePublished" datetime="2022-10-30T15:39:23+08:00">2022-10-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-11-02 13:58:48" itemprop="dateModified" datetime="2022-11-02T13:58:48+08:00">2022-11-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/HTML/" itemprop="url" rel="index"><span itemprop="name">HTML</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">HTML日常使用记录</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1>WEB开发如何屏蔽浏览器输入框下拉历史的输入记录</h1>
+<p>用&lt;input type=“text” <code>autocomplete=&quot;off&quot;</code>&gt;input 的autocomplete属性默认是on：其含义代表是否让浏览器自动记录之前输入的值，off：则关闭记录</p>
+<h1>iframe属性</h1>
+<p>先了解iframe有那些属性</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">name</span>=<span class="string">&quot;my_iframe&quot;</span> <span class="attr">height</span>=<span class="string">&quot;540&quot;</span> <span class="attr">width</span>=<span class="string">&quot;100%&quot;</span> <span class="attr">frameborder</span>=<span class="string">&quot;0&quot;</span> <span class="attr">marginwidth</span>=<span class="string">&quot;0&quot;</span> <span class="attr">marginheight</span>=<span class="string">&quot;0&quot;</span> <span class="attr">scrolling</span>=<span class="string">&quot;no&quot;</span> <span class="attr">border</span>=<span class="string">&quot;0&quot;</span> <span class="attr">src</span>=<span class="string">&quot;http://www.33xyx.com&quot;</span> <span class="attr">security</span>=<span class="string">&quot;restricted&quot;</span> <span class="attr">sandbox</span>=<span class="string">&quot;allow-forms allow-scripts allow-same-origin&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>属性分析：</p>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name id</td>
+<td>不用介绍了吧，就是通过关键词来应用操作iframe</td>
+</tr>
+<tr>
+<td>height width</td>
+<td>就是定义iframe的宽度高度，有数字或者百分比</td>
+</tr>
+<tr>
+<td>frameborder</td>
+<td>是否显示边框1或0</td>
+</tr>
+<tr>
+<td>marginheight marginwidth</td>
+<td>定义iframe顶部到底部的边距 左边到右边的边距</td>
+</tr>
+<tr>
+<td>scrolling</td>
+<td>iframe是否可以滚动</td>
+</tr>
+<tr>
+<td>src=“<a target="_blank" rel="noopener" href="http://www.33xyx.com">http://www.33xyx.com</a>”</td>
+<td>这个大家都知道，替换成自己的网站即可</td>
+</tr>
+<tr>
+<td>security=“restricted”</td>
+<td>我理解就是iframe的东西不能控制父页面的东西，有人会使用top.location.href=&quot;&quot;来控制跳转，所以自己衡量是否需要加上</td>
+</tr>
+<tr>
+<td>sandbox=“allow-forms allow-scripts  allow-same-origin”</td>
+<td>把iframe当做一个沙盒模式来使用，允许那些权限，我是允许他提交表单和脚本执行和同源操作。最后的2个属性比较重要，着中了解下最好。</td>
+</tr>
+</tbody>
+</table>
+<h1>attr设置checked，disabled等属性失效的问题</h1>
+<p>jQuery认为：<code>attribute的checked、selected、disabled</code> 就是表示该属性初始状态的值，<code>property的checked、selected、disabled</code>才表示该属性实时状态的值(值为true或false)。因此，在jQuery 1.6及以后版本中，请使用<code>prop()</code>函数来设置或获取<code>checked、selected、disabled</code>等属性。对于其它能够用prop()实现的操作，也尽量使用prop()函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;input id=<span class="string">&quot;uid&quot;</span> type=<span class="string">&quot;checkbox&quot;</span> checked=<span class="string">&quot;checked&quot;</span> value=<span class="string">&quot;1&quot;</span>&gt; </span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"> </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="comment">// 当前jQuery版本为1.11.1 </span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">var</span> uid = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;uid&quot;</span>); <span class="keyword">var</span> $uid = $(uid); <span class="variable language_">document</span>.<span class="title function_">writeln</span>( $uid.<span class="title function_">attr</span>(<span class="string">&quot;checked&quot;</span>) );  <span class="comment">// checked </span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="variable language_">document</span>.<span class="title function_">writeln</span>( $uid.<span class="title function_">prop</span>(<span class="string">&quot;checked&quot;</span>) );  <span class="comment">// true </span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="comment">// 取消复选框uid的选中(将其设为false即可) </span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="comment">// 相当于 uid.checked = false; </span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">$uid.<span class="title function_">prop</span>(<span class="string">&quot;checked&quot;</span>, <span class="literal">false</span>); </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="comment">// attr()获取的是初始状态的值，即使取消了选中，也不会改变 </span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="variable language_">document</span>.<span class="title function_">writeln</span>( $uid.<span class="title function_">attr</span>(<span class="string">&quot;checked&quot;</span>) );  <span class="comment">// checked </span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="comment">// prop()获取的值已经发生变化 </span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="variable language_">document</span>.<span class="title function_">writeln</span>( $uid.<span class="title function_">prop</span>(<span class="string">&quot;checked&quot;</span>) ); <span class="comment">// false </span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h1>input type=‘file’ accept中可以限制的文件类型</h1>
+<p>在上传文件的时候，需要限制指定的文件类型。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">accept</span>=<span class="string">&quot;image/*&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>accept</td>
+<td>表示可以上传文件类型</td>
+</tr>
+<tr>
+<td>image</td>
+<td>表示图片，*表示所有支持的格式。</td>
+</tr>
+</tbody>
+</table>
+<p>accept  可以指定如下信息：</p>
+<table>
+<thead>
+<tr>
+<th>文献类型</th>
+<th>accept配置</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*.3gpp</td>
+<td>audio/3gpp, video/3gpp</td>
+<td>3GPP Audio/Video</td>
+</tr>
+<tr>
+<td>*.ac3</td>
+<td>audio/ac3</td>
+<td>AC3 Audio</td>
+</tr>
+<tr>
+<td>*.asf</td>
+<td>allpication/vnd.ms-asf</td>
+<td>Advanced Streaming Format</td>
+</tr>
+<tr>
+<td>*.au</td>
+<td>audio/basic</td>
+<td>AU Audio</td>
+</tr>
+<tr>
+<td>*.css</td>
+<td>text/css</td>
+<td>Cascading Style Sheets</td>
+</tr>
+<tr>
+<td>*.csv</td>
+<td>text/csv</td>
+<td>Comma Separated Values</td>
+</tr>
+<tr>
+<td>*.doc</td>
+<td>application/msword</td>
+<td>MS Word Document</td>
+</tr>
+<tr>
+<td>*.dot</td>
+<td>application/msword</td>
+<td>MS Word Template</td>
+</tr>
+<tr>
+<td>*.dtd</td>
+<td>application/xml-dtd</td>
+<td>Document Type Definition</td>
+</tr>
+<tr>
+<td>*.dwg</td>
+<td>image/vnd.dwg</td>
+<td>AutoCAD Drawing Database</td>
+</tr>
+<tr>
+<td>*.dxf</td>
+<td>image/vnd.dxf</td>
+<td>AutoCAD Drawing Interchange Format</td>
+</tr>
+<tr>
+<td>*.gif</td>
+<td>image/gif</td>
+<td>Graphic Interchange Format</td>
+</tr>
+<tr>
+<td>*.htm</td>
+<td>text/html</td>
+<td>HyperText Markup Language</td>
+</tr>
+<tr>
+<td>*.html</td>
+<td>text/html</td>
+<td>HyperText Markup Language</td>
+</tr>
+<tr>
+<td>*.jp2</td>
+<td>image/jp2</td>
+<td>JPEG-2000</td>
+</tr>
+<tr>
+<td>*.jpe</td>
+<td>image/jpeg</td>
+<td>JPEG</td>
+</tr>
+<tr>
+<td>*.jpeg</td>
+<td>image/jpeg</td>
+<td>JPEG</td>
+</tr>
+<tr>
+<td>*.jpg</td>
+<td>image/jpeg</td>
+<td>JPEG</td>
+</tr>
+<tr>
+<td>*.js</td>
+<td>text/javascript, application/javascript</td>
+<td>JavaScript</td>
+</tr>
+<tr>
+<td>*.json</td>
+<td>application/json</td>
+<td>JavaScript Object Notation</td>
+</tr>
+<tr>
+<td>*.mp2</td>
+<td>audio/mpeg, video/mpeg</td>
+<td>MPEG Audio/Video Stream, Layer II</td>
+</tr>
+<tr>
+<td>*.mp3</td>
+<td>audio/mpeg</td>
+<td>MPEG Audio Stream, Layer III</td>
+</tr>
+<tr>
+<td>*.mp4</td>
+<td>audio/mp4, video/mp4</td>
+<td>MPEG-4 Audio/Video</td>
+</tr>
+<tr>
+<td>*.mpeg</td>
+<td>video/mpeg</td>
+<td>MPEG Video Stream, Layer II</td>
+</tr>
+<tr>
+<td>*.mpg</td>
+<td>video/mpeg</td>
+<td>MPEG Video Stream, Layer II</td>
+</tr>
+<tr>
+<td>*.mpp</td>
+<td>application/vnd.ms-project</td>
+<td>MS Project Project</td>
+</tr>
+<tr>
+<td>*.ogg</td>
+<td>application/ogg, audio/ogg</td>
+<td>Ogg Vorbis</td>
+</tr>
+<tr>
+<td>*.pdf</td>
+<td>application/pdf</td>
+<td>Portable Document Format</td>
+</tr>
+<tr>
+<td>*.png</td>
+<td>image/png</td>
+<td>Portable Network Graphics</td>
+</tr>
+<tr>
+<td>*.pot</td>
+<td>application/vnd.ms-powerpoint</td>
+<td>MS PowerPoint Template</td>
+</tr>
+<tr>
+<td>*.pps</td>
+<td>application/vnd.ms-powerpoint</td>
+<td>MS PowerPoint Slideshow</td>
+</tr>
+<tr>
+<td>*.ppt</td>
+<td>application/vnd.ms-powerpoint</td>
+<td>MS PowerPoint Presentation</td>
+</tr>
+<tr>
+<td>*.rtf</td>
+<td>application/rtf, text/rtf</td>
+<td>Rich Text Format</td>
+</tr>
+<tr>
+<td>*.svf</td>
+<td>image/vnd.svf</td>
+<td>Simple Vector Format</td>
+</tr>
+<tr>
+<td>*.tif</td>
+<td>image/tiff</td>
+<td>Tagged Image Format File</td>
+</tr>
+<tr>
+<td>*.tiff</td>
+<td>image/tiff</td>
+<td>Tagged Image Format File</td>
+</tr>
+<tr>
+<td>*.txt</td>
+<td>text/plain</td>
+<td>Plain Text</td>
+</tr>
+<tr>
+<td>*.wdb</td>
+<td>application/vnd.ms-works</td>
+<td>MS Works Database</td>
+</tr>
+<tr>
+<td>*.wps</td>
+<td>application/vnd.ms-works</td>
+<td>Works Text Document</td>
+</tr>
+<tr>
+<td>*.xhtml</td>
+<td>application/xhtml+xml</td>
+<td>Extensible HyperText Markup Language</td>
+</tr>
+<tr>
+<td>*.xlc</td>
+<td>application/vnd.ms-excel</td>
+<td>MS Excel Chart</td>
+</tr>
+<tr>
+<td>*.xlm</td>
+<td>application/vnd.ms-excel</td>
+<td>MS Excel Macro</td>
+</tr>
+<tr>
+<td>*.xls</td>
+<td>application/vnd.ms-excel</td>
+<td>MS Excel Spreadsheet</td>
+</tr>
+<tr>
+<td>*.xlt</td>
+<td>application/vnd.ms-excel</td>
+<td>MS Excel Template</td>
+</tr>
+<tr>
+<td>*.xlw</td>
+<td>application/vnd.ms-excel</td>
+<td>MS Excel Workspace</td>
+</tr>
+<tr>
+<td>*.xml</td>
+<td>text/xml, application/xml</td>
+<td>Extensible Markup Language</td>
+</tr>
+<tr>
+<td>*.zip</td>
+<td>aplication/zip</td>
+<td>Compressed Archive</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/HTML/" rel="tag"># HTML</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/10/30/%E5%89%8D%E7%AB%AF/JavaScript/" rel="prev" title="JavaScript日常使用记录">
+      <i class="fa fa-chevron-left"></i> JavaScript日常使用记录
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/10/30/%E5%89%8D%E7%AB%AF/JSTL/" rel="next" title="JSTL日常使用记录">
+      JSTL日常使用记录 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">WEB开发如何屏蔽浏览器输入框下拉历史的输入记录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">iframe属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">attr设置checked，disabled等属性失效的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">input type&#x3D;‘file’ accept中可以限制的文件类型</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Alisa</p>
+  <div class="site-description" itemprop="description">学习笔记、工作心得</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">46</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fab fa-apple"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Alisa</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
