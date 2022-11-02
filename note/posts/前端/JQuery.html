@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|monospace:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hmxyl.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="JQuery日常使用记录">
+<meta property="og:type" content="website">
+<meta property="og:title" content="JQuery日常使用记录">
+<meta property="og:url" content="https://hmxyl.github.io/note/posts/%E5%89%8D%E7%AB%AF/JQuery.html">
+<meta property="og:site_name" content="Alisa&#39;s Home">
+<meta property="og:description" content="JQuery日常使用记录">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-10-30T07:39:23.000Z">
+<meta property="article:modified_time" content="2022-11-02T06:01:38.228Z">
+<meta property="article:author" content="Alisa">
+<meta property="article:tag" content="JQuery">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hmxyl.github.io/note/posts/%E5%89%8D%E7%AB%AF/JQuery">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>JQuery日常使用记录 | Alisa's Home
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Alisa's Home</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-friendlink">
+
+    <a href="/friendlink/" rel="section"><i class="fa fa-briefcase fa-fw"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">0</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">0</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">0</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">JQuery日常使用记录
+</h1>
+
+<div class="post-meta">
+    <div class="post-description">JQuery日常使用记录</div>
+  
+  <ul class="breadcrumb">
+          
+            <li><a href="/note/">NOTE</a></li>
+            <li><a href="/note/posts/">POSTS</a></li>
+            <li><a href="/note/posts/%E5%89%8D%E7%AB%AF/">前端</a></li>
+            <li>JQUERY</li>
+          
+  </ul>
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <h1>获取节点HTML</h1>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">节点<span class="variable constant_">XXX</span>.<span class="title function_">prop</span>(<span class="string">&quot;outerHTML&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h1>jquery选择器</h1>
+<h2 id="通配符">通配符</h2>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(“input[id^=‘code’]”);</td>
+<td>id属性以code开始的所有input标签</td>
+</tr>
+<tr>
+<td>(“input[id=‘code’]”);</td>
+<td>id属性以code结束的所有input标签</td>
+</tr>
+<tr>
+<td>(“input[id*=‘code’]”);</td>
+<td>id属性包含code的所有input标签</td>
+</tr>
+<tr>
+<td>(“input[name^=‘code’]”);</td>
+<td>name属性以code开始的所有input标签</td>
+</tr>
+<tr>
+<td>(“input[name=‘code’]”);</td>
+<td>name属性以code结束的所有input标签</td>
+</tr>
+<tr>
+<td>(“input[name*=‘code’]”);</td>
+<td>name属性包含code的所有input标签</td>
+</tr>
+</tbody>
+</table>
+<h2 id="根据索引选择">根据索引选择</h2>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(“tbody tr:even”);</td>
+<td>选择索引为偶数的所有tr标签</td>
+</tr>
+<tr>
+<td>(“tbody tr:odd”);</td>
+<td>选择索引为奇数的所有tr标签</td>
+</tr>
+</tbody>
+</table>
+<h2 id="获得jqueryObj下一级节点的input个数">获得jqueryObj下一级节点的input个数</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jqueryObj.<span class="title function_">children</span>(<span class="string">&quot;input&quot;</span>).<span class="property">length</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="获得class为main的标签的子节点下所有标签">获得class为main的标签的子节点下所有标签</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="string">&quot;.main &gt; a&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="选择紧邻标签">选择紧邻标签</h2>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jqueryObj.next(“div”);</td>
+<td>获取jqueryObj标签的后面紧邻的一个div，nextAll获取所有</td>
+</tr>
+</tbody>
+</table>
+<h2 id="CSS选择器">CSS选择器</h2>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(“tr td:nth-child(2)”)</td>
+<td>获取第二个td</td>
+</tr>
+</tbody>
+</table>
+<h1>获取兄弟级元素的方法</h1>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jQuery.parent(expr)</td>
+<td>找父亲节点，可以传入expr进行过滤，比如(“span”).parent()或者(“span”).parent(“.class”)</td>
+</tr>
+<tr>
+<td>jQuery.parents(expr)</td>
+<td>类似于jQuery.parents(expr),但是是查找所有祖先元素，不限于父元素</td>
+</tr>
+<tr>
+<td>jQuery.children(expr)</td>
+<td>返回所有子节点，这个方法只会返回直接的孩子节点，不会返回所有的子孙节点</td>
+</tr>
+<tr>
+<td>jQuery.contents()</td>
+<td>返回下面的所有内容，包括节点和文本。这个方法和children()的区别就在于，包括空白文本，也会被作为一个jQuery对象返回，children()则只会返回节点</td>
+</tr>
+<tr>
+<td>jQuery.prev()</td>
+<td>返回上一个兄弟节点，不是所有的兄弟节点</td>
+</tr>
+<tr>
+<td>jQuery.prevAll()</td>
+<td>返回所有之前的兄弟节点</td>
+</tr>
+<tr>
+<td>jQuery.next()</td>
+<td>返回下一个兄弟节点，不是所有的兄弟节点</td>
+</tr>
+<tr>
+<td>jQuery.nextAll()</td>
+<td>返回所有之后的兄弟节点</td>
+</tr>
+<tr>
+<td>jQuery.siblings()</td>
+<td>返回兄弟姐妹节点，不分前后</td>
+</tr>
+<tr>
+<td>jQuery.find(expr)</td>
+<td>跟jQuery.filter(expr)完全不一样：不会有初始集合中的内容，比如(“p”).find(“span”)  是从<p>元素开始找<span>，等同于(“p span”)</td>
+</tr>
+<tr>
+<td>jQuery.filter()</td>
+<td>是从初始的jQuery对象集合中筛选出一部分</td>
+</tr>
+</tbody>
+</table>
+<h1>获取页面参数</h1>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jQueryObj.width())</td>
+<td>返回元素的宽度</td>
+</tr>
+<tr>
+<td>jQueryObj.height())</td>
+<td>返回元素的高度</td>
+</tr>
+<tr>
+<td>jQueryObj.innerWidth())</td>
+<td>返回元素的宽度（包括内边距）</td>
+</tr>
+<tr>
+<td>jQueryObj.innerHeight())</td>
+<td>返回元素的高度（包括内边距</td>
+</tr>
+<tr>
+<td>jQueryObj.outerWidth())</td>
+<td>返回元素的宽度（包括内边距和边框）</td>
+</tr>
+<tr>
+<td>jQueryObj.outerHeight())</td>
+<td>返回元素的高度（包括内边距和边框）</td>
+</tr>
+<tr>
+<td>jQueryObj.outerWidth(true))</td>
+<td>返回元素的宽度（包括内边距、边框和外边距）</td>
+</tr>
+<tr>
+<td>jQueryObj.outerHeight(true))</td>
+<td>返回元素的高度（包括内边距、边框和外边距）</td>
+</tr>
+<tr>
+<td>(document).width())</td>
+<td>HTML文档宽度</td>
+</tr>
+<tr>
+<td>(document).height())</td>
+<td>HTML文档高度</td>
+</tr>
+<tr>
+<td>(window).width())</td>
+<td>窗口（浏览器视口）宽度</td>
+</tr>
+<tr>
+<td>(window).height())</td>
+<td>窗口（浏览器视口）高度</td>
+</tr>
+</tbody>
+</table>
+<h1>jquery操作iframe的方法：父页面和子页面相互操作（九种情况）</h1>
+<p>现实开发中难免会遇到子页面、父页面相互操作的情况，由于时不时地会遇到几次（不是一次<br>
+所以就整理了一下父子页面相互相互调用常见的九种情况，作为自己的备忘录，同时也希望对大家有帮助。</p>
+<h2 id="一、子页面操作父页面（下述三个方法写在子页面中）">一、子页面操作父页面（下述三个方法写在子页面中）</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取父页面控件的值</span></span><br><span class="line">$(<span class="string">&quot;#btnParent1&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123; </span><br><span class="line">    <span class="keyword">var</span> pageId = $(<span class="string">&quot;#pageId&quot;</span>, parent.<span class="property">document</span>).<span class="title function_">val</span>();</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&quot;父页面的pageId=&quot;</span> + pageId);</span><br><span class="line"> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用父页面的方法</span></span><br><span class="line">$(<span class="string">&quot;#btnParent2&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123; </span><br><span class="line">    parent.<span class="title class_">HomeRun</span>();</span><br><span class="line"> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 触发父页面按钮的点击事件</span></span><br><span class="line">$(<span class="string">&quot;#btnParent3&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123; </span><br><span class="line">    $(<span class="string">&quot;#btnShow&quot;</span>, parent.<span class="property">document</span>).<span class="title function_">click</span>();</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="二、子页面操作兄弟页面（下述三个方法写在子页面中）">二、子页面操作兄弟页面（下述三个方法写在子页面中）</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取兄弟页面控件的值 </span></span><br><span class="line">$(<span class="string">&quot;#btnSiblings1&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> sibling = parent.<span class="property">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;/Sys/UserManage/Index&quot;</span>).<span class="property">contentWindow</span>;</span><br><span class="line">    <span class="keyword">var</span> pageId = sibling.$(<span class="string">&quot;#pageId&quot;</span>).<span class="title function_">val</span>();</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&quot;兄弟页面的pageId=&quot;</span> + pageId);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用兄弟页面的方法 </span></span><br><span class="line">$(<span class="string">&quot;#btnSiblings2&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> sibling = parent.<span class="property">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;/Sys/UserManage/Index&quot;</span>).<span class="property">contentWindow</span>;</span><br><span class="line">    sibling.<span class="title class_">UserManageRun</span>();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//触发兄弟页面按钮的点击事件 </span></span><br><span class="line">$(<span class="string">&quot;#btnSiblings3&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> sibling = parent.<span class="property">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;/Sys/UserManage/Index&quot;</span>).<span class="property">contentWindow</span>;</span><br><span class="line">    <span class="keyword">var</span> pageId = sibling.$(<span class="string">&quot;#btnShow&quot;</span>).<span class="title function_">click</span>();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="三、父页面操作子页面（下述三个方法写在父页面中）">三、父页面操作子页面（下述三个方法写在父页面中）</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取子页面控件的值 </span></span><br><span class="line">$(<span class="string">&quot;#btnChild1&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> child = $(<span class="string">&quot;#Sys_UserManage_Index&quot;</span>).<span class="title function_">contents</span>();</span><br><span class="line">    <span class="keyword">var</span> pageId = child.<span class="title function_">find</span>(<span class="string">&quot;#pageId&quot;</span>).<span class="title function_">val</span>();</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&quot;子页面的pageId=&quot;</span> + pageId);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//   调用子页面的方法 </span></span><br><span class="line">$(<span class="string">&quot;#btnChild2&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> child = $(<span class="string">&quot;#Sys_UserManage_Index&quot;</span>)[<span class="number">0</span>].<span class="property">contentWindow</span>;</span><br><span class="line">    child.<span class="title class_">UserManageRun</span>();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//   触发子页面按钮的点击事件 </span></span><br><span class="line">$(<span class="string">&quot;#btnChild3&quot;</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> child = $(<span class="string">&quot;#Sys_UserManage_Index&quot;</span>).<span class="title function_">contents</span>();</span><br><span class="line">    child.<span class="title function_">find</span>(<span class="string">&quot;#btnShow&quot;</span>).<span class="title function_">click</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      </div>
+      
+      
+      
+    </div>
+    
+  <ul class="breadcrumb">
+          
+            <li><a href="/note/">NOTE</a></li>
+            <li><a href="/note/posts/">POSTS</a></li>
+            <li><a href="/note/posts/%E5%89%8D%E7%AB%AF/">前端</a></li>
+            <li>JQUERY</li>
+          
+  </ul>
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">获取节点HTML</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">jquery选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E9%85%8D%E7%AC%A6"><span class="nav-number">2.1.</span> <span class="nav-text">通配符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E7%B4%A2%E5%BC%95%E9%80%89%E6%8B%A9"><span class="nav-number">2.2.</span> <span class="nav-text">根据索引选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97jqueryObj%E4%B8%8B%E4%B8%80%E7%BA%A7%E8%8A%82%E7%82%B9%E7%9A%84input%E4%B8%AA%E6%95%B0"><span class="nav-number">2.3.</span> <span class="nav-text">获得jqueryObj下一级节点的input个数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97class%E4%B8%BAmain%E7%9A%84%E6%A0%87%E7%AD%BE%E7%9A%84%E5%AD%90%E8%8A%82%E7%82%B9%E4%B8%8B%E6%89%80%E6%9C%89%E6%A0%87%E7%AD%BE"><span class="nav-number">2.4.</span> <span class="nav-text">获得class为main的标签的子节点下所有标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E7%B4%A7%E9%82%BB%E6%A0%87%E7%AD%BE"><span class="nav-number">2.5.</span> <span class="nav-text">选择紧邻标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">2.6.</span> <span class="nav-text">CSS选择器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">获取兄弟级元素的方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">获取页面参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">jquery操作iframe的方法：父页面和子页面相互操作（九种情况）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%AD%90%E9%A1%B5%E9%9D%A2%E6%93%8D%E4%BD%9C%E7%88%B6%E9%A1%B5%E9%9D%A2%EF%BC%88%E4%B8%8B%E8%BF%B0%E4%B8%89%E4%B8%AA%E6%96%B9%E6%B3%95%E5%86%99%E5%9C%A8%E5%AD%90%E9%A1%B5%E9%9D%A2%E4%B8%AD%EF%BC%89"><span class="nav-number">5.1.</span> <span class="nav-text">一、子页面操作父页面（下述三个方法写在子页面中）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AD%90%E9%A1%B5%E9%9D%A2%E6%93%8D%E4%BD%9C%E5%85%84%E5%BC%9F%E9%A1%B5%E9%9D%A2%EF%BC%88%E4%B8%8B%E8%BF%B0%E4%B8%89%E4%B8%AA%E6%96%B9%E6%B3%95%E5%86%99%E5%9C%A8%E5%AD%90%E9%A1%B5%E9%9D%A2%E4%B8%AD%EF%BC%89"><span class="nav-number">5.2.</span> <span class="nav-text">二、子页面操作兄弟页面（下述三个方法写在子页面中）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%88%B6%E9%A1%B5%E9%9D%A2%E6%93%8D%E4%BD%9C%E5%AD%90%E9%A1%B5%E9%9D%A2%EF%BC%88%E4%B8%8B%E8%BF%B0%E4%B8%89%E4%B8%AA%E6%96%B9%E6%B3%95%E5%86%99%E5%9C%A8%E7%88%B6%E9%A1%B5%E9%9D%A2%E4%B8%AD%EF%BC%89"><span class="nav-number">5.3.</span> <span class="nav-text">三、父页面操作子页面（下述三个方法写在父页面中）</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Alisa</p>
+  <div class="site-description" itemprop="description">学习笔记、工作心得</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fab fa-apple"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Alisa</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
