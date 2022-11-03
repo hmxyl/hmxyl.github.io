@@ -27,16 +27,16 @@
 <meta property="og:site_name" content="Alisa&#39;s Home">
 <meta property="og:description" content="MySQL安装、版本差异、JDBC连接配置">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="d:%5C0_Notes%5CHexo%5Chmxyl%5Csource%5Cnote%5Cimages%5Cclip_image001-16382968264995.png">
-<meta property="og:image" content="d:%5C0_Notes%5CHexo%5Chmxyl%5Csource%5Cnote%5Cimages%5Cbe1022af-1837-42c2-ae32-9d7e0ec4aa2c.png">
-<meta property="og:image" content="d:%5C0_Notes%5CHexo%5Chmxyl%5Csource%5Cnote%5Cimages%5C43530e52-774a-401b-8e8c-0e10e2cc0fdc.png">
-<meta property="og:image" content="d:%5C0_Notes%5CHexo%5Chmxyl%5Csource%5Cnote%5Cimages%5Cimage-20211201004107227.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image001-16382968264995.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/be1022af-1837-42c2-ae32-9d7e0ec4aa2c.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/43530e52-774a-401b-8e8c-0e10e2cc0fdc.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211201004107227.png">
 <meta property="article:published_time" content="2022-10-25T11:52:44.000Z">
-<meta property="article:modified_time" content="2022-11-02T06:58:22.674Z">
+<meta property="article:modified_time" content="2022-11-03T01:36:09.327Z">
 <meta property="article:author" content="Alisa">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="d:%5C0_Notes%5CHexo%5Chmxyl%5Csource%5Cnote%5Cimages%5Cclip_image001-16382968264995.png">
+<meta name="twitter:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image001-16382968264995.png">
 
 <link rel="canonical" href="https://hmxyl.github.io/2022/10/25/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E5%AE%89%E8%A3%85&%E7%89%88%E6%9C%AC%E5%B7%AE%E5%BC%82/">
 
@@ -229,7 +229,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-11-02 14:58:22" itemprop="dateModified" datetime="2022-11-02T14:58:22+08:00">2022-11-02</time>
+                <time title="修改时间：2022-11-03 09:36:09" itemprop="dateModified" datetime="2022-11-03T09:36:09+08:00">2022-11-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -343,7 +343,7 @@
 </ol>
 <p>​		如果出现错误 需要添加软连接： <code> ln -s /opt/mysql-5.7.23/bin/mysql /usr/bin</code></p>
 <p>​		或者，修改环境变量。</p>
-<p>​         <img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource%5Cnote%5Cimages%5Cclip_image001-16382968264995.png" alt="img"></p>
+<p>​         <img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image001-16382968264995.png" alt="img"></p>
 <p>​       第一件事先修改密码：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;alter user <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> identified by <span class="string">&#x27;修改后的密码&#x27;</span>;  </span><br><span class="line"></span><br><span class="line">mysql&gt;flush privileges;  <span class="comment">#刷新权限</span></span><br></pre></td></tr></table></figure>
 <ol start="7">
@@ -465,8 +465,8 @@
 <h2 id="数据库客户端超时设置">数据库客户端超时设置</h2>
 <p>数据库客户端的超时主要可以分为JDBC超时/连接池超时/Statement超时/事务超时等。</p>
 <h3 id="超时配置的关系和层级示意图">超时配置的关系和层级示意图</h3>
-<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource%5Cnote%5Cimages%5Cbe1022af-1837-42c2-ae32-9d7e0ec4aa2c.png" alt="img"></p>
-<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource%5Cnote%5Cimages%5C43530e52-774a-401b-8e8c-0e10e2cc0fdc.png" alt="img"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/be1022af-1837-42c2-ae32-9d7e0ec4aa2c.png" alt="img"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/43530e52-774a-401b-8e8c-0e10e2cc0fdc.png" alt="img"></p>
 <p>上图中，更上层的超时依赖于下层的超时，只有当较低层的超时机制正常工作，上层的超时才会正常。如果 JDBC 驱动程序的socket超时工作不正常，那么更上层的超时比如 Statement 超时和事务超时都不会正常工作。</p>
 <h3 id="Transaction-Timeout-事务超时">Transaction Timeout(事务超时)</h3>
 <p>​		transaction timeout一般存在于框架（Spring, EJB）或应用级。transaction timeout或许是个相对陌生的概念，简单地说，transaction timeout就是“statement Timeout * N（需要执行的statement数量） + @（垃圾回收等其他时间）”。</p>
@@ -515,7 +515,7 @@
 <p>使用新创建的connection向超时query发送cancel query（KILL QUERY “connectionId”）</p>
 </li>
 </ol>
-<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource%5Cnote%5Cimages%5Cimage-20211201004107227.png" alt="image-20211201004107227"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211201004107227.png" alt="image-20211201004107227"></p>
 <h3 id="JDBC的socket-timeout">JDBC的socket timeout</h3>
 <p>​		JDBC的 timeout在被突然停掉或是发生网络错误（由于设备故障等原因）时十分重要。由于TCP/IP的结构原因，socket没有办法探测到网络错误，因此应用也无法主动发现断开。如果没有设置socket timeout的话，应用在数据库返回结果前会无期限地等下去，这种连接被称为dead connection。</p>
 <p>为了避免dead connections，socket必须要有超时配置。socket timeout可以通过JDBC设置，socket timeout能够避免应用在发生网络错误时产生无休止等待的情况，缩短服务失效的时间。</p>

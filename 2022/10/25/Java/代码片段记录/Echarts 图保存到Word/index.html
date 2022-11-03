@@ -27,16 +27,16 @@
 <meta property="og:site_name" content="Alisa&#39;s Home">
 <meta property="og:description" content="Echarts图保存到Word">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="d:%5C0_Notes%5CHexo%5Chmxyl%5Csource%5Cnote%5Cimages%5Cclip_image002.jpg">
-<meta property="og:image" content="d:%5C0_Notes%5CHexo%5Chmxyl%5Csource%5Cnote%5Cimages%5Cimage-20211213174321240.png">
-<meta property="og:image" content="d:%5C0_Notes%5CHexo%5Chmxyl%5Csource%5Cnote%5Cimages%5Cimage-20211213174404109.png">
-<meta property="og:image" content="d:%5C0_Notes%5CHexo%5Chmxyl%5Csource%5Cnote%5Cimages%5Cimage-20211213174517008.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002.jpg">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211213174321240.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211213174404109.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211213174517008.png">
 <meta property="article:published_time" content="2022-10-25T11:52:44.000Z">
-<meta property="article:modified_time" content="2022-11-02T06:58:22.674Z">
+<meta property="article:modified_time" content="2022-11-03T01:37:58.827Z">
 <meta property="article:author" content="Alisa">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="d:%5C0_Notes%5CHexo%5Chmxyl%5Csource%5Cnote%5Cimages%5Cclip_image002.jpg">
+<meta name="twitter:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002.jpg">
 
 <link rel="canonical" href="https://hmxyl.github.io/2022/10/25/Java/%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E8%AE%B0%E5%BD%95/Echarts%20%E5%9B%BE%E4%BF%9D%E5%AD%98%E5%88%B0Word/">
 
@@ -229,7 +229,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-11-02 14:58:22" itemprop="dateModified" datetime="2022-11-02T14:58:22+08:00">2022-11-02</time>
+                <time title="修改时间：2022-11-03 09:37:58" itemprop="dateModified" datetime="2022-11-03T09:37:58+08:00">2022-11-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -260,7 +260,7 @@
         <ol>
 <li>
 <p>项目工程截图如下： 需要echarts包和生成word的freemarker-2.3.8.jar包</p>
-<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource%5Cnote%5Cimages%5Cclip_image002.jpg" alt="img"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002.jpg" alt="img"></p>
 </li>
 <li>
 <p>index.jsp页面中的代码：</p>
@@ -283,17 +283,17 @@
 <ul>
 <li>
 <p>新建word文档，内容如下图</p>
-<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource%5Cnote%5Cimages%5Cimage-20211213174321240.png" alt="image-20211213174321240"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211213174321240.png" alt="image-20211213174321240"></p>
 </li>
 <li>
 <p>把word文档另存为Word 2003 XML 文档，打开内容，如下图</p>
-<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource%5Cnote%5Cimages%5Cimage-20211213174404109.png" alt="image-20211213174404109"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211213174404109.png" alt="image-20211213174404109"></p>
 <p>在<code>&lt;w:tr&gt;</code>之前<code>&lt;#list list as list&gt;</code>,在<code>&lt;/w:tr&gt;</code>之后加<code>&lt;/#list&gt;</code>，如果不循环，不需要加。</p>
 <p>接在把图片生产的一大串字符改成<code>$&#123;image&#125;</code>,试情况改此文件的编码。</p>
 </li>
 <li>
 <p>把修改好的xml后缀改为ftl。模版做好，放在指定位置即可。跑完程序后，生产如下word</p>
-<p><img src="D:%5C0_Notes%5CHexo%5Chmxyl%5Csource%5Cnote%5Cimages%5Cimage-20211213174517008.png" alt="image-20211213174517008"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211213174517008.png" alt="image-20211213174517008"></p>
 </li>
 </ul>
 </li>
