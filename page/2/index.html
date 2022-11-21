@@ -133,7 +133,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">53</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">56</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -186,6 +186,228 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/10/25/Java/JVM%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98%E5%B7%A5%E5%85%B7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Alisa">
+      <meta itemprop="description" content="学习笔记、工作心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alisa's Home">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/10/25/Java/JVM%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98%E5%B7%A5%E5%85%B7/" class="post-title-link" itemprop="url">JVM性能调优工具</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-10-25 19:52:44" itemprop="dateCreated datePublished" datetime="2022-10-25T19:52:44+08:00">2022-10-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-11-03 10:50:27" itemprop="dateModified" datetime="2022-11-03T10:50:27+08:00">2022-11-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">JVM性能调优工具</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1>工具-jcmd</h1>
+<h2 id="jcmd-l">jcmd -l</h2>
+<p>列出当前运行的所有虚拟机</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-l</td>
+<td>参数-l表示列出所有java虚拟机</td>
+</tr>
+</tbody>
+</table>
+<h2 id="jcmd-pid-help">jcmd [pid] help</h2>
+<p>针对每一个虚拟机，可以使用help命令列出该虚拟机支持的所有命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\Administrator&gt; jcmd 13204 <span class="built_in">help</span></span><br><span class="line">13204:</span><br><span class="line">The following commands are available:</span><br><span class="line">JFR.stop</span><br><span class="line">JFR.start</span><br><span class="line">JFR.dump</span><br><span class="line">JFR.check</span><br><span class="line">VM.native_memory</span><br><span class="line">VM.check_commercial_features</span><br><span class="line">VM.unlock_commercial_features</span><br><span class="line">ManagementAgent.stop</span><br><span class="line">ManagementAgent.start_local</span><br><span class="line">ManagementAgent.start</span><br><span class="line">GC.rotate_log</span><br><span class="line">Thread.<span class="built_in">print</span></span><br><span class="line">GC.class_stats</span><br><span class="line">GC.class_histogram</span><br><span class="line">GC.heap_dump</span><br><span class="line">GC.run_finalization</span><br><span class="line">GC.run</span><br><span class="line">VM.<span class="built_in">uptime</span></span><br><span class="line">VM.flags</span><br><span class="line">VM.system_properties</span><br><span class="line">VM.command_line</span><br><span class="line">VM.version</span><br><span class="line"><span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+<p>其中具体举例</p>
+<h2 id="jcmd-pid-VM-uptime">jcmd  [pid]  VM.uptime</h2>
+<p>查看虚拟机启动时间</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\Administrator&gt; jcmd 13204 VM.<span class="built_in">uptime</span></span><br><span class="line">13204:</span><br><span class="line">142.109 s</span><br></pre></td></tr></table></figure>
+<h2 id="jcmd-pid-Thread-print">jcmd [pid] Thread.print</h2>
+<p>打印线程栈信息（该命令同 <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/025cb069cb69">jstack</a> 命令）</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211202105919556-1667231157378-120.png" alt="image-20211202105919556"></p>
+<h2 id="jstack-pid">jstack [pid]</h2>
+<p>如何用Jstack把java进程中的堆栈信息输出到文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-l long listings，会打印出额(防盗连接：本文首发自http://www.cnblogs.com/jilodream/ )外的锁信息，在发生死锁时可以用jstack -l pid来观察锁持有情况</span><br><span class="line"></span><br><span class="line">-m mixed mode，不仅会输出Java堆栈信息，还会输出C/C++堆栈信息（比如Native方法）</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>jps 查看进程ID</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\Administrator&gt;jps</span><br><span class="line">10904 Jps</span><br><span class="line">3512</span><br><span class="line">11228 Launcher</span><br><span class="line">12220 Bank</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>jstack 打印堆栈信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\Administrator&gt;jstack -l 12220</span><br><span class="line">2021-12-26 22:09:55</span><br><span class="line">Full thread dump Java HotSpot(TM) 64-Bit Server VM (25.131-b11 mixed mode):</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;DestroyJavaVM&quot;</span> <span class="comment">#16 prio=5 os_prio=0 tid=0x00000000029e2800 nid=0xf8 waiting on condition [0x0000000000000000]</span></span><br><span class="line">   java.lang.Thread.State: RUNNABLE</span><br><span class="line"></span><br><span class="line">   Locked ownable synchronizers:</span><br><span class="line">        - None</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;四号&quot;</span> <span class="comment">#15 prio=5 os_prio=0 tid=0x000000001e5c8000 nid=0x3524 waiting for monitor entry [0x000000001f63f000]</span></span><br><span class="line">   java.lang.Thread.State: BLOCKED (on object monitor)</span><br><span class="line">        at com.hots.chapter7.TickWindowRunnable.run(Bank.java:27)</span><br><span class="line">        - waiting to lock &lt;0x000000076b62bf28&gt; (a java.lang.Object)</span><br><span class="line">        at java.lang.Thread.run(Thread.java:748)</span><br><span class="line"></span><br><span class="line">   Locked ownable synchronizers:</span><br><span class="line">        - None</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;三号&quot;</span> <span class="comment">#14 prio=5 os_prio=0 tid=0x000000001e5c7800 nid=0x18b4 waiting for monitor entry [0x000000001f53f000]</span></span><br><span class="line">   java.lang.Thread.State: BLOCKED (on object monitor)</span><br><span class="line">        at com.hots.chapter7.TickWindowRunnable.run(Bank.java:27)</span><br><span class="line">        - waiting to lock &lt;0x000000076b62bf28&gt; (a java.lang.Object)</span><br><span class="line">        at java.lang.Thread.run(Thread.java:748)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>jstack 打印堆栈信息到文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\Administrator&gt;jstack -l 12220 &gt;&gt; test.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印结果保存到目录：C:\Users\Administrator下</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="jcmd-pid-GC-class-histogram">jcmd [pid]  GC.class_histogram</h2>
+<p>查看系统中，类统计信息 。这里和jmap -histo pid的效果是一样的 。这个可以查看每个类的实例数量和占用空间大小。</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211202110015127-1667231157378-121.png" alt="image-20211202110015127"></p>
+<h2 id="jcmd-pid-GC-heap-dump-filepath-name">jcmd [pid] GC.heap_dump [filepath&amp;name]</h2>
+<p>跟 jmap命令：jmap -dump:format=b,file=heapdump.phrof pid 效果一样。</p>
+<p>导出的 dump 文件，可以使用MAT 或者 Visual VM 等工具进行分析。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\Administrator&gt; jcmd 13204 GC.heap_dump D:\test.hprof</span><br><span class="line">13204:</span><br><span class="line">Heap dump file created</span><br></pre></td></tr></table></figure>
+<h2 id="jcmd-pid-VM-system-properties">jcmd [pid] VM.system_properties</h2>
+<p>查看 JVM 的属性信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\Administrator&gt; jcmd 13204 VM.system_properties</span><br><span class="line">13204:</span><br><span class="line"><span class="comment">#Thu Dec 02 11:03:17 CST 2021</span></span><br><span class="line">java.vendor=Oracle Corporation</span><br><span class="line">preload.project.path=D\:/Workspace/GIT/XXX</span><br><span class="line">sun.java.launcher=SUN_STANDARD</span><br><span class="line">sun.management.compiler=HotSpot 64-Bit Tiered Compilers</span><br><span class="line">sun.nio.ch.bugLevel=</span><br><span class="line">idea.config.path=C\:/Users/Administrator/AppData/Roaming/JetBrains/IntelliJIdea2021.3</span><br><span class="line">idea.paths.selector=IntelliJIdea2021.3</span><br><span class="line">kotlin.daemon.client.alive.path=<span class="string">&quot;C\:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\kotlin-idea-6412110316068151676-is-running&quot;</span></span><br><span class="line">os.name=Windows 10</span><br><span class="line">sun.boot.class.path=D\:\\Developer\\java\\jdk1.8.0_131\\jre\\lib\\resources.jar;D\:\\Developer\\java\\jdk1.8.0_131\\jre\\lib\\rt.jar;D\:\\Developer\\java\\jdk1.8.0_131\\jre\\lib\\sunrsasign.jar;D\:\\Developer\\java\\jdk1.8.0_131\\jre\\lib\\jsse.jar;D\:\\Developer\\java\\jdk1.8.0_131\\jre\\lib\\jce.jar;D\:\\Developer\\java\\jdk1.8.0_131\\jre\\lib\\charsets.jar;D\:\\Developer\\java\\jdk1.8.0_131\\jre\\lib\\jfr.jar;D\:\\Developer\\java\\jdk1.8.0_131\\jre\\classes</span><br><span class="line">sun.desktop=windows</span><br><span class="line">idea.plugins.path=C\:/Users/Administrator/AppData/Roaming/JetBrains/IntelliJIdea2021.3/plugins</span><br><span class="line">java.vm.specification.vendor=Oracle Corporation</span><br><span class="line">java.runtime.version=1.8.0_131-b11</span><br><span class="line">io.netty.serviceThreadPrefix=Netty</span><br><span class="line">user.name=Administrator</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h2 id="jcmd-pid-VM-flags">jcmd [pid] VM.flags</h2>
+<p>查看 JVM 的启动参数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\Administrator&gt; jcmd 13204 VM.flags</span><br><span class="line">13204:</span><br><span class="line">-XX:CICompilerCount=4 -XX:InitialHeapSize=268435456 -XX:MaxHeapSize=1073741824 -XX:MaxNewSize=357564416 -XX:MinHeapDeltaBytes=524288 -XX:NewSize=89128960 -XX:OldSize=179306496 -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseFastUnorderedTimeStamps -XX:-UseLargePagesIndividualAllocation -XX:+UseParallelGC</span><br><span class="line">PS C:\Users\Administrator&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="jcmd-pid-PerfCounter-print">jcmd [pid] PerfCounter.print</h2>
+<p>查看 JVM 性能相关的参数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\Administrator&gt; jcmd 13204 PerfCounter.<span class="built_in">print</span></span><br><span class="line">13204:</span><br><span class="line">java.ci.totalTime=26357322</span><br><span class="line">java.cls.loadedClasses=3480</span><br><span class="line">java.cls.sharedLoadedClasses=0</span><br><span class="line">java.cls.sharedUnloadedClasses=0</span><br><span class="line">java.cls.unloadedClasses=15</span><br><span class="line">java.property.java.class.path=<span class="string">&quot;D:/Developer/JetBrains/IntelliJ IDEA 2021.1.1/plugins/java/lib/jps-launcher.jar;D:/Developer/java/jdk1.8.0_131/lib/tools.jar&quot;</span></span><br><span class="line">java.property.java.endorsed.dirs=<span class="string">&quot;&quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line">java.property.java.ext.dirs=<span class="string">&quot;D:\Developer\java\jdk1.8.0_131\jre\lib\ext;C:\Windows\Sun\Java\lib\ext&quot;</span></span><br><span class="line">java.property.java.home=<span class="string">&quot;D:\Developer\java\jdk1.8.0_131\jre&quot;</span></span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<h2 id="jcmd-pid-GC-run">jcmd [pid] GC.run</h2>
+<p>对 JVM 执行 java.lang.System.gc()</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\Administrator&gt; jcmd 13204 GC.run</span><br><span class="line">13204:</span><br><span class="line">Command executed successfully</span><br></pre></td></tr></table></figure>
+<h2 id="jcmd-pid-GC-run-finalization">jcmd [pid] GC.run_finalization</h2>
+<p>对 JVM 执行 java.lang.System.runFinalization()</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\Administrator&gt; jcmd 13204 GC.run_finalization</span><br><span class="line">13204:</span><br><span class="line">Command executed successfully</span><br></pre></td></tr></table></figure>
+<p>补充：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">system.gc()和system.runFinalization()区别作用：</span><br><span class="line">  </span><br><span class="line">System.gc(); <span class="comment">//告诉垃圾收集器打算进行垃圾收集，而垃圾收集器进不进行收集是不确定的 </span></span><br><span class="line">System.runFinalization();  <span class="comment">//强制调用已经失去引用的对象的finalize方法 </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// java中的finalize()方法</span></span><br><span class="line"><span class="comment">// 当垃圾收集器认为没有指向对象实例的引用时，会在销毁该对象之前调用finalize() 方法。</span></span><br><span class="line"><span class="comment">// 该方法最常见的作用是确保释放实例占用的全部资源。java并不保证定时为对象实例调用该方法，甚至不保证方法会被调用，所以该方法不应该用于正常内存处理。</span></span><br></pre></td></tr></table></figure>
+<h4 id="jcmd-pid-VM-command-line">jcmd [pid] VM.command_line</h4>
+<p>查看 JVM 的启动命令行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\Administrator&gt; jcmd 13204 VM.command_line</span><br><span class="line">13204:</span><br><span class="line">VM Arguments:</span><br><span class="line">jvm_args: -Xmx1024m -Djava.awt.headless=<span class="literal">true</span>  。。。 -Dtmh.generate.line.numbers=<span class="literal">true</span></span><br><span class="line">java_command: org.jetbrains.jps.cmdline.Launcher D:/Developer/JetBrains/IntelliJ IDEA 2021.1.1/plugins/java/lib/jps-builders.jar;D:/Developer/JetBrains/IntelliJ IDEA 2021.1.1/plugins/java/lib/jps-builders-6.jar;D:/Developer/JetBrains/IntelliJ IDEA 2021.1.1/plugins/java/lib/jps-javac-extension-1.jar;D:/Developer/JetBrains/IntelliJ IDEA 2021.1.1/lib/util.jar;。。。D:/Developer/java/jdk1.8.0_131/lib/tools.jar</span><br><span class="line">Launcher Type: SUN_STANDARD</span><br></pre></td></tr></table></figure>
+<h1>工具- jps</h1>
+<ol>
+<li>概述</li>
+</ol>
+<p>​	jps 命令类似与 linux 的 ps 命令，但是它只列出系统中所有的 Java 应用程序。 通过 jps 命令可以方便地查看 Java 进程的启动类、传入参数和 Java 虚拟机参数等信息。</p>
+<p>​	如果在 linux 中想查看 java 的进程，一般我们都需要 ps -ef | grep java 来获取进程 ID。 如果只想获取 Java 程序的进程，可以直接使用 jps 命令来直接查看。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\Administrator&gt; jps</span><br><span class="line">16208</span><br><span class="line">5712 Jps</span><br><span class="line">13204 Launcher</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>
+<p>用法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\Administrator&gt; jps -help</span><br><span class="line">usage: jps [-help]</span><br><span class="line">       jps [-q] [-mlvV] [&lt;hostid&gt;]</span><br><span class="line"></span><br><span class="line">Definitions:</span><br><span class="line">    &lt;hostid&gt;:      &lt;hostname&gt;[:&lt;port&gt;]</span><br></pre></td></tr></table></figure>
+<p>参数说明</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-q</td>
+<td>只输出进程 ID</td>
+</tr>
+<tr>
+<td>-m</td>
+<td>输出传入 main 方法的参数</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>输出完全的包名，应用主类名，jar的完全路径名</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>输出jvm参数</td>
+</tr>
+<tr>
+<td>-V</td>
+<td>输出通过flag文件传递到JVM中的参数</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>示例</p>
+<ul>
+<li>
+<p>jps</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">无参数：显示进程的ID 和 启动类的名称。</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>jps -q</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">参数 -q 只输出进程ID，而不显示出类的名称</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\Administrator&gt; jps -q</span><br><span class="line">16208</span><br><span class="line">13204</span><br><span class="line">6132</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>jps -m</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可以输出传递给 Java 进程（main 方法）的参数。</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\Administrator&gt; jps -m</span><br><span class="line">16208</span><br><span class="line">10244 Jps -m</span><br><span class="line">13204 Launcher D:/Developer/JetBrains/IntelliJ IDEA 2021.1.1/plugins/java/lib/jps-builders.jar;D:/Developer/JetBrains/IntelliJ IDEA 2021.1.1/plugins/java/lib/jps-builders-6.jar;D:/Developer/JetBrains/IntelliJ IDEA 2021.1.1/plugins/java/lib/jps-javac-extension-1.jar;D:/Developer/JetBrains/IntelliJ IDEA 2021.1.1/lib/util.jar;D:/Developer/JetBrains/IntelliJ IDEA 2021.1.1/lib/annotations.jar;D:/Developer/JetBrains/IntelliJ IDEA 2021.1.1/lib/3rd-party-rt.jar;D:/Developer/JetBrains/IntelliJ IDEA 2021.1.1/lib/jna.jar;D:/Developer/JetBrains/IntelliJ IDEA 2021.1.1/lib/kotlin-stdlib-jdk8.jar;D:/Developer/JetBrains/IntelliJ IDEA 2021.1.1/lib/protobuf.jar;D:/Developer/JetBrains/IntelliJ IDEA 2021.1.1/lib/platform-api.jar;D:/Developer/JetBrains/IntelliJ IDEA 2021.1.1/lib/jps-model.jar;D:/Developer/JetBrains/IntelliJ IDEA 2021.1.1/plugins/java/lib/javac2.jar;D:/Developer/JetBrains/IntelliJ IDEA 2021.1.1/lib/forms_rt.jar;D:/Developer/JetBrains/IntelliJ IDEA 2021.1.1/plugins/java/lib/qdox.jar;D:/Developer</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>jps -l</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可以输出主函数的完整路径（类的全路径）。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\Administrator&gt; jps -l</span><br><span class="line">16208</span><br><span class="line">13204 org.jetbrains.jps.cmdline.Launcher</span><br><span class="line">5080 sun.tools.jps.Jps</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>jsp -v</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可以显示传递给 Java 虚拟机的参数。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\Administrator&gt; jps -v</span><br><span class="line">16208  exit -Xms128m -Xmx750m -XX:ReservedCodeCacheSize=512m -XX:+IgnoreUnrecognizedVMOptions -XX:+UseG1GC -XX:SoftRefLRUPolicyMSPerMB=50 -XX:CICompilerCount=2 -XX:+HeapDumpOnOutOfMemoryError -XX:-OmitStackTraceInFastThrow -ea -Dsun.io.useCanonCaches=false -Djdk.http.auth.tunneling.disabledSchemes=&quot;&quot; -Djdk.attach.allowAttachSelf=true -Djdk.module.illegalAccess.silent=true -Dkotlinx.coroutines.debug=off -Xms3058m -Xmx5500m -XX:ReservedCodeCacheSize=2048m -XX:SoftRefLRUPolicyMSPerMB=100 -Djb.vmOptionsFile=C:\Users\Administrator\AppData\Roaming\JetBrains\IntelliJIdea2021.3\idea64.exe.vmoptions -Djava.system.class.loader=com.intellij.util.lang.PathClassLoader -Didea.vendor.name=JetBrains -Didea.paths.selector=IntelliJIdea2021.3 -Didea.jre.check=true -Dsplash=true -Dide.native.launcher=true -XX:ErrorFile=C:\Users\Administrator\java_error_in_idea64_%p.log -XX:HeapDumpPath=C:\Users\Administrator\java_error_in_idea64.hprof</span><br><span class="line">6708 RemoteMavenServer36 -Djava.awt.headless=true -Dmaven.defaultProjectBuilder.disableGlobalModelCache=true -Didea.version=2021.3 -Didea.maven.embedder.version=3.8.1 -Xmx1024m -Dmaven.ext.class.path=D:\Developer\JetBrains\IntelliJ IDEA 2021.1.1\plugins\maven\lib\maven-event-listener.jar -Dfile.encoding=GBK</span><br><span class="line">16968 Jps -Dapplication.home=D:\Developer\java\jdk1.8.0_131 -Xms8m</span><br><span class="line">16716 Launcher -Xmx1024m -Djava.awt.headless=true -Djava.endorsed.dirs=&quot;&quot; -Dpreload.project.path=D:/Workspace/OWN/Learn -Dpreload.config.path=C:/Users/Administrator/AppData/Roaming/JetBrains/IntelliJIdea2021.3/options -Dexternal.project.config=C:\Users\Administrator\AppData\Local\JetBrains\IntelliJIdea2021.3\external_build_system\learn.11acc208 -Dcompile.parallel=true -Drebuild.on.dependency.change=true -Djdt.compiler.useSingleThread=true -Daether.connector.resumeDownloads=false -Dio.netty.initialSeedUniquifier=1264189494698199162 -Dfile.encoding=GBK -Duser.language=zh -Duser.country=CN -Didea.paths.selector=IntelliJIdea2021.3 -Didea.home.path=D:/Developer/JetBrains/IntelliJ IDEA 2021.1.1 -Didea.config.path=C:/Users/Administrator/AppData/Roaming/JetBrains/IntelliJIdea2021.3 -Didea.plugins.path=C:/Users/Administrator/AppData/Roaming/JetBrains/IntelliJIdea2021.3/plugins -Djps.log.dir=C:/Users/Administrator/AppData/Local/JetBrains/IntelliJIdea2021.3/log/build-log -Djps.fallback.jdk.home=D:/Developer/JetBrains/IntelliJ IDEA 202</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -6343,86 +6565,6 @@ B让服务端采用了比较简单的办法使用<code>httponly</code>禁止JS�
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/10/25/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%9F%BA%E7%A1%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Alisa">
-      <meta itemprop="description" content="学习笔记、工作心得">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Alisa's Home">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/10/25/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">Redis基础</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-10-25 19:52:44" itemprop="dateCreated datePublished" datetime="2022-10-25T19:52:44+08:00">2022-10-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-11-03 09:36:54" itemprop="dateModified" datetime="2022-11-03T09:36:54+08:00">2022-11-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/" itemprop="url" rel="index"><span itemprop="name">Redis</span></a>
-                </span>
-            </span>
-
-          
-            <div class="post-description">Redis基础</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="知识体系">知识体系</h2>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/db-redis-overview.png" alt="REDIS知识体系"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/10/25/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E5%AE%89%E8%A3%85&%E7%89%88%E6%9C%AC%E5%B7%AE%E5%BC%82/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -7686,7 +7828,7 @@ B让服务端采用了比较简单的办法使用<code>httponly</code>禁止JS�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">56</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
