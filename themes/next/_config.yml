@@ -242,7 +242,7 @@ chat:
 
 # Automatically excerpt description in homepage as preamble text. 
 # 主页显示预览文本
-excerpt_description: false 
+excerpt_description: true 
 
 # Read more button
 # If true, the read more button will be displayed in excerpt section.  
