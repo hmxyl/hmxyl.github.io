@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"hmxyl.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="数据类型：String、List、Set、Hash、ZSet、Stream">
+  <meta name="description" content="基础类型 String    命令 使用 功能 说明     SET SET key value SET key value ex seconds 增 储值储值且key在指定秒后过期   MSET MSET key value [key value …] 增 同时储多个值   SETEX SETEX key seconds value 增 储值，且key在指定秒后过期   PSETEX PSETE">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis-数据类型">
 <meta property="og:url" content="https://hmxyl.github.io/2022/11/03/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%9F%BA%E7%A1%80/Redis-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/index.html">
 <meta property="og:site_name" content="Alisa&#39;s Home">
-<meta property="og:description" content="数据类型：String、List、Set、Hash、ZSet、Stream">
+<meta property="og:description" content="基础类型 String    命令 使用 功能 说明     SET SET key value SET key value ex seconds 增 储值储值且key在指定秒后过期   MSET MSET key value [key value …] 增 同时储多个值   SETEX SETEX key seconds value 增 储值，且key在指定秒后过期   PSETEX PSETE">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-11-03T12:22:19.000Z">
-<meta property="article:modified_time" content="2022-12-12T09:17:48.251Z">
+<meta property="article:modified_time" content="2022-12-12T11:31:40.128Z">
 <meta property="article:author" content="Alisa">
 <meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary">
@@ -136,7 +136,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">57</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">55</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -224,7 +224,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-12-12 17:17:48" itemprop="dateModified" datetime="2022-12-12T17:17:48+08:00">2022-12-12</time>
+                <time title="修改时间：2022-12-12 19:31:40" itemprop="dateModified" datetime="2022-12-12T19:31:40+08:00">2022-12-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -241,7 +241,6 @@
             </span>
 
           
-            <div class="post-description">数据类型：String、List、Set、Hash、ZSet、Stream</div>
 
         </div>
       </header>
@@ -266,43 +265,43 @@
 <tbody>
 <tr>
 <td style="text-align:left">SET</td>
-<td style="text-align:left">SET key value <br />SET key value ex seconds</td>
+<td style="text-align:left">SET <em>key</em> value <br />SET <em>key</em> value ex seconds</td>
 <td style="text-align:left">增</td>
 <td>储值<br />储值且key在指定秒后过期</td>
 </tr>
 <tr>
 <td style="text-align:left">MSET</td>
-<td style="text-align:left">MSET key value [key value …]</td>
+<td style="text-align:left">MSET <em>key</em> value [key value …]</td>
 <td style="text-align:left">增</td>
 <td>同时储多个值</td>
 </tr>
 <tr>
 <td style="text-align:left">SETEX</td>
-<td style="text-align:left">SETEX key seconds value</td>
+<td style="text-align:left">SETEX <em>key</em> seconds value</td>
 <td style="text-align:left">增</td>
 <td>储值，且key在指定秒后过期</td>
 </tr>
 <tr>
 <td style="text-align:left">PSETEX</td>
-<td style="text-align:left">PSETEX key milliseconds value</td>
+<td style="text-align:left">PSETEX <em>key</em> milliseconds value</td>
 <td style="text-align:left">增</td>
 <td>储值，且key在指定毫秒后过期</td>
 </tr>
 <tr>
 <td style="text-align:left">SETNX</td>
-<td style="text-align:left">SETNX key value</td>
+<td style="text-align:left">SETNX <em>key</em> value</td>
 <td style="text-align:left">增</td>
 <td>仅在key不存在时执行</td>
 </tr>
 <tr>
 <td style="text-align:left">MSETNX</td>
-<td style="text-align:left">MSETNX key value [key value …]</td>
+<td style="text-align:left">MSETNX <em>key</em> value [key value …]</td>
 <td style="text-align:left">增</td>
 <td>在所有的key不存在时执行</td>
 </tr>
 <tr>
 <td style="text-align:left">SETRANGE</td>
-<td style="text-align:left">SETRANGE key offset value</td>
+<td style="text-align:left">SETRANGE <em>key</em> offset value</td>
 <td style="text-align:left">改</td>
 <td>字符串从offset开始由value替代</td>
 </tr>
@@ -320,31 +319,31 @@
 </tr>
 <tr>
 <td style="text-align:left">INCRBY</td>
-<td style="text-align:left">INCRBY key increment</td>
+<td style="text-align:left">INCRBY <em>key</em> increment</td>
 <td style="text-align:left">改</td>
 <td>key增加指定整形量</td>
 </tr>
 <tr>
 <td style="text-align:left">DECRBY</td>
-<td style="text-align:left">DECRBY key decrement</td>
+<td style="text-align:left">DECRBY <em>key</em> decrement</td>
 <td style="text-align:left">改</td>
 <td>key减少指定整形量</td>
 </tr>
 <tr>
 <td style="text-align:left">INCRBYFLOAT</td>
-<td style="text-align:left">INCRBYFLOAT key increment</td>
+<td style="text-align:left">INCRBYFLOAT <em>key</em> increment</td>
 <td style="text-align:left">改</td>
 <td>key增加指定浮点量，浮点数为负数则为减少</td>
 </tr>
 <tr>
 <td style="text-align:left">APPEND</td>
-<td style="text-align:left">APPEND key value</td>
+<td style="text-align:left">APPEND <em>key</em> value</td>
 <td style="text-align:left">改</td>
 <td>追加储值</td>
 </tr>
 <tr>
 <td style="text-align:left">GET</td>
-<td style="text-align:left">GET KEY</td>
+<td style="text-align:left">GET <em>key</em></td>
 <td style="text-align:left">查</td>
 <td>获取key的value</td>
 </tr>
@@ -356,25 +355,25 @@
 </tr>
 <tr>
 <td style="text-align:left">GETDEL</td>
-<td style="text-align:left">GETDEL key</td>
+<td style="text-align:left">GETDEL <em>key</em></td>
 <td style="text-align:left">查&amp;删</td>
 <td>获取key的value后删除key</td>
 </tr>
 <tr>
 <td style="text-align:left">GETSET</td>
-<td style="text-align:left">GETSET key value</td>
+<td style="text-align:left">GETSET <em>key</em> value</td>
 <td style="text-align:left">查&amp;改</td>
 <td>set新的value，并返回旧的value</td>
 </tr>
 <tr>
 <td style="text-align:left">GETRANGE</td>
-<td style="text-align:left">GETRANGE key start end</td>
+<td style="text-align:left">GETRANGE <em>key</em> start end</td>
 <td style="text-align:left">查</td>
 <td>获取value的子字符串 （从start到end）</td>
 </tr>
 <tr>
 <td style="text-align:left">SUBSTR</td>
-<td style="text-align:left">SUBSTR key start end</td>
+<td style="text-align:left">SUBSTR <em>key</em> start end</td>
 <td style="text-align:left">查</td>
 <td>获取value的子字符串 （从start到end）</td>
 </tr>
@@ -453,7 +452,8 @@
 </li>
 </ol>
 <h2 id="List">List</h2>
-<p>Redis 列表是字符串值的链表。 Redis 列表经常用于：</p>
+<p>Redis 列表是字符串值的链表。</p>
+<p>Redis 列表经常用于：</p>
 <ul>
 <li>实现堆栈和队列。</li>
 <li>为后台工作系统构建队列管理。</li>
@@ -478,7 +478,7 @@
 <tbody>
 <tr>
 <td style="text-align:left">LPUSH</td>
-<td style="text-align:left">LPUSH key value [value …]</td>
+<td style="text-align:left">LPUSH <em>key</em> value [value …]</td>
 <td style="text-align:left">增</td>
 <td></td>
 </tr>
@@ -490,13 +490,13 @@
 </tr>
 <tr>
 <td style="text-align:left">LPUSHX</td>
-<td style="text-align:left">LPUSHX key value [value …]</td>
+<td style="text-align:left">LPUSHX <em>key</em> value [value …]</td>
 <td style="text-align:left">增</td>
 <td>当 key 不存在时不会进行任何操作</td>
 </tr>
 <tr>
 <td style="text-align:left">LSET</td>
-<td style="text-align:left">LSET key index value</td>
+<td style="text-align:left">LSET <em>key</em> index value</td>
 <td style="text-align:left">改</td>
 <td>修改指定位置元素</td>
 </tr>
@@ -508,73 +508,73 @@
 </tr>
 <tr>
 <td style="text-align:left">LREM</td>
-<td style="text-align:left">LREM key count value</td>
+<td style="text-align:left">LREM <em>key</em> count value</td>
 <td style="text-align:left">删</td>
 <td>删除count个value。count 为负数，从列尾开始计算</td>
 </tr>
 <tr>
 <td style="text-align:left">LTRIM</td>
-<td style="text-align:left">LTRIM key start stop</td>
+<td style="text-align:left">LTRIM <em>key</em> start stop</td>
 <td style="text-align:left">删</td>
 <td>截断列表元素，-1 是列表的最后一个元素</td>
 </tr>
 <tr>
 <td style="text-align:left">LRANGE</td>
-<td style="text-align:left">LRANGE key start stop</td>
+<td style="text-align:left">LRANGE <em>key</em> start stop</td>
 <td style="text-align:left">查</td>
 <td>获取列表指定范围数据：偏移量为负数，表示从列表末尾开始的偏移量。 <br />正整数（正数排名），负整数（倒数排名）<br />例如，-1 是列表的最后一个元素，-2 是倒数第二个元素，依此类推。</td>
 </tr>
 <tr>
 <td style="text-align:left">LLEN</td>
-<td style="text-align:left">LLEN key</td>
+<td style="text-align:left">LLEN <em>key</em></td>
 <td style="text-align:left">查</td>
 <td>获取列表元素个数</td>
 </tr>
 <tr>
 <td style="text-align:left">LINDEX</td>
-<td style="text-align:left">LINDEX key index</td>
+<td style="text-align:left">LINDEX <em>key</em> index</td>
 <td style="text-align:left">查</td>
 <td>获取列表第index个元素，-1 是列表的最后一个元素</td>
 </tr>
 <tr>
 <td style="text-align:left">LPOS</td>
-<td style="text-align:left">LPOS key element [RANK rank] [COUNT num-matches] [MAXLEN len]</td>
+<td style="text-align:left">LPOS <em>key</em> element [RANK rank] [COUNT num-matches] [MAXLEN len]</td>
 <td style="text-align:left">查</td>
 <td>查找列表元素（发布版本：6.0.6） <br />[RANK rank] ： 指定要返回的第一个元素的“排名”，正整数（正数排名），负整数（倒数排名）。<br />[COUNT num-matches]：总共返回 num-matches个目标元素<br />[MAXLEN len]：最大筛查次数</td>
 </tr>
 <tr>
 <td style="text-align:left">BLPOP</td>
-<td style="text-align:left">BLPOP key [key …] timeout</td>
+<td style="text-align:left">BLPOP <em>key [key …]</em> timeout</td>
 <td style="text-align:left">删</td>
 <td>它是 LPOP 的阻塞版本。<br /> 当没有任何元素可以从任何给定列表中弹出时，它会阻塞连接，直到超时后返回 null</td>
 </tr>
 <tr>
 <td style="text-align:left">RPUSH</td>
-<td style="text-align:left">RPUSH key value [value …]</td>
+<td style="text-align:left">RPUSH <em>key</em> value [value …]</td>
 <td style="text-align:left">增</td>
 <td></td>
 </tr>
 <tr>
 <td style="text-align:left">RPUSHX</td>
-<td style="text-align:left">RPUSHX key value [value …]</td>
+<td style="text-align:left">RPUSHX <em>key</em> value [value …]</td>
 <td style="text-align:left">增</td>
 <td>当 key 不存在时不会进行任何操作</td>
 </tr>
 <tr>
 <td style="text-align:left">RPOP</td>
-<td style="text-align:left">RPOP key</td>
+<td style="text-align:left">RPOP <em>key</em></td>
 <td style="text-align:left">删</td>
 <td></td>
 </tr>
 <tr>
 <td style="text-align:left">RPOPLPUSH</td>
-<td style="text-align:left">RPOPLPUSH source destination</td>
+<td style="text-align:left">RPOPLPUSH <em>source</em> <em>destination</em></td>
 <td style="text-align:left">删</td>
 <td>删除列表中的最后一个元素，将其添加到另一个列表并返回</td>
 </tr>
 <tr>
 <td style="text-align:left">BRPOP</td>
-<td style="text-align:left">BRPOP key [key …] timeout</td>
+<td style="text-align:left">BRPOP <em>key [key …]</em> timeout</td>
 <td style="text-align:left">删</td>
 <td>它是 RPOP 的阻塞版本</td>
 </tr>
@@ -595,25 +595,25 @@
 <tbody>
 <tr>
 <td>LMOVE</td>
-<td><strong>LMOVE</strong> source destination <strong>LEFT |RIGHT   LEFT|RIGHT</strong></td>
+<td><strong>LMOVE</strong> <em>source  destination</em> <strong>LEFT |RIGHT   LEFT|RIGHT</strong></td>
 <td>6.2.0</td>
 <td>从列表中弹出一个元素，将其推送到另一个列表并返</td>
 </tr>
 <tr>
 <td>LMPOP</td>
-<td><strong>LMPOP</strong> numkeys key [key …] &lt;<strong>LEFT |RIGHT</strong>&gt; [<strong>COUNT</strong> count]</td>
+<td><strong>LMPOP</strong> numkeys <em>key [key …]</em> &lt;<strong>LEFT |RIGHT</strong>&gt; [<strong>COUNT</strong> count]</td>
 <td>7.0.0</td>
 <td>从提供的键名列表中的第一个非空列表键中弹出一个或多个元素。</td>
 </tr>
 <tr>
 <td>BLMPOP</td>
-<td><strong>BLMPOP</strong> timeout numkeys key [key …] &lt;<strong>LEFT |RIGHT</strong>&gt; [<strong>COUNT</strong> count]</td>
+<td><strong>BLMPOP</strong> timeout numkeys <em>key [key …]</em> &lt;<strong>LEFT |RIGHT</strong>&gt; [<strong>COUNT</strong> count]</td>
 <td>7.0.0</td>
 <td>它是 LMPOP 的阻塞版本</td>
 </tr>
 <tr>
 <td>BLMOVE</td>
-<td><strong>BLMOVE</strong> source destination &lt;<strong>LEFT |RIGHT</strong>&gt; &lt;<strong>LEFT |RIGHT</strong>&gt; timeout</td>
+<td><strong>BLMOVE</strong>  <em>source  destination</em> &lt;<strong>LEFT |RIGHT</strong>&gt; &lt;<strong>LEFT |RIGHT</strong>&gt; timeout</td>
 <td>6.2.0</td>
 <td>它是 LMOVE 的阻塞版本</td>
 </tr>
@@ -623,21 +623,21 @@
 <p>Redis 哈希是结构为字段值对集合的记录类型。您可以使用散列来表示基本对象并存储计数器分组等。</p>
 <p>| 命令 | 使用 | 功能 | 说明 |<br>
 | :- | : | : | - |<br>
-| HDEL | HDEL key field [field …] | 删 | 删除一个或者多个Hash表的键值对 |<br>
-| HEXISTS | HEXISTS key field | 查 | 查询 key.field 是否存在，存在返回0，不存在返回1 |<br>
-| HGET | HGET key field | 查 | 获取指定键值对 |<br>
-| HMGET | HMGET key field [field …] | 查 | 获取多个字段值 |<br>
-| HGETALL | HGETALL key | 查 | 获取所有键值对数据 |<br>
-| HINCRBY | HINCRBY key field increment | 改 | 将hash 的 field字段的整数值增加给定的数字 |<br>
-| HINCRBYFLOAT | HINCRBYFLOAT key field increment | 改 | 将hash 的 field字段的浮点值增加给定的数量 |<br>
-| HKEYS | HKEYS key | 查 | 获取hash 中的所有key |<br>
-| HLEN | HLEN key | 查 | 键值对个数 |<br>
-| HSET | HSET key field value [field value…] | 增 |  |<br>
-| HMSET | HMSET key field value [field value…] | 增 |  |<br>
-| HSETNX | HSETNX key field value [field value…] | 增 | 如果 key field 都已存在时不会进行任何操作 |<br>
-| HSTRLEN | HSTRLEN key field | 查 | 获取 key.field的value的长度 |<br>
-| HVALS | HVALS key | 查 | 获取hash 中的所有value |<br>
-| HSCAN | HSCAN key cursor [MATCH pattern] [COUNT count] | 查 | 使用方法方法可以参考<a href="#Order_SCAN">SCAN</a> |</p>
+| HDEL | HDEL <em>key</em> field [field …] | 删 | 删除一个或者多个Hash表的键值对 |<br>
+| HEXISTS | HEXISTS <em>key</em> field | 查 | 查询 key.field 是否存在，存在返回0，不存在返回1 |<br>
+| HGET | HGET <em>key</em> field | 查 | 获取指定键值对 |<br>
+| HMGET | HMGET <em>key</em> field [field …] | 查 | 获取多个字段值 |<br>
+| HGETALL | HGETALL <em>key</em> | 查 | 获取所有键值对数据 |<br>
+| HINCRBY | HINCRBY <em>key</em> field increment | 改 | 将hash 的 field字段的整数值增加给定的数字 |<br>
+| HINCRBYFLOAT | HINCRBYFLOAT <em>key</em> field increment | 改 | 将hash 的 field字段的浮点值增加给定的数量 |<br>
+| HKEYS | HKEYS <em>key</em> | 查 | 获取hash 中的所有key |<br>
+| HLEN | HLEN <em>key</em> | 查 | 键值对个数 |<br>
+| HSET | HSET <em>key</em> field value [field value…] | 增 |  |<br>
+| HMSET | HMSET <em>key</em> field value [field value…] | 增 |  |<br>
+| HSETNX | HSETNX <em>key</em> field value [field value…] | 增 | 如果 key field 都已存在时不会进行任何操作 |<br>
+| HSTRLEN | HSTRLEN <em>key</em> field | 查 | 获取 key.field的value的长度 |<br>
+| HVALS | HVALS <em>key</em> | 查 | 获取hash 中的所有value |<br>
+| HSCAN | HSCAN <em>key</em> cursor [MATCH pattern] [COUNT count] | 查 | 使用方法方法可以参考<a href="#Order_SCAN">SCAN</a> |</p>
 <blockquote>
 <p>其他（6.0.6以下版本不支持）</p>
 </blockquote>
@@ -674,21 +674,21 @@
 </ul>
 <p>| 命令 | 使用 | 功能 | 说明 |<br>
 | :- | : | : | - |<br>
-| SADD | SADD key member [member …] | 增 | 向集合中添加一个或多个成员 |<br>
-| SCARD | SCARD key | 查 | 集合中元素个数 |<br>
-| SDIFF | SDIFF key [key …] | 集合：补 | 取多个集合的差分（其他集合中都没有的元素） |<br>
-| SDIFFSTORE | SDIFFSTORE destination key [key …] | 集合：补&amp;存 | 取多个集合的差分, 并将结果集存储在一个集合中 |<br>
-| SINTER | SINTER key [key …] | 集合：交 | 取多个集合的交集并返回 <br />INTER 为 Intersect /ˌɪntəˈsekt/ 的缩写 |<br>
-| SINTERSTORE | SINTERSTORE destination key [key …] | 集合：交&amp;存 | 取多个集合的交集并将结果集存储在一个集合中（destination） |<br>
-| SISMEMBER | SISMEMBER key member | 查 | 检查一个元素是否存在 |<br>
-| SMEMBERS | SMEMBERS key | 查 | 返回所有元素 |<br>
-| SMOVE | SMOVE source destination member | 查&amp;移动 | 将集合source 中的元素member移动到集合destination中 |<br>
+| SADD | SADD <em>key</em> member [member …] | 增 | 向集合中添加一个或多个成员 |<br>
+| SCARD | SCARD <em>key</em> | 查 | 集合中元素个数 |<br>
+| SDIFF | SDIFF <em>key [key …]</em> | 集合：补 | 取多个集合的差分（其他集合中都没有的元素） |<br>
+| SDIFFSTORE | SDIFFSTORE <em>destination</em> <em>key [key …]</em> | 集合：补&amp;存 | 取多个集合的差分, 并将结果集存储在一个集合中 |<br>
+| SINTER | SINTER <em>key [key …]</em> | 集合：交 | 取多个集合的交集并返回 <br />INTER 为 Intersect /ˌɪntəˈsekt/ 的缩写 |<br>
+| SINTERSTORE | SINTERSTORE <em>destination</em> <em>key [key …]</em> | 集合：交&amp;存 | 取多个集合的交集并将结果集存储在一个集合中（destination） |<br>
+| SISMEMBER | SISMEMBER <em>key</em> member | 查 | 检查一个元素是否存在 |<br>
+| SMEMBERS | SMEMBERS <em>key</em> | 查 | 返回所有元素 |<br>
+| SMOVE | SMOVE <em>source destination</em> member | 查&amp;移动 | 将集合source 中的元素member移动到集合destination中 |<br>
 | SPOP | SPOP key [count] | 查&amp;删 | 从集合中移除并返回一个或多个（count）随机成员 |<br>
 | SRANDMEMBER | SRANDMEMBER key [count] | 查 | 从集合中获取一个或多个（count）随机成员，元素在集合中依然存在 |<br>
-| SREM | SREM key member [member …] | 删 | 从SET中删除一个或者多个元素 |<br>
-| SSCAN | SSCAN key cursor [MATCH pattern] [COUNT count] | 遍历查 | 参考<a href="#Order_SCAN">SCAN</a> |<br>
-| SUNION | SUNION key [key …] | 集合：并 | 取多个集合的并集 |<br>
-| SUNIONSTORE | SUNIONSTORE destination key [key …] | 集合：并&amp;存 | 取多个集合的并集并将结果集存储在一个集合中（destination） |</p>
+| SREM | SREM <em>key</em> member [member …] | 删 | 从SET中删除一个或者多个元素 |<br>
+| SUNION | SUNION <em>key [key …]</em> | 集合：并 | 取多个集合的并集 |<br>
+| SUNIONSTORE | SUNIONSTORE <em>destination</em> <em>key [key …]</em> | 集合：并&amp;存 | 取多个集合的并集并将结果集存储在一个集合中（destination） |<br>
+| SSCAN | SSCAN <em>key</em> cursor [MATCH pattern] [COUNT count] | 遍历查 | 参考<a href="#Order_SCAN">SCAN</a> |</p>
 <blockquote>
 <p>其他（6.0.6以下版本不支持）</p>
 </blockquote>
@@ -705,14 +705,14 @@
 <tbody>
 <tr>
 <td>SINTERCARD</td>
-<td>SINTERCARD numkeys key [key …] [LIMIT limit]</td>
+<td>SINTERCARD numkeys <em>key [key …]</em> [LIMIT limit]</td>
 <td>7.0.0</td>
 <td>集合：交</td>
 <td>获取两个集合的交集数量<br />[LIMIT  limit]：最大交集量 <br /><code>SINTERCARD 2 testset testset1返回19</code> 两个集合的交集量容量为19 <br /><code>SINTERCARD 2 testset testset1 limit 10 </code>返回10</td>
 </tr>
 <tr>
 <td>SMISMEMBER</td>
-<td>SMISMEMBER key member [member …]</td>
+<td>SMISMEMBER <em>key</em> member [member …]</td>
 <td>6.2.0</td>
 <td>查</td>
 <td>返回每个成员是否是存储在 key  集合的成员（多个元素的存在的查询） <br />返回与指定的member顺序一致的数组</td>
@@ -732,18 +732,13 @@
 <p>Sorted Set 中的每个元素都与一个浮点值相关联，称为<code>score </code>。所以Sorted Set 也是一种Hash结构。</p>
 <p>排序规则：</p>
 <ul>
-<li>如果 A 和 B 是具有不同分数的两个元素， A.score &gt; B.score，则 A &gt; B 。</li>
-<li>如果 A 和 B 具有完全相同的分数，如果 A 字符串<code>在字典顺序上</code>大于 B 字符串，则 A &gt; B。A 和 B 字符串不能相等，因为排序集只有唯一元素</li>
+<li>
+<p>如果 A 和 B 是具有不同分数的两个元素， A.score &gt; B.score，则 A &gt; B 。</p>
+</li>
+<li>
+<p>如果 A 和 B 具有完全相同的分数，如果 A 字符串<code>在字典顺序上</code>大于 B 字符串，则 A &gt; B。A 和 B 字符串不能相等，因为排序集只有唯一元素</p>
+</li>
 </ul>
-<p>实现数据结构</p>
-<ol>
-<li>
-<p><strong>压缩列表(ziplist)</strong>: ziplist是为了提高存储效率而设计的一种特殊编码的双向链表。它可以存储字符串或者整数，存储整数时是采用整数的二进制而不是字符串形式存储。它能在O(1)的时间复杂度下完成list两端的push和pop操作。但是因为每次操作都需要重新分配ziplist的内存，所以实际复杂度和ziplist的内存使用量相关</p>
-</li>
-<li>
-<p><strong>跳跃表（zSkiplist)</strong>: 跳跃表的性能可以保证在查找，删除，添加等操作的时候在对数期望时间内完成，这个性能是可以和平衡树来相比较的，而且在实现方面比平衡树要优雅，这是采用跳跃表的主要原因。跳跃表的复杂度是O(log(n))。</p>
-</li>
-</ol>
 <p>实战场景</p>
 <ul>
 <li><strong>排行榜</strong>：小说视频等网站需要对用户上传的小说视频做排行榜，榜单可以按照用户关注数，更新时间，字数等打分，做排行。</li>
@@ -760,117 +755,111 @@
 <tbody>
 <tr>
 <td style="text-align:left">ZADD</td>
-<td style="text-align:left">ZADD key score member [score] [member]</td>
+<td style="text-align:left">ZADD <em>key</em> score member [score] [member]</td>
 <td style="text-align:left">增</td>
 <td style="text-align:left">为有序集合添加一个/多个元素，若元素存在，则修改元素的score</td>
 </tr>
 <tr>
 <td style="text-align:left">ZCARD</td>
-<td style="text-align:left">ZCARD key</td>
+<td style="text-align:left">ZCARD <em>key</em></td>
 <td style="text-align:left">查</td>
 <td style="text-align:left">返回存储在 key 处的有序集合元素数 <br />card: cardinality 基数</td>
 </tr>
 <tr>
 <td style="text-align:left">ZCOUNT</td>
-<td style="text-align:left">ZCOUNT key min max</td>
+<td style="text-align:left">ZCOUNT <em>key</em> min max</td>
 <td style="text-align:left">查</td>
 <td style="text-align:left">用给定值内的分数计算有序集合元素数（包含min 和 max）</td>
 </tr>
 <tr>
 <td style="text-align:left">ZINCRBY</td>
-<td style="text-align:left">ZINCRBY key increment member</td>
+<td style="text-align:left">ZINCRBY <em>key</em> increment member</td>
 <td style="text-align:left">查&amp;改</td>
 <td style="text-align:left">将存储在 key 的有序集合中的成员的分数按增量递增 <br />① 如果成员在排序集中不存在，则将其添加为增量作为其分数（就像它之前的分数是 0.0） <br />② 如果 key 不存在，则创建一个以指定成员为唯一成员的新排序集。</td>
 </tr>
 <tr>
 <td style="text-align:left">ZLEXCOUNT</td>
-<td style="text-align:left">ZLEXCOUNT key min max</td>
+<td style="text-align:left">ZLEXCOUNT <em>key</em> min max</td>
 <td style="text-align:left">查</td>
 <td style="text-align:left">该命令返回有序集合中指定字典范围内的元素个数。<br />① 当一个有序集合中的所有元素以相同的分数插入时，强制使用字典顺序<br />② min 和 max 的定义类似 <a href="#ORDER_ZRANGEBYLEX">ZRANGEBYLEX</a></td>
 </tr>
 <tr>
 <td style="text-align:left">ZPOPMAX</td>
-<td style="text-align:left">ZPOPMAX key [count]</td>
+<td style="text-align:left">ZPOPMAX <em>key</em> [count]</td>
 <td style="text-align:left">查&amp;删</td>
 <td style="text-align:left"><code>从一个key，弹出多个成员</code><br />删除并返回存储在排序集（key）中得分最高的 count个成员。</td>
 </tr>
 <tr>
 <td style="text-align:left">BZPOPMAX</td>
-<td style="text-align:left">BZPOPMAX key [key …] timeout</td>
+<td style="text-align:left">BZPOPMAX <em>key [key …]</em> timeout</td>
 <td style="text-align:left">查&amp;删</td>
 <td style="text-align:left"><code> 从多个key，弹出一个成员</code><br />从一个或多个排序集（key [key …]）删除并返回得分最高的成员<br />无数据，则阻塞等待，直到有一个key可用。</td>
 </tr>
 <tr>
 <td style="text-align:left">ZPOPMIN</td>
-<td style="text-align:left">ZPOPMIN key [count]</td>
+<td style="text-align:left">ZPOPMIN <em>key</em> [count]</td>
 <td style="text-align:left">查&amp;删</td>
 <td style="text-align:left"><code>从一个key，弹出多个成员</code><br />删除并返回存储在 key 的排序集中得分最低的 count个 成员</td>
 </tr>
 <tr>
 <td style="text-align:left">BZPOPMIN</td>
-<td style="text-align:left">BZPOPMIN key [key …] timeout</td>
+<td style="text-align:left">BZPOPMIN <em>key [key …]</em> timeout</td>
 <td style="text-align:left">查&amp;删</td>
 <td style="text-align:left"><code>从多个key，弹出一个成员</code><br />从一个或多个排序集中删除并返回得分最低的成员，或阻止，直到有一个可用</td>
 </tr>
 <tr>
 <td style="text-align:left">ZRANGE</td>
-<td style="text-align:left">ZRANGE key start stop [WITHSCORES]</td>
+<td style="text-align:left">ZRANGE <em>key</em> start stop [WITHSCORES]</td>
 <td style="text-align:left">查</td>
 <td style="text-align:left">有序集合，返回指定index范围的元素 <br />[WITHSCORES]：一并返回元素分值 <br />举例： <code>ZRANGE hackers 0 -1 WITHSCORES</code></td>
 </tr>
 <tr>
 <td style="text-align:left">ZRANK</td>
-<td style="text-align:left">ZRANK key member</td>
+<td style="text-align:left">ZRANK <em>key</em> member</td>
 <td style="text-align:left">查</td>
 <td style="text-align:left">返回 member 在存储在 key 的有序集合中的排名，分数从低到高排序。<br />排名（或索引）从 0 开始</td>
 </tr>
 <tr>
 <td style="text-align:left">ZREVRANK</td>
-<td style="text-align:left">ZREVRANK key member</td>
+<td style="text-align:left">ZREVRANK <em>key</em> member</td>
 <td style="text-align:left">查</td>
 <td style="text-align:left">返回 member 在存储在 key 的有序集合中的排名，分数从高到低排序。<br />排名（或索引）从 0 开始，这意味着得分最高的成员的排名为 0</td>
 </tr>
 <tr>
 <td style="text-align:left">ZREM</td>
-<td style="text-align:left">ZREM key member [member …]</td>
+<td style="text-align:left">ZREM <em>key</em> member [member …]</td>
 <td style="text-align:left">删</td>
 <td style="text-align:left">从存储在 key 的排序集中删除指定的成员<br />不存在的成员将被忽略</td>
 </tr>
 <tr>
 <td style="text-align:left">ZREMRANGEBYLEX</td>
-<td style="text-align:left">ZREMRANGEBYLEX key min max</td>
+<td style="text-align:left">ZREMRANGEBYLEX <em>key</em> min max</td>
 <td style="text-align:left">删</td>
 <td style="text-align:left">删除给定字典序范围内的元素（闭区间）</td>
 </tr>
 <tr>
 <td style="text-align:left">ZREMRANGEBYRANK</td>
-<td style="text-align:left">ZREMRANGEBYRANK key start stop</td>
+<td style="text-align:left">ZREMRANGEBYRANK <em>key</em> start stop</td>
 <td style="text-align:left">删</td>
 <td style="text-align:left">删除指定位置区间内的元素（闭区间）</td>
 </tr>
 <tr>
 <td style="text-align:left">ZREMRANGEBYSCORE</td>
-<td style="text-align:left">ZREMRANGEBYSCORE key min max</td>
+<td style="text-align:left">ZREMRANGEBYSCORE <em>key</em> min max</td>
 <td style="text-align:left">删</td>
 <td style="text-align:left">删除分数介于 min 和 max 之间的元素 （闭区间）</td>
 </tr>
 <tr>
 <td style="text-align:left">ZSCORE</td>
-<td style="text-align:left">ZSCORE key member</td>
+<td style="text-align:left">ZSCORE <em>key</em> member</td>
 <td style="text-align:left">查</td>
 <td style="text-align:left">获取与排序集合中给定成员关联的分数</td>
 </tr>
 <tr>
 <td style="text-align:left">ZSCAN</td>
-<td style="text-align:left">ZSCAN key cursor [MATCH pattern] [COUNT count]</td>
+<td style="text-align:left">ZSCAN <em>key</em> cursor [MATCH pattern] [COUNT count]</td>
 <td style="text-align:left">查</td>
 <td style="text-align:left">增量迭代排序集元素和相关分数。使用方法可以参考<a href="#Order_SCAN">SCAN</a></td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
-<td style="text-align:left"></td>
 </tr>
 </tbody>
 </table>
@@ -887,14 +876,14 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><strong>ZINTERSTORE</strong> destination numkeys key [key …] [<strong>WEIGHTS</strong> weight   [weight …]] [<strong>AGGREGATE</strong> &lt;<strong>SUM</strong> |<strong>MIN</strong> |<strong>MAX</strong>&gt;]</td>
+<td style="text-align:left"><strong>ZINTERSTORE</strong> <em>destination</em> numkeys <em>key [key …]</em> [<strong>WEIGHTS</strong> weight   [weight …]] [<strong>AGGREGATE</strong> &lt;<strong>SUM</strong> |<strong>MIN</strong> |<strong>MAX</strong>&gt;]</td>
 <td>交集</td>
-<td style="text-align:left">计算多个有序集合的交集，并保存到destination 中。<br />[<strong>WEIGHTS</strong> weight   [weight …]] ：使用此选项，可以为每个输入排序集指定一个乘法因子。<br />① 每个输入排序集中的每个元素的分数在传递给聚合函数之前都会乘以该因子。<br />② 当未给出 WEIGHTS 时，乘法因子默认为 1。<br />[<strong>AGGREGATE</strong> &lt;<strong>SUM</strong> |<strong>MIN</strong> |<strong>MAX</strong>&gt;] : destination 中元素的分数的计算方式。默认为求和。</td>
+<td style="text-align:left">计算多个有序集合的交集，并保存到destination 中。<br />[<strong>WEIGHTS</strong> weight   [weight …]] ：使用此选项，可以为每个输入排序集指定一个乘法因子。<br />① 每个输入排序集中的每个元素的分数在传递给聚合函数之前都会乘以该因子。<br />② 当未给出 WEIGHTS 时，乘法因子默认为 1。<br />[<strong>AGGREGATE</strong> &lt;<strong>SUM</strong> |<strong>MIN</strong> |<strong>MAX</strong>&gt;] : <em>destination</em> 中元素的分数的计算方式。默认为求和。</td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>ZUNIONSTORE</strong> destination numkeys key [key …] [<strong>WEIGHTS</strong> weight   [weight …]] [<strong>AGGREGATE</strong> &lt;<strong>SUM</strong> |<strong>MIN</strong> |<strong>MAX</strong>&gt;]</td>
+<td style="text-align:left"><strong>ZUNIONSTORE</strong> <em>destination</em> numkeys <em>key [key …]</em> [<strong>WEIGHTS</strong> weight   [weight …]] [<strong>AGGREGATE</strong> &lt;<strong>SUM</strong> |<strong>MIN</strong> |<strong>MAX</strong>&gt;]</td>
 <td>并集</td>
-<td style="text-align:left">计算多个有序集合的并集，并保存到destination 中。<br />如果destination已经存在，它会被覆盖。<br /><br />[<strong>WEIGHTS</strong> weight   [weight …]] ：使用此选项，可以为每个输入排序集指定一个乘法因子<br />① 每个输入排序集中的每个元素的分数在传递给聚合函数之前都会乘以该因子。<br />② 当未给出 WEIGHTS 时，乘法因子默认为 1。<br />[<strong>AGGREGATE</strong> &lt;<strong>SUM</strong> |<strong>MIN</strong> |<strong>MAX</strong>&gt;] : destination 中元素的分数的计算方式。默认为求和。</td>
+<td style="text-align:left">计算多个有序集合的并集，并保存到destination 中。<br />如果destination已经存在，它会被覆盖。<br /><br />[<strong>WEIGHTS</strong> weight   [weight …]] ：使用此选项，可以为每个输入排序集指定一个乘法因子<br />① 每个输入排序集中的每个元素的分数在传递给聚合函数之前都会乘以该因子。<br />② 当未给出 WEIGHTS 时，乘法因子默认为 1。<br />[<strong>AGGREGATE</strong> &lt;<strong>SUM</strong> |<strong>MIN</strong> |<strong>MAX</strong>&gt;] : <em>destination</em> 中元素的分数的计算方式。默认为求和。</td>
 </tr>
 </tbody>
 </table>
@@ -912,25 +901,25 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><strong>ZINTER</strong> numkeys key [key …] [<strong>WEIGHTS</strong> weight [weight …]]   [<strong>AGGREGATE</strong> &lt;<strong>SUM</strong> |<strong>MIN</strong> |<strong>MAX</strong>&gt;] [<strong>WITHSCORES</strong>]</td>
+<td style="text-align:left"><strong>ZINTER</strong> numkeys <em>key [key …]</em> [<strong>WEIGHTS</strong> weight [weight …]]   [<strong>AGGREGATE</strong> &lt;<strong>SUM</strong> |<strong>MIN</strong> |<strong>MAX</strong>&gt;] [<strong>WITHSCORES</strong>]</td>
 <td>交集</td>
 <td>6.2.0</td>
 <td style="text-align:left">计算多个有序集合的交集，并返回</td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>ZUNION</strong> numkeys key [key …] [<strong>WEIGHTS</strong> weight [weight …]]   [<strong>AGGREGATE</strong> &lt;<strong>SUM</strong> |<strong>MIN</strong> |<strong>MAX</strong>&gt;] [<strong>WITHSCORES</strong>]</td>
+<td style="text-align:left"><strong>ZUNION</strong> numkeys <em>key [key …]</em> [<strong>WEIGHTS</strong> weight [weight …]]   [<strong>AGGREGATE</strong> &lt;<strong>SUM</strong> |<strong>MIN</strong> |<strong>MAX</strong>&gt;] [<strong>WITHSCORES</strong>]</td>
 <td>并集</td>
 <td>6.2.0</td>
 <td style="text-align:left">计算多个有序集合的并集，并返回</td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>ZDIFF</strong> numkeys key [key …] [<strong>WITHSCORES</strong>]</td>
+<td style="text-align:left"><strong>ZDIFF</strong> numkeys <em>key [key …]</em> [<strong>WITHSCORES</strong>]</td>
 <td>补集</td>
 <td>6.2.0</td>
 <td style="text-align:left">计算第一个集合比后面所有集合多出的元素，并返回<br />（比较逻辑和分值无关）</td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>ZDIFFSTORE</strong> destination numkeys key [key …]</td>
+<td style="text-align:left"><strong>ZDIFFSTORE</strong> <em>destination</em> numkeys <em>key [key …]</em></td>
 <td>补集</td>
 <td>6.2.0</td>
 <td style="text-align:left">计算第一个集合比后面所有集合多出的元素，并存入destination<br />（比较逻辑和分值无关）</td>
@@ -960,42 +949,42 @@
 </tr>
 <tr>
 <td>ZRANGE</td>
-<td><strong>ZRANGE</strong> key start stop [<strong>BYSCORE</strong> |<strong>BYLEX</strong>] [<strong>REV</strong>] [<strong>LIMIT</strong> offset count]   [<strong>WITHSCORES</strong>]</td>
+<td><strong>ZRANGE</strong> <em>key</em> start  stop [<strong>BYSCORE</strong> |<strong>BYLEX</strong>] [<strong>REV</strong>] [<strong>LIMIT</strong> offset count]   [<strong>WITHSCORES</strong>]</td>
 <td>6.2.0</td>
 <td>查</td>
 <td>此命令可以替换以下命令：<br /><strong>ZREVRANGE、ZRANGEBYSCORE、ZREVRANGEBYSCORE、ZRANGEBYLEX 和 ZREVRANGEBYLEX</strong><br /><br /> [<strong>BYSCORE</strong> |<strong>BYLEX</strong>] ：根据分值查找/ 根据字典顺序<br /><br /><code>zrange hackers  + - bylex rev</code><br /></td>
 </tr>
 <tr>
 <td>ZRANGESTORE</td>
-<td><strong>ZRANGESTORE</strong> dst src min max   [<strong>BYSCORE</strong> | <strong>BYLEX</strong>]   [<strong>REV</strong>]   [<strong>LIMIT</strong> offset   count]</td>
+<td><strong>ZRANGESTORE</strong> <em>dst  src</em> min max   [<strong>BYSCORE</strong> | <strong>BYLEX</strong>]   [<strong>REV</strong>]   [<strong>LIMIT</strong> offset   count]</td>
 <td>6.2.0</td>
 <td>查</td>
 <td>ZRANGE 查询结果结果存储在目标键dst 中</td>
 </tr>
 <tr>
 <td>ZMSCORE</td>
-<td><strong>ZMSCORE</strong> key member [member …]</td>
+<td><strong>ZMSCORE</strong> <em>key</em> member [member …]</td>
 <td>6.2.0</td>
 <td>查</td>
 <td>查询指定成员关联的分数<br />对于排序集中不存在的每个成员，返回一个 nil 值。</td>
 </tr>
 <tr>
 <td>ZINTERCARD</td>
-<td><strong>ZINTERCARD</strong> numkeys key [key …] [<strong>LIMIT</strong> limit]</td>
+<td><strong>ZINTERCARD</strong> numkeys <em>key [key …]</em> [<strong>LIMIT</strong> limit]</td>
 <td>7.0.0</td>
 <td>集合：交</td>
 <td>返回交集元素总量<br /> [LIMIT limit]：默认为 0，表示无限制。<br />如果交集元素总量在计算过程中达到极限，算法将退出并将limit 作为交集总量<br /><code>ZINTERCARD 2 zset1 zset2 LIMIT 1</code>:   <code>返回 1</code></td>
 </tr>
 <tr>
 <td>ZMPOP</td>
-<td><strong>ZMPOP</strong> numkeys key [key …] &lt;<strong>MIN | MAX</strong>&gt; [<strong>COUNT</strong> count]</td>
+<td><strong>ZMPOP</strong> numkeys <em>key [key …]</em> &lt;<strong>MIN | MAX</strong>&gt; [<strong>COUNT</strong> count]</td>
 <td>7.0.0</td>
 <td>删</td>
 <td><code>从多个key，弹出多个成员</code><br />从提供的键名列表中的第一个非空排序集中弹出一个或多个成员</td>
 </tr>
 <tr>
 <td>BZMPOP</td>
-<td><strong>BZMPOP</strong> timeout numkeys key [key …] &lt;<strong>MIN | MAX&gt;</strong> [<strong>COUNT</strong> count]</td>
+<td><strong>BZMPOP</strong> timeout numkeys <em>key [key …]</em> &lt;<strong>MIN | MAX&gt;</strong> [<strong>COUNT</strong> count]</td>
 <td>7.0.0</td>
 <td>删</td>
 <td><code> 从多个key，弹出多个成员</code><br />有序集合中存在数据时返回，不存在时阻塞等待。<br />timeout：double数，时间单位为秒，设置为0时无期限等待</td>
@@ -1015,33 +1004,163 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><strong>ZREVRANGE</strong> key start stop [<strong>WITHSCORES</strong>]</td>
+<td style="text-align:left"><strong>ZREVRANGE</strong>  <em>key</em> start stop [<strong>WITHSCORES</strong>]</td>
 <td>查</td>
 <td style="text-align:left">按照<strong>分值降序</strong>后，返回有序集合中指定<strong>index</strong>范围的元素</td>
 </tr>
 <tr>
-<td style="text-align:left"><span id="ORDER_ZRANGEBYLEX"><strong>ZRANGEBYLEX</strong> key min max [<strong>LIMIT</strong> offset count]</span></td>
+<td style="text-align:left"><span id="ORDER_ZRANGEBYLEX"><strong>ZRANGEBYLEX</strong> <em>key</em> min max [<strong>LIMIT</strong> offset count]</span></td>
 <td>查</td>
 <td style="text-align:left">该命令返回有序集合中指定<strong>字典</strong>范围内的元素<br />① 当排序集中的所有元素<strong>以相同的分数</strong>插入时，使用字典顺序，<br />② 此命令返回排序集中的所有元素在 key 处，其值介于 min 和 max 之间。<br />③ 如果排序集中的元素具有不同的分数，则返回的元素是未指定的<br /><code> ZRANGEBYLEX  hackers - +</code> <br /><code> ZRANGEBYLEX  hackers - + LIMIT 2 3</code>  <br /><code>ZRANGEBYLEX  hackers [A [Z</code>：包含<br /><code>ZRANGEBYLEX  hackers (A (Z</code>：不包含</td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>ZREVRANGEBYLEX</strong> key max min [<strong>LIMIT</strong> offset count]</td>
+<td style="text-align:left"><strong>ZREVRANGEBYLEX</strong> <em>key</em> max min [<strong>LIMIT</strong> offset count]</td>
 <td>查</td>
 <td style="text-align:left"></td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>ZRANGEBYSCORE</strong> key min max [<strong>WITHSCORES</strong>] [<strong>LIMIT</strong> offset count]</td>
+<td style="text-align:left"><strong>ZRANGEBYSCORE</strong> <em>key</em> min max [<strong>WITHSCORES</strong>] [<strong>LIMIT</strong> offset count]</td>
 <td>查</td>
 <td style="text-align:left">按照<strong>分值降序</strong>后，返回有序集合中指定分值范围的元素<br />举例：<code>zrangebyscore hackers -inf 1950</code><br />==-inf==: 表示负无穷 <strong>infinity</strong> [ɪnˈfɪnəti]</td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>ZREVRANGEBYSCORE</strong> key max min [<strong>WITHSCORES</strong>] [<strong>LIMIT</strong> offset count]</td>
+<td style="text-align:left"><strong>ZREVRANGEBYSCORE</strong> <em>key</em> max min [<strong>WITHSCORES</strong>] [<strong>LIMIT</strong> offset count]</td>
 <td>查</td>
 <td style="text-align:left"></td>
 </tr>
 </tbody>
 </table>
 <h1>特殊类型</h1>
+<h2 id="Stream">Stream</h2>
+<p>Redis 流是一种数据结构，其作用类似于<code>an append-only log</code>。您可以使用流实时记录和同步事件。</p>
+<p>Redis 流用例的示例包括：</p>
+<ul>
+<li>事件溯源（例如，跟踪用户操作、点击等）</li>
+<li>传感器监控（例如，现场设备的读数）</li>
+<li>通知（例如，将每个用户的通知记录存储在单独的流中）</li>
+</ul>
+<p>Redis 为每个流条目生成一个唯一的 ID。您可以使用这些 ID 稍后检索其关联条目或读取和处理流中的所有后续条</p>
+<h3 id="XADD：添加数据">XADD：添加数据</h3>
+<p>XADD 是唯一可以将数据添加到流的 Redis 命令。</p>
+<ul>
+<li>
+<p>命令格式</p>
+<blockquote>
+<p><strong>XADD</strong> key    [<strong>NOMKSTREAM</strong>]   <font color="blue">[&lt;<strong>MAXLEN</strong> | <strong>MINID</strong>&gt;    [= | ~]    threshold<br>
+[<strong>LIMIT</strong> count]]</font> <font color="orange">&lt;* | id&gt;</font> <em>field value [field value …]</em></p>
+</blockquote>
+</li>
+<li>
+<p>版本变更</p>
+<p>版本6.2.0 前：<strong>XADD</strong> key <strong>ID</strong> <em>field string [field string …]</em></p>
+<p>版本6.2.0后 ：添加了 **NOMKSTREAM 、MINID  LIMIT **</p>
+<p>版本7.0.0 ：添加了对 显式 ID 形式的支持</p>
+</li>
+<li>
+<p>命令参数解释</p>
+<ol>
+<li>
+<p><font color="orange">&lt;* | id&gt;</font>  id组成方式：<code>&lt;millisecondsTime&gt;-&lt;sequenceNumber&gt;</code></p>
+<ul>
+<li>
+<p>如果指定的 ID 参数是 ==*== 字符，XADD 命令将为您自动生成唯一 ID</p>
+<p><code>XADD stream:test:1 * ip 127.0.0.1</code></p>
+</li>
+<li>
+<p>虽然仅在极少数情况下有用，但可以指定格式良好的 ID，以便将使用指定的 ID 精确添加新条目。</p>
+<p><code>XADD stream:test:1 1662020231547-1 ip 127.0.0.2</code><br />当用户为 指定显式 ID 时<code>XADD</code>，最小有效 ID 为 <code>0-1</code>，并且用户<em>必须</em>指定一个大于当前流内任何其他 ID 的 ID，否则该命令将失败并返回错误。</p>
+<p>通常，仅当您有另一个系统生成唯一 ID（例如 SQL 表）并且您确实希望 Redis 流 ID 与另一个系统匹配时，才使用特定 ID。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><font color="blue">[&lt;<strong>MAXLEN</strong> | <strong>MINID</strong>&gt; [= | ~] threshold<br>
+[<strong>LIMIT</strong> count]]</font> 封顶（Capped streams）</p>
+<p>==MAXLEN==：使用 MAXLEN，当达到指定长度时，旧条目会被自动驱逐</p>
+<p>==~==：表示封顶的阈值 count是一个近似值。<code>MAXLEN ~ 1000</code>我真的不需要这正好是 1000 个项目。它可以是 1000 或 1010 或 1030，只要确保至少保存 1000 个项目即可（常用场景）</p>
+<p>==MINID==：驱逐 ID 低于阈值的条目，其中阈值是流 ID。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="XRANGE：范围查询">XRANGE：范围查询</h3>
+<blockquote>
+<p><strong>XRANGE</strong> <em>key</em> <font style="color:blue;font-weight:bold">start end </font> [<strong>COUNT</strong> count]： 返回流中的一段元素</p>
+</blockquote>
+<ul>
+<li>
+<p>命令参数解释</p>
+<ol>
+<li>
+<p><font style="color:blue;font-weight:bold">start end</font>: start 和 end 之间为闭区间</p>
+<ul>
+<li>
+<p>-和 + 特殊 ID 分别表示流中可能的最小 ID 和可能的最大 ID，因此以下命令将仅返回流中的所有条目：<code>XRANGE somestream - +</code></p>
+<p><code>-</code>: 可以理解为：0-0</p>
+<p><code>+</code>: 可以理解为：18446744073709551615-18446744073709551615</p>
+</li>
+<li>
+<p>Incomplete IDs</p>
+<p>不完整指定的ID：仅仅指定UNIX时间部分</p>
+<p><code>XRANGE somestream 1526985054069 1526985055069</code>在这种情况下，XRANGE 将使用 -0 自动完成开始间隔，使用 -18446744073709551615 自动完成结束间隔，以便返回在给定毫秒和另一个指定毫秒结束之间生成的所有条目。这也意味着重复相同的毫秒两次，我们得到指定毫秒内的所有条目</p>
+<p>以这种方式使用 XRANGE 作为范围查询命令来获取指定时间内的条目。这对于获取一段时间内的操作历史，非常方便。</p>
+</li>
+<li>
+<p>Exclusive ranges</p>
+<p>开区间范围查询：ID 前加上字符<code>(</code>来指定一个开区间</p>
+</li>
+</ul>
+</li>
+<li>
+<p>[<strong>COUNT</strong> count] : 返回结果的前count条entry</p>
+</li>
+</ol>
+</li>
+<li>
+<p>使用场景介绍</p>
+<ol>
+<li>
+<p>stream 迭代</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&gt; XRANGE writers - + COUNT 2</span><br><span class="line">1) 1) 1526985676425-0</span><br><span class="line">   2) 1) <span class="string">&quot;name&quot;</span></span><br><span class="line">      2) <span class="string">&quot;Virginia&quot;</span></span><br><span class="line">      3) <span class="string">&quot;surname&quot;</span></span><br><span class="line">      4) <span class="string">&quot;Woolf&quot;</span></span><br><span class="line">2) 1) 1526985685298-0</span><br><span class="line">   2) 1) <span class="string">&quot;name&quot;</span></span><br><span class="line">      2) <span class="string">&quot;Jane&quot;</span></span><br><span class="line">      3) <span class="string">&quot;surname&quot;</span></span><br><span class="line">      4) <span class="string">&quot;Austen&quot;</span></span><br><span class="line">&gt; XRANGE writers (1526985685298-0 + COUNT 2</span><br><span class="line">1) 1) 1526985691746-0</span><br><span class="line">   2) 1) <span class="string">&quot;name&quot;</span></span><br><span class="line">      2) <span class="string">&quot;Toni&quot;</span></span><br><span class="line">      3) <span class="string">&quot;surname&quot;</span></span><br><span class="line">      4) <span class="string">&quot;Morrison&quot;</span></span><br><span class="line">2) 1) 1526985712947-0</span><br><span class="line">   2) 1) <span class="string">&quot;name&quot;</span></span><br><span class="line">      2) <span class="string">&quot;Agatha&quot;</span></span><br><span class="line">      3) <span class="string">&quot;surname&quot;</span></span><br><span class="line">      4) <span class="string">&quot;Christie&quot;</span></span><br></pre></td></tr></table></figure>
+<p>a. 上次查询的entry的id 用 开区间 <code>(</code>，作为下次查询的start 。</p>
+<p>b. 我们可以从任何 ID 开始迭代（指定一个不完整的start id）</p>
+</li>
+<li>
+<p>获取单个项目</p>
+<p>XRANGE 的参数中指定两次 ID：<code>XRANGE mystream 1526984818136-0 1526984818136-0</code></p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="XREAD：收听新Entry">XREAD：收听新Entry</h3>
+<p><strong>XREAD</strong> [<strong>COUNT</strong> count] [<strong>BLOCK</strong> milliseconds] <strong><code>STREAMS</code></strong> key [key …] id<br>
+[id …]</p>
+<ul>
+<li>
+<p>命令参数解释</p>
+<p><strong>STREAMS</strong> key [key …] id<br>
+[id …]：指定了一个键列表以及调用消费者已经为每个流看到的相应最大 ID，因此该命令将只向客户端提供 ID  <code>大于</code>我们指定的 ID 的消息。（不包含指定的ID）</p>
+<p>[<strong>BLOCK</strong> milliseconds]：阻塞的毫秒数。若milliseconds 设置为0 ，则表示永远不会超时</p>
+<p>[<strong>COUNT</strong> count]：限定调用将在每个流中最多返回count个元素</p>
+</li>
+<li>
+<p>特殊的ID<code>$</code></p>
+<p><strong>STREAMS</strong> $ :  意味着应该使用已经存储在流中的最大 ID 作为最后一个 ID。</p>
+<p>当阻塞时，有时我们希望只接收从阻塞那一刻开始通过XADD添加到流中的条目。在这种情况下，我们对已经添加的条目的历史不感兴趣。对于这个用例，我们必须检查流顶部元素的ID，并在XREAD命令行中使用这样的ID。这是不干净的，需要调用其他命令，所以可以使用特殊的 <code>$</code> 来通知流，我们只想要新的东西。</p>
+<p><strong>仅在第一次调用 XREAD 时使用 $ ID 非常重要。之后迭代的ID应该是流中最后报告的ID，否则您可能会错过中间添加的所有条目。</strong></p>
+</li>
+<li>
+<p>如何为单个流上被阻止的多个客户端提供服务：<strong>FIFO</strong></p>
+<ol>
+<li>当新项目可用时，为给定流阻塞的第一个客户端将是第一个被解除阻塞的客户端。因为从等待数据的客户端的角度来看，阻塞流读取是公平的，其语义是 FIFO 风格。（类似于阻塞队列）</li>
+<li>为客户端提供服务时，不会从流中删除流条目，因此只要 XADD 命令向流提供数据，就会为每个等待的客户端提供服务。（不同于阻塞队列）</li>
+</ol>
+</li>
+<li>
+<p>使用场景</p>
+<p><code>XREAD BLOCK 0 STREAMS mystream $</code>: 从我们开始收听的时间开始，阻塞等待最新消息</p>
+</li>
+</ul>
 <h2 id="Geospatial">Geospatial</h2>
 <table>
 <thead>
@@ -1300,7 +1419,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">基础类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">1.1.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">1.2.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash"><span class="nav-number">1.3.</span> <span class="nav-text">Hash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set"><span class="nav-number">1.4.</span> <span class="nav-text">Set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Zset-%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88"><span class="nav-number">1.5.</span> <span class="nav-text">Zset : 有序集合</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">特殊类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Geospatial"><span class="nav-number">2.1.</span> <span class="nav-text">Geospatial</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HyperLogLog%EF%BC%9A%E5%9F%BA%E6%95%B0%E7%BB%9F%E8%AE%A1"><span class="nav-number">2.2.</span> <span class="nav-text">HyperLogLog：基数统计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bitmaps"><span class="nav-number">2.3.</span> <span class="nav-text">Bitmaps</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">其他命令</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">基础类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">1.1.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">1.2.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash"><span class="nav-number">1.3.</span> <span class="nav-text">Hash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set"><span class="nav-number">1.4.</span> <span class="nav-text">Set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Zset-%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88"><span class="nav-number">1.5.</span> <span class="nav-text">Zset : 有序集合</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">特殊类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Stream"><span class="nav-number">2.1.</span> <span class="nav-text">Stream</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#XADD%EF%BC%9A%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE"><span class="nav-number">2.1.1.</span> <span class="nav-text">XADD：添加数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XRANGE%EF%BC%9A%E8%8C%83%E5%9B%B4%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.1.2.</span> <span class="nav-text">XRANGE：范围查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XREAD%EF%BC%9A%E6%94%B6%E5%90%AC%E6%96%B0Entry"><span class="nav-number">2.1.3.</span> <span class="nav-text">XREAD：收听新Entry</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Geospatial"><span class="nav-number">2.2.</span> <span class="nav-text">Geospatial</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HyperLogLog%EF%BC%9A%E5%9F%BA%E6%95%B0%E7%BB%9F%E8%AE%A1"><span class="nav-number">2.3.</span> <span class="nav-text">HyperLogLog：基数统计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bitmaps"><span class="nav-number">2.4.</span> <span class="nav-text">Bitmaps</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">其他命令</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1314,7 +1433,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">57</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
