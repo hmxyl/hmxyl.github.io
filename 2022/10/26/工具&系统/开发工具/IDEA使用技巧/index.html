@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|monospace:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"hmxyl.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="IDEA日常使用技巧记录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IDEA使用技巧">
+<meta property="og:url" content="https://hmxyl.github.io/2022/10/26/%E5%B7%A5%E5%85%B7&%E7%B3%BB%E7%BB%9F/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/index.html">
+<meta property="og:site_name" content="Alisa&#39;s Home">
+<meta property="og:description" content="IDEA日常使用技巧记录">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092234688.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092300247.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092703437.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092413929.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092433296.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092518334.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092538684.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092616622.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092639951.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127223845078.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127223909961.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127224042688.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127225955330.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127231134179.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-16380260866347.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image001-163802678409512.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125093711347.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-16380266644219.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image001-163802676145910.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-163802676145911.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127232203726.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-163802681052513.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image001.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127225848686.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230244828.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230844516.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230339392.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230357335.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230437624.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230500953.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230524523.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230606315.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230751897.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20220304151518515.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-16380258373592.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-16380258506663.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-16380259713575.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-16380260699266.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-163802692934114.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image004.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image005.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-163802704819915.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image004-163802704820016.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image006.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image008.png">
+<meta property="article:published_time" content="2022-10-26T13:32:25.000Z">
+<meta property="article:modified_time" content="2022-12-12T08:27:50.089Z">
+<meta property="article:author" content="Alisa">
+<meta property="article:tag" content="开发工具">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092234688.png">
+
+<link rel="canonical" href="https://hmxyl.github.io/2022/10/26/%E5%B7%A5%E5%85%B7&%E7%B3%BB%E7%BB%9F/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>IDEA使用技巧 | Alisa's Home</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Alisa's Home</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-friendlink">
+
+    <a href="/friendlink/" rel="section"><i class="fa fa-briefcase fa-fw"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">19</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">44</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">57</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/10/26/%E5%B7%A5%E5%85%B7&%E7%B3%BB%E7%BB%9F/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Alisa">
+      <meta itemprop="description" content="学习笔记、工作心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alisa's Home">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          IDEA使用技巧
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-10-26 21:32:25" itemprop="dateCreated datePublished" datetime="2022-10-26T21:32:25+08:00">2022-10-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-12-12 16:27:50" itemprop="dateModified" datetime="2022-12-12T16:27:50+08:00">2022-12-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7-%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">工具&系统</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7-%E7%B3%BB%E7%BB%9F/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">开发工具</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7-%E7%B3%BB%E7%BB%9F/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA/" itemprop="url" rel="index"><span itemprop="name">IDEA</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">IDEA日常使用技巧记录</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1>插件</h1>
+<h2 id="CamelCase">CamelCase</h2>
+<p>使用快捷键转换驼峰、下划线等命名规则</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092234688.png" alt="image-20211125092234688"></p>
+<p>光标放在要修改的名称上（如：变量名，或者mapper.xml里的字段名,会自动识别光标所在单词），按control+alt+U,则进行按命名规则进行转换，会按配置中选择的命名规则列表来回切换。</p>
+<p>如图，如果只选择了CamelCase to camelCase、camelCase to snake_case，则可以在两者之间来回切换，适合公司对命名的要求。</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092300247.png" alt="image-20211125092300247"></p>
+<h2 id="RestfulToolkit">RestfulToolkit</h2>
+<!--  API查找工具 --> 
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092703437.png" alt="image-20211125092703437"></p>
+<h2 id="Free-Mybatis-plugin">Free Mybatis plugin</h2>
+<!-- 快速从代码跳转到mapper及从mapper返回代码-->
+<h2 id="EasyCode">EasyCode</h2>
+<p>代码生成插件</p>
+<ol>
+<li>
+<p>下载插件，安装后重启</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092413929.png" alt="image-20211125092413929"></p>
+</li>
+<li>
+<p>在idea右侧选择Database，选择自己的数据库</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092433296.png" alt="image-20211125092433296"></p>
+</li>
+<li>
+<p>输入账号密码，连接成功</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092518334.png" alt="image-20211125092518334"></p>
+</li>
+<li>
+<p>选择自己所需的表，鼠标右键-&gt;EasyCode-&gt;Generate Code</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092538684.png" alt="image-20211125092538684"></p>
+</li>
+<li>
+<p>选择自己需要生成的，勾选，然后OK就行</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092616622.png" alt="image-20211125092616622"></p>
+</li>
+<li>
+<p>系统自己生成了entity包，以及实体类。</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125092639951.png" alt="image-20211125092639951"></p>
+</li>
+</ol>
+<h2 id="MybatisLog">MybatisLog</h2>
+<!-- 程序运行的SQL语句可以直接拷贝运行 -->
+<h1>快捷键</h1>
+<h2 id="Editing">Editing</h2>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>英文说明</th>
+<th>中文说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><s>Ctrl + Space</s> Ctrl + ,</td>
+<td>Basic code completion (the name of any class, method or variable)</td>
+<td>基本代码完成（任何类、方法或变量的名称）</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + Space</td>
+<td>Smart code completion (filters the list of methods and variables by expected type)</td>
+<td>智能代码完成（按预期类型筛选方法和变量列表）</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + Enter</td>
+<td>Complete statement</td>
+<td>完整声明</td>
+</tr>
+<tr>
+<td>Ctrl + P</td>
+<td>Parameter info (within method call arguments)</td>
+<td>调用方法时，列出全部参数信息</td>
+</tr>
+<tr>
+<td>Ctrl + Q</td>
+<td>Quick documentation lookup</td>
+<td>光标放在类/方法上，快速显示Java doc 信息</td>
+</tr>
+<tr>
+<td>Ctrl +hover</td>
+<td>Brief Info</td>
+<td>鼠标放到类/方法上，提示基本信息</td>
+</tr>
+<tr>
+<td>Ctrl + F1</td>
+<td>Show descriptions of error or warning at caret</td>
+<td>显示光标处的错误或警告的处理提示信息</td>
+</tr>
+<tr>
+<td>Alt + Insert</td>
+<td>Generate code… (Getters, Setters, Constructors, hashCode/equals, toString)</td>
+<td>弹出可生成代码列表（getter、setter、constructor、hashCode/equals、toString）</td>
+</tr>
+<tr>
+<td>Ctrl + O</td>
+<td>Override methods</td>
+<td>弹出可覆写的方法列表</td>
+</tr>
+<tr>
+<td>Ctrl + I</td>
+<td>Implement methods</td>
+<td>弹出要实现的方法列表</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + T</td>
+<td>Surround with…(if…else,try…catch, for,  synchronized, etc.)</td>
+<td>代码块快选（要放在插入点上的代码结束分号上）</td>
+</tr>
+<tr>
+<td>Ctrl + /</td>
+<td>Comment/uncomment with line comment</td>
+<td>代码行注释</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + /</td>
+<td>Comment/uncomment with block comment</td>
+<td>代码块注释</td>
+</tr>
+<tr>
+<td>Ctrl + W</td>
+<td>Select successively increasing code blocks</td>
+<td>选择连续递增的代码块</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + W</td>
+<td>Decrease current selection to previous state</td>
+<td>取消选择代码块</td>
+</tr>
+<tr>
+<td>Alt + Enter</td>
+<td>Show intention actions and quick-fixes</td>
+<td>展示意图行动<br/>快速修复</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + L</td>
+<td>Reformat code</td>
+<td>代码格式化</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + O</td>
+<td>Optimize imports</td>
+<td>优化类的import</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + I</td>
+<td>Auto-indent line(s)</td>
+<td>自动缩进行</td>
+</tr>
+<tr>
+<td>Tab / Shift + Tab</td>
+<td>Indent/unindent selected lines</td>
+<td>缩进/取消缩进选定行</td>
+</tr>
+<tr>
+<td>Ctrl+X</td>
+<td>Cut current line or selected block to clipboard</td>
+<td>将当前行或选定块剪切到剪贴板</td>
+</tr>
+<tr>
+<td>Ctrl+C</td>
+<td>Copy current line or selected block to clipboard</td>
+<td>将当前行或选定块复制到剪贴板</td>
+</tr>
+<tr>
+<td>Ctrl+V</td>
+<td>Paste from clipboard</td>
+<td>粘贴</td>
+</tr>
+<tr>
+<td>Ctrl+Shift + V</td>
+<td>Paste from recent buffers…</td>
+<td>打开剪贴板，选择要粘贴的内容</td>
+</tr>
+<tr>
+<td>Ctrl+D</td>
+<td>Duplicate current line or selected block</td>
+<td>复制并粘贴当前行或选定块</td>
+</tr>
+<tr>
+<td>Ctrl+Y</td>
+<td>Delete line at caret</td>
+<td>删除光标处的行</td>
+</tr>
+<tr>
+<td>Ctrl+Shift + J</td>
+<td>Smart line join</td>
+<td>光标所在行和其下一行，或者选择的代码块，合并到一行</td>
+</tr>
+<tr>
+<td>Ctrl+Enter</td>
+<td>Smart line split</td>
+<td>行拆分</td>
+</tr>
+<tr>
+<td>Shift + Enter</td>
+<td>Start new line</td>
+<td>打开新的一行</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + U</td>
+<td>Toggle case for word at caret or selected block</td>
+<td>在光标所在词语或选定块中切换单词的大小写</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + ]/[</td>
+<td>Select till code block end/start</td>
+<td>选择直到代码块结束/开始</td>
+</tr>
+<tr>
+<td>Ctrl + Delete/Backspace</td>
+<td>Delete to word end/start</td>
+<td>删除至单词结束/开始</td>
+</tr>
+<tr>
+<td>Ctrl + NumPad+/-</td>
+<td>Expand/collapse code block</td>
+<td>展开/折叠代码块</td>
+</tr>
+<tr>
+<td>Ctrl + Shift+NumPad+</td>
+<td>Expand all</td>
+<td>展开所有代码块</td>
+</tr>
+<tr>
+<td>Ctrl + Shift+NumPad-</td>
+<td>Collapse all</td>
+<td>折叠所有代码块</td>
+</tr>
+<tr>
+<td>Ctrl + F4</td>
+<td>Close active editor tab</td>
+<td>关闭当前活动的编辑窗口</td>
+</tr>
+<tr>
+<td>Ctrl + F12</td>
+<td></td>
+<td>当前类内搜索方法</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>英文说明</th>
+<th>中文说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alt + Q</td>
+<td>Context info</td>
+<td><em>上下文信息</em></td>
+</tr>
+<tr>
+<td>Shift + F1</td>
+<td>External Doc</td>
+<td><em>外部文件</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Usage-Search">Usage Search</h2>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>英文说明</th>
+<th>中文说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alt + F7/Ctrl + F7</td>
+<td>Find usages/Find usages in file</td>
+<td>查找用法/在文件中查找【参数/方法】使用到的地方</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + F7</td>
+<td>Highlight usages in file</td>
+<td>高亮【参数/方法】使用到的地方</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + F7</td>
+<td>Show usages</td>
+<td>弹出【参数/方法】使用到的列表</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Navigation">Navigation</h2>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>英文说明</th>
+<th>中文说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alt + Right/Left</td>
+<td>Go to next / previous editor tab</td>
+<td>左边的编辑框/右边的编辑框</td>
+</tr>
+<tr>
+<td>F12</td>
+<td>Go back to previous tool window</td>
+<td>项目结构中，选中当前文件</td>
+</tr>
+<tr>
+<td>Esc</td>
+<td>Go to editor (from tool window)</td>
+<td>光标回到编辑栏</td>
+</tr>
+<tr>
+<td>Shift + Esc</td>
+<td>Hide active or last active window</td>
+<td>关闭最新打开的工具栏</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+F4</td>
+<td>Close active run / messages / find / … tab</td>
+<td>关闭活动的工具栏</td>
+</tr>
+<tr>
+<td>Ctrl+G</td>
+<td>Go to line</td>
+<td>跳转到指定行</td>
+</tr>
+<tr>
+<td>Ctrl+E</td>
+<td>Recent files popup</td>
+<td>弹框显示最近使用过的文件</td>
+</tr>
+<tr>
+<td>Ctrl+Alt + Left/Right</td>
+<td>Navigate back / forward</td>
+<td>后退/前进</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+Backspace</td>
+<td>Navigate to last edit location</td>
+<td>关闭工具窗口，光标回到最后编辑的文件（类似Esc）</td>
+</tr>
+<tr>
+<td>Alt + F1</td>
+<td>Select current file or symbol in any view</td>
+<td>选择一个视图，显示当前文件或符号（资源管理器、浏览器、结构图等）</td>
+</tr>
+<tr>
+<td>Ctrl + B , Ctrl + Click</td>
+<td>Go to declaration</td>
+<td>跳转到声明或者用例处</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + B</td>
+<td>Go to implementation(s)</td>
+<td>跳转到实现处</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + I</td>
+<td>Open quick definition lookup</td>
+<td>弹框中查看类文件</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + B</td>
+<td>Go to type declaration</td>
+<td>跳转类型声明处</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + T</td>
+<td></td>
+<td>转到测试类</td>
+</tr>
+<tr>
+<td>Ctrl + U</td>
+<td>Go to super-method / super-class</td>
+<td>跳转父方法/父类</td>
+</tr>
+<tr>
+<td>Alt + Up/Down</td>
+<td>Go to previous / next method</td>
+<td>光标转到前/后一个方法</td>
+</tr>
+<tr>
+<td>Ctrl + ]/[</td>
+<td>Move to code block end/start</td>
+<td>光标跳转到代码块的结尾/开头</td>
+</tr>
+<tr>
+<td>Ctrl + F12</td>
+<td>File structure popup</td>
+<td>弹出类结构</td>
+</tr>
+<tr>
+<td>Ctrl + H</td>
+<td>Type hierarchy</td>
+<td>打开类型层次结构</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + H</td>
+<td>Method hierarchy</td>
+<td>打开方法层次结构</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + H</td>
+<td>Call hierarchy</td>
+<td>打开调用层次结构</td>
+</tr>
+<tr>
+<td>F2 / Shift + F2</td>
+<td>Next/previous highlighted error</td>
+<td>下一个/前一个 error</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>Edit source / View source</td>
+<td>编辑/查看文件</td>
+</tr>
+<tr>
+<td>Alt + Home</td>
+<td>Show navigation bar</td>
+<td>显示代码导航栏</td>
+</tr>
+<tr>
+<td>F11</td>
+<td>Toggle bookmark</td>
+<td>加上/去掉书签</td>
+</tr>
+<tr>
+<td>Ctrl + F11</td>
+<td>Toggle bookmark with mnemonic</td>
+<td>添加标记书签</td>
+</tr>
+<tr>
+<td>Ctrl + #[0-9]</td>
+<td>Go to numbered bookmark</td>
+<td>转到编号书签</td>
+</tr>
+<tr>
+<td>Shift + F11</td>
+<td>Show bookmarks</td>
+<td>弹框，列出书签</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Search-Replace">Search/Replace</h2>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>英文说明</th>
+<th>中文说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Double Shift</td>
+<td>Search everywhere</td>
+<td>搜索任意文件</td>
+</tr>
+<tr>
+<td>Ctrl + F</td>
+<td>Find</td>
+<td>当前文件查找</td>
+</tr>
+<tr>
+<td>F3 / Shift + F3</td>
+<td>Find next / Find previous</td>
+<td>配合“Ctrl + F” 查找下一个/前一个</td>
+</tr>
+<tr>
+<td>Ctrl + R</td>
+<td>Replace</td>
+<td>当前文件替换</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + F</td>
+<td>Find in pathqu</td>
+<td>全局查找</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + R</td>
+<td>Replace in path</td>
+<td>全局替换</td>
+</tr>
+<tr>
+<td>Ctrl + N</td>
+<td>Go to class</td>
+<td>搜索类</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + N</td>
+<td>Go to file</td>
+<td>搜索文件</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + Shift + N</td>
+<td>Go to symbol</td>
+<td>搜索符号</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + A</td>
+<td>Find Action</td>
+<td>搜索操作</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Live-Templates">Live Templates</h2>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>英文说明</th>
+<th>中文说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl + Alt + J</td>
+<td>Surround with Live Template</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl + J</td>
+<td>Insert Live Template</td>
+<td>弹出模板选择需要的代码片段</td>
+</tr>
+<tr>
+<td>iter</td>
+<td>Iteration according to Java SDK 1.5 style</td>
+<td>for (Object o : ) {      }</td>
+</tr>
+<tr>
+<td>inst</td>
+<td>Checkobjecttype with instanceof and downcast it</td>
+<td>if (name instanceof Object) {     Object o = (Object) name;      }</td>
+</tr>
+<tr>
+<td>itco</td>
+<td>Iterate elements of java.util.Collection</td>
+<td>for (Iterator iterator = collection.iterator(); iterator.hasNext(); ) {     Object next =  iterator.next();      }</td>
+</tr>
+<tr>
+<td>itit</td>
+<td>Iterate elements of java.util.Iterator</td>
+<td>while (iterator.hasNext()) {     Object next =  iterator.next();      }</td>
+</tr>
+<tr>
+<td>itli</td>
+<td>Iterate elements of java.util.List</td>
+<td>for (int i = 0; i &lt; list.size(); i++) {     Object o =  list.get(i);</td>
+</tr>
+<tr>
+<td>thr</td>
+<td>throw new</td>
+<td>throw new</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Refactoring：重构">Refactoring：重构</h2>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>英文说明</th>
+<th>中文说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F5</td>
+<td>Copy</td>
+<td>复制文件</td>
+</tr>
+<tr>
+<td>F6</td>
+<td>Move</td>
+<td>移动文件</td>
+</tr>
+<tr>
+<td>Alt + Delete</td>
+<td>Safe Delete</td>
+<td></td>
+</tr>
+<tr>
+<td>Shift + F6</td>
+<td>Rename</td>
+<td>重命名（F12 先选中）</td>
+</tr>
+<tr>
+<td>Ctrl + F6</td>
+<td>Change Signature</td>
+<td>更改签名</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + N</td>
+<td>Inline</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl + Alt + M</td>
+<td>Extract Method</td>
+<td>提取代码块为一个method</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + V</td>
+<td>Extract Variable</td>
+<td>提取变量（定义一个新变量，保留当前变量的值）<br/>修改前：<br/>return name;<br/>修改后：<br/>String name1 = name; <br/>return name1;</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + F</td>
+<td>Extract Field</td>
+<td>提取变量为类的一个字段。</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + C</td>
+<td>Extract Constant</td>
+<td>提取静态变量</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + P</td>
+<td>Extract Parameter</td>
+<td>提取方法入参</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Debugging">Debugging</h2>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>英文说明</th>
+<th>中文说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F7 / F8</td>
+<td>Step into / Step over</td>
+<td>步入/步出（F5/F6）</td>
+</tr>
+<tr>
+<td>Shift + F7 / Shift + F8</td>
+<td>Smart step into/Step out</td>
+<td></td>
+</tr>
+<tr>
+<td>Alt + F9</td>
+<td>Run to cursor</td>
+<td>跑到下一断点</td>
+</tr>
+<tr>
+<td>Alt + F8</td>
+<td>Evaluate expression</td>
+<td>计算表达式</td>
+</tr>
+<tr>
+<td>F9</td>
+<td>Resume program</td>
+<td>重新开始程序（F11）</td>
+</tr>
+<tr>
+<td>Ctrl + F8</td>
+<td>Toggle breakpoint</td>
+<td>加上/去掉 断点</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + F8</td>
+<td>View breakpoints</td>
+<td>查看断点</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Compile-and-Run">Compile and Run</h2>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>英文说明</th>
+<th>中文说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl + F9</td>
+<td>Make project (compile modifed and dependent)</td>
+<td>构建项目</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + F9</td>
+<td>Compile selected file, package or module</td>
+<td>重新编译</td>
+</tr>
+<tr>
+<td>Alt + Shift + F10/F9</td>
+<td>Select configuration and run/and debug</td>
+<td>打开run/debug的配置文件</td>
+</tr>
+<tr>
+<td>Shift + F10/F9</td>
+<td>Run/Debug</td>
+<td>Run/Debug 程序</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + F10</td>
+<td>Run context configuration from editor</td>
+<td>从编辑器运行上下文配置</td>
+</tr>
+<tr>
+<td>Ctrl + F2</td>
+<td></td>
+<td>stop 程序</td>
+</tr>
+</tbody>
+</table>
+<h2 id="VCS-Local-History">VCS/Local History</h2>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>英文说明</th>
+<th>中文说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl + K</td>
+<td>Commit project to VCS</td>
+<td>提交</td>
+</tr>
+<tr>
+<td>Ctrl + T</td>
+<td>Update from VCS</td>
+<td>更新</td>
+</tr>
+<tr>
+<td>Alt + Shift + C</td>
+<td>View recent changes</td>
+<td>打开最近变更内容列表</td>
+</tr>
+<tr>
+<td>Alt + BackQuote (`)</td>
+<td>VCS Operations Popup</td>
+<td>弹出版本控制选项框</td>
+</tr>
+</tbody>
+</table>
+<h2 id="General">General</h2>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>英文说明</th>
+<th>中文说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alt + #[0-9]</td>
+<td>Open corresponding tool window</td>
+<td>打开相应的工具窗口</td>
+</tr>
+<tr>
+<td>Ctrl + S</td>
+<td>Save all</td>
+<td>保存</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + Y</td>
+<td>Synchronize</td>
+<td>同步（reload）</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + F12</td>
+<td>Toggle maximizing editor</td>
+<td>最大化/恢复 编辑窗口</td>
+</tr>
+<tr>
+<td>Alt + Shift + F</td>
+<td>Add to Favorites</td>
+<td>添加收藏</td>
+</tr>
+<tr>
+<td>Alt + Shift + I</td>
+<td>Inspect current file with current profile</td>
+<td>使用当前配置文件检查当前文件</td>
+</tr>
+<tr>
+<td>Ctrl + BackQuote (`)</td>
+<td>Quick switch current scheme</td>
+<td>切换IDEA主题模式</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + S</td>
+<td>Open Settings dialog</td>
+<td>打开设置</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + Shift + S</td>
+<td>Open Project Structure dialog</td>
+<td>打开项目结构</td>
+</tr>
+<tr>
+<td>Ctrl + Tab</td>
+<td>Switch between tabs and tool window</td>
+<td>打开切换器（类似于windows的任务栏）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="查看当前类的父类（Ctrl-Alt-Shift-u）">查看当前类的父类（Ctrl+Alt+Shift+u）</h2>
+<p>下面看这个编辑器怎么以图解的形式，查看这种继承关系。</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127223845078.png" alt="image-20211127223845078"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127223909961.png" alt="image-20211127223909961"></p>
+<h2 id="打开子类工具栏：F4">打开子类工具栏：F4</h2>
+<p>利用的： 顶部菜单 <code>Navigate --&gt; Type Hierarchy</code></p>
+<h2 id="弹出子类UML图：Ctrl-Alt-u">弹出子类UML图：Ctrl+Alt+u</h2>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127224042688.png" alt="image-20211127224042688"></p>
+<p>设置相关快捷键</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127225955330.png" alt="image-20211127225955330"></p>
+<h2 id="弹出层显示的记录文件个数（Ctrl-E）">弹出层显示的记录文件个数（Ctrl + E）</h2>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127231134179.png" alt="image-20211127231134179"></p>
+<h2 id="行拷贝（Ctrl-Alt-⬇）">行拷贝（Ctrl+Alt+⬇）</h2>
+<p>Duplicate Line Or Selection</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-16380260866347.png" alt="30f63f77a3c8b29426f7f6411d13f4b9.png"></p>
+<h1>基础配置</h1>
+<h2 id="编码配置">编码配置</h2>
+<h3 id="全局编码">全局编码</h3>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image001-163802678409512.png" alt="57826dd953a5c863292bed5462025d60.png"></p>
+<h3 id="文件编码">文件编码</h3>
+<p>打开需要设置编码的文件，在右下角进行设置</p>
+<h3 id="编码统一">编码统一</h3>
+<h4 id="File-Encodings">File Encodings</h4>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125093711347.png" alt="image-20211125093711347"></p>
+<h2 id="文件默认打开方式">文件默认打开方式</h2>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-16380266644219.png" alt="fce0704d161bda7eec8a5cc4743cc062.png"></p>
+<p>如上图标注 1 所示，该区域的后缀类型文件在 IntelliJ IDEA 中将以标注 2 的方式进行打开。</p>
+<p>如上图标注 3 所示，我们可以在 IntelliJ IDEA 中忽略某些后缀的文件或是文件夹，比如我一般会把 .idea 这个文件夹忽略。</p>
+<h2 id="字体设置">字体设置</h2>
+<h3 id="界面字体">界面字体</h3>
+<p>Settings-&gt;Appearance</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image001-163802676145910.png" alt="e8ad5d669969dbce8a1e35d6269013df.png"></p>
+<h3 id="程序字体">程序字体</h3>
+<p>Editor -&gt; Colors &amp; Fonts -&gt; Font</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-163802676145911.png" alt="5e3013e5dad6b0e05e97274216472a90.png"></p>
+<h1>使用技巧</h1>
+<h2 id="代码提示快捷键（Ctrl-逗号）">代码提示快捷键（Ctrl+逗号）</h2>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127232203726.png" alt="image-20211127232203726"></p>
+<p>如上所示，默认 Ctrl + 空格 快捷键是基础代码提示、补充快捷键，但是由于我们中文系统基本这个快捷键都被输入法占用了，所以我们发现不管怎么按都是没有提示代码效果的，原因就是在此。我个人建议修改此快捷键为 Ctrl + 逗号。</p>
+<h2 id="鼠标放上去提示参数">鼠标放上去提示参数</h2>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-163802681052513.png" alt="0e6d5bfa29683800dc3eae4602afc8a8.png"></p>
+<p>软分行查看代码</p>
+<p>右键</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image001.png" alt="9fff17978c4752eeb8d4c127c9e2a554.png"></p>
+<h2 id="编译增加堆内存">编译增加堆内存</h2>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127225848686.png" alt="image-20211127225848686"></p>
+<h2 id="格式化代码，后多行空行转为一行">格式化代码，后多行空行转为一行</h2>
+<p>idea格式化代码后会出现最多2行空行，不能像eclipse一样最多只保留一行空行，要想设置的和eclipse效果一样，设置如下</p>
+<p>File --&gt; setting --&gt; 搜索 code style --&gt; 选择 blank lines标签项 --&gt; 保留最大空行数设置为1</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230244828.png" alt="image-20211127230244828"></p>
+<h2 id="文件打开超过一行，多行显示">文件打开超过一行，多行显示</h2>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230844516.png" alt="image-20211127230844516"></p>
+<p>如上图标注 1 所示，在打开很多文件的时候，IntelliJ IDEA 默认是把所有打开的文件名 Tab 单行显示的。可以修改为多行</p>
+<h2 id="修改类注释模板">修改类注释模板</h2>
+<p><code>File-&gt;Settings-&gt;File and Code Templates 找到Includes</code></p>
+<h2 id="添加自定义方法">添加自定义方法</h2>
+<ol>
+<li>
+<p>首先，点击File–&gt;Settings–&gt;Editor–&gt;Live Templates</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230339392.png" alt="image-20211127230339392"></p>
+</li>
+<li>
+<p>接着，点击右上角“+”添加“Template Group”模板组，如Java</p>
+</li>
+</ol>
+<p>​        ​<img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230357335.png" alt="image-20211127230357335"></p>
+<ol start="3">
+<li>
+<p>在新增的模板组内添加模板，点击右上角“+”添加“Live Template”</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230437624.png" alt="image-20211127230437624"></p>
+</li>
+<li>
+<p>填写模板内容，定义出发快捷键选择 Enter</p>
+</li>
+</ol>
+<p>​        <img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230500953.png" alt="image-20211127230500953"></p>
+<ol start="5">
+<li>
+<p>定义作用域</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230524523.png" alt="image-20211127230524523"></p>
+<p>这样就OK了，可以仿照这种方式，自定义很多快捷输入的语句，比如输入，输出等：</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230606315.png" alt="image-20211127230606315"></p>
+</li>
+</ol>
+<h2 id="默认代码展示形式（折叠-展开）">默认代码展示形式（折叠/展开）</h2>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230751897.png" alt="image-20211127230751897"></p>
+<p>如上图标注红圈所示，我们可以对指定代码类型进行默认折叠或是展开的设置，勾选上的表示该类型的代码在文件被打开的时候默认是被折叠的，去掉勾选则反之。</p>
+<h2 id="行号和方法分割线">行号和方法分割线</h2>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002.png" alt="2c9d0deb2e32bea240016e879acd4cb7.png"><br>
+如上图红圈所示，默认 IntelliJ IDEA 是没有勾选 Show line numbers 显示行数的，但是我建议一般这个要勾选上。<br>
+如上图红圈所示，默认 IntelliJ IDEA 是没有勾选 Show method separators 显示方法线的，这种线有助于我们区分开方法，所以也是建议勾选上的。</p>
+<h2 id="单行注释、注释块">单行注释、注释块</h2>
+<p>搜索：<code>Add a space at line comment start</code></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20220304151518515.png" alt="image-20220304151518515"></p>
+<h2 id="显示内存回收">显示内存回收</h2>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-16380258373592.png" alt="2bf7deb86f42bcbdd32876423cdbe6b5.png"></p>
+<p>IntelliJ IDEA 14 版本默认是不显示内存使用情况的，对于大内存的机器来讲不显示也无所谓，但是如果是内存小的机器最好还是显示下。如上图演示，点击后可以进行部分内存的回收。</p>
+<h2 id="拼写检查">拼写检查</h2>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-16380258506663.png" alt="29916ac8772ea1af0367ee55106b713d.png"></p>
+<h2 id="增加打开的文件-Tab-个数">增加打开的文件 Tab 个数</h2>
+<p>Tab limit</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-16380259713575.png" alt="3a13ec2347321bd1c23131c75e5f6808.png"></p>
+<h2 id="单文件多窗口打开">单文件多窗口打开</h2>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-16380260699266.png" alt="a1f9f345240dd5190a929ffc0fe14de1.png"></p>
+<h2 id="SpringBoot实现服务器自动重启">SpringBoot实现服务器自动重启</h2>
+<ul>
+<li>
+<p>导入devtools依赖即可</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>然后到setting框中，输入compiler，然后勾选<strong>Build project automatically</strong></p>
+</li>
+<li>
+<p>然后按住<strong>shift+alt+ctrl+/</strong>，进入<strong>maintenance</strong>,然后选择进入<strong>Registry</strong></p>
+</li>
+<li>
+<p>勾选c<strong>ompiler.automake.when.app.running</strong></p>
+</li>
+</ul>
+<h2 id="IDEA-开启RunDashboard">IDEA 开启RunDashboard</h2>
+<ul>
+<li>修改 .idea/workspace.xml 文件</li>
+</ul>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-163802692934114.png" alt="b8b40c372c3114cb88d98abdc1621768.png"></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">找到<span class="tag">&lt;<span class="name">component</span> <span class="attr">name</span>=<span class="string">&quot;RunDashboard&quot;</span>&gt;</span> 添加配置：</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">option</span> <span class="attr">name</span>=<span class="string">&quot;configurationTypes&quot;</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">set</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;SpringBootApplicationConfigurationType&quot;</span> /&gt;</span> </span><br><span class="line">  <span class="tag">&lt;/<span class="name">set</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>最终配置：<br>
+<img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image004.png" alt="c8e483b781cfd443e68a15b94345844b.png"><br>
+显示效果：<br>
+<img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image005.png" alt="511e587a5be1655e22f23d7981c2b8c8.png"></p>
+<h2 id="忽略提交文件到Git（-ignore）">忽略提交文件到Git（.ignore）</h2>
+<ol>
+<li>
+<p>点击<strong>File-&gt;Settings-&gt;Plugins</strong>，点击Browse repositories…</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-163802704819915.png" alt="3b2f62bb2f51c955400f9d9ff9945a6e.png"></p>
+</li>
+<li>
+<p>搜索**.ignore**，点击<strong>Install</strong>，安装完成后，重启IDEA</p>
+</li>
+<li>
+<p>在 项目上 右键-&gt;New -&gt;.ignore file -&gt;.gitignore file(Git)</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image004-163802704820016.png" alt="bdd020c028cf2b207232d1c58ac45f66.png"></p>
+</li>
+<li>
+<p>先选择Example user template好了，以后有什么想过滤的可以自行添加，~最后点击Generate生成</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image006.png" alt="3e4705d5b72a8e3944b7e70d4f967e89.png"></p>
+</li>
+<li>
+<p>然后就会发现被忽略的文件名变成了灰色</p>
+</li>
+<li>
+<p>也可以右键文件将其加入忽略的名单中</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image008.png" alt="89c2f940c462b9558a9158f433a6e13b.png"></p>
+</li>
+<li>
+<p>以下是一些.gitignore文件忽略的匹配规则：</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>通配符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.a</td>
+<td>忽略所有 .a 结尾的文件</td>
+</tr>
+<tr>
+<td>!lib.a</td>
+<td>但 lib.a 除外</td>
+</tr>
+<tr>
+<td>/TODO</td>
+<td>仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO</td>
+</tr>
+<tr>
+<td>build/</td>
+<td>忽略 build/ 目录下的所有文件</td>
+</tr>
+<tr>
+<td>doc/.txt</td>
+<td>会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</td>
+</tr>
+</tbody>
+</table>
+<ol start="8">
+<li>注意</li>
+</ol>
+<p>.gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。<br>
+那么解决方法就是先把本地缓存删除（改变成未track状态），然后再提交：</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">git rm -r –cached filePath</span><br><span class="line">git commit -m “remove xx”</span><br><span class="line"></span><br><span class="line">或者：</span><br><span class="line">git rm -r –cached .</span><br><span class="line">git add .</span><br><span class="line">git commit -m “update .gitignore”</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">来解释下几个参数</span><br><span class="line">-r 是删除文件夹及其子目录</span><br><span class="line">–cached 是删除暂存区里的文件而不删除工作区里的文件，</span><br><span class="line"></span><br><span class="line">第一种是删除某个文件，第二种方法就把所有暂存区里的文件删了，再加一遍，相当于更新了一遍。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="tag"># 开发工具</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/10/26/%E5%B7%A5%E5%85%B7&%E7%B3%BB%E7%BB%9F/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/IDEA%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" rel="prev" title="IDEA使用记录">
+      <i class="fa fa-chevron-left"></i> IDEA使用记录
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/10/27/Java/%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98/JVM%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE%20/" rel="next" title="JVM基础">
+      JVM基础 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">插件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CamelCase"><span class="nav-number">1.1.</span> <span class="nav-text">CamelCase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RestfulToolkit"><span class="nav-number">1.2.</span> <span class="nav-text">RestfulToolkit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Free-Mybatis-plugin"><span class="nav-number">1.3.</span> <span class="nav-text">Free Mybatis plugin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EasyCode"><span class="nav-number">1.4.</span> <span class="nav-text">EasyCode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MybatisLog"><span class="nav-number">1.5.</span> <span class="nav-text">MybatisLog</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Editing"><span class="nav-number">2.1.</span> <span class="nav-text">Editing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Usage-Search"><span class="nav-number">2.2.</span> <span class="nav-text">Usage Search</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Navigation"><span class="nav-number">2.3.</span> <span class="nav-text">Navigation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Search-Replace"><span class="nav-number">2.4.</span> <span class="nav-text">Search&#x2F;Replace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Live-Templates"><span class="nav-number">2.5.</span> <span class="nav-text">Live Templates</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Refactoring%EF%BC%9A%E9%87%8D%E6%9E%84"><span class="nav-number">2.6.</span> <span class="nav-text">Refactoring：重构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Debugging"><span class="nav-number">2.7.</span> <span class="nav-text">Debugging</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Compile-and-Run"><span class="nav-number">2.8.</span> <span class="nav-text">Compile and Run</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VCS-Local-History"><span class="nav-number">2.9.</span> <span class="nav-text">VCS&#x2F;Local History</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#General"><span class="nav-number">2.10.</span> <span class="nav-text">General</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%B1%BB%E7%9A%84%E7%88%B6%E7%B1%BB%EF%BC%88Ctrl-Alt-Shift-u%EF%BC%89"><span class="nav-number">2.11.</span> <span class="nav-text">查看当前类的父类（Ctrl+Alt+Shift+u）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%93%E5%BC%80%E5%AD%90%E7%B1%BB%E5%B7%A5%E5%85%B7%E6%A0%8F%EF%BC%9AF4"><span class="nav-number">2.12.</span> <span class="nav-text">打开子类工具栏：F4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%B9%E5%87%BA%E5%AD%90%E7%B1%BBUML%E5%9B%BE%EF%BC%9ACtrl-Alt-u"><span class="nav-number">2.13.</span> <span class="nav-text">弹出子类UML图：Ctrl+Alt+u</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%B9%E5%87%BA%E5%B1%82%E6%98%BE%E7%A4%BA%E7%9A%84%E8%AE%B0%E5%BD%95%E6%96%87%E4%BB%B6%E4%B8%AA%E6%95%B0%EF%BC%88Ctrl-E%EF%BC%89"><span class="nav-number">2.14.</span> <span class="nav-text">弹出层显示的记录文件个数（Ctrl + E）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%8C%E6%8B%B7%E8%B4%9D%EF%BC%88Ctrl-Alt-%E2%AC%87%EF%BC%89"><span class="nav-number">2.15.</span> <span class="nav-text">行拷贝（Ctrl+Alt+⬇）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">基础配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E7%A0%81%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.</span> <span class="nav-text">编码配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E7%BC%96%E7%A0%81"><span class="nav-number">3.1.1.</span> <span class="nav-text">全局编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%BC%96%E7%A0%81"><span class="nav-number">3.1.2.</span> <span class="nav-text">文件编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E7%A0%81%E7%BB%9F%E4%B8%80"><span class="nav-number">3.1.3.</span> <span class="nav-text">编码统一</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#File-Encodings"><span class="nav-number">3.1.3.1.</span> <span class="nav-text">File Encodings</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F"><span class="nav-number">3.2.</span> <span class="nav-text">文件默认打开方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E4%BD%93%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.3.</span> <span class="nav-text">字体设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%95%8C%E9%9D%A2%E5%AD%97%E4%BD%93"><span class="nav-number">3.3.1.</span> <span class="nav-text">界面字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E5%AD%97%E4%BD%93"><span class="nav-number">3.3.2.</span> <span class="nav-text">程序字体</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">使用技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA%E5%BF%AB%E6%8D%B7%E9%94%AE%EF%BC%88Ctrl-%E9%80%97%E5%8F%B7%EF%BC%89"><span class="nav-number">4.1.</span> <span class="nav-text">代码提示快捷键（Ctrl+逗号）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%BC%A0%E6%A0%87%E6%94%BE%E4%B8%8A%E5%8E%BB%E6%8F%90%E7%A4%BA%E5%8F%82%E6%95%B0"><span class="nav-number">4.2.</span> <span class="nav-text">鼠标放上去提示参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E5%A2%9E%E5%8A%A0%E5%A0%86%E5%86%85%E5%AD%98"><span class="nav-number">4.3.</span> <span class="nav-text">编译增加堆内存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81%EF%BC%8C%E5%90%8E%E5%A4%9A%E8%A1%8C%E7%A9%BA%E8%A1%8C%E8%BD%AC%E4%B8%BA%E4%B8%80%E8%A1%8C"><span class="nav-number">4.4.</span> <span class="nav-text">格式化代码，后多行空行转为一行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%89%93%E5%BC%80%E8%B6%85%E8%BF%87%E4%B8%80%E8%A1%8C%EF%BC%8C%E5%A4%9A%E8%A1%8C%E6%98%BE%E7%A4%BA"><span class="nav-number">4.5.</span> <span class="nav-text">文件打开超过一行，多行显示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E7%B1%BB%E6%B3%A8%E9%87%8A%E6%A8%A1%E6%9D%BF"><span class="nav-number">4.6.</span> <span class="nav-text">修改类注释模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95"><span class="nav-number">4.7.</span> <span class="nav-text">添加自定义方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E4%BB%A3%E7%A0%81%E5%B1%95%E7%A4%BA%E5%BD%A2%E5%BC%8F%EF%BC%88%E6%8A%98%E5%8F%A0-%E5%B1%95%E5%BC%80%EF%BC%89"><span class="nav-number">4.8.</span> <span class="nav-text">默认代码展示形式（折叠&#x2F;展开）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%8C%E5%8F%B7%E5%92%8C%E6%96%B9%E6%B3%95%E5%88%86%E5%89%B2%E7%BA%BF"><span class="nav-number">4.9.</span> <span class="nav-text">行号和方法分割线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E8%A1%8C%E6%B3%A8%E9%87%8A%E3%80%81%E6%B3%A8%E9%87%8A%E5%9D%97"><span class="nav-number">4.10.</span> <span class="nav-text">单行注释、注释块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6"><span class="nav-number">4.11.</span> <span class="nav-text">显示内存回收</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%BC%E5%86%99%E6%A3%80%E6%9F%A5"><span class="nav-number">4.12.</span> <span class="nav-text">拼写检查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A2%9E%E5%8A%A0%E6%89%93%E5%BC%80%E7%9A%84%E6%96%87%E4%BB%B6-Tab-%E4%B8%AA%E6%95%B0"><span class="nav-number">4.13.</span> <span class="nav-text">增加打开的文件 Tab 个数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E6%96%87%E4%BB%B6%E5%A4%9A%E7%AA%97%E5%8F%A3%E6%89%93%E5%BC%80"><span class="nav-number">4.14.</span> <span class="nav-text">单文件多窗口打开</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringBoot%E5%AE%9E%E7%8E%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%87%AA%E5%8A%A8%E9%87%8D%E5%90%AF"><span class="nav-number">4.15.</span> <span class="nav-text">SpringBoot实现服务器自动重启</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IDEA-%E5%BC%80%E5%90%AFRunDashboard"><span class="nav-number">4.16.</span> <span class="nav-text">IDEA 开启RunDashboard</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%BD%E7%95%A5%E6%8F%90%E4%BA%A4%E6%96%87%E4%BB%B6%E5%88%B0Git%EF%BC%88-ignore%EF%BC%89"><span class="nav-number">4.17.</span> <span class="nav-text">忽略提交文件到Git（.ignore）</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Alisa</p>
+  <div class="site-description" itemprop="description">学习笔记、工作心得</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">57</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fab fa-apple"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Alisa</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
