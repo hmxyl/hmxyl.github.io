@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"hmxyl.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="基础类型 String    命令 使用 功能 说明     SET SET key value SET key value ex seconds 增 储值储值且key在指定秒后过期   MSET MSET key value [key value …] 增 同时储多个值   SETEX SETEX key seconds value 增 储值，且key在指定秒后过期   PSETEX PSETE">
+  <meta name="description" content="String    命令 使用 功能 说明     SET SET key value SET key value ex seconds 增 储值储值且key在指定秒后过期   MSET MSET key value [key value …] 增 同时储多个值   SETEX SETEX key seconds value 增 储值，且key在指定秒后过期   PSETEX PSETEX key">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis-数据类型">
-<meta property="og:url" content="https://hmxyl.github.io/2022/11/03/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%9F%BA%E7%A1%80/Redis-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/index.html">
+<meta property="og:url" content="https://hmxyl.github.io/2022/11/03/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%9F%BA%E7%A1%80/Redis-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88%E5%9F%BA%E7%A1%80%EF%BC%89/index.html">
 <meta property="og:site_name" content="Alisa&#39;s Home">
-<meta property="og:description" content="基础类型 String    命令 使用 功能 说明     SET SET key value SET key value ex seconds 增 储值储值且key在指定秒后过期   MSET MSET key value [key value …] 增 同时储多个值   SETEX SETEX key seconds value 增 储值，且key在指定秒后过期   PSETEX PSETE">
+<meta property="og:description" content="String    命令 使用 功能 说明     SET SET key value SET key value ex seconds 增 储值储值且key在指定秒后过期   MSET MSET key value [key value …] 增 同时储多个值   SETEX SETEX key seconds value 增 储值，且key在指定秒后过期   PSETEX PSETEX key">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-11-03T12:22:19.000Z">
-<meta property="article:modified_time" content="2022-12-12T11:31:40.128Z">
+<meta property="article:modified_time" content="2022-12-15T11:01:19.977Z">
 <meta property="article:author" content="Alisa">
 <meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://hmxyl.github.io/2022/11/03/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%9F%BA%E7%A1%80/Redis-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+<link rel="canonical" href="https://hmxyl.github.io/2022/11/03/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%9F%BA%E7%A1%80/Redis-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88%E5%9F%BA%E7%A1%80%EF%BC%89/">
 
 
 <script id="page-configurations">
@@ -136,7 +136,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">55</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">56</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -194,7 +194,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/11/03/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%9F%BA%E7%A1%80/Redis-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/11/03/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%9F%BA%E7%A1%80/Redis-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88%E5%9F%BA%E7%A1%80%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -224,7 +224,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-12-12 19:31:40" itemprop="dateModified" datetime="2022-12-12T19:31:40+08:00">2022-12-12</time>
+                <time title="修改时间：2022-12-15 19:01:19" itemprop="dateModified" datetime="2022-12-15T19:01:19+08:00">2022-12-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -251,8 +251,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1>基础类型</h1>
-<h2 id="String">String</h2>
+        <h1>String</h1>
 <table>
 <thead>
 <tr>
@@ -451,7 +450,7 @@
 </ul>
 </li>
 </ol>
-<h2 id="List">List</h2>
+<h1>List</h1>
 <p>Redis 列表是字符串值的链表。</p>
 <p>Redis 列表经常用于：</p>
 <ul>
@@ -619,7 +618,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="Hash">Hash</h2>
+<h1>Hash</h1>
 <p>Redis 哈希是结构为字段值对集合的记录类型。您可以使用散列来表示基本对象并存储计数器分组等。</p>
 <p>| 命令 | 使用 | 功能 | 说明 |<br>
 | :- | : | : | - |<br>
@@ -665,7 +664,7 @@
 <ul>
 <li>缓存：相比String更节省空间，能直观的维护缓存信息，如用户信息，视频信息等。</li>
 </ul>
-<h2 id="Set">Set</h2>
+<h1>Set：无序集合</h1>
 <p>Redis 集是唯一字符串（成员）的无序集合。您可以使用 Redis 集高效地：</p>
 <ul>
 <li>跟踪唯一项目（例如，跟踪访问给定博客文章的所有唯一 IP 地址）。</li>
@@ -719,7 +718,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="Zset-有序集合">Zset : 有序集合</h2>
+<h1>Zset : 有序集合</h1>
 <p>Redis 排序集是由<strong>相关分数</strong>排序的唯一字符串（成员）的集合。当多个字符串具有相同的分数时，这些字符串按字典顺序排列。排序集的一些用例包括：</p>
 <ul>
 <li>
@@ -1030,315 +1029,25 @@
 </tr>
 </tbody>
 </table>
-<h1>特殊类型</h1>
-<h2 id="Stream">Stream</h2>
-<p>Redis 流是一种数据结构，其作用类似于<code>an append-only log</code>。您可以使用流实时记录和同步事件。</p>
-<p>Redis 流用例的示例包括：</p>
-<ul>
-<li>事件溯源（例如，跟踪用户操作、点击等）</li>
-<li>传感器监控（例如，现场设备的读数）</li>
-<li>通知（例如，将每个用户的通知记录存储在单独的流中）</li>
-</ul>
-<p>Redis 为每个流条目生成一个唯一的 ID。您可以使用这些 ID 稍后检索其关联条目或读取和处理流中的所有后续条</p>
-<h3 id="XADD：添加数据">XADD：添加数据</h3>
-<p>XADD 是唯一可以将数据添加到流的 Redis 命令。</p>
-<ul>
-<li>
-<p>命令格式</p>
+<h1>基础命令：<span id="Order_SCAN">SCAN</span></h1>
 <blockquote>
-<p><strong>XADD</strong> key    [<strong>NOMKSTREAM</strong>]   <font color="blue">[&lt;<strong>MAXLEN</strong> | <strong>MINID</strong>&gt;    [= | ~]    threshold<br>
-[<strong>LIMIT</strong> count]]</font> <font color="orange">&lt;* | id&gt;</font> <em>field value [field value …]</em></p>
-</blockquote>
-</li>
-<li>
-<p>版本变更</p>
-<p>版本6.2.0 前：<strong>XADD</strong> key <strong>ID</strong> <em>field string [field string …]</em></p>
-<p>版本6.2.0后 ：添加了 **NOMKSTREAM 、MINID  LIMIT **</p>
-<p>版本7.0.0 ：添加了对 显式 ID 形式的支持</p>
-</li>
-<li>
-<p>命令参数解释</p>
-<ol>
-<li>
-<p><font color="orange">&lt;* | id&gt;</font>  id组成方式：<code>&lt;millisecondsTime&gt;-&lt;sequenceNumber&gt;</code></p>
-<ul>
-<li>
-<p>如果指定的 ID 参数是 ==*== 字符，XADD 命令将为您自动生成唯一 ID</p>
-<p><code>XADD stream:test:1 * ip 127.0.0.1</code></p>
-</li>
-<li>
-<p>虽然仅在极少数情况下有用，但可以指定格式良好的 ID，以便将使用指定的 ID 精确添加新条目。</p>
-<p><code>XADD stream:test:1 1662020231547-1 ip 127.0.0.2</code><br />当用户为 指定显式 ID 时<code>XADD</code>，最小有效 ID 为 <code>0-1</code>，并且用户<em>必须</em>指定一个大于当前流内任何其他 ID 的 ID，否则该命令将失败并返回错误。</p>
-<p>通常，仅当您有另一个系统生成唯一 ID（例如 SQL 表）并且您确实希望 Redis 流 ID 与另一个系统匹配时，才使用特定 ID。</p>
-</li>
-</ul>
-</li>
-<li>
-<p><font color="blue">[&lt;<strong>MAXLEN</strong> | <strong>MINID</strong>&gt; [= | ~] threshold<br>
-[<strong>LIMIT</strong> count]]</font> 封顶（Capped streams）</p>
-<p>==MAXLEN==：使用 MAXLEN，当达到指定长度时，旧条目会被自动驱逐</p>
-<p>==~==：表示封顶的阈值 count是一个近似值。<code>MAXLEN ~ 1000</code>我真的不需要这正好是 1000 个项目。它可以是 1000 或 1010 或 1030，只要确保至少保存 1000 个项目即可（常用场景）</p>
-<p>==MINID==：驱逐 ID 低于阈值的条目，其中阈值是流 ID。</p>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="XRANGE：范围查询">XRANGE：范围查询</h3>
-<blockquote>
-<p><strong>XRANGE</strong> <em>key</em> <font style="color:blue;font-weight:bold">start end </font> [<strong>COUNT</strong> count]： 返回流中的一段元素</p>
+<p><strong>SCAN</strong> cursor [<strong>MATCH</strong> pattern] [<strong>COUNT</strong> count] [<strong>TYPE</strong> type]</p>
 </blockquote>
 <ul>
 <li>
 <p>命令参数解释</p>
-<ol>
-<li>
-<p><font style="color:blue;font-weight:bold">start end</font>: start 和 end 之间为闭区间</p>
-<ul>
-<li>
-<p>-和 + 特殊 ID 分别表示流中可能的最小 ID 和可能的最大 ID，因此以下命令将仅返回流中的所有条目：<code>XRANGE somestream - +</code></p>
-<p><code>-</code>: 可以理解为：0-0</p>
-<p><code>+</code>: 可以理解为：18446744073709551615-18446744073709551615</p>
-</li>
-<li>
-<p>Incomplete IDs</p>
-<p>不完整指定的ID：仅仅指定UNIX时间部分</p>
-<p><code>XRANGE somestream 1526985054069 1526985055069</code>在这种情况下，XRANGE 将使用 -0 自动完成开始间隔，使用 -18446744073709551615 自动完成结束间隔，以便返回在给定毫秒和另一个指定毫秒结束之间生成的所有条目。这也意味着重复相同的毫秒两次，我们得到指定毫秒内的所有条目</p>
-<p>以这种方式使用 XRANGE 作为范围查询命令来获取指定时间内的条目。这对于获取一段时间内的操作历史，非常方便。</p>
-</li>
-<li>
-<p>Exclusive ranges</p>
-<p>开区间范围查询：ID 前加上字符<code>(</code>来指定一个开区间</p>
-</li>
-</ul>
-</li>
-<li>
-<p>[<strong>COUNT</strong> count] : 返回结果的前count条entry</p>
-</li>
-</ol>
-</li>
-<li>
-<p>使用场景介绍</p>
-<ol>
-<li>
-<p>stream 迭代</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&gt; XRANGE writers - + COUNT 2</span><br><span class="line">1) 1) 1526985676425-0</span><br><span class="line">   2) 1) <span class="string">&quot;name&quot;</span></span><br><span class="line">      2) <span class="string">&quot;Virginia&quot;</span></span><br><span class="line">      3) <span class="string">&quot;surname&quot;</span></span><br><span class="line">      4) <span class="string">&quot;Woolf&quot;</span></span><br><span class="line">2) 1) 1526985685298-0</span><br><span class="line">   2) 1) <span class="string">&quot;name&quot;</span></span><br><span class="line">      2) <span class="string">&quot;Jane&quot;</span></span><br><span class="line">      3) <span class="string">&quot;surname&quot;</span></span><br><span class="line">      4) <span class="string">&quot;Austen&quot;</span></span><br><span class="line">&gt; XRANGE writers (1526985685298-0 + COUNT 2</span><br><span class="line">1) 1) 1526985691746-0</span><br><span class="line">   2) 1) <span class="string">&quot;name&quot;</span></span><br><span class="line">      2) <span class="string">&quot;Toni&quot;</span></span><br><span class="line">      3) <span class="string">&quot;surname&quot;</span></span><br><span class="line">      4) <span class="string">&quot;Morrison&quot;</span></span><br><span class="line">2) 1) 1526985712947-0</span><br><span class="line">   2) 1) <span class="string">&quot;name&quot;</span></span><br><span class="line">      2) <span class="string">&quot;Agatha&quot;</span></span><br><span class="line">      3) <span class="string">&quot;surname&quot;</span></span><br><span class="line">      4) <span class="string">&quot;Christie&quot;</span></span><br></pre></td></tr></table></figure>
-<p>a. 上次查询的entry的id 用 开区间 <code>(</code>，作为下次查询的start 。</p>
-<p>b. 我们可以从任何 ID 开始迭代（指定一个不完整的start id）</p>
-</li>
-<li>
-<p>获取单个项目</p>
-<p>XRANGE 的参数中指定两次 ID：<code>XRANGE mystream 1526984818136-0 1526984818136-0</code></p>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="XREAD：收听新Entry">XREAD：收听新Entry</h3>
-<p><strong>XREAD</strong> [<strong>COUNT</strong> count] [<strong>BLOCK</strong> milliseconds] <strong><code>STREAMS</code></strong> key [key …] id<br>
-[id …]</p>
-<ul>
-<li>
-<p>命令参数解释</p>
-<p><strong>STREAMS</strong> key [key …] id<br>
-[id …]：指定了一个键列表以及调用消费者已经为每个流看到的相应最大 ID，因此该命令将只向客户端提供 ID  <code>大于</code>我们指定的 ID 的消息。（不包含指定的ID）</p>
-<p>[<strong>BLOCK</strong> milliseconds]：阻塞的毫秒数。若milliseconds 设置为0 ，则表示永远不会超时</p>
-<p>[<strong>COUNT</strong> count]：限定调用将在每个流中最多返回count个元素</p>
-</li>
-<li>
-<p>特殊的ID<code>$</code></p>
-<p><strong>STREAMS</strong> $ :  意味着应该使用已经存储在流中的最大 ID 作为最后一个 ID。</p>
-<p>当阻塞时，有时我们希望只接收从阻塞那一刻开始通过XADD添加到流中的条目。在这种情况下，我们对已经添加的条目的历史不感兴趣。对于这个用例，我们必须检查流顶部元素的ID，并在XREAD命令行中使用这样的ID。这是不干净的，需要调用其他命令，所以可以使用特殊的 <code>$</code> 来通知流，我们只想要新的东西。</p>
-<p><strong>仅在第一次调用 XREAD 时使用 $ ID 非常重要。之后迭代的ID应该是流中最后报告的ID，否则您可能会错过中间添加的所有条目。</strong></p>
-</li>
-<li>
-<p>如何为单个流上被阻止的多个客户端提供服务：<strong>FIFO</strong></p>
-<ol>
-<li>当新项目可用时，为给定流阻塞的第一个客户端将是第一个被解除阻塞的客户端。因为从等待数据的客户端的角度来看，阻塞流读取是公平的，其语义是 FIFO 风格。（类似于阻塞队列）</li>
-<li>为客户端提供服务时，不会从流中删除流条目，因此只要 XADD 命令向流提供数据，就会为每个等待的客户端提供服务。（不同于阻塞队列）</li>
-</ol>
-</li>
-<li>
-<p>使用场景</p>
-<p><code>XREAD BLOCK 0 STREAMS mystream $</code>: 从我们开始收听的时间开始，阻塞等待最新消息</p>
-</li>
-</ul>
-<h2 id="Geospatial">Geospatial</h2>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>使用</th>
-<th>功能</th>
-<th>说明</th>
-<th>命令</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>GEOADD</td>
-<td></td>
-<td></td>
-<td>Add one or more geospatial items in the geospatial index represented using a sorted set</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>GEODIST</td>
-<td></td>
-<td></td>
-<td>Returns the distance between two members of a geospatial index</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>GEOHASH</td>
-<td></td>
-<td></td>
-<td>Returns members of a geospatial index as standard geohash strings</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>GEOPOS</td>
-<td></td>
-<td></td>
-<td>Returns longitude and latitude of members of a geospatial index</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>GEORADIUS</td>
-<td></td>
-<td></td>
-<td>Query a sorted set representing a geospatial index to fetch members matching a given maximum distance from a point</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>GEORADIUS_RO</td>
-<td></td>
-<td></td>
-<td>A read-only variant for GEORADIUS</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>GEORADIUSBYMEMBER</td>
-<td></td>
-<td></td>
-<td>Query a sorted set representing a geospatial index to fetch members matching a given maximum distance from a member</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>GEORADIUSBYMEMBER_RO</td>
-<td></td>
-<td></td>
-<td>A read-only variant for GEORADIUSBYMEMBER</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>GEOSEARCH</td>
-<td></td>
-<td></td>
-<td>Query a sorted set representing a geospatial index to fetch members inside an area of a box or a circle.</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>GEOSEARCHSTORE</td>
-<td></td>
-<td></td>
-<td>Query a sorted set representing a geospatial index to fetch members inside an area of a box or a circle, and store the result in another key.</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="HyperLogLog：基数统计">HyperLogLog：基数统计</h2>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PFADD</td>
-<td>Adds the specified elements to the specified HyperLogLog.</td>
-</tr>
-<tr>
-<td>PFCOUNT</td>
-<td>Return the approximated cardinality of the set(s) observed by the HyperLogLog at key(s).</td>
-</tr>
-<tr>
-<td>PFDEBUG</td>
-<td>Internal commands for debugging HyperLogLog values</td>
-</tr>
-<tr>
-<td>PFMERGE</td>
-<td>Merge N different HyperLogLogs into a single one.</td>
-</tr>
-<tr>
-<td>PFSELFTEST</td>
-<td>An internal command for testing HyperLogLog values</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Bitmaps">Bitmaps</h2>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>BITCOUNT</td>
-<td>Count set bits in a string</td>
-</tr>
-<tr>
-<td>BITFIELD</td>
-<td>Perform arbitrary bitfield integer operations on strings</td>
-</tr>
-<tr>
-<td>BITFIELD_RO</td>
-<td>Perform arbitrary bitfield integer operations on strings. Read-only variant of BITFIELD</td>
-</tr>
-<tr>
-<td>BITOP</td>
-<td>Perform bitwise operations between strings</td>
-</tr>
-<tr>
-<td>BITPOS</td>
-<td>Find first bit set or clear in a string</td>
-</tr>
-<tr>
-<td>GETBIT</td>
-<td>Returns the bit value at offset in the string value stored at key</td>
-</tr>
-<tr>
-<td>SETBIT</td>
-<td>Sets or clears the bit at offset in the string value stored at key</td>
-</tr>
-</tbody>
-</table>
-<h1>其他命令</h1>
-<ol>
-<li>
-<p><span id="Order_SCAN"><strong>SCAN</strong> cursor [<strong>MATCH</strong> pattern] [<strong>COUNT</strong> count] [<strong>TYPE</strong> type]</span></p>
 <p>cursor ：开始迭代时的光标值为 0 / 上一次调用 SCAN 返回的光标以继续迭代</p>
 <p><strong>TYPE</strong> type：您可以使用 TYPE 选项要求 SCAN 仅返回与给定类型匹配的对象，从而允许您遍历数据库以查找特定类型的键。TYPE 选项仅在整个数据库 SCAN 上可用，而不是 HSCAN 或 ZSCAN 等。</p>
+</li>
+<li>
+<p>使用DEMO</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; sadd myset 1 2 3 foo foobar feelsgood</span><br><span class="line">(<span class="built_in">integer</span>) 6</span><br><span class="line">redis 127.0.0.1:6379&gt; sscan myset 0 match f*</span><br><span class="line">1) <span class="string">&quot;0&quot;</span></span><br><span class="line">2) 1) <span class="string">&quot;foo&quot;</span></span><br><span class="line">   2) <span class="string">&quot;feelsgood&quot;</span></span><br><span class="line">   3) <span class="string">&quot;foobar&quot;</span></span><br><span class="line">redis 127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
 <p>重要的是要注意<strong>MATCH</strong>过滤器是在从集合中检索到元素之后应用的，就在将数据返回给客户端之前。</p>
 <p>这意味着如果模式匹配集合中的极少元素，<code>SCAN</code>则在大多数迭代中可能不会返回任何元素。一个例子如下所示：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">redis 127.0.0.1:6379&gt; scan 0 MATCH *11*</span><br><span class="line">1) <span class="string">&quot;288&quot;</span></span><br><span class="line">2) 1) <span class="string">&quot;key:911&quot;</span></span><br><span class="line">redis 127.0.0.1:6379&gt; scan 288 MATCH *11*</span><br><span class="line">1) <span class="string">&quot;224&quot;</span></span><br><span class="line">2) (empty list or <span class="built_in">set</span>)</span><br><span class="line">redis 127.0.0.1:6379&gt; scan 224 MATCH *11*</span><br><span class="line">1) <span class="string">&quot;80&quot;</span></span><br><span class="line">2) (empty list or <span class="built_in">set</span>)</span><br><span class="line">redis 127.0.0.1:6379&gt; scan 80 MATCH *11*</span><br><span class="line">1) <span class="string">&quot;176&quot;</span></span><br><span class="line">2) (empty list or <span class="built_in">set</span>)</span><br><span class="line">redis 127.0.0.1:6379&gt; scan 176 MATCH *11* COUNT 1000</span><br><span class="line">1) <span class="string">&quot;0&quot;</span></span><br><span class="line">2)  1) <span class="string">&quot;key:611&quot;</span></span><br><span class="line">    2) <span class="string">&quot;key:711&quot;</span></span><br><span class="line">    3) <span class="string">&quot;key:118&quot;</span></span><br><span class="line">    4) <span class="string">&quot;key:117&quot;</span></span><br><span class="line">    5) <span class="string">&quot;key:311&quot;</span></span><br><span class="line">    6) <span class="string">&quot;key:112&quot;</span></span><br><span class="line">    7) <span class="string">&quot;key:111&quot;</span></span><br><span class="line">    8) <span class="string">&quot;key:110&quot;</span></span><br><span class="line">    9) <span class="string">&quot;key:113&quot;</span></span><br><span class="line">   10) <span class="string">&quot;key:211&quot;</span></span><br><span class="line">   11) <span class="string">&quot;key:411&quot;</span></span><br><span class="line">   12) <span class="string">&quot;key:115&quot;</span></span><br><span class="line">   13) <span class="string">&quot;key:116&quot;</span></span><br><span class="line">   14) <span class="string">&quot;key:114&quot;</span></span><br><span class="line">   15) <span class="string">&quot;key:119&quot;</span></span><br><span class="line">   16) <span class="string">&quot;key:811&quot;</span></span><br><span class="line">   17) <span class="string">&quot;key:511&quot;</span></span><br><span class="line">   18) <span class="string">&quot;key:11&quot;</span></span><br><span class="line">redis 127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
 <p>如您所见，大多数调用返回零元素，但最后一次调用使用 COUNT 为 1000 以强制命令对该迭代进行更多扫描</p>
 </li>
-</ol>
+</ul>
 
     </div>
 
@@ -1360,7 +1069,10 @@
     <a href="/2022/11/03/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%9F%BA%E7%A1%80/Redis-%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/" rel="prev" title="Redis-命令记录">
       <i class="fa fa-chevron-left"></i> Redis-命令记录
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/11/04/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%9F%BA%E7%A1%80/Redis-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88Stream%EF%BC%89/" rel="next" title="Redis-数据类型（Stream）">
+      Redis-数据类型（Stream） <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -1419,7 +1131,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">基础类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">1.1.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">1.2.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash"><span class="nav-number">1.3.</span> <span class="nav-text">Hash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set"><span class="nav-number">1.4.</span> <span class="nav-text">Set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Zset-%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88"><span class="nav-number">1.5.</span> <span class="nav-text">Zset : 有序集合</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">特殊类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Stream"><span class="nav-number">2.1.</span> <span class="nav-text">Stream</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#XADD%EF%BC%9A%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE"><span class="nav-number">2.1.1.</span> <span class="nav-text">XADD：添加数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XRANGE%EF%BC%9A%E8%8C%83%E5%9B%B4%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.1.2.</span> <span class="nav-text">XRANGE：范围查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XREAD%EF%BC%9A%E6%94%B6%E5%90%AC%E6%96%B0Entry"><span class="nav-number">2.1.3.</span> <span class="nav-text">XREAD：收听新Entry</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Geospatial"><span class="nav-number">2.2.</span> <span class="nav-text">Geospatial</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HyperLogLog%EF%BC%9A%E5%9F%BA%E6%95%B0%E7%BB%9F%E8%AE%A1"><span class="nav-number">2.3.</span> <span class="nav-text">HyperLogLog：基数统计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bitmaps"><span class="nav-number">2.4.</span> <span class="nav-text">Bitmaps</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">其他命令</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">Hash</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">Set：无序集合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">Zset : 有序集合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">基础命令：SCAN</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1433,7 +1145,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">56</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
