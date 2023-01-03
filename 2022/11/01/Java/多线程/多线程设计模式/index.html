@@ -2,9 +2,9 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -12,15 +12,14 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|monospace:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"hmxyl.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
 
-  <meta property="og:type" content="article">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hmxyl.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":"ture","preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta property="og:type" content="article">
 <meta property="og:title" content="多线程设计模式">
 <meta property="og:url" content="https://hmxyl.github.io/2022/11/01/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Alisa&#39;s Home">
@@ -40,20 +39,15 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/%E5%B9%B6%E5%8F%91%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-1667230559743-54.png">
 
+
 <link rel="canonical" href="https://hmxyl.github.io/2022/11/01/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
 
-  <title>多线程设计模式 | Alisa's Home</title>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hmxyl.github.io/2022/11/01/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/","path":"2022/11/01/Java/多线程/多线程设计模式/","title":"多线程设计模式"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>多线程设计模式 | Alisa's Home</title>
   
 
 
@@ -61,56 +55,38 @@
 
 
 
+
+
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Alisa's Home</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
+      <p class="site-title">Alisa's Home</p>
+      <i class="logo-line"></i>
     </a>
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
         <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
@@ -118,34 +94,8 @@
 
 
 
-
 <nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-friendlink">
-
-    <a href="/friendlink/" rel="section"><i class="fa fa-briefcase fa-fw"></i>友链</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">19</span></a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">44</span></a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">59</span></a>
-
-  </li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-friendlink"><a href="/friendlink/" rel="section"><i class="fa fa-briefcase fa-fw"></i>友链</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -156,98 +106,151 @@
 
 
   <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
+    <div class="popup search-popup"><div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
            placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
-  <span class="popup-btn-close">
+  <span class="popup-btn-close" role="button">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
   </div>
 </div>
 
     </div>
   </div>
 
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-1-dan-li-she-ji-mo-shi-qi-chong-she-ji-fang-shi"><span class="nav-number">1.</span> <span class="nav-text">Chapter1：单例设计模式（七种设计方式）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#e-yi-shi"><span class="nav-number">1.1.</span> <span class="nav-text">饿汉式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lan-yi-shi-lan-jia-zai"><span class="nav-number">1.2.</span> <span class="nav-text">懒汉式（懒加载）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lan-yi-shi-tong-bu-fang-fa"><span class="nav-number">1.3.</span> <span class="nav-text">懒汉式+同步方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#double-check"><span class="nav-number">1.4.</span> <span class="nav-text">Double Check</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile-double-check"><span class="nav-number">1.5.</span> <span class="nav-text">Volatile + Double Check</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#holder-fang-shi-tui-jian-1"><span class="nav-number">1.6.</span> <span class="nav-text">Holder方式（推荐1）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mei-ju-fang-shi-tui-jian-2"><span class="nav-number">1.7.</span> <span class="nav-text">枚举方式（推荐2）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-2-wait-set-deng-dai-chi"><span class="nav-number">2.</span> <span class="nav-text">Chapter2：WaitSet（等待池）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-3-volatile-guan-jian-zi"><span class="nav-number">3.</span> <span class="nav-text">Chapter3：volatile 关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cpu-huan-cun-yi-zhi-xing-wen-ti"><span class="nav-number">3.1.</span> <span class="nav-text">CPU缓存一致性问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java-nei-cun-mo-xing-jmm-java-memory-model"><span class="nav-number">3.2.</span> <span class="nav-text">Java内存模型JMM（Java Memory Model）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jmm-yu-bing-fa-bian-cheng-de-san-da-te-xing"><span class="nav-number">3.3.</span> <span class="nav-text">JMM与并发编程的三大特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#yuan-zi-xing"><span class="nav-number">3.3.1.</span> <span class="nav-text">原子性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ke-jian-xing"><span class="nav-number">3.3.2.</span> <span class="nav-text">可见性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#you-xu-xing"><span class="nav-number">3.3.3.</span> <span class="nav-text">有序性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#happens-before-yuan-ze-jmm-ju-bei-de-tian-sheng-de-you-xu-xing-gui-ze"><span class="nav-number">3.4.</span> <span class="nav-text">Happens-before原则：JMM具备的天生的有序性规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile-guan-jian-zi-te-xing-zong-jie"><span class="nav-number">3.5.</span> <span class="nav-text">volatile 关键字特性总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-4-guan-cha-zhe-mo-shi"><span class="nav-number">4.</span> <span class="nav-text">Chapter4：观察者模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-5-single-thread-execution-she-ji-mo-shi"><span class="nav-number">5.</span> <span class="nav-text">Chapter5：Single Thread Execution 设计模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-7-bu-ke-bian-dui-xiang-she-ji-mo-shi"><span class="nav-number">6.</span> <span class="nav-text">Chapter7：不可变对象设计模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-8-future-she-ji-mo-shi"><span class="nav-number">7.</span> <span class="nav-text">Chapter8：Future设计模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-9-guarded-suspension-she-ji-mo-shi-bao-hu-xing-zan-gua-mo-shi"><span class="nav-number">8.</span> <span class="nav-text">Chapter9：Guarded Suspension 设计模式（保护性暂挂模式）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-10-thread-local-xian-cheng-ju-bu-bian-liang"><span class="nav-number">9.</span> <span class="nav-text">Chapter10：ThreadLocal：线程局部变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-11-the-thread-specific-storage-xian-cheng-bao-xian-xiang"><span class="nav-number">10.</span> <span class="nav-text">Chapter11：The Thread-Specific Storage：线程保险箱</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-12-balking-she-ji-mo-shi"><span class="nav-number">11.</span> <span class="nav-text">Chapter12：Balking设计模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-13-sheng-chan-zhe-xiao-fei-zhe-mo-shi"><span class="nav-number">12.</span> <span class="nav-text">Chapter13：生产者&#x2F;消费者模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-14-latch-she-ji-mo-shi-fa-men-she-ji-mo-shi"><span class="nav-number">13.</span> <span class="nav-text">Chapter14：Latch 设计模式（阀门设计模式）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-15-thread-per-message-she-ji-mo-shi"><span class="nav-number">14.</span> <span class="nav-text">Chapter15：Thread-Per-Message 设计模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-16-two-phase-termination-she-ji-mo-shi"><span class="nav-number">15.</span> <span class="nav-text">Chapter16：Two Phase Termination 设计模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-17-worker-thread-she-ji-mo-shi"><span class="nav-number">16.</span> <span class="nav-text">Chapter17：Worker-Thread 设计模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-18-active-objects-she-ji-mo-shi"><span class="nav-number">17.</span> <span class="nav-text">Chapter18：Active Objects 设计模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-19-event-bus-zhong-jie-zhe-mo-shi"><span class="nav-number">18.</span> <span class="nav-text">Chapter19：Event Bus 中介者模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-20-event-driven-shi-jian-qu-dong-she-ji-mo-shi"><span class="nav-number">19.</span> <span class="nav-text">Chapter20：Event Driven 事件驱动设计模式</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Alisa</p>
+  <div class="site-description" itemprop="description">学习笔记、工作心得</div>
 </div>
-    </header>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">59</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
+  </aside>
 
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
+    </div>
 
-          <div class="content post posts-expand">
-            
+    <div class="main-inner post posts-expand">
 
-    
+
+  
+
+
+<div class="post-block">
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/11/01/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Alisa">
-      <meta itemprop="description" content="学习笔记、工作心得">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Alisa's Home">
+      <meta itemprop="description" content="学习笔记、工作心得">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="多线程设计模式 | Alisa's Home">
+      <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           多线程设计模式
         </h1>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-11-01 06:52:00" itemprop="dateCreated datePublished" datetime="2022-11-01T06:52:00+08:00">2022-11-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-12-12 17:16:34" itemprop="dateModified" datetime="2022-12-12T17:16:34+08:00">2022-12-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">多线程</span></a>
-                </span>
-            </span>
+      <time title="创建时间：2022-11-01 06:52:00" itemprop="dateCreated datePublished" datetime="2022-11-01T06:52:00+08:00">2022-11-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-12-12 17:16:34" itemprop="dateModified" datetime="2022-12-12T17:16:34+08:00">2022-12-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">多线程</span></a>
+        </span>
+    </span>
 
-          
+  
+</div>
 
         </div>
       </header>
@@ -256,8 +259,6 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
         <p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/%E5%B9%B6%E5%8F%91%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-1667230559743-54.png" alt="JAVA并发设计模式"></p>
 <span id="more"></span>
 <h1 id="chapter-1-dan-li-she-ji-mo-shi-qi-chong-she-ji-fang-shi">Chapter1：单例设计模式（七种设计方式）</h1>
@@ -649,189 +650,72 @@
     
     
 
-      <footer class="post-footer">
+    <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag"># 多线程</a>
           </div>
 
         
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2022/10/31/%E6%95%B0%E6%8D%AE%E5%BA%93/MongoDB/MongoDB%E5%AE%89%E8%A3%85/" rel="prev" title="MongoDB安装">
-      <i class="fa fa-chevron-left"></i> MongoDB安装
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/11/01/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/JUC/" rel="next" title="Java并发包">
-      Java并发包 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/11/01/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/JUC/" rel="prev" title="Java并发包">
+                  <i class="fa fa-chevron-left"></i> Java并发包
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/11/01/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/" rel="next" title="多线程基础">
+                  多线程基础 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
           </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-1-dan-li-she-ji-mo-shi-qi-chong-she-ji-fang-shi"><span class="nav-number">1.</span> <span class="nav-text">Chapter1：单例设计模式（七种设计方式）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#e-yi-shi"><span class="nav-number">1.1.</span> <span class="nav-text">饿汉式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lan-yi-shi-lan-jia-zai"><span class="nav-number">1.2.</span> <span class="nav-text">懒汉式（懒加载）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lan-yi-shi-tong-bu-fang-fa"><span class="nav-number">1.3.</span> <span class="nav-text">懒汉式+同步方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#double-check"><span class="nav-number">1.4.</span> <span class="nav-text">Double Check</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile-double-check"><span class="nav-number">1.5.</span> <span class="nav-text">Volatile + Double Check</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#holder-fang-shi-tui-jian-1"><span class="nav-number">1.6.</span> <span class="nav-text">Holder方式（推荐1）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mei-ju-fang-shi-tui-jian-2"><span class="nav-number">1.7.</span> <span class="nav-text">枚举方式（推荐2）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-2-wait-set-deng-dai-chi"><span class="nav-number">2.</span> <span class="nav-text">Chapter2：WaitSet（等待池）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-3-volatile-guan-jian-zi"><span class="nav-number">3.</span> <span class="nav-text">Chapter3：volatile 关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cpu-huan-cun-yi-zhi-xing-wen-ti"><span class="nav-number">3.1.</span> <span class="nav-text">CPU缓存一致性问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java-nei-cun-mo-xing-jmm-java-memory-model"><span class="nav-number">3.2.</span> <span class="nav-text">Java内存模型JMM（Java Memory Model）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jmm-yu-bing-fa-bian-cheng-de-san-da-te-xing"><span class="nav-number">3.3.</span> <span class="nav-text">JMM与并发编程的三大特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#yuan-zi-xing"><span class="nav-number">3.3.1.</span> <span class="nav-text">原子性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ke-jian-xing"><span class="nav-number">3.3.2.</span> <span class="nav-text">可见性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#you-xu-xing"><span class="nav-number">3.3.3.</span> <span class="nav-text">有序性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#happens-before-yuan-ze-jmm-ju-bei-de-tian-sheng-de-you-xu-xing-gui-ze"><span class="nav-number">3.4.</span> <span class="nav-text">Happens-before原则：JMM具备的天生的有序性规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile-guan-jian-zi-te-xing-zong-jie"><span class="nav-number">3.5.</span> <span class="nav-text">volatile 关键字特性总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-4-guan-cha-zhe-mo-shi"><span class="nav-number">4.</span> <span class="nav-text">Chapter4：观察者模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-5-single-thread-execution-she-ji-mo-shi"><span class="nav-number">5.</span> <span class="nav-text">Chapter5：Single Thread Execution 设计模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-7-bu-ke-bian-dui-xiang-she-ji-mo-shi"><span class="nav-number">6.</span> <span class="nav-text">Chapter7：不可变对象设计模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-8-future-she-ji-mo-shi"><span class="nav-number">7.</span> <span class="nav-text">Chapter8：Future设计模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-9-guarded-suspension-she-ji-mo-shi-bao-hu-xing-zan-gua-mo-shi"><span class="nav-number">8.</span> <span class="nav-text">Chapter9：Guarded Suspension 设计模式（保护性暂挂模式）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-10-thread-local-xian-cheng-ju-bu-bian-liang"><span class="nav-number">9.</span> <span class="nav-text">Chapter10：ThreadLocal：线程局部变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-11-the-thread-specific-storage-xian-cheng-bao-xian-xiang"><span class="nav-number">10.</span> <span class="nav-text">Chapter11：The Thread-Specific Storage：线程保险箱</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-12-balking-she-ji-mo-shi"><span class="nav-number">11.</span> <span class="nav-text">Chapter12：Balking设计模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-13-sheng-chan-zhe-xiao-fei-zhe-mo-shi"><span class="nav-number">12.</span> <span class="nav-text">Chapter13：生产者&#x2F;消费者模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-14-latch-she-ji-mo-shi-fa-men-she-ji-mo-shi"><span class="nav-number">13.</span> <span class="nav-text">Chapter14：Latch 设计模式（阀门设计模式）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-15-thread-per-message-she-ji-mo-shi"><span class="nav-number">14.</span> <span class="nav-text">Chapter15：Thread-Per-Message 设计模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-16-two-phase-termination-she-ji-mo-shi"><span class="nav-number">15.</span> <span class="nav-text">Chapter16：Two Phase Termination 设计模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-17-worker-thread-she-ji-mo-shi"><span class="nav-number">16.</span> <span class="nav-text">Chapter17：Worker-Thread 设计模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-18-active-objects-she-ji-mo-shi"><span class="nav-number">17.</span> <span class="nav-text">Chapter18：Active Objects 设计模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-19-event-bus-zhong-jie-zhe-mo-shi"><span class="nav-number">18.</span> <span class="nav-text">Chapter19：Event Bus 中介者模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chapter-20-event-driven-shi-jian-qu-dong-she-ji-mo-shi"><span class="nav-number">19.</span> <span class="nav-text">Chapter20：Event Driven 事件驱动设计模式</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Alisa</p>
-  <div class="site-description" itemprop="description">学习笔记、工作心得</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">59</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">44</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">19</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
+    </footer>
+  </article>
 </div>
 
 
 
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
 
 
-      </div>
-    </main>
 
-    <footer class="footer">
-      <div class="footer-inner">
-        
+</div>
+  </main>
 
-        
+  <footer class="footer">
+    <div class="footer-inner">
+
 
 <div class="copyright">
-  
   &copy; 
   <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
-    <i class="fab fa-apple"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Alisa</span>
 </div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
+    </div>
+  </footer>
+
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
 
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
 
   
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
-
-
-
-  
-<script src="/js/local-search.js"></script>
-
-
-
-
-
-
-
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 
@@ -839,7 +723,9 @@
 
   
 
-  
+
+
+
 
 </body>
 </html>

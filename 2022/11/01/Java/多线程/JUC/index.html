@@ -2,9 +2,9 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -12,15 +12,14 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|monospace:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"hmxyl.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
 
-  <meta name="description" content="Java并发工具包">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hmxyl.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":"ture","preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Java并发工具包">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发包">
 <meta property="og:url" content="https://hmxyl.github.io/2022/11/01/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/JUC/index.html">
@@ -47,20 +46,15 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/7126254-55d47d5ebef3b1e2-16380810237142.webp">
 
+
 <link rel="canonical" href="https://hmxyl.github.io/2022/11/01/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/JUC/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
 
-  <title>Java并发包 | Alisa's Home</title>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hmxyl.github.io/2022/11/01/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/JUC/","path":"2022/11/01/Java/多线程/JUC/","title":"Java并发包"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java并发包 | Alisa's Home</title>
   
 
 
@@ -68,56 +62,38 @@
 
 
 
+
+
   <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
 
     <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Alisa's Home</h1>
-      <span class="logo-line-after"><i></i></span>
+      <i class="logo-line"></i>
+      <p class="site-title">Alisa's Home</p>
+      <i class="logo-line"></i>
     </a>
   </div>
 
   <div class="site-nav-right">
-    <div class="toggle popup-trigger">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
         <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
@@ -125,34 +101,8 @@
 
 
 
-
 <nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-friendlink">
-
-    <a href="/friendlink/" rel="section"><i class="fa fa-briefcase fa-fw"></i>友链</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">19</span></a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">44</span></a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">59</span></a>
-
-  </li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-friendlink"><a href="/friendlink/" rel="section"><i class="fa fa-briefcase fa-fw"></i>友链</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -163,100 +113,153 @@
 
 
   <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
+    <div class="popup search-popup"><div class="search-header">
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
            placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
-  <span class="popup-btn-close">
+  <span class="popup-btn-close" role="button">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
   </div>
 </div>
 
     </div>
   </div>
 
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#atomic-bao"><span class="nav-number">1.</span> <span class="nav-text">Atomic包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cas-compare-and-swap-bi-jiao-bing-jiao-huan"><span class="nav-number">1.1.</span> <span class="nav-text">CAS(Compare And Swap)：比较并交换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#unsafe-yuan-ma-fen-xi"><span class="nav-number">1.1.1.</span> <span class="nav-text">Unsafe源码分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cas-de-que-dian-aba"><span class="nav-number">1.1.2.</span> <span class="nav-text">CAS的缺点：ABA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cas-de-que-dian-xun-huan-shi-jian-chang-kai-xiao-da"><span class="nav-number">1.1.3.</span> <span class="nav-text">CAS的缺点：循环时间长开销大</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cas-de-que-dian-zhi-neng-bao-zheng-yi-ge-gong-xiang-bian-liang-de-yuan-zi-cao-zuo"><span class="nav-number">1.1.4.</span> <span class="nav-text">CAS的缺点：只能保证一个共享变量的原子操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cas-de-ying-yong"><span class="nav-number">1.1.5.</span> <span class="nav-text">CAS的应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#atomic-long"><span class="nav-number">1.2.</span> <span class="nav-text">AtomicLong</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#atomic-reference"><span class="nav-number">1.3.</span> <span class="nav-text">AtomicReference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#atomic-xxx-field-updater"><span class="nav-number">1.4.</span> <span class="nav-text">AtomicXXXFieldUpdater</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unsafe"><span class="nav-number">1.5.</span> <span class="nav-text">Unsafe</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ji-chong-counter-fang-an-de-xing-neng-dui-bi"><span class="nav-number">1.5.1.</span> <span class="nav-text">几种Counter方案的性能对比。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java-diao-yong-c-liu-cheng-jni"><span class="nav-number">1.5.2.</span> <span class="nav-text">Java 调用 C 流程（JNI ）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#di-ceng-hui-bian-xiang-guan-zhi-ling"><span class="nav-number">1.6.</span> <span class="nav-text">底层汇编相关指令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#count-down-latch"><span class="nav-number">2.</span> <span class="nav-text">CountDownLatch</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tui-chu-tiao-jian"><span class="nav-number">2.1.</span> <span class="nav-text">退出条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shi-yong-chang-jing"><span class="nav-number">2.2.</span> <span class="nav-text">使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#deng-dai-suo-you-xian-cheng-zhi-xing-wan-cheng"><span class="nav-number">2.2.1.</span> <span class="nav-text">等待所有线程执行完成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ren-wu-chai-fen-chi-san-bing-xing-hua-chu-li"><span class="nav-number">2.2.2.</span> <span class="nav-text">任务拆分离散并行化处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ji-ben-xin-xi-ding-yi"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">基本信息定义</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cyclic-barrier"><span class="nav-number">3.</span> <span class="nav-text">CyclicBarrier</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#shi-li-2-shi-yong-reset-zhong-zhi"><span class="nav-number">3.1.</span> <span class="nav-text">示例2：使用reset()重置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#count-down-latch-he-cyclic-barrier-de-qu-bie"><span class="nav-number">3.2.</span> <span class="nav-text">CountDownLatch 和 CyclicBarrier 的区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#exchanger"><span class="nav-number">4.</span> <span class="nav-text">Exchanger</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#semaphore"><span class="nav-number">5.</span> <span class="nav-text">Semaphore</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lock-bao"><span class="nav-number">6.</span> <span class="nav-text">Lock包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#reentrant-lock"><span class="nav-number">6.1.</span> <span class="nav-text">ReentrantLock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#read-write-lock"><span class="nav-number">6.2.</span> <span class="nav-text">ReadWriteLock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#condition"><span class="nav-number">6.3.</span> <span class="nav-text">Condition</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dang-ge-deng-dai-suo-dui-lie"><span class="nav-number">6.3.1.</span> <span class="nav-text">当个等待锁队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#duo-ge-deng-dai-suo-dui-lie"><span class="nav-number">6.3.2.</span> <span class="nav-text">多个等待锁队列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stamped-lock"><span class="nav-number">6.4.</span> <span class="nav-text">StampedLock</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#chan-sheng-bei-jing"><span class="nav-number">6.4.1.</span> <span class="nav-text">产生背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stamped-lock-de-zhu-yao-te-dian"><span class="nav-number">6.4.2.</span> <span class="nav-text">StampedLock的主要特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bei-guan-du-du-suo-he-xie-suo-hu-chi"><span class="nav-number">6.4.3.</span> <span class="nav-text">悲观读（读锁和写锁互斥）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#le-guan-du-optimistic-reading"><span class="nav-number">6.4.4.</span> <span class="nav-text">乐观读：Optimistic reading</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#fork-join-kuang-jia"><span class="nav-number">7.</span> <span class="nav-text">Fork&#x2F;Join框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#recursive-task-you-fan-hui"><span class="nav-number">7.1.</span> <span class="nav-text">RecursiveTask：有返回</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#recursive-action-wu-fan-hui"><span class="nav-number">7.2.</span> <span class="nav-text">RecursiveAction：无返回</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#phaser"><span class="nav-number">8.</span> <span class="nav-text">Phaser</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jian-kong-fang-fa"><span class="nav-number">8.1.</span> <span class="nav-text">监控方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dong-tai-zhu-ce-te-xing"><span class="nav-number">8.2.</span> <span class="nav-text">动态注册特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zhong-fu-shi-yong-ji-shu-qi"><span class="nav-number">8.3.</span> <span class="nav-text">重复使用计数器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jian-shao-ji-shu-qi-dong-tai-xiao-hu"><span class="nav-number">8.4.</span> <span class="nav-text">减少计数器（动态销户）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ren-wei-kong-zhi-phase-de-zhong-jie-on-advance"><span class="nav-number">8.5.</span> <span class="nav-text">人为控制Phase的终结：onAdvance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dao-da-zhi-hou-bu-zu-sai-deng-dai-arrive"><span class="nav-number">8.6.</span> <span class="nav-text">到达之后，不阻塞等待：arrive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jin-wan-cheng-jian-kong-ren-wu-await-advance"><span class="nav-number">8.7.</span> <span class="nav-text">仅完成监控任务：awaitAdvance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#da-duan-chao-shi-zhong-zhi-await-advance-interruptibly"><span class="nav-number">8.8.</span> <span class="nav-text">打断&#x2F;超时 终止：awaitAdvanceInterruptibly</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#qiang-zhi-xiao-hui-force-termination"><span class="nav-number">8.9.</span> <span class="nav-text">强制销毁：forceTermination</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#executor-kuang-jia"><span class="nav-number">9.</span> <span class="nav-text">Executor框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#executor-service-jie-kou"><span class="nav-number">9.1.</span> <span class="nav-text">ExecutorService接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#executor-service-ji-cheng-shu"><span class="nav-number">9.1.1.</span> <span class="nav-text">ExecutorService 继承树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#executor-service-de-chuang-jian"><span class="nav-number">9.1.2.</span> <span class="nav-text">ExecutorService的创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#executor-service-de-zhi-xing"><span class="nav-number">9.1.3.</span> <span class="nav-text">ExecutorService的执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#executor-service-de-guan-bi"><span class="nav-number">9.1.4.</span> <span class="nav-text">ExecutorService的关闭</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#executors-gong-ju"><span class="nav-number">9.2.</span> <span class="nav-text">Executors工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#thread-pool-executor"><span class="nav-number">9.3.</span> <span class="nav-text">ThreadPoolExecutor</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#si-ge-nei-zhi-ju-jue-ce-lue"><span class="nav-number">9.3.1.</span> <span class="nav-text">四个内置拒绝策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zi-ding-yi-thread-factory"><span class="nav-number">9.3.2.</span> <span class="nav-text">自定义ThreadFactory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yun-xu-hui-shou-zhi-xing-xian-cheng-allow-core-thread-time-out"><span class="nav-number">9.3.3.</span> <span class="nav-text">允许回收执行线程：allowCoreThreadTimeOut</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shan-chu-ren-wu-remove"><span class="nav-number">9.3.4.</span> <span class="nav-text">删除任务：remove</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prestart-core-thread-qi-dong-yi-ge-zhi-xing-xian-cheng"><span class="nav-number">9.3.5.</span> <span class="nav-text">prestartCoreThread ： 启动一个执行线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prestart-all-core-threads-qi-dong-suo-you-zhi-xing-xian-cheng"><span class="nav-number">9.3.6.</span> <span class="nav-text">prestartAllCoreThreads：启动所有执行线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#before-execute-after-execute"><span class="nav-number">9.3.7.</span> <span class="nav-text">beforeExecute&#x2F;afterExecute</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#future-yu-future-task"><span class="nav-number">9.4.</span> <span class="nav-text">Future与FutureTask</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#future-jie-kou"><span class="nav-number">9.4.1.</span> <span class="nav-text">Future 接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#future-task-lei"><span class="nav-number">9.4.2.</span> <span class="nav-text">FutureTask类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#completion-service-jie-kou"><span class="nav-number">9.5.</span> <span class="nav-text">CompletionService接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scheduled-executor-service"><span class="nav-number">9.6.</span> <span class="nav-text">ScheduledExecutorService</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#completable-future"><span class="nav-number">10.</span> <span class="nav-text">CompletableFuture</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#chuang-jian-dui-xiang"><span class="nav-number">10.0.1.</span> <span class="nav-text">创建对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#run-async"><span class="nav-number">10.0.1.1.</span> <span class="nav-text">runAsync</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#supply-async"><span class="nav-number">10.0.1.2.</span> <span class="nav-text">supplyAsync</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jie-guo-chu-li"><span class="nav-number">10.0.2.</span> <span class="nav-text">结果处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#when-complete"><span class="nav-number">10.0.2.1.</span> <span class="nav-text">whenComplete</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exceptionally"><span class="nav-number">10.0.2.2.</span> <span class="nav-text">exceptionally</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#handle"><span class="nav-number">10.0.2.3.</span> <span class="nav-text">handle</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jie-guo-zhuan-huan-function"><span class="nav-number">10.0.3.</span> <span class="nav-text">结果转换（Function）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#then-apply"><span class="nav-number">10.0.3.1.</span> <span class="nav-text">thenApply</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#then-compose"><span class="nav-number">10.0.3.2.</span> <span class="nav-text">thenCompose</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jie-guo-xiao-fei-consumer"><span class="nav-number">10.0.4.</span> <span class="nav-text">结果消费（Consumer）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#then-accept"><span class="nav-number">10.0.4.1.</span> <span class="nav-text">thenAccept</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#then-accept-both"><span class="nav-number">10.0.4.2.</span> <span class="nav-text">thenAcceptBoth</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#then-run"><span class="nav-number">10.0.4.3.</span> <span class="nav-text">thenRun</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jie-guo-zu-he"><span class="nav-number">10.0.5.</span> <span class="nav-text">结果组合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#then-combine"><span class="nav-number">10.0.5.1.</span> <span class="nav-text">thenCombine</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ren-wu-jiao-hu"><span class="nav-number">10.0.6.</span> <span class="nav-text">任务交互</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#apply-to-either-zhuan-huan"><span class="nav-number">10.0.6.1.</span> <span class="nav-text">applyToEither（转换）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#accept-either-xiao-fei"><span class="nav-number">10.0.6.2.</span> <span class="nav-text">acceptEither（消费）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#run-after-either"><span class="nav-number">10.0.6.3.</span> <span class="nav-text">runAfterEither</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#run-after-both"><span class="nav-number">10.0.6.4.</span> <span class="nav-text">runAfterBoth</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#any-of"><span class="nav-number">10.0.6.5.</span> <span class="nav-text">anyOf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#all-of"><span class="nav-number">10.0.6.6.</span> <span class="nav-text">allOf</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#completable-future-qi-ta"><span class="nav-number">10.0.7.</span> <span class="nav-text">CompletableFuture：其他</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#get-now-ti-jiao-ren-wu-ji-xu-yun-xing"><span class="nav-number">10.0.7.1.</span> <span class="nav-text">getNow：提交任务继续运行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#complete-ti-jiao-ren-wu-bu-hui-ji-xu-yun-xing"><span class="nav-number">10.0.7.2.</span> <span class="nav-text">complete：提交任务不会继续运行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#complete-exceptionally"><span class="nav-number">10.0.7.3.</span> <span class="nav-text">completeExceptionally</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bing-fa-ji-he"><span class="nav-number">11.</span> <span class="nav-text">并发集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#blocking-queue-ji-he-lei-guan-xi-tu"><span class="nav-number">11.1.</span> <span class="nav-text">BlockingQueue集合类关系图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#blocking-queue-de-7-ge-zi-lei"><span class="nav-number">11.2.</span> <span class="nav-text">BlockingQueue的7个子类</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Alisa</p>
+  <div class="site-description" itemprop="description">学习笔记、工作心得</div>
 </div>
-    </header>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">59</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
+  </aside>
 
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
+    </div>
 
-          <div class="content post posts-expand">
-            
+    <div class="main-inner post posts-expand">
 
-    
+
+  
+
+
+<div class="post-block">
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/11/01/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/JUC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Alisa">
-      <meta itemprop="description" content="学习笔记、工作心得">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Alisa's Home">
+      <meta itemprop="description" content="学习笔记、工作心得">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java并发包 | Alisa's Home">
+      <meta itemprop="description" content="Java并发工具包">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           Java并发包
         </h1>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-11-01 06:52:00" itemprop="dateCreated datePublished" datetime="2022-11-01T06:52:00+08:00">2022-11-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-12-12 17:16:37" itemprop="dateModified" datetime="2022-12-12T17:16:37+08:00">2022-12-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">多线程</span></a>
-                </span>
-            </span>
+      <time title="创建时间：2022-11-01 06:52:00" itemprop="dateCreated datePublished" datetime="2022-11-01T06:52:00+08:00">2022-11-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-12-12 17:16:37" itemprop="dateModified" datetime="2022-12-12T17:16:37+08:00">2022-12-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">多线程</span></a>
+        </span>
+    </span>
 
-          
+  
+</div>
+
             <div class="post-description">Java并发工具包</div>
-
         </div>
       </header>
 
@@ -264,8 +267,6 @@
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
         <h1 id="atomic-bao">Atomic包</h1>
 <h2 id="cas-compare-and-swap-bi-jiao-bing-jiao-huan" id="CAS-Compare-And-Swap-：比较并交换">CAS(Compare And Swap)：比较并交换</h2>
 <p><code>CAS</code>即<code>Compare And Swap</code>的缩写，翻译成中文就是<strong>比较并交换</strong>，其作用是让CPU比较内存中某个值是否和预期的值相同，如果相同则将这个值更新为新值，不相同则不做更新，也就是CAS是<strong>原子性</strong>的操作(读和写两者同时具有原子性)，其实现方式是通过借助<code>C/C++</code>调用CPU指令完成的，所以效率很高。(使用的是最快失败策略)<br>
@@ -1533,189 +1534,72 @@ StampedLock提供了读锁和写锁相互转换的功能，使得该类支持更
     
     
 
-      <footer class="post-footer">
+    <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag"># 多线程</a>
           </div>
 
         
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2022/11/01/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="prev" title="多线程设计模式">
-      <i class="fa fa-chevron-left"></i> 多线程设计模式
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/11/01/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80/" rel="next" title="多线程基础">
-      多线程基础 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/10/31/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E5%AE%89%E8%A3%85&%E7%89%88%E6%9C%AC%E5%B7%AE%E5%BC%82/" rel="prev" title="MySQL安装、版本差异、JDBC连接配置">
+                  <i class="fa fa-chevron-left"></i> MySQL安装、版本差异、JDBC连接配置
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/11/01/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="next" title="多线程设计模式">
+                  多线程设计模式 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
           </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#atomic-bao"><span class="nav-number">1.</span> <span class="nav-text">Atomic包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cas-compare-and-swap-bi-jiao-bing-jiao-huan"><span class="nav-number">1.1.</span> <span class="nav-text">CAS(Compare And Swap)：比较并交换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#unsafe-yuan-ma-fen-xi"><span class="nav-number">1.1.1.</span> <span class="nav-text">Unsafe源码分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cas-de-que-dian-aba"><span class="nav-number">1.1.2.</span> <span class="nav-text">CAS的缺点：ABA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cas-de-que-dian-xun-huan-shi-jian-chang-kai-xiao-da"><span class="nav-number">1.1.3.</span> <span class="nav-text">CAS的缺点：循环时间长开销大</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cas-de-que-dian-zhi-neng-bao-zheng-yi-ge-gong-xiang-bian-liang-de-yuan-zi-cao-zuo"><span class="nav-number">1.1.4.</span> <span class="nav-text">CAS的缺点：只能保证一个共享变量的原子操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cas-de-ying-yong"><span class="nav-number">1.1.5.</span> <span class="nav-text">CAS的应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#atomic-long"><span class="nav-number">1.2.</span> <span class="nav-text">AtomicLong</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#atomic-reference"><span class="nav-number">1.3.</span> <span class="nav-text">AtomicReference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#atomic-xxx-field-updater"><span class="nav-number">1.4.</span> <span class="nav-text">AtomicXXXFieldUpdater</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unsafe"><span class="nav-number">1.5.</span> <span class="nav-text">Unsafe</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ji-chong-counter-fang-an-de-xing-neng-dui-bi"><span class="nav-number">1.5.1.</span> <span class="nav-text">几种Counter方案的性能对比。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java-diao-yong-c-liu-cheng-jni"><span class="nav-number">1.5.2.</span> <span class="nav-text">Java 调用 C 流程（JNI ）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#di-ceng-hui-bian-xiang-guan-zhi-ling"><span class="nav-number">1.6.</span> <span class="nav-text">底层汇编相关指令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#count-down-latch"><span class="nav-number">2.</span> <span class="nav-text">CountDownLatch</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tui-chu-tiao-jian"><span class="nav-number">2.1.</span> <span class="nav-text">退出条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shi-yong-chang-jing"><span class="nav-number">2.2.</span> <span class="nav-text">使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#deng-dai-suo-you-xian-cheng-zhi-xing-wan-cheng"><span class="nav-number">2.2.1.</span> <span class="nav-text">等待所有线程执行完成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ren-wu-chai-fen-chi-san-bing-xing-hua-chu-li"><span class="nav-number">2.2.2.</span> <span class="nav-text">任务拆分离散并行化处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ji-ben-xin-xi-ding-yi"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">基本信息定义</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cyclic-barrier"><span class="nav-number">3.</span> <span class="nav-text">CyclicBarrier</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#shi-li-2-shi-yong-reset-zhong-zhi"><span class="nav-number">3.1.</span> <span class="nav-text">示例2：使用reset()重置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#count-down-latch-he-cyclic-barrier-de-qu-bie"><span class="nav-number">3.2.</span> <span class="nav-text">CountDownLatch 和 CyclicBarrier 的区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#exchanger"><span class="nav-number">4.</span> <span class="nav-text">Exchanger</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#semaphore"><span class="nav-number">5.</span> <span class="nav-text">Semaphore</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lock-bao"><span class="nav-number">6.</span> <span class="nav-text">Lock包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#reentrant-lock"><span class="nav-number">6.1.</span> <span class="nav-text">ReentrantLock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#read-write-lock"><span class="nav-number">6.2.</span> <span class="nav-text">ReadWriteLock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#condition"><span class="nav-number">6.3.</span> <span class="nav-text">Condition</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dang-ge-deng-dai-suo-dui-lie"><span class="nav-number">6.3.1.</span> <span class="nav-text">当个等待锁队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#duo-ge-deng-dai-suo-dui-lie"><span class="nav-number">6.3.2.</span> <span class="nav-text">多个等待锁队列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stamped-lock"><span class="nav-number">6.4.</span> <span class="nav-text">StampedLock</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#chan-sheng-bei-jing"><span class="nav-number">6.4.1.</span> <span class="nav-text">产生背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stamped-lock-de-zhu-yao-te-dian"><span class="nav-number">6.4.2.</span> <span class="nav-text">StampedLock的主要特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bei-guan-du-du-suo-he-xie-suo-hu-chi"><span class="nav-number">6.4.3.</span> <span class="nav-text">悲观读（读锁和写锁互斥）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#le-guan-du-optimistic-reading"><span class="nav-number">6.4.4.</span> <span class="nav-text">乐观读：Optimistic reading</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#fork-join-kuang-jia"><span class="nav-number">7.</span> <span class="nav-text">Fork&#x2F;Join框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#recursive-task-you-fan-hui"><span class="nav-number">7.1.</span> <span class="nav-text">RecursiveTask：有返回</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#recursive-action-wu-fan-hui"><span class="nav-number">7.2.</span> <span class="nav-text">RecursiveAction：无返回</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#phaser"><span class="nav-number">8.</span> <span class="nav-text">Phaser</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jian-kong-fang-fa"><span class="nav-number">8.1.</span> <span class="nav-text">监控方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dong-tai-zhu-ce-te-xing"><span class="nav-number">8.2.</span> <span class="nav-text">动态注册特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zhong-fu-shi-yong-ji-shu-qi"><span class="nav-number">8.3.</span> <span class="nav-text">重复使用计数器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jian-shao-ji-shu-qi-dong-tai-xiao-hu"><span class="nav-number">8.4.</span> <span class="nav-text">减少计数器（动态销户）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ren-wei-kong-zhi-phase-de-zhong-jie-on-advance"><span class="nav-number">8.5.</span> <span class="nav-text">人为控制Phase的终结：onAdvance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dao-da-zhi-hou-bu-zu-sai-deng-dai-arrive"><span class="nav-number">8.6.</span> <span class="nav-text">到达之后，不阻塞等待：arrive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jin-wan-cheng-jian-kong-ren-wu-await-advance"><span class="nav-number">8.7.</span> <span class="nav-text">仅完成监控任务：awaitAdvance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#da-duan-chao-shi-zhong-zhi-await-advance-interruptibly"><span class="nav-number">8.8.</span> <span class="nav-text">打断&#x2F;超时 终止：awaitAdvanceInterruptibly</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#qiang-zhi-xiao-hui-force-termination"><span class="nav-number">8.9.</span> <span class="nav-text">强制销毁：forceTermination</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#executor-kuang-jia"><span class="nav-number">9.</span> <span class="nav-text">Executor框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#executor-service-jie-kou"><span class="nav-number">9.1.</span> <span class="nav-text">ExecutorService接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#executor-service-ji-cheng-shu"><span class="nav-number">9.1.1.</span> <span class="nav-text">ExecutorService 继承树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#executor-service-de-chuang-jian"><span class="nav-number">9.1.2.</span> <span class="nav-text">ExecutorService的创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#executor-service-de-zhi-xing"><span class="nav-number">9.1.3.</span> <span class="nav-text">ExecutorService的执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#executor-service-de-guan-bi"><span class="nav-number">9.1.4.</span> <span class="nav-text">ExecutorService的关闭</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#executors-gong-ju"><span class="nav-number">9.2.</span> <span class="nav-text">Executors工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#thread-pool-executor"><span class="nav-number">9.3.</span> <span class="nav-text">ThreadPoolExecutor</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#si-ge-nei-zhi-ju-jue-ce-lue"><span class="nav-number">9.3.1.</span> <span class="nav-text">四个内置拒绝策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zi-ding-yi-thread-factory"><span class="nav-number">9.3.2.</span> <span class="nav-text">自定义ThreadFactory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yun-xu-hui-shou-zhi-xing-xian-cheng-allow-core-thread-time-out"><span class="nav-number">9.3.3.</span> <span class="nav-text">允许回收执行线程：allowCoreThreadTimeOut</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shan-chu-ren-wu-remove"><span class="nav-number">9.3.4.</span> <span class="nav-text">删除任务：remove</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prestart-core-thread-qi-dong-yi-ge-zhi-xing-xian-cheng"><span class="nav-number">9.3.5.</span> <span class="nav-text">prestartCoreThread ： 启动一个执行线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prestart-all-core-threads-qi-dong-suo-you-zhi-xing-xian-cheng"><span class="nav-number">9.3.6.</span> <span class="nav-text">prestartAllCoreThreads：启动所有执行线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#before-execute-after-execute"><span class="nav-number">9.3.7.</span> <span class="nav-text">beforeExecute&#x2F;afterExecute</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#future-yu-future-task"><span class="nav-number">9.4.</span> <span class="nav-text">Future与FutureTask</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#future-jie-kou"><span class="nav-number">9.4.1.</span> <span class="nav-text">Future 接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#future-task-lei"><span class="nav-number">9.4.2.</span> <span class="nav-text">FutureTask类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#completion-service-jie-kou"><span class="nav-number">9.5.</span> <span class="nav-text">CompletionService接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scheduled-executor-service"><span class="nav-number">9.6.</span> <span class="nav-text">ScheduledExecutorService</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#completable-future"><span class="nav-number">10.</span> <span class="nav-text">CompletableFuture</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#chuang-jian-dui-xiang"><span class="nav-number">10.0.1.</span> <span class="nav-text">创建对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#run-async"><span class="nav-number">10.0.1.1.</span> <span class="nav-text">runAsync</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#supply-async"><span class="nav-number">10.0.1.2.</span> <span class="nav-text">supplyAsync</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jie-guo-chu-li"><span class="nav-number">10.0.2.</span> <span class="nav-text">结果处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#when-complete"><span class="nav-number">10.0.2.1.</span> <span class="nav-text">whenComplete</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exceptionally"><span class="nav-number">10.0.2.2.</span> <span class="nav-text">exceptionally</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#handle"><span class="nav-number">10.0.2.3.</span> <span class="nav-text">handle</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jie-guo-zhuan-huan-function"><span class="nav-number">10.0.3.</span> <span class="nav-text">结果转换（Function）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#then-apply"><span class="nav-number">10.0.3.1.</span> <span class="nav-text">thenApply</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#then-compose"><span class="nav-number">10.0.3.2.</span> <span class="nav-text">thenCompose</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jie-guo-xiao-fei-consumer"><span class="nav-number">10.0.4.</span> <span class="nav-text">结果消费（Consumer）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#then-accept"><span class="nav-number">10.0.4.1.</span> <span class="nav-text">thenAccept</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#then-accept-both"><span class="nav-number">10.0.4.2.</span> <span class="nav-text">thenAcceptBoth</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#then-run"><span class="nav-number">10.0.4.3.</span> <span class="nav-text">thenRun</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jie-guo-zu-he"><span class="nav-number">10.0.5.</span> <span class="nav-text">结果组合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#then-combine"><span class="nav-number">10.0.5.1.</span> <span class="nav-text">thenCombine</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ren-wu-jiao-hu"><span class="nav-number">10.0.6.</span> <span class="nav-text">任务交互</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#apply-to-either-zhuan-huan"><span class="nav-number">10.0.6.1.</span> <span class="nav-text">applyToEither（转换）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#accept-either-xiao-fei"><span class="nav-number">10.0.6.2.</span> <span class="nav-text">acceptEither（消费）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#run-after-either"><span class="nav-number">10.0.6.3.</span> <span class="nav-text">runAfterEither</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#run-after-both"><span class="nav-number">10.0.6.4.</span> <span class="nav-text">runAfterBoth</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#any-of"><span class="nav-number">10.0.6.5.</span> <span class="nav-text">anyOf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#all-of"><span class="nav-number">10.0.6.6.</span> <span class="nav-text">allOf</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#completable-future-qi-ta"><span class="nav-number">10.0.7.</span> <span class="nav-text">CompletableFuture：其他</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#get-now-ti-jiao-ren-wu-ji-xu-yun-xing"><span class="nav-number">10.0.7.1.</span> <span class="nav-text">getNow：提交任务继续运行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#complete-ti-jiao-ren-wu-bu-hui-ji-xu-yun-xing"><span class="nav-number">10.0.7.2.</span> <span class="nav-text">complete：提交任务不会继续运行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#complete-exceptionally"><span class="nav-number">10.0.7.3.</span> <span class="nav-text">completeExceptionally</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bing-fa-ji-he"><span class="nav-number">11.</span> <span class="nav-text">并发集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#blocking-queue-ji-he-lei-guan-xi-tu"><span class="nav-number">11.1.</span> <span class="nav-text">BlockingQueue集合类关系图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#blocking-queue-de-7-ge-zi-lei"><span class="nav-number">11.2.</span> <span class="nav-text">BlockingQueue的7个子类</span></a></li></ol></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Alisa</p>
-  <div class="site-description" itemprop="description">学习笔记、工作心得</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">59</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">44</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">19</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
+    </footer>
+  </article>
 </div>
 
 
 
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
 
 
-      </div>
-    </main>
 
-    <footer class="footer">
-      <div class="footer-inner">
-        
+</div>
+  </main>
 
-        
+  <footer class="footer">
+    <div class="footer-inner">
+
 
 <div class="copyright">
-  
   &copy; 
   <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
-    <i class="fab fa-apple"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Alisa</span>
 </div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
+    </div>
+  </footer>
+
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
 
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
 
   
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
-
-
-
-  
-<script src="/js/local-search.js"></script>
-
-
-
-
-
-
-
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 
@@ -1723,7 +1607,9 @@ StampedLock提供了读锁和写锁相互转换的功能，使得该类支持更
 
   
 
-  
+
+
+
 
 </body>
 </html>
