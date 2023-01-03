@@ -190,6 +190,128 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2023/01/03/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%9F%BA%E7%A1%80/Redis-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88Stream%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Alisa">
+      <meta itemprop="description" content="学习笔记、工作心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alisa's Home">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/01/03/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%9F%BA%E7%A1%80/Redis-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88Stream%EF%BC%89/" class="post-title-link" itemprop="url">Redis-数据类型（Stream）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-01-03 20:22:19 / 修改时间：20:42:47" itemprop="dateCreated datePublished" datetime="2023-01-03T20:22:19+08:00">2023-01-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/" itemprop="url" rel="index"><span itemprop="name">Redis</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Redis Stream 是一种数据结构，其作用类似于<code>an append-only log</code>。您可以使用流实时记录和同步事件。</p>
+<p>Redis Stream 用例的示例包括：</p>
+<ul>
+<li>事件溯源（例如，跟踪用户操作、点击等）</li>
+<li>传感器监控（例如，现场设备的读数）</li>
+<li>通知（例如，将每个用户的通知记录存储在单独的流中）</li>
+</ul>
+<p>Redis 为每个流条目生成一个唯一的 ID。您可以使用这些 ID 稍后检索其关联条目或读取和处理流中的所有后续条</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">命令</th>
+<th>功能</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="#STREAM_XADD">XADD</a></td>
+<td>增</td>
+<td style="text-align:left">唯一可以将数据添加到流的 Redis 命令</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="#STREAM_XRANGE">XRANGE</a></td>
+<td>查</td>
+<td style="text-align:left">返回流中的一段元素</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="#STREAM_XREAD">XREAD</a></td>
+<td>查</td>
+<td style="text-align:left">从一个或多个流中读取数据，只返回 ID 大于调用者报告的最后接收到的 ID 的条目</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="#STREAM_XTRIM">XTRIM</a></td>
+<td>删</td>
+<td style="text-align:left">将流修剪到 (如果传入’~'，则大约) 某个大小</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/01/03/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%9F%BA%E7%A1%80/Redis-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88Stream%EF%BC%89/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2023/01/03/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%9F%BA%E7%A1%80/Redis-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88%E5%9F%BA%E7%A1%80%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -215,7 +337,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-01-03 20:22:19 / 修改时间：17:26:37" itemprop="dateCreated datePublished" datetime="2023-01-03T20:22:19+08:00">2023-01-03</time>
+              <time title="创建时间：2023-01-03 20:22:19 / 修改时间：23:36:49" itemprop="dateCreated datePublished" datetime="2023-01-03T20:22:19+08:00">2023-01-03</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -378,128 +500,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/01/03/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%9F%BA%E7%A1%80/Redis-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88%E5%9F%BA%E7%A1%80%EF%BC%89/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2023/01/03/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%9F%BA%E7%A1%80/Redis-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88Stream%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Alisa">
-      <meta itemprop="description" content="学习笔记、工作心得">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Alisa's Home">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/01/03/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%9F%BA%E7%A1%80/Redis-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88Stream%EF%BC%89/" class="post-title-link" itemprop="url">Redis-数据类型（Stream）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-01-03 20:22:19 / 修改时间：20:42:47" itemprop="dateCreated datePublished" datetime="2023-01-03T20:22:19+08:00">2023-01-03</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/" itemprop="url" rel="index"><span itemprop="name">Redis</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Redis Stream 是一种数据结构，其作用类似于<code>an append-only log</code>。您可以使用流实时记录和同步事件。</p>
-<p>Redis Stream 用例的示例包括：</p>
-<ul>
-<li>事件溯源（例如，跟踪用户操作、点击等）</li>
-<li>传感器监控（例如，现场设备的读数）</li>
-<li>通知（例如，将每个用户的通知记录存储在单独的流中）</li>
-</ul>
-<p>Redis 为每个流条目生成一个唯一的 ID。您可以使用这些 ID 稍后检索其关联条目或读取和处理流中的所有后续条</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">命令</th>
-<th>功能</th>
-<th style="text-align:left">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><a href="#STREAM_XADD">XADD</a></td>
-<td>增</td>
-<td style="text-align:left">唯一可以将数据添加到流的 Redis 命令</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="#STREAM_XRANGE">XRANGE</a></td>
-<td>查</td>
-<td style="text-align:left">返回流中的一段元素</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="#STREAM_XREAD">XREAD</a></td>
-<td>查</td>
-<td style="text-align:left">从一个或多个流中读取数据，只返回 ID 大于调用者报告的最后接收到的 ID 的条目</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="#STREAM_XTRIM">XTRIM</a></td>
-<td>删</td>
-<td style="text-align:left">将流修剪到 (如果传入’~'，则大约) 某个大小</td>
-</tr>
-<tr>
-<td style="text-align:left"></td>
-<td></td>
-<td style="text-align:left"></td>
-</tr>
-</tbody>
-</table>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/01/03/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/Redis%E5%9F%BA%E7%A1%80/Redis-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88Stream%EF%BC%89/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -903,91 +903,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/11/01/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Alisa">
-      <meta itemprop="description" content="学习笔记、工作心得">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Alisa's Home">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/11/01/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">多线程设计模式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-11-01 06:52:00" itemprop="dateCreated datePublished" datetime="2022-11-01T06:52:00+08:00">2022-11-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-12-12 17:16:34" itemprop="dateModified" datetime="2022-12-12T17:16:34+08:00">2022-12-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">多线程</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/%E5%B9%B6%E5%8F%91%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-1667230559743-54.png" alt="JAVA并发设计模式"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/11/01/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/11/01/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/JUC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1073,7 +988,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/10/31/%E6%95%B0%E6%8D%AE%E5%BA%93/MongoDB/MongoDB%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/11/01/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1087,7 +1002,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/10/31/%E6%95%B0%E6%8D%AE%E5%BA%93/MongoDB/MongoDB%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">MongoDB日常使用</a>
+            <a href="/2022/11/01/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">多线程设计模式</a>
         </h2>
 
         <div class="post-meta">
@@ -1097,14 +1012,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-10-31 16:19:20" itemprop="dateCreated datePublished" datetime="2022-10-31T16:19:20+08:00">2022-10-31</time>
+              <time title="创建时间：2022-11-01 06:52:00" itemprop="dateCreated datePublished" datetime="2022-11-01T06:52:00+08:00">2022-11-01</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-12-12 16:32:49" itemprop="dateModified" datetime="2022-12-12T16:32:49+08:00">2022-12-12</time>
+                <time title="修改时间：2022-12-12 17:16:34" itemprop="dateModified" datetime="2022-12-12T17:16:34+08:00">2022-12-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1112,11 +1027,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MongoDB/" itemprop="url" rel="index"><span itemprop="name">MongoDB</span></a>
+                  <a href="/categories/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">多线程</span></a>
                 </span>
             </span>
 
@@ -1131,10 +1046,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>MongoDB日常使用</p>
+          <p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/%E5%B9%B6%E5%8F%91%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-1667230559743-54.png" alt="JAVA并发设计模式"></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/10/31/%E6%95%B0%E6%8D%AE%E5%BA%93/MongoDB/MongoDB%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/">
+              <a class="btn" href="/2022/11/01/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1243,6 +1158,176 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/10/31/%E6%95%B0%E6%8D%AE%E5%BA%93/MongoDB/MongoDB%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Alisa">
+      <meta itemprop="description" content="学习笔记、工作心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alisa's Home">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/10/31/%E6%95%B0%E6%8D%AE%E5%BA%93/MongoDB/MongoDB%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">MongoDB日常使用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-10-31 16:19:20" itemprop="dateCreated datePublished" datetime="2022-10-31T16:19:20+08:00">2022-10-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-12-12 16:32:49" itemprop="dateModified" datetime="2022-12-12T16:32:49+08:00">2022-12-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MongoDB/" itemprop="url" rel="index"><span itemprop="name">MongoDB</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>MongoDB日常使用</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/10/31/%E6%95%B0%E6%8D%AE%E5%BA%93/MongoDB/MongoDB%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/10/31/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Alisa">
+      <meta itemprop="description" content="学习笔记、工作心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alisa's Home">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/10/31/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5/" class="post-title-link" itemprop="url">MySQL查询优化策略</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-10-31 16:19:20" itemprop="dateCreated datePublished" datetime="2022-10-31T16:19:20+08:00">2022-10-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-12-12 16:32:57" itemprop="dateModified" datetime="2022-12-12T16:32:57+08:00">2022-12-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>MySQL查询优化策略</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/10/31/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/10/31/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E5%9F%BA%E7%A1%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1305,6 +1390,91 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/10/31/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E5%9F%BA%E7%A1%80/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/10/31/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Alisa">
+      <meta itemprop="description" content="学习笔记、工作心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alisa's Home">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/10/31/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/" class="post-title-link" itemprop="url">MySQL用户管理</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-10-31 16:19:20" itemprop="dateCreated datePublished" datetime="2022-10-31T16:19:20+08:00">2022-10-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-12-12 16:33:08" itemprop="dateModified" datetime="2022-12-12T16:33:08+08:00">2022-12-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>MySQL用户管理</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/10/31/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1498,7 +1668,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/10/31/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/">
+    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/10/30/%E5%89%8D%E7%AB%AF/CSS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1512,7 +1682,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/10/31/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/" class="post-title-link" itemprop="url">MySQL用户管理</a>
+            <a href="/2022/10/30/%E5%89%8D%E7%AB%AF/CSS/" class="post-title-link" itemprop="url">CSS日常使用记录</a>
         </h2>
 
         <div class="post-meta">
@@ -1522,14 +1692,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-10-31 16:19:20" itemprop="dateCreated datePublished" datetime="2022-10-31T16:19:20+08:00">2022-10-31</time>
+              <time title="创建时间：2022-10-30 15:39:23" itemprop="dateCreated datePublished" datetime="2022-10-30T15:39:23+08:00">2022-10-30</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-12-12 16:33:08" itemprop="dateModified" datetime="2022-12-12T16:33:08+08:00">2022-12-12</time>
+                <time title="修改时间：2022-12-12 16:38:24" itemprop="dateModified" datetime="2022-12-12T16:38:24+08:00">2022-12-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1537,11 +1707,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
                 </span>
             </span>
 
@@ -1556,95 +1726,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>MySQL用户管理</p>
+          <p>CSS日常使用记录</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/10/31/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/10/31/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Alisa">
-      <meta itemprop="description" content="学习笔记、工作心得">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Alisa's Home">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/10/31/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5/" class="post-title-link" itemprop="url">MySQL查询优化策略</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-10-31 16:19:20" itemprop="dateCreated datePublished" datetime="2022-10-31T16:19:20+08:00">2022-10-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-12-12 16:32:57" itemprop="dateModified" datetime="2022-12-12T16:32:57+08:00">2022-12-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>MySQL查询优化策略</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/10/31/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5/">
+              <a class="btn" href="/2022/10/30/%E5%89%8D%E7%AB%AF/CSS/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1838,91 +1923,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/10/30/%E5%89%8D%E7%AB%AF/CSS/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Alisa">
-      <meta itemprop="description" content="学习笔记、工作心得">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Alisa's Home">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/10/30/%E5%89%8D%E7%AB%AF/CSS/" class="post-title-link" itemprop="url">CSS日常使用记录</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-10-30 15:39:23" itemprop="dateCreated datePublished" datetime="2022-10-30T15:39:23+08:00">2022-10-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-12-12 16:38:24" itemprop="dateModified" datetime="2022-12-12T16:38:24+08:00">2022-12-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>CSS日常使用记录</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/10/30/%E5%89%8D%E7%AB%AF/CSS/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/10/30/%E5%89%8D%E7%AB%AF/JSTL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2093,91 +2093,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/10/30/%E6%A1%86%E6%9E%B6&%E4%B8%AD%E9%97%B4%E4%BB%B6/Log4j/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Alisa">
-      <meta itemprop="description" content="学习笔记、工作心得">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Alisa's Home">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/10/30/%E6%A1%86%E6%9E%B6&%E4%B8%AD%E9%97%B4%E4%BB%B6/Log4j/" class="post-title-link" itemprop="url">Log4j日常使用记录</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-10-30 15:39:23" itemprop="dateCreated datePublished" datetime="2022-10-30T15:39:23+08:00">2022-10-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-12-12 16:30:48" itemprop="dateModified" datetime="2022-12-12T16:30:48+08:00">2022-12-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%A1%86%E6%9E%B6-%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">框架&中间件</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%A1%86%E6%9E%B6-%E4%B8%AD%E9%97%B4%E4%BB%B6/Log4j/" itemprop="url" rel="index"><span itemprop="name">Log4j</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Log4j日常使用记录</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/10/30/%E6%A1%86%E6%9E%B6&%E4%B8%AD%E9%97%B4%E4%BB%B6/Log4j/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/10/30/%E6%A1%86%E6%9E%B6&%E4%B8%AD%E9%97%B4%E4%BB%B6/Junit/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2263,7 +2178,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/10/30/%E6%A1%86%E6%9E%B6&%E4%B8%AD%E9%97%B4%E4%BB%B6/Lombox/">
+    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/10/30/%E6%A1%86%E6%9E%B6&%E4%B8%AD%E9%97%B4%E4%BB%B6/Log4j/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -2277,7 +2192,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/10/30/%E6%A1%86%E6%9E%B6&%E4%B8%AD%E9%97%B4%E4%BB%B6/Lombox/" class="post-title-link" itemprop="url">Lombox日常使用记录</a>
+            <a href="/2022/10/30/%E6%A1%86%E6%9E%B6&%E4%B8%AD%E9%97%B4%E4%BB%B6/Log4j/" class="post-title-link" itemprop="url">Log4j日常使用记录</a>
         </h2>
 
         <div class="post-meta">
@@ -2294,7 +2209,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-12-12 16:30:37" itemprop="dateModified" datetime="2022-12-12T16:30:37+08:00">2022-12-12</time>
+                <time title="修改时间：2022-12-12 16:30:48" itemprop="dateModified" datetime="2022-12-12T16:30:48+08:00">2022-12-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -2306,7 +2221,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%A1%86%E6%9E%B6-%E4%B8%AD%E9%97%B4%E4%BB%B6/Lombox/" itemprop="url" rel="index"><span itemprop="name">Lombox</span></a>
+                  <a href="/categories/%E6%A1%86%E6%9E%B6-%E4%B8%AD%E9%97%B4%E4%BB%B6/Log4j/" itemprop="url" rel="index"><span itemprop="name">Log4j</span></a>
                 </span>
             </span>
 
@@ -2321,10 +2236,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Logback日常使用记录</p>
+          <p>Log4j日常使用记录</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/10/30/%E6%A1%86%E6%9E%B6&%E4%B8%AD%E9%97%B4%E4%BB%B6/Lombox/">
+              <a class="btn" href="/2022/10/30/%E6%A1%86%E6%9E%B6&%E4%B8%AD%E9%97%B4%E4%BB%B6/Log4j/">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -2433,7 +2348,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/10/30/%E5%B7%A5%E5%85%B7&%E7%B3%BB%E7%BB%9F/%E6%9C%8D%E5%8A%A1%E5%99%A8/Docker/Docker/">
+    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/10/30/%E6%A1%86%E6%9E%B6&%E4%B8%AD%E9%97%B4%E4%BB%B6/Lombox/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -2447,7 +2362,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/10/30/%E5%B7%A5%E5%85%B7&%E7%B3%BB%E7%BB%9F/%E6%9C%8D%E5%8A%A1%E5%99%A8/Docker/Docker/" class="post-title-link" itemprop="url">Docker日常使用记录</a>
+            <a href="/2022/10/30/%E6%A1%86%E6%9E%B6&%E4%B8%AD%E9%97%B4%E4%BB%B6/Lombox/" class="post-title-link" itemprop="url">Lombox日常使用记录</a>
         </h2>
 
         <div class="post-meta">
@@ -2464,7 +2379,92 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-12-12 16:24:43" itemprop="dateModified" datetime="2022-12-12T16:24:43+08:00">2022-12-12</time>
+                <time title="修改时间：2022-12-12 16:30:37" itemprop="dateModified" datetime="2022-12-12T16:30:37+08:00">2022-12-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%A1%86%E6%9E%B6-%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">框架&中间件</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%A1%86%E6%9E%B6-%E4%B8%AD%E9%97%B4%E4%BB%B6/Lombox/" itemprop="url" rel="index"><span itemprop="name">Lombox</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Logback日常使用记录</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/10/30/%E6%A1%86%E6%9E%B6&%E4%B8%AD%E9%97%B4%E4%BB%B6/Lombox/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/2022/10/30/%E5%B7%A5%E5%85%B7&%E7%B3%BB%E7%BB%9F/%E6%9C%8D%E5%8A%A1%E5%99%A8/Tomcat/Tomcat/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Alisa">
+      <meta itemprop="description" content="学习笔记、工作心得">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alisa's Home">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/10/30/%E5%B7%A5%E5%85%B7&%E7%B3%BB%E7%BB%9F/%E6%9C%8D%E5%8A%A1%E5%99%A8/Tomcat/Tomcat/" class="post-title-link" itemprop="url">Tomcat日常使用记录</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-10-30 15:39:23" itemprop="dateCreated datePublished" datetime="2022-10-30T15:39:23+08:00">2022-10-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-12-12 16:24:40" itemprop="dateModified" datetime="2022-12-12T16:24:40+08:00">2022-12-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -2480,7 +2480,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E5%85%B7-%E7%B3%BB%E7%BB%9F/%E6%9C%8D%E5%8A%A1%E5%99%A8/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
+                  <a href="/categories/%E5%B7%A5%E5%85%B7-%E7%B3%BB%E7%BB%9F/%E6%9C%8D%E5%8A%A1%E5%99%A8/Tomcat/" itemprop="url" rel="index"><span itemprop="name">Tomcat</span></a>
                 </span>
             </span>
 
@@ -2495,10 +2495,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Docker日常使用记录</p>
+          <p>Tomcat日常使用记录</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/10/30/%E5%B7%A5%E5%85%B7&%E7%B3%BB%E7%BB%9F/%E6%9C%8D%E5%8A%A1%E5%99%A8/Docker/Docker/">
+              <a class="btn" href="/2022/10/30/%E5%B7%A5%E5%85%B7&%E7%B3%BB%E7%BB%9F/%E6%9C%8D%E5%8A%A1%E5%99%A8/Tomcat/Tomcat/">
                 阅读全文 &raquo;
               </a>
             </div>
