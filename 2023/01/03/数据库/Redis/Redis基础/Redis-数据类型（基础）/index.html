@@ -28,7 +28,7 @@
 <meta property="og:description" content="String    命令 使用 功能 说明     SET SET key value SET key value ex seconds 增 储值储值且key在指定秒后过期   MSET MSET key value [key value …] 增 同时储多个值   SETEX SETEX key seconds value 增 储值，且key在指定秒后过期   PSETEX PSETEX key">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-01-03T12:22:19.000Z">
-<meta property="article:modified_time" content="2023-01-03T08:52:31.243Z">
+<meta property="article:modified_time" content="2023-01-03T09:23:59.290Z">
 <meta property="article:author" content="Alisa">
 <meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary">
@@ -218,7 +218,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-01-03 20:22:19 / 修改时间：16:52:31" itemprop="dateCreated datePublished" datetime="2023-01-03T20:22:19+08:00">2023-01-03</time>
+              <time title="创建时间：2023-01-03 20:22:19 / 修改时间：17:23:59" itemprop="dateCreated datePublished" datetime="2023-01-03T20:22:19+08:00">2023-01-03</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -750,50 +750,135 @@
 <li>表示关系（例如，具有给定角色的所有用户的集合）。</li>
 <li>执行常见的集合运算，例如交集、并集和差集。</li>
 </ul>
-<p>| 命令 | 使用 | 功能 | 说明 |<br>
-| :- | : | : | - |<br>
-| SADD | SADD <em>key</em> member [member …] | 增 | 向集合中添加一个或多个成员 |<br>
-| SCARD | SCARD <em>key</em> | 查 | 集合中元素个数 |<br>
-| SDIFF | SDIFF <em>key [key …]</em> | 集合：补 | 取多个集合的差分（其他集合中都没有的元素） |<br>
-| SDIFFSTORE | SDIFFSTORE <em>destination</em> <em>key [key …]</em> | 集合：补&amp;存 | 取多个集合的差分, 并将结果集存储在一个集合中 |<br>
-| SINTER | SINTER <em>key [key …]</em> | 集合：交 | 取多个集合的交集并返回 <br />INTER 为 Intersect /ˌɪntəˈsekt/ 的缩写 |<br>
-| SINTERSTORE | SINTERSTORE <em>destination</em> <em>key [key …]</em> | 集合：交&amp;存 | 取多个集合的交集并将结果集存储在一个集合中（destination） |<br>
-| SISMEMBER | SISMEMBER <em>key</em> member | 查 | 检查一个元素是否存在 |<br>
-| SMEMBERS | SMEMBERS <em>key</em> | 查 | 返回所有元素 |<br>
-| SMOVE | SMOVE <em>source destination</em> member | 查&amp;移动 | 将集合source 中的元素member移动到集合destination中 |<br>
-| SPOP | SPOP key [count] | 查&amp;删 | 从集合中移除并返回一个或多个（count）随机成员 |<br>
-| SRANDMEMBER | SRANDMEMBER key [count] | 查 | 从集合中获取一个或多个（count）随机成员，元素在集合中依然存在 |<br>
-| SREM | SREM <em>key</em> member [member …] | 删 | 从SET中删除一个或者多个元素 |<br>
-| SUNION | SUNION <em>key [key …]</em> | 集合：并 | 取多个集合的并集 |<br>
-| SUNIONSTORE | SUNIONSTORE <em>destination</em> <em>key [key …]</em> | 集合：并&amp;存 | 取多个集合的并集并将结果集存储在一个集合中（destination） |<br>
-| SSCAN | SSCAN <em>key</em> cursor [MATCH pattern] [COUNT count] | 遍历查 | 参考<a href="#Order_SCAN">SCAN</a> |</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">命令</th>
+<th style="text-align:left">使用</th>
+<th style="text-align:left">功能</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SADD</td>
+<td style="text-align:left">SADD <em>key</em> member [member …]</td>
+<td style="text-align:left">增</td>
+<td style="text-align:left">向集合中添加一个或多个成员</td>
+</tr>
+<tr>
+<td style="text-align:left">SCARD</td>
+<td style="text-align:left">SCARD <em>key</em></td>
+<td style="text-align:left">查</td>
+<td style="text-align:left">集合中元素个数</td>
+</tr>
+<tr>
+<td style="text-align:left">SDIFF</td>
+<td style="text-align:left">SDIFF <em>key [key …]</em></td>
+<td style="text-align:left">集合：补</td>
+<td style="text-align:left">取多个集合的差分（其他集合中都没有的元素）</td>
+</tr>
+<tr>
+<td style="text-align:left">SDIFFSTORE</td>
+<td style="text-align:left">SDIFFSTORE <em>destination</em> <em>key [key …]</em></td>
+<td style="text-align:left">集合：补&amp;存</td>
+<td style="text-align:left">取多个集合的差分, 并将结果集存储在一个集合中</td>
+</tr>
+<tr>
+<td style="text-align:left">SINTER</td>
+<td style="text-align:left">SINTER <em>key [key …]</em></td>
+<td style="text-align:left">集合：交</td>
+<td style="text-align:left">取多个集合的交集并返回 <br />INTER 为 Intersect /ˌɪntəˈsekt/ 的缩写</td>
+</tr>
+<tr>
+<td style="text-align:left">SINTERSTORE</td>
+<td style="text-align:left">SINTERSTORE <em>destination</em> <em>key [key …]</em></td>
+<td style="text-align:left">集合：交&amp;存</td>
+<td style="text-align:left">取多个集合的交集并将结果集存储在一个集合中（destination）</td>
+</tr>
+<tr>
+<td style="text-align:left">SISMEMBER</td>
+<td style="text-align:left">SISMEMBER <em>key</em> member</td>
+<td style="text-align:left">查</td>
+<td style="text-align:left">检查一个元素是否存在</td>
+</tr>
+<tr>
+<td style="text-align:left">SMEMBERS</td>
+<td style="text-align:left">SMEMBERS <em>key</em></td>
+<td style="text-align:left">查</td>
+<td style="text-align:left">返回所有元素</td>
+</tr>
+<tr>
+<td style="text-align:left">SMOVE</td>
+<td style="text-align:left">SMOVE <em>source destination</em> member</td>
+<td style="text-align:left">查&amp;移动</td>
+<td style="text-align:left">将集合source 中的元素member移动到集合destination中</td>
+</tr>
+<tr>
+<td style="text-align:left">SPOP</td>
+<td style="text-align:left">SPOP key [count]</td>
+<td style="text-align:left">查&amp;删</td>
+<td style="text-align:left">从集合中移除并返回一个或多个（count）随机成员</td>
+</tr>
+<tr>
+<td style="text-align:left">SRANDMEMBER</td>
+<td style="text-align:left">SRANDMEMBER key [count]</td>
+<td style="text-align:left">查</td>
+<td style="text-align:left">从集合中获取一个或多个（count）随机成员，元素在集合中依然存在</td>
+</tr>
+<tr>
+<td style="text-align:left">SREM</td>
+<td style="text-align:left">SREM <em>key</em> member [member …]</td>
+<td style="text-align:left">删</td>
+<td style="text-align:left">从SET中删除一个或者多个元素</td>
+</tr>
+<tr>
+<td style="text-align:left">SUNION</td>
+<td style="text-align:left">SUNION <em>key [key …]</em></td>
+<td style="text-align:left">集合：并</td>
+<td style="text-align:left">取多个集合的并集</td>
+</tr>
+<tr>
+<td style="text-align:left">SUNIONSTORE</td>
+<td style="text-align:left">SUNIONSTORE <em>destination</em> <em>key [key …]</em></td>
+<td style="text-align:left">集合：并&amp;存</td>
+<td style="text-align:left">取多个集合的并集并将结果集存储在一个集合中（destination）</td>
+</tr>
+<tr>
+<td style="text-align:left">SSCAN</td>
+<td style="text-align:left">SSCAN <em>key</em> cursor [MATCH pattern] [COUNT count]</td>
+<td style="text-align:left">遍历查</td>
+<td style="text-align:left">参考<a href="#Order_SCAN">SCAN</a></td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <p>其他（6.0.6以下版本不支持）</p>
 </blockquote>
 <table>
 <thead>
 <tr>
-<th>命令</th>
-<th>使用</th>
-<th>发行版本</th>
-<th>功能</th>
-<th>说明</th>
+<th style="text-align:left">命令</th>
+<th style="text-align:left">使用</th>
+<th style="text-align:left">发行版本</th>
+<th style="text-align:left">功能</th>
+<th style="text-align:left">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>SINTERCARD</td>
-<td>SINTERCARD numkeys <em>key [key …]</em> [LIMIT limit]</td>
-<td>7.0.0</td>
-<td>集合：交</td>
-<td>获取两个集合的交集数量<br />[LIMIT  limit]：最大交集量 <br /><code>SINTERCARD 2 testset testset1返回19</code> 两个集合的交集量容量为19 <br /><code>SINTERCARD 2 testset testset1 limit 10 </code>返回10</td>
+<td style="text-align:left">SINTERCARD</td>
+<td style="text-align:left">SINTERCARD numkeys <em>key [key …]</em> [LIMIT limit]</td>
+<td style="text-align:left">7.0.0</td>
+<td style="text-align:left">集合：交</td>
+<td style="text-align:left">获取两个集合的交集数量<br />[LIMIT  limit]：最大交集量 <br /><code>SINTERCARD 2 testset testset1返回19</code> 两个集合的交集量容量为19 <br /><code>SINTERCARD 2 testset testset1 limit 10 </code>返回10</td>
 </tr>
 <tr>
-<td>SMISMEMBER</td>
-<td>SMISMEMBER <em>key</em> member [member …]</td>
-<td>6.2.0</td>
-<td>查</td>
-<td>返回每个成员是否是存储在 key  集合的成员（多个元素的存在的查询） <br />返回与指定的member顺序一致的数组</td>
+<td style="text-align:left">SMISMEMBER</td>
+<td style="text-align:left">SMISMEMBER <em>key</em> member [member …]</td>
+<td style="text-align:left">6.2.0</td>
+<td style="text-align:left">查</td>
+<td style="text-align:left">返回每个成员是否是存储在 key  集合的成员（多个元素的存在的查询） <br />返回与指定的member顺序一致的数组</td>
 </tr>
 </tbody>
 </table>
@@ -972,34 +1057,34 @@
 <thead>
 <tr>
 <th style="text-align:left">命令</th>
-<th>功能</th>
-<th>版本</th>
+<th style="text-align:left">功能</th>
+<th style="text-align:left">版本</th>
 <th style="text-align:left">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left"><strong>ZINTER</strong> numkeys <em>key [key …]</em> [<strong>WEIGHTS</strong> weight [weight …]]   [<strong>AGGREGATE</strong> &lt;<strong>SUM</strong> |<strong>MIN</strong> |<strong>MAX</strong>&gt;] [<strong>WITHSCORES</strong>]</td>
-<td>交集</td>
-<td>6.2.0</td>
+<td style="text-align:left">交集</td>
+<td style="text-align:left">6.2.0</td>
 <td style="text-align:left">计算多个有序集合的交集，并返回</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>ZUNION</strong> numkeys <em>key [key …]</em> [<strong>WEIGHTS</strong> weight [weight …]]   [<strong>AGGREGATE</strong> &lt;<strong>SUM</strong> |<strong>MIN</strong> |<strong>MAX</strong>&gt;] [<strong>WITHSCORES</strong>]</td>
-<td>并集</td>
-<td>6.2.0</td>
+<td style="text-align:left">并集</td>
+<td style="text-align:left">6.2.0</td>
 <td style="text-align:left">计算多个有序集合的并集，并返回</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>ZDIFF</strong> numkeys <em>key [key …]</em> [<strong>WITHSCORES</strong>]</td>
-<td>补集</td>
-<td>6.2.0</td>
+<td style="text-align:left">补集</td>
+<td style="text-align:left">6.2.0</td>
 <td style="text-align:left">计算第一个集合比后面所有集合多出的元素，并返回<br />（比较逻辑和分值无关）</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>ZDIFFSTORE</strong> <em>destination</em> numkeys <em>key [key …]</em></td>
-<td>补集</td>
-<td>6.2.0</td>
+<td style="text-align:left">补集</td>
+<td style="text-align:left">6.2.0</td>
 <td style="text-align:left">计算第一个集合比后面所有集合多出的元素，并存入destination<br />（比较逻辑和分值无关）</td>
 </tr>
 </tbody>
@@ -1010,62 +1095,62 @@
 <table>
 <thead>
 <tr>
-<th>命令</th>
-<th>使用</th>
-<th>发行版本</th>
-<th>功能</th>
-<th>说明</th>
+<th style="text-align:left">命令</th>
+<th style="text-align:left">使用</th>
+<th style="text-align:left">发行版本</th>
+<th style="text-align:left">功能</th>
+<th style="text-align:left">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>ZRANDMEMBER</td>
-<td><strong>ZRANDMEMBER</strong> key [count [<strong>WITHSCORES</strong>]]</td>
-<td>6.2.0</td>
-<td>查</td>
-<td>从有序集合中返回一个或多个元素<br />如果提供的 count 参数为正，则返回不同元素的数组。数组的长度是计数或排序集的基数 (ZCARD)，以较低者为准。<br />如果以负数调用，则行为会发生变化，并且允许该命令多次返回相同的元素。在这种情况下，返回元素的数量是指定计数的绝对值。</td>
+<td style="text-align:left">ZRANDMEMBER</td>
+<td style="text-align:left"><strong>ZRANDMEMBER</strong> key [count [<strong>WITHSCORES</strong>]]</td>
+<td style="text-align:left">6.2.0</td>
+<td style="text-align:left">查</td>
+<td style="text-align:left">从有序集合中返回一个或多个元素<br />如果提供的 count 参数为正，则返回不同元素的数组。数组的长度是计数或排序集的基数 (ZCARD)，以较低者为准。<br />如果以负数调用，则行为会发生变化，并且允许该命令多次返回相同的元素。在这种情况下，返回元素的数量是指定计数的绝对值。</td>
 </tr>
 <tr>
-<td>ZRANGE</td>
-<td><strong>ZRANGE</strong> <em>key</em> start  stop [<strong>BYSCORE</strong> |<strong>BYLEX</strong>] [<strong>REV</strong>] [<strong>LIMIT</strong> offset count]   [<strong>WITHSCORES</strong>]</td>
-<td>6.2.0</td>
-<td>查</td>
-<td>此命令可以替换以下命令：<br /><strong>ZREVRANGE、ZRANGEBYSCORE、ZREVRANGEBYSCORE、ZRANGEBYLEX 和 ZREVRANGEBYLEX</strong><br /><br /> [<strong>BYSCORE</strong> |<strong>BYLEX</strong>] ：根据分值查找/ 根据字典顺序<br /><br /><code>zrange hackers  + - bylex rev</code><br /></td>
+<td style="text-align:left">ZRANGE</td>
+<td style="text-align:left"><strong>ZRANGE</strong> <em>key</em> start  stop [<strong>BYSCORE</strong> |<strong>BYLEX</strong>] [<strong>REV</strong>] [<strong>LIMIT</strong> offset count]   [<strong>WITHSCORES</strong>]</td>
+<td style="text-align:left">6.2.0</td>
+<td style="text-align:left">查</td>
+<td style="text-align:left">此命令可以替换以下命令：<br /><strong>ZREVRANGE、ZRANGEBYSCORE、ZREVRANGEBYSCORE、ZRANGEBYLEX 和 ZREVRANGEBYLEX</strong><br /><br /> [<strong>BYSCORE</strong> |<strong>BYLEX</strong>] ：根据分值查找/ 根据字典顺序<br /><br /><code>zrange hackers  + - bylex rev</code><br /></td>
 </tr>
 <tr>
-<td>ZRANGESTORE</td>
-<td><strong>ZRANGESTORE</strong> <em>dst  src</em> min max   [<strong>BYSCORE</strong> | <strong>BYLEX</strong>]   [<strong>REV</strong>]   [<strong>LIMIT</strong> offset   count]</td>
-<td>6.2.0</td>
-<td>查</td>
-<td>ZRANGE 查询结果结果存储在目标键dst 中</td>
+<td style="text-align:left">ZRANGESTORE</td>
+<td style="text-align:left"><strong>ZRANGESTORE</strong> <em>dst  src</em> min max   [<strong>BYSCORE</strong> | <strong>BYLEX</strong>]   [<strong>REV</strong>]   [<strong>LIMIT</strong> offset   count]</td>
+<td style="text-align:left">6.2.0</td>
+<td style="text-align:left">查</td>
+<td style="text-align:left">ZRANGE 查询结果结果存储在目标键dst 中</td>
 </tr>
 <tr>
-<td>ZMSCORE</td>
-<td><strong>ZMSCORE</strong> <em>key</em> member [member …]</td>
-<td>6.2.0</td>
-<td>查</td>
-<td>查询指定成员关联的分数<br />对于排序集中不存在的每个成员，返回一个 nil 值。</td>
+<td style="text-align:left">ZMSCORE</td>
+<td style="text-align:left"><strong>ZMSCORE</strong> <em>key</em> member [member …]</td>
+<td style="text-align:left">6.2.0</td>
+<td style="text-align:left">查</td>
+<td style="text-align:left">查询指定成员关联的分数<br />对于排序集中不存在的每个成员，返回一个 nil 值。</td>
 </tr>
 <tr>
-<td>ZINTERCARD</td>
-<td><strong>ZINTERCARD</strong> numkeys <em>key [key …]</em> [<strong>LIMIT</strong> limit]</td>
-<td>7.0.0</td>
-<td>集合：交</td>
-<td>返回交集元素总量<br /> [LIMIT limit]：默认为 0，表示无限制。<br />如果交集元素总量在计算过程中达到极限，算法将退出并将limit 作为交集总量<br /><code>ZINTERCARD 2 zset1 zset2 LIMIT 1</code>:   <code>返回 1</code></td>
+<td style="text-align:left">ZINTERCARD</td>
+<td style="text-align:left"><strong>ZINTERCARD</strong> numkeys <em>key [key …]</em> [<strong>LIMIT</strong> limit]</td>
+<td style="text-align:left">7.0.0</td>
+<td style="text-align:left">集合：交</td>
+<td style="text-align:left">返回交集元素总量<br /> [LIMIT limit]：默认为 0，表示无限制。<br />如果交集元素总量在计算过程中达到极限，算法将退出并将limit 作为交集总量<br /><code>ZINTERCARD 2 zset1 zset2 LIMIT 1</code>:   <code>返回 1</code></td>
 </tr>
 <tr>
-<td>ZMPOP</td>
-<td><strong>ZMPOP</strong> numkeys <em>key [key …]</em> &lt;<strong>MIN | MAX</strong>&gt; [<strong>COUNT</strong> count]</td>
-<td>7.0.0</td>
-<td>删</td>
-<td><code>从多个key，弹出多个成员</code><br />从提供的键名列表中的第一个非空排序集中弹出一个或多个成员</td>
+<td style="text-align:left">ZMPOP</td>
+<td style="text-align:left"><strong>ZMPOP</strong> numkeys <em>key [key …]</em> &lt;<strong>MIN | MAX</strong>&gt; [<strong>COUNT</strong> count]</td>
+<td style="text-align:left">7.0.0</td>
+<td style="text-align:left">删</td>
+<td style="text-align:left"><code>从多个key，弹出多个成员</code><br />从提供的键名列表中的第一个非空排序集中弹出一个或多个成员</td>
 </tr>
 <tr>
-<td>BZMPOP</td>
-<td><strong>BZMPOP</strong> timeout numkeys <em>key [key …]</em> &lt;<strong>MIN | MAX&gt;</strong> [<strong>COUNT</strong> count]</td>
-<td>7.0.0</td>
-<td>删</td>
-<td><code> 从多个key，弹出多个成员</code><br />有序集合中存在数据时返回，不存在时阻塞等待。<br />timeout：double数，时间单位为秒，设置为0时无期限等待</td>
+<td style="text-align:left">BZMPOP</td>
+<td style="text-align:left"><strong>BZMPOP</strong> timeout numkeys <em>key [key …]</em> &lt;<strong>MIN | MAX&gt;</strong> [<strong>COUNT</strong> count]</td>
+<td style="text-align:left">7.0.0</td>
+<td style="text-align:left">删</td>
+<td style="text-align:left"><code> 从多个key，弹出多个成员</code><br />有序集合中存在数据时返回，不存在时阻塞等待。<br />timeout：double数，时间单位为秒，设置为0时无期限等待</td>
 </tr>
 </tbody>
 </table>
@@ -1076,34 +1161,34 @@
 <thead>
 <tr>
 <th style="text-align:left">命令</th>
-<th>功能</th>
+<th style="text-align:left">功能</th>
 <th style="text-align:left">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left"><strong>ZREVRANGE</strong>  <em>key</em> start stop [<strong>WITHSCORES</strong>]</td>
-<td>查</td>
+<td style="text-align:left">查</td>
 <td style="text-align:left">按照<strong>分值降序</strong>后，返回有序集合中指定<strong>index</strong>范围的元素</td>
 </tr>
 <tr>
 <td style="text-align:left"><span id="ORDER_ZRANGEBYLEX"><strong>ZRANGEBYLEX</strong> <em>key</em> min max [<strong>LIMIT</strong> offset count]</span></td>
-<td>查</td>
+<td style="text-align:left">查</td>
 <td style="text-align:left">该命令返回有序集合中指定<strong>字典</strong>范围内的元素<br />① 当排序集中的所有元素<strong>以相同的分数</strong>插入时，使用字典顺序，<br />② 此命令返回排序集中的所有元素在 key 处，其值介于 min 和 max 之间。<br />③ 如果排序集中的元素具有不同的分数，则返回的元素是未指定的<br /><code> ZRANGEBYLEX  hackers - +</code> <br /><code> ZRANGEBYLEX  hackers - + LIMIT 2 3</code>  <br /><code>ZRANGEBYLEX  hackers [A [Z</code>：包含<br /><code>ZRANGEBYLEX  hackers (A (Z</code>：不包含</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>ZREVRANGEBYLEX</strong> <em>key</em> max min [<strong>LIMIT</strong> offset count]</td>
-<td>查</td>
+<td style="text-align:left">查</td>
 <td style="text-align:left"></td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>ZRANGEBYSCORE</strong> <em>key</em> min max [<strong>WITHSCORES</strong>] [<strong>LIMIT</strong> offset count]</td>
-<td>查</td>
+<td style="text-align:left">查</td>
 <td style="text-align:left">按照<strong>分值降序</strong>后，返回有序集合中指定分值范围的元素<br />举例：<code>zrangebyscore hackers -inf 1950</code><br />==-inf==: 表示负无穷 <strong>infinity</strong> [ɪnˈfɪnəti]</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>ZREVRANGEBYSCORE</strong> <em>key</em> max min [<strong>WITHSCORES</strong>] [<strong>LIMIT</strong> offset count]</td>
-<td>查</td>
+<td style="text-align:left">查</td>
 <td style="text-align:left"></td>
 </tr>
 </tbody>
