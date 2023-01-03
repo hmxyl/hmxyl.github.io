@@ -19,27 +19,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"hmxyl.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":"ture","preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="学习笔记、工作心得">
+    <meta name="description" content="目录无法跳转（markdown-it 插件的 bug） 安装 markdown-it-named-headings 插件, 这个插件是另外一个大佬针对这个 bug 做的一个修复 首先安装它： 1npm install markdown-it-named-headings --save 然后进入你项目的根目录，修改根目录下 node_modules\hexo-renderer-markdown-it">
 <meta property="og:type" content="website">
-<meta property="og:title" content="归档">
-<meta property="og:url" content="https://hmxyl.github.io/archives/index.html">
+<meta property="og:title" content="Hexo博客踩坑">
+<meta property="og:url" content="https://hmxyl.github.io/docs/%E6%96%B9%E6%B3%95%E8%AE%BA/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/Hexo%20%E5%8D%9A%E5%AE%A2%E8%B8%A9%E5%9D%91.html">
 <meta property="og:site_name" content="Alisa&#39;s Home">
-<meta property="og:description" content="学习笔记、工作心得">
+<meta property="og:description" content="目录无法跳转（markdown-it 插件的 bug） 安装 markdown-it-named-headings 插件, 这个插件是另外一个大佬针对这个 bug 做的一个修复 首先安装它： 1npm install markdown-it-named-headings --save 然后进入你项目的根目录，修改根目录下 node_modules\hexo-renderer-markdown-it">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-10-26T19:05:19.000Z">
-<meta property="article:modified_time" content="2023-01-03T17:16:54.212Z">
+<meta property="article:published_time" content="2023-01-03T01:52:44.000Z">
+<meta property="article:modified_time" content="2023-01-03T14:05:06.557Z">
 <meta property="article:author" content="Alisa">
+<meta property="article:tag" content="方法论">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://hmxyl.github.io/archives/">
+<link rel="canonical" href="https://hmxyl.github.io/docs/%E6%96%B9%E6%B3%95%E8%AE%BA/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/Hexo%20%E5%8D%9A%E5%AE%A2%E8%B8%A9%E5%9D%91">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"https://hmxyl.github.io/archives/index.html","path":"archives/index.html","title":"归档"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"https://hmxyl.github.io/docs/%E6%96%B9%E6%B3%95%E8%AE%BA/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/Hexo%20%E5%8D%9A%E5%AE%A2%E8%B8%A9%E5%9D%91.html","path":"docs/方法论/博客搭建/Hexo 博客踩坑.html","title":"Hexo博客踩坑"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>归档 | Alisa's Home
+<title>Hexo博客踩坑 | Alisa's Home
 </title>
   
 
@@ -126,7 +127,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -139,6 +140,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mu-lu-wu-fa-tiao-zhuan-markdown-it-cha-jian-de-bug"><span class="nav-number">1.</span> <span class="nav-text">目录无法跳转（markdown-it 插件的 bug）</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -170,10 +172,16 @@
     
     <div class="post-block" lang="zh-CN"><header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">归档
+<h1 class="post-title" itemprop="name headline">Hexo博客踩坑
 </h1>
 
 <div class="post-meta-container">
+  <ul class="breadcrumb">
+            <li><a href="/docs/">DOCS</a></li>
+            <li><a href="/docs/%E6%96%B9%E6%B3%95%E8%AE%BA/">方法论</a></li>
+            <li><a href="/docs/%E6%96%B9%E6%B3%95%E8%AE%BA/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</a></li>
+            <li>HEXO 博客踩坑</li>
+  </ul>
 </div>
 
 </header>
@@ -181,12 +189,28 @@
       
       
       <div class="post-body">
-          
+          <h2 id="mu-lu-wu-fa-tiao-zhuan-markdown-it-cha-jian-de-bug" id="目录无法跳转（markdown-it-插件的-bug）">目录无法跳转（markdown-it 插件的 bug）</h2>
+<p>安装 <code>markdown-it-named-headings</code> 插件,</p>
+<p>这个插件是另外一个大佬针对这个 bug 做的一个修复</p>
+<p>首先安装它：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install markdown-it-named-headings --save</span><br></pre></td></tr></table></figure>
+<p>然后进入你项目的根目录，修改根目录下 <code>node_modules\hexo-renderer-markdown-it\lib\renderer.js</code> 文件，在 <code>renderer.js</code> 中添加一行以使用此插件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.use(require(<span class="string">&#x27;markdown-it-named-headings&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<p>具体：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">class Renderer &#123;</span><br><span class="line"></span><br><span class="line">  constructor(hexo) &#123;</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    this.parser.use(require(<span class="string">&#x27;markdown-it-named-headings&#x27;</span>))</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
       </div>
       
       
       
     </div>
+  <ul class="breadcrumb">
+            <li><a href="/docs/">DOCS</a></li>
+            <li><a href="/docs/%E6%96%B9%E6%B3%95%E8%AE%BA/">方法论</a></li>
+            <li><a href="/docs/%E6%96%B9%E6%B3%95%E8%AE%BA/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</a></li>
+            <li>HEXO 博客踩坑</li>
+  </ul>
 
     
     

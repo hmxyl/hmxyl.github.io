@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hmxyl.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":"ture","preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="CSS日常使用记录">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CSS日常使用记录">
+<meta property="og:url" content="https://hmxyl.github.io/docs/%E5%89%8D%E7%AB%AF/CSS.html">
+<meta property="og:site_name" content="Alisa&#39;s Home">
+<meta property="og:description" content="CSS日常使用记录">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-10-30T07:39:23.000Z">
+<meta property="article:modified_time" content="2022-12-12T08:38:24.013Z">
+<meta property="article:author" content="Alisa">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://hmxyl.github.io/docs/%E5%89%8D%E7%AB%AF/CSS">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"https://hmxyl.github.io/docs/%E5%89%8D%E7%AB%AF/CSS.html","path":"docs/前端/CSS.html","title":"CSS日常使用记录"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>CSS日常使用记录 | Alisa's Home
+</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Alisa's Home</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-friendlink"><a href="/friendlink/" rel="section"><i class="fa fa-briefcase fa-fw"></i>友链</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#yuan-su-bu-ke-jian"><span class="nav-number">1.</span> <span class="nav-text">元素不可见</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rang-div-li-de-nei-rong-chao-guo-chang-du-zi-dong-huan-xing"><span class="nav-number">2.</span> <span class="nav-text">让div里的内容，超过长度自动换行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#wen-zi-zai-yi-xing-nei-xian-shi-duo-yu-de-yong-sheng-lue-hao-biao-shi-li"><span class="nav-number">3.</span> <span class="nav-text">文字在一行内显示,多余的用省略号表示（li）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#div-tian-jia-gun-dong-tiao"><span class="nav-number">4.</span> <span class="nav-text">div添加滚动条</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chao-lian-jie-xian-shi-yang-shi"><span class="nav-number">5.</span> <span class="nav-text">超链接显示样式</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Alisa</p>
+  <div class="site-description" itemprop="description">学习笔记、工作心得</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner page posts-expand">
+
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN"><header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">CSS日常使用记录
+</h1>
+
+<div class="post-meta-container">
+    <div class="post-description">CSS日常使用记录</div>
+  <ul class="breadcrumb">
+            <li><a href="/docs/">DOCS</a></li>
+            <li><a href="/docs/%E5%89%8D%E7%AB%AF/">前端</a></li>
+            <li>CSS</li>
+  </ul>
+</div>
+
+</header>
+
+      
+      
+      <div class="post-body">
+          <h1 id="yuan-su-bu-ke-jian">元素不可见</h1>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">display</span>:none/block  -- 元素不占用位置</span><br><span class="line">visibility:hidden/visible --元素依然占用位置</span><br></pre></td></tr></table></figure>
+<h1 id="rang-div-li-de-nei-rong-chao-guo-chang-du-zi-dong-huan-xing">让div里的内容，超过长度自动换行</h1>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">word-break</span>:break-all ; <span class="attribute">width</span>: <span class="number">700px</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="wen-zi-zai-yi-xing-nei-xian-shi-duo-yu-de-yong-sheng-lue-hao-biao-shi-li">文字在一行内显示,多余的用省略号表示（li）</h1>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.inline</span> &#123;</span><br><span class="line">     <span class="attribute">overflow</span>: hidden;</span><br><span class="line">     <span class="attribute">display</span>: -webkit-box;</span><br><span class="line">     -webkit-line-clamp: <span class="number">1</span>;</span><br><span class="line">     -webkit-box-orient: vertical;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="div-tian-jia-gun-dong-tiao">div添加滚动条</h1>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">直接为<span class="selector-tag">div</span>指定<span class="attribute">overflow</span>属性为auto即可，但是必须指定<span class="selector-tag">div</span>的高度，如下：</span><br><span class="line">&lt;<span class="selector-tag">div</span> style=&quot;<span class="attribute">position</span>:absolute; <span class="attribute">height</span>:<span class="number">400px</span>; <span class="attribute">overflow</span>:auto<span class="string">&quot;&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="string">说明：</span></span><br><span class="line"><span class="string">overflow:yes     div设置滚动条显示</span></span><br><span class="line"><span class="string">overflow:auto    div设置滚动条自适应</span></span><br><span class="line"><span class="string">overflow-y:yes   div设置上下滚动条显示</span></span><br><span class="line"><span class="string">overflow-y :auto  div设置上下滚动条自适应</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure>
+<h1 id="chao-lian-jie-xian-shi-yang-shi">超链接显示样式</h1>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span> <span class="attr">style</span>=<span class="string">&quot;cursor:default&quot;</span>&gt;</span>aaa<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td>默认光标（通常是一个箭头）</td>
+</tr>
+<tr>
+<td>auto</td>
+<td>默认。浏览器设置的光标。</td>
+</tr>
+<tr>
+<td>crosshair</td>
+<td>光标呈现为十字线。</td>
+</tr>
+<tr>
+<td>pointer</td>
+<td>光标呈现为指示链接的指针（一只手）</td>
+</tr>
+<tr>
+<td>move</td>
+<td>此光标指示某对象可被移动。</td>
+</tr>
+<tr>
+<td>e-resize</td>
+<td>此光标指示矩形框的边缘可被向右（东）移动。</td>
+</tr>
+<tr>
+<td>ne-resize</td>
+<td>此光标指示矩形框的边缘可被向上及向右移动（北/东）。</td>
+</tr>
+<tr>
+<td>nw-resize</td>
+<td>此光标指示矩形框的边缘可被向上及向左移动（北/西）。</td>
+</tr>
+<tr>
+<td>n-resize</td>
+<td>此光标指示矩形框的边缘可被向上（北）移动。</td>
+</tr>
+<tr>
+<td>se-resize</td>
+<td>此光标指示矩形框的边缘可被向下及向右移动（南/东）。</td>
+</tr>
+<tr>
+<td>sw-resize</td>
+<td>此光标指示矩形框的边缘可被向下及向左移动（南/西）。</td>
+</tr>
+<tr>
+<td>s-resize</td>
+<td>此光标指示矩形框的边缘可被向下移动（南）。</td>
+</tr>
+<tr>
+<td>w-resize</td>
+<td>此光标指示矩形框的边缘可被向左移动（西）。</td>
+</tr>
+<tr>
+<td>text</td>
+<td>此光标指示文本。</td>
+</tr>
+<tr>
+<td>wait</td>
+<td>此光标指示程序正忙（通常是一只表或沙漏）。</td>
+</tr>
+<tr>
+<td>help</td>
+<td>此光标指示可用的帮助（通常是一个问号或一个气球）。</td>
+</tr>
+</tbody>
+</table>
+
+      </div>
+      
+      
+      
+    </div>
+  <ul class="breadcrumb">
+            <li><a href="/docs/">DOCS</a></li>
+            <li><a href="/docs/%E5%89%8D%E7%AB%AF/">前端</a></li>
+            <li>CSS</li>
+  </ul>
+
+    
+    
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-apple"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Alisa</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
