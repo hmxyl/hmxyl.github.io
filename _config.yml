@@ -65,6 +65,9 @@ index_generator:
   per_page: 5
   order_by: -date
 
+archive_generator:
+  per_page: 50
+
 
 # 分类 & 标签
 ## 默认分类
