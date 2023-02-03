@@ -96,7 +96,6 @@ open_graph:
 # External url should start with http:// or https://
 menu:
   home: / || fa fa-home                         # 主页
-  friendlink: /friendlink/ || fa fa-briefcase   # 自定义
   #about: /about/ || fa fa-user                 # 关于
   tags: /tags/ || fa fa-tags                    # 标签
   categories: /categories/ || fa fa-th          # 分类
