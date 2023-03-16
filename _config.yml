@@ -4,7 +4,7 @@
 
 # Site
 title: Alisa's Home
-subtitle: 
+subtitle: Alisa's Home
 description: 学习笔记、工作心得
 keywords:
 author: Alisa
@@ -43,15 +43,29 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
+
+
+# highlight:
+#   enable: true
+#   line_number: true
+#   auto_detect: false
+#   tab_replace: ''
+#   wrap: true
+#   hljs: false
+# prismjs:
+#   enable: false
+#   preprocess: true
+#   line_number: true
+#   tab_replace: ''
 highlight:
-  enable: true
+  enable: false
   line_number: true
   auto_detect: false
   tab_replace: ''
   wrap: true
   hljs: false
 prismjs:
-  enable: false
+  enable: true
   preprocess: true
   line_number: true
   tab_replace: ''
@@ -62,11 +76,11 @@ prismjs:
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
   path: ''
-  per_page: 5
+  per_page: 6
   order_by: -date
 
 archive_generator:
-  per_page: 50
+  per_page: 12
 
 
 # 分类 & 标签
@@ -84,7 +98,8 @@ meta_generator: true
 # 扩展
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+# theme: next
+theme: hexo-theme-matery-master
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
@@ -115,3 +130,16 @@ deploy:
   type: git
   repo: git@github.com:hmxyl/hmxyl.github.io.git
   branch: main
+
+
+search:
+  path: search.xml
+  field: post
+
+# emoji表情支持
+githubEmojis:
+  enable: true
+  className: github-emoji
+  inject: true
+  styles:
+  customEmojis:

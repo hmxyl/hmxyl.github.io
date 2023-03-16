@@ -16,11 +16,12 @@ menu:
   About:
     url: /about
     icon: fas fa-user-circle
-  Contact:
-    url: /contact
-    icon: fas fa-comments
+  # Contact:
+  #   url: /contact
+  #   icon: fas fa-comments
   Friends:
     url: /friends
+    # source/_data/friends.json 里配置
     icon: fas fa-address-book
   # 二级菜单写法如下
   #Medias:
@@ -43,9 +44,9 @@ menu:
 # 站点运行开始时间.
 time:
   enable: false
-  year: 2019 # 年份
-  month: 06 # 月份
-  date: 28 # 日期
+  year: 2023 # 年份
+  month: 3 # 月份
+  date: 16 # 日期
   hour: 00 # 小时
   minute: 00 # 分钟
   second: 00 # 秒
@@ -53,9 +54,9 @@ time:
 # Index cover carousel configuration.
 # 首页封面轮播图的相关配置.
 cover:
+  autoLoop: true # 是否自动轮播. Whether it is automatically rotated.
   showPrevNext: true # 是否显示左右切换按钮. Whether to display the left and right toggle buttons.
   showIndicators: true # 是否显示指示器. # Whether to display the indicators
-  autoLoop: true # 是否自动轮播. Whether it is automatically rotated.
   duration: 120 # 切换延迟时间. Switching delay time.
   intervalTime: 5000 # 自动切换下一张的间隔时间. Automatically switch the interval of the next one.
   useConfig: false # 是否使用配置文件, 在 _data/covers.json 下配置推荐文章, false则使用主题在文章中的配置 cover coverImg
@@ -64,15 +65,15 @@ cover:
 # index page dream text,
 # 配置首页显示"梦想"的语句.
 dream:
-  enable: true
-  showTitle: true
+  enable: false
+  showTitle: false
   title: 我的梦想
   text: 不是每个人都应该像我这样去建造一座水晶大教堂，但是每个人都应该拥有自己的梦想，设计自己的梦想，追求自己的梦想，实现自己的梦想。梦想是生命的灵魂，是心灵的灯塔，是引导人走向成功的信仰。有了崇高的梦想，只要矢志不渝地追求，梦想就会成为现实，奋斗就会变成壮举，生命就会创造奇迹。——罗伯·舒乐
 
 # Whether to display the musics.
 # 是否在首页显示音乐.
 music:
-  enable: true
+  enable: false
   title: #非吸底模式有效
     enable: true
     show: 听听音乐
@@ -132,14 +133,14 @@ indexbtn:
 # icon/button will not show up if you leave the corresponding socialLink empty
 # 首页 banner 中的第二行个人信息配置，留空即不启用
 socialLink:
-  github:  https://github.com/blinkfox
-  email: 1181062873@qq.com
+  github:  #https://github.com/blinkfox
+  email: hmxyldh@gmail.com
   facebook: # https://www.facebook.com/xxx
   twitter: # https://twitter.com/xxx
-  qq: 1181062873
+  qq: #1181062873
   weibo: # https://weibo.com/xxx
   zhihu: # https://www.zhihu.com/xxx
-  rss: true # true、false
+  rss: false # true、false
 
 # Whether to activate the Post TOC, and Configure which title types are supported by TOC support.
 # You can add `toc: false` to the Front-matter of a post to turn off the TOC.
@@ -160,10 +161,10 @@ code:
 
 # 是否激活文章末尾的打赏功能，默认激活（你替换为的你自己的微信、支付宝二维码图片、或者使用网络图片也可以）.
 reward:
-  enable: true
+  enable: false
   title: 你的赏识是我前进的动力
-  wechat: /medias/reward/wechat.png
-  alipay: /medias/reward/alipay.jpg
+  wechat: #/medias/reward/wechat.png
+  alipay: #/medias/reward/alipay.jpg
 
 # Whether to activate the copyright information of the blog and author when copying the post content.
 # minCharNumber: Approve copyright information by copying at least how many characters.
@@ -198,71 +199,71 @@ postInfo:
 # Whether to activate the 'love' effect of clicking on the page.
 # 是否激活点击页面的'爱心'效果，默认激活.
 clicklove:
-  enable: true
+  enable: false
 
 # profile in about page, including avatars, career, and personal introductions.
 # 在”关于”页面中配置个人信息，包括头像、职业和个人介绍.
 profile:
   avatar: /medias/avatar.jpg
   career: Software Engineer
-  introduction: If you wish to succeed, you should use persistence as your good friend, experience as your reference, prudence as your brother and hope as your sentry.
+  introduction: 人生没有太晚的开始
 
 # config my projects informations in about page.
 # If you don't want to display this `My Projects` content, you can deactivate or delete this configuration.
 # 在“关于”页面配置"我的项目"信息，如果你不需要这些信息则可以将其设置为不激活或者将其删除.
 myProjects:
-  enable: true
+  enable: false
   data:
-    hexo-theme-matery:
-      icon: fas fa-file-alt
-      iconBackground: 'linear-gradient(to bottom right, #66BB6A 0%, #81C784 100%)'
-      url: http://github.com/blinkfox/hexo-theme-matery
-      desc: This is a Hexo blog theme with 'Material Design' and responsive design.
-    Fenix:
-        icon: fas fa-database
-        iconBackground: 'linear-gradient(to bottom right, #F06292 0%, #EF5350 100%)'
-        url: https://github.com/blinkfox/fenix
-        desc: 这是 Spring Data JPA 复杂或动态 SQL 查询的扩展库。
-    typora-vue-theme:
-        icon: fas fa-file-alt
-        iconBackground: 'linear-gradient(to bottom right, #29B6F6 0%, #1E88E5 100%)'
-        url: https://github.com/blinkfox/typora-vue-theme
-        desc: This is a typora theme inspired by Vue document style.
+    # hexo-theme-matery:
+    #   icon: fas fa-file-alt
+    #   iconBackground: 'linear-gradient(to bottom right, #66BB6A 0%, #81C784 100%)'
+    #   url: http://github.com/blinkfox/hexo-theme-matery
+    #   desc: This is a Hexo blog theme with 'Material Design' and responsive design.
+    # Fenix:
+    #     icon: fas fa-database
+    #     iconBackground: 'linear-gradient(to bottom right, #F06292 0%, #EF5350 100%)'
+    #     url: https://github.com/blinkfox/fenix
+    #     desc: 这是 Spring Data JPA 复杂或动态 SQL 查询的扩展库。
+    # typora-vue-theme:
+    #     icon: fas fa-file-alt
+    #     iconBackground: 'linear-gradient(to bottom right, #29B6F6 0%, #1E88E5 100%)'
+    #     url: https://github.com/blinkfox/typora-vue-theme
+    #     desc: This is a typora theme inspired by Vue document style.
 
 # config my skills informations in about page.
 # If you don't want to display this `My Skills` content, you can deactivate or delete this configuration.
 # 在“关于”页面配置"我的技能"信息，如果你不需要这些信息则可以将其设置为不激活或者将其删除.
 mySkills:
-  enable: true
+  enable: false
   data:
-    Java:
-      background: 'linear-gradient(to right, #FF0066 0%, #FF00CC 100%)'
-      percent: 85%
-    JavaScript:
-      background: 'linear-gradient(to right, #9900FF 0%, #CC66FF 100%)'
-      percent: 80%
-    HTML5:
-      background: 'linear-gradient(to right, #2196F3 0%, #42A5F5 100%)'
-      percent: 80%
-    CSS:
-      background: 'linear-gradient(to right, #00BCD4 0%, #80DEEA 100%)'
-      percent: 70%
-    SQL:
-      background: 'linear-gradient(to right, #4CAF50 0%, #81C784 100%)'
-      percent: 90%
-    程序设计:
-      background: 'linear-gradient(to right, #FFEB3B 0%, #FFF176 100%)'
-      percent: 75%
+    # Java:
+    #   background: 'linear-gradient(to right, #FF0066 0%, #FF00CC 100%)'
+    #   percent: 85%
+    # JavaScript:
+    #   background: 'linear-gradient(to right, #9900FF 0%, #CC66FF 100%)'
+    #   percent: 80%
+    # HTML5:
+    #   background: 'linear-gradient(to right, #2196F3 0%, #42A5F5 100%)'
+    #   percent: 80%
+    # CSS:
+    #   background: 'linear-gradient(to right, #00BCD4 0%, #80DEEA 100%)'
+    #   percent: 70%
+    # SQL:
+    #   background: 'linear-gradient(to right, #4CAF50 0%, #81C784 100%)'
+    #   percent: 90%
+    # 程序设计:
+    #   background: 'linear-gradient(to right, #FFEB3B 0%, #FFF176 100%)'
+    #   percent: 75%
 
 # config gallery of my photos in about page.
 # If you don't want to display this `Gallery` content, you can deactivate or delete this configuration.
 # 在“关于”页面配置"我的相册"图片，如果你不需要这些信息则可以将其设置为不激活或者将其删除.
 myGallery:
-  enable: true
+  enable: false
   data:
-    - /medias/featureimages/0.jpg
-    - /medias/featureimages/1.jpg
-    - /medias/featureimages/2.jpg
+    # - /medias/featureimages/0.jpg
+    # - /medias/featureimages/1.jpg
+    # - /medias/featureimages/2.jpg
 
 # Whether to display post-calender in the `archive` page
 # 设置在归档页面中是否显示'文章日历'控件
@@ -271,7 +272,6 @@ postCalendar: true
 # 不建议使用gittalk,gitment这样权限过高的oauth app,因为它们能够 读写 授权者 所有的公共仓库 ，也就是说拿到你的授权 Token 的人，可以将你的 GitHub 公共仓库删空（这是github权限分的不够细的锅），如果恶意攻击者想获取使用者的 AccessToken，只需要在代码中加上一个 ajax 请求即可。原贴地址:https://www.v2ex.com/t/535608。建议大家看完。（我没有在用gittalk/gitment的网站上评论过，但根据v2ex网友的提示，如果网站自行修改了 gitalk.js 脚本 或者反代了 github api，就很容易拿到你的 Token ）
 
 # https://github.com/utterance/utterances 是个 GitHub App，它的权限仅限于某个仓库。像 hugo hexo 这种静态页面类型的博客，clientID/clientSecret 泄露是不可避免的。我认为较好的解决方式是像 utteras 这种 GitHubApp，只有一个仓库的读写权限，将破坏降到最小。
-
 # valine和minivaline都是使用的免费的leancloud开发版资源，即使数据丢了leancloud也不用负任何的责任。此外valine的src目录已在1.4.0后停止更新。。。薛定谔的开源。
 
 # 当初多说国内最大都倒了，livere不一定靠谱。
@@ -379,8 +379,8 @@ changyan:
 # Whether to display fork me on github icon and link, default true, You can change it to your repo address
 # 配置是否在 header 中显示 fork me on github 的图标，默认为true，你可以修改为你的仓库地址.
 githubLink:
-  enable: true
-  url: https://github.com/blinkfox/hexo-theme-matery
+  enable: false
+  url: https://github.com
   title: Fork Me
 
 # The password verification feature of read post. To use this feature,
@@ -397,9 +397,9 @@ verifyPassword:
 # busuanzi(http://busuanzi.ibruce.info/) website statistics
 # 不蒜子(http://busuanzi.ibruce.info/) 网站统计
 busuanziStatistics:
-  enable: true
-  totalTraffic: true # 总访问量
-  totalNumberOfvisitors: true # 总人次
+  enable: false
+  totalTraffic: false # 总访问量
+  totalNumberOfvisitors: false # 总人次
 
 # Add google analytics configuration
 # 添加 Google Analytics 配置
@@ -414,7 +414,7 @@ baiduAnalytics:
   id:
 
 # 百度搜索资源平台提交链接
-baiduPush: true
+baiduPush: false
 
 # The used front-end library can be replaced with the corresponding CDN address as needed,
 # If the specific version is not specified below, you can use the latest version.
@@ -487,6 +487,8 @@ featureImages:
 - /medias/featureimages/21.jpg
 - /medias/featureimages/22.jpg
 - /medias/featureimages/23.jpg
+
+
 
 # default configs that the default policy for every articles/posts
 # default 配置文章的默认转载规则
@@ -561,7 +563,7 @@ addthis:
 # 如果有符号 ‘ ，请在 ’ 前面加上 \
 subtitle:
   enable: true
-  loop: true # 是否循环
+  loop: false # 是否循环
   showCursor: true # 是否显示光标
   startDelay: 300 # 开始延迟
   typeSpeed: 100 # 打字速度
