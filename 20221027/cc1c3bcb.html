@@ -1,0 +1,1629 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="JVM性能调优工具, Alisa&#39;s Home">
+    <meta name="description" content="学习笔记、工作心得">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>JVM性能调优工具 | Alisa&#39;s Home</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Alisa's Home" type="application/atom+xml">
+</head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Alisa&#39;s Home</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Alisa&#39;s Home</div>
+        <div class="logo-desc">
+            
+            学习笔记、工作心得
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">JVM性能调优工具</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/JVM/">
+                                <span class="chip bg-color">JVM</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
+                                后端
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-10-27
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1>jstack：Java堆栈跟踪工具</h1>
+<p>jstack（Stack Trace for Java）命令用于<strong>生成虚拟机当前时刻的线程快照</strong>（一般称为threaddump或者javacore文件）。</p>
+<p>线程快照就是当前虚拟机内每一条线程正在执行的方法堆栈的集合，生成线程快照的主要目的是定位线程出现长时间停顿的原因，如线程间死锁、死循环、请求外部资源导致的长时间等待等，都是导致线程长时间停顿的常见原因。线程出现停顿的时候通过jstack来查看各个线程的调用堆栈，就可以知道没有响应的线程到底在后台做些什么事情，或者等待着什么资源。</p>
+<p>命令格式<br>
+<strong>jstack</strong> [option]  LVMID</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-l</td>
+<td>long listings，会打印出额外的锁信息，在发生死锁时可以用jstack -l pid来观察锁持有情况</td>
+</tr>
+<tr>
+<td>-m</td>
+<td>mixed mode，不仅会输出Java堆栈信息，如果调用到本地方法的话，可以显示C/C++的堆栈</td>
+</tr>
+<tr>
+<td>-F</td>
+<td>当正常输出请求不被响应时，强制输出线程堆栈</td>
+</tr>
+</tbody>
+</table>
+<p>在JDK 1.5中，java.lang.Thread类新增了一个getAllStackTraces（）方法用于获取虚拟机中所有线程的StackTraceElement对象。</p>
+<p>使用这个方法可以通过简单的几行代码就完成jstack的大部分功能，在实际项目中不妨调用这个方法做个管理员页面，可以随时使用浏览器来查看线程堆栈。</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">＜%@page import="java.util.Map"%＞
+＜html＞
+＜head＞
+＜title＞服务器线程信息＜/title＞
+＜/head＞
+＜body＞
+＜pre＞
+＜%
+for（Map.Entry＜Thread,StackTraceElement[]＞stackTrace：Thread.getAllStackTraces（）.entrySet（））{
+　　Thread thread=（Thread）stackTrace.getKey（）；
+　　StackTraceElement[]stack=（StackTraceElement[]）stackTrace.getValue（）；
+　　if（thread.equals（Thread.currentThread（）））{
+　　　　continue；
+　　}
+　　out.print（"\n线程："+ thread.getName（）+"\n"）；
+　　for（StackTraceElement element：stack）{
+　　　　out.print（"\t"+element+"\n"）；
+　　}
+}
+%＞
+＜/pre＞
+＜/body＞
+＜/html＞<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>
+<p>jps 查看进程ID</p>
+  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Administrator<span class="token operator">&gt;</span>jps
+<span class="token number">10904</span> Jps
+<span class="token number">3512</span>
+<span class="token number">11228</span> Launcher
+<span class="token number">12220</span> Bank<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>jstack 打印堆栈信息</p>
+  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Administrator<span class="token operator">&gt;</span>jstack <span class="token parameter variable">-l</span> <span class="token number">12220</span>
+<span class="token number">2021</span>-12-26 <span class="token number">22</span>:09:55
+Full thread dump Java HotSpot<span class="token punctuation">(</span>TM<span class="token punctuation">)</span> <span class="token number">64</span>-Bit Server VM <span class="token punctuation">(</span><span class="token number">25.131</span>-b11 mixed mode<span class="token punctuation">)</span>:
+
+<span class="token string">"DestroyJavaVM"</span> <span class="token comment">#16 prio=5 os_prio=0 tid=0x00000000029e2800 nid=0xf8 waiting on condition [0x0000000000000000]</span>
+   java.lang.Thread.State: RUNNABLE
+
+   Locked ownable synchronizers:
+        - None
+
+<span class="token string">"四号"</span> <span class="token comment">#15 prio=5 os_prio=0 tid=0x000000001e5c8000 nid=0x3524 waiting for monitor entry [0x000000001f63f000]</span>
+   java.lang.Thread.State: BLOCKED <span class="token punctuation">(</span>on object monitor<span class="token punctuation">)</span>
+        at com.hots.chapter7.TickWindowRunnable.run<span class="token punctuation">(</span>Bank.java:27<span class="token punctuation">)</span>
+        - waiting to lock <span class="token operator">&lt;</span>0x000000076b62bf2<span class="token operator"><span class="token file-descriptor important">8</span>&gt;</span> <span class="token punctuation">(</span>a java.lang.Object<span class="token punctuation">)</span>
+        at java.lang.Thread.run<span class="token punctuation">(</span>Thread.java:748<span class="token punctuation">)</span>
+
+   Locked ownable synchronizers:
+        - None
+
+<span class="token string">"三号"</span> <span class="token comment">#14 prio=5 os_prio=0 tid=0x000000001e5c7800 nid=0x18b4 waiting for monitor entry [0x000000001f53f000]</span>
+   java.lang.Thread.State: BLOCKED <span class="token punctuation">(</span>on object monitor<span class="token punctuation">)</span>
+        at com.hots.chapter7.TickWindowRunnable.run<span class="token punctuation">(</span>Bank.java:27<span class="token punctuation">)</span>
+        - waiting to lock <span class="token operator">&lt;</span>0x000000076b62bf2<span class="token operator"><span class="token file-descriptor important">8</span>&gt;</span> <span class="token punctuation">(</span>a java.lang.Object<span class="token punctuation">)</span>
+        at java.lang.Thread.run<span class="token punctuation">(</span>Thread.java:748<span class="token punctuation">)</span>
+<span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>jstack 打印堆栈信息到文件</p>
+  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Administrator<span class="token operator">&gt;</span>jstack <span class="token parameter variable">-l</span> <span class="token number">12220</span> <span class="token operator">&gt;&gt;</span> test.txt
+
+<span class="token comment"># 打印结果保存到目录：C:\Users\Administrator下</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<h1>jcmd：虚拟机工具</h1>
+<h2 id="jcmd-l：列出当前运行的所有虚拟机">jcmd -l：列出当前运行的所有虚拟机</h2>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-l</td>
+<td>参数-l表示列出所有java虚拟机</td>
+</tr>
+</tbody>
+</table>
+<h2 id="jcmd-pid-help：列出该虚拟机支持的所有命令">jcmd [pid] help：列出该虚拟机支持的所有命令</h2>
+<p>针对每一个虚拟机，可以使用help命令列出该虚拟机支持的所有命令</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PS C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Administrator<span class="token operator">&gt;</span> jcmd <span class="token number">13204</span> <span class="token builtin class-name">help</span>
+<span class="token number">13204</span>:
+The following commands are available:
+JFR.stop
+JFR.start
+JFR.dump
+JFR.check
+VM.native_memory
+VM.check_commercial_features
+VM.unlock_commercial_features
+ManagementAgent.stop
+ManagementAgent.start_local
+ManagementAgent.start
+GC.rotate_log
+Thread.print
+GC.class_stats
+GC.class_histogram
+GC.heap_dump
+GC.run_finalization
+GC.run
+VM.uptime
+VM.flags
+VM.system_properties
+VM.command_line
+VM.version
+<span class="token builtin class-name">help</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>其中具体举例</p>
+<h2 id="jcmd-pid-VM-uptime：-查看虚拟机启动时间">jcmd  [pid]  VM.uptime： 查看虚拟机启动时间</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PS C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Administrator<span class="token operator">&gt;</span> jcmd <span class="token number">13204</span> VM.uptime
+<span class="token number">13204</span>:
+<span class="token number">142.109</span> s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="jcmd-pid-Thread-print：打印线程栈信息">jcmd [pid] Thread.print：打印线程栈信息</h2>
+<p>（该命令同 <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/025cb069cb69">jstack</a> 命令）</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211202105919556-1667231157378-120.png" alt="image-20211202105919556"></p>
+<h2 id="jcmd-pid-GC-class-histogram：查看系统中类统计信息">jcmd [pid]  GC.class_histogram：查看系统中类统计信息</h2>
+<p>这里和jmap -histo pid的效果是一样的 。这个可以查看每个类的实例数量和占用空间大小。</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211202110015127-1667231157378-121.png" alt="image-20211202110015127"></p>
+<h2 id="jcmd-pid-GC-heap-dump-filepath-name">jcmd [pid] GC.heap_dump [filepath&amp;name]</h2>
+<p>跟 jmap命令：jmap -dump:format=b,file=heapdump.phrof pid 效果一样。</p>
+<p>导出的 dump 文件，可以使用MAT 或者 Visual VM 等工具进行分析。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PS C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Administrator<span class="token operator">&gt;</span> jcmd <span class="token number">13204</span> GC.heap_dump D:<span class="token punctuation">\</span>test.hprof
+<span class="token number">13204</span>:
+Heap dump <span class="token function">file</span> created<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="jcmd-pid-VM-system-properties：-查看-JVM-的属性信息">jcmd [pid] VM.system_properties： 查看 JVM 的属性信息</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PS C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Administrator<span class="token operator">&gt;</span> jcmd <span class="token number">13204</span> VM.system_properties
+<span class="token number">13204</span>:
+<span class="token comment">#Thu Dec 02 11:03:17 CST 2021</span>
+<span class="token assign-left variable">java.vendor</span><span class="token operator">=</span>Oracle Corporation
+<span class="token assign-left variable">preload.project.path</span><span class="token operator">=</span>D<span class="token punctuation">\</span>:/Workspace/GIT/XXX
+<span class="token assign-left variable">sun.java.launcher</span><span class="token operator">=</span>SUN_STANDARD
+<span class="token assign-left variable">sun.management.compiler</span><span class="token operator">=</span>HotSpot <span class="token number">64</span>-Bit Tiered Compilers
+<span class="token assign-left variable">sun.nio.ch.bugLevel</span><span class="token operator">=</span>
+<span class="token assign-left variable">idea.config.path</span><span class="token operator">=</span>C<span class="token punctuation">\</span>:/Users/Administrator/AppData/Roaming/JetBrains/IntelliJIdea2021.3
+<span class="token assign-left variable">idea.paths.selector</span><span class="token operator">=</span>IntelliJIdea2021.3
+<span class="token assign-left variable">kotlin.daemon.client.alive.path</span><span class="token operator">=</span><span class="token string">"C\:<span class="token entity" title="\\">\\</span>Users<span class="token entity" title="\\">\\</span>ADMINI~1<span class="token entity" title="\\">\\</span>AppData<span class="token entity" title="\\">\\</span>Local<span class="token entity" title="\\">\\</span>Temp<span class="token entity" title="\\">\\</span>kotlin-idea-6412110316068151676-is-running"</span>
+<span class="token assign-left variable">os.name</span><span class="token operator">=</span>Windows <span class="token number">10</span>
+<span class="token assign-left variable">sun.boot.class.path</span><span class="token operator">=</span>D<span class="token punctuation">\</span>:<span class="token punctuation">\</span><span class="token punctuation">\</span>Developer<span class="token punctuation">\</span><span class="token punctuation">\</span>java<span class="token punctuation">\</span><span class="token punctuation">\</span>jdk1.8.0_131<span class="token punctuation">\</span><span class="token punctuation">\</span>jre<span class="token punctuation">\</span><span class="token punctuation">\</span>lib<span class="token punctuation">\</span><span class="token punctuation">\</span>resources.jar<span class="token punctuation">;</span>D<span class="token punctuation">\</span>:<span class="token punctuation">\</span><span class="token punctuation">\</span>Developer<span class="token punctuation">\</span><span class="token punctuation">\</span>java<span class="token punctuation">\</span><span class="token punctuation">\</span>jdk1.8.0_131<span class="token punctuation">\</span><span class="token punctuation">\</span>jre<span class="token punctuation">\</span><span class="token punctuation">\</span>lib<span class="token punctuation">\</span><span class="token punctuation">\</span>rt.jar<span class="token punctuation">;</span>D<span class="token punctuation">\</span>:<span class="token punctuation">\</span><span class="token punctuation">\</span>Developer<span class="token punctuation">\</span><span class="token punctuation">\</span>java<span class="token punctuation">\</span><span class="token punctuation">\</span>jdk1.8.0_131<span class="token punctuation">\</span><span class="token punctuation">\</span>jre<span class="token punctuation">\</span><span class="token punctuation">\</span>lib<span class="token punctuation">\</span><span class="token punctuation">\</span>sunrsasign.jar<span class="token punctuation">;</span>D<span class="token punctuation">\</span>:<span class="token punctuation">\</span><span class="token punctuation">\</span>Developer<span class="token punctuation">\</span><span class="token punctuation">\</span>java<span class="token punctuation">\</span><span class="token punctuation">\</span>jdk1.8.0_131<span class="token punctuation">\</span><span class="token punctuation">\</span>jre<span class="token punctuation">\</span><span class="token punctuation">\</span>lib<span class="token punctuation">\</span><span class="token punctuation">\</span>jsse.jar<span class="token punctuation">;</span>D<span class="token punctuation">\</span>:<span class="token punctuation">\</span><span class="token punctuation">\</span>Developer<span class="token punctuation">\</span><span class="token punctuation">\</span>java<span class="token punctuation">\</span><span class="token punctuation">\</span>jdk1.8.0_131<span class="token punctuation">\</span><span class="token punctuation">\</span>jre<span class="token punctuation">\</span><span class="token punctuation">\</span>lib<span class="token punctuation">\</span><span class="token punctuation">\</span>jce.jar<span class="token punctuation">;</span>D<span class="token punctuation">\</span>:<span class="token punctuation">\</span><span class="token punctuation">\</span>Developer<span class="token punctuation">\</span><span class="token punctuation">\</span>java<span class="token punctuation">\</span><span class="token punctuation">\</span>jdk1.8.0_131<span class="token punctuation">\</span><span class="token punctuation">\</span>jre<span class="token punctuation">\</span><span class="token punctuation">\</span>lib<span class="token punctuation">\</span><span class="token punctuation">\</span>charsets.jar<span class="token punctuation">;</span>D<span class="token punctuation">\</span>:<span class="token punctuation">\</span><span class="token punctuation">\</span>Developer<span class="token punctuation">\</span><span class="token punctuation">\</span>java<span class="token punctuation">\</span><span class="token punctuation">\</span>jdk1.8.0_131<span class="token punctuation">\</span><span class="token punctuation">\</span>jre<span class="token punctuation">\</span><span class="token punctuation">\</span>lib<span class="token punctuation">\</span><span class="token punctuation">\</span>jfr.jar<span class="token punctuation">;</span>D<span class="token punctuation">\</span>:<span class="token punctuation">\</span><span class="token punctuation">\</span>Developer<span class="token punctuation">\</span><span class="token punctuation">\</span>java<span class="token punctuation">\</span><span class="token punctuation">\</span>jdk1.8.0_131<span class="token punctuation">\</span><span class="token punctuation">\</span>jre<span class="token punctuation">\</span><span class="token punctuation">\</span>classes
+<span class="token assign-left variable">sun.desktop</span><span class="token operator">=</span>windows
+<span class="token assign-left variable">idea.plugins.path</span><span class="token operator">=</span>C<span class="token punctuation">\</span>:/Users/Administrator/AppData/Roaming/JetBrains/IntelliJIdea2021.3/plugins
+<span class="token assign-left variable">java.vm.specification.vendor</span><span class="token operator">=</span>Oracle Corporation
+<span class="token assign-left variable">java.runtime.version</span><span class="token operator">=</span><span class="token number">1.8</span>.0_131-b11
+<span class="token assign-left variable">io.netty.serviceThreadPrefix</span><span class="token operator">=</span>Netty
+<span class="token assign-left variable">user.name</span><span class="token operator">=</span>Administrator
+<span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="jcmd-pid-VM-flags：-查看-JVM-的启动参数">jcmd [pid] VM.flags： 查看 JVM 的启动参数</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PS C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Administrator<span class="token operator">&gt;</span> jcmd <span class="token number">13204</span> VM.flags
+<span class="token number">13204</span>:
+<span class="token parameter variable">-XX:CICompilerCount</span><span class="token operator">=</span><span class="token number">4</span> <span class="token parameter variable">-XX:InitialHeapSize</span><span class="token operator">=</span><span class="token number">268435456</span> <span class="token parameter variable">-XX:MaxHeapSize</span><span class="token operator">=</span><span class="token number">1073741824</span> <span class="token parameter variable">-XX:MaxNewSize</span><span class="token operator">=</span><span class="token number">357564416</span> <span class="token parameter variable">-XX:MinHeapDeltaBytes</span><span class="token operator">=</span><span class="token number">524288</span> <span class="token parameter variable">-XX:NewSize</span><span class="token operator">=</span><span class="token number">89128960</span> <span class="token parameter variable">-XX:OldSize</span><span class="token operator">=</span><span class="token number">179306496</span> <span class="token parameter variable">-XX:+UseCompressedClassPointers</span> <span class="token parameter variable">-XX:+UseCompressedOops</span> <span class="token parameter variable">-XX:+UseFastUnorderedTimeStamps</span> <span class="token parameter variable">-XX:-UseLargePagesIndividualAllocation</span> <span class="token parameter variable">-XX:+UseParallelGC</span>
+PS C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Administrator<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="jcmd-pid-PerfCounter-print：查看-JVM-性能相关的参数">jcmd [pid] PerfCounter.print：查看 JVM 性能相关的参数</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PS C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Administrator<span class="token operator">&gt;</span> jcmd <span class="token number">13204</span> PerfCounter.print
+<span class="token number">13204</span>:
+<span class="token assign-left variable">java.ci.totalTime</span><span class="token operator">=</span><span class="token number">26357322</span>
+<span class="token assign-left variable">java.cls.loadedClasses</span><span class="token operator">=</span><span class="token number">3480</span>
+<span class="token assign-left variable">java.cls.sharedLoadedClasses</span><span class="token operator">=</span><span class="token number">0</span>
+<span class="token assign-left variable">java.cls.sharedUnloadedClasses</span><span class="token operator">=</span><span class="token number">0</span>
+<span class="token assign-left variable">java.cls.unloadedClasses</span><span class="token operator">=</span><span class="token number">15</span>
+<span class="token assign-left variable">java.property.java.class.path</span><span class="token operator">=</span><span class="token string">"D:/Developer/JetBrains/IntelliJ IDEA 2021.1.1/plugins/java/lib/jps-launcher.jar;D:/Developer/java/jdk1.8.0_131/lib/tools.jar"</span>
+<span class="token assign-left variable">java.property.java.endorsed.dirs</span><span class="token operator">=</span><span class="token string">""</span>"<span class="token string">"
+java.property.java.ext.dirs="</span>D:<span class="token punctuation">\</span>Developer<span class="token punctuation">\</span>java<span class="token punctuation">\</span>jdk1.8.0_131<span class="token punctuation">\</span>jre<span class="token punctuation">\</span>lib<span class="token punctuation">\</span>ext<span class="token punctuation">;</span>C:<span class="token punctuation">\</span>Windows<span class="token punctuation">\</span>Sun<span class="token punctuation">\</span>Java<span class="token punctuation">\</span>lib<span class="token punctuation">\</span>ext<span class="token string">"
+java.property.java.home="</span>D:<span class="token punctuation">\</span>Developer<span class="token punctuation">\</span>java<span class="token punctuation">\</span>jdk1.8.0_131<span class="token punctuation">\</span>jre"
+<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="jcmd-pid-GC-run：执行GC">jcmd [pid] GC.run：执行GC</h2>
+<p>对 JVM 执行 java.lang.System.gc()</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PS C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Administrator<span class="token operator">&gt;</span> jcmd <span class="token number">13204</span> GC.run
+<span class="token number">13204</span>:
+Command executed successfully<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="jcmd-pid-GC-run-finalization：执行FULL-GC">jcmd [pid] GC.run_finalization：执行FULL GC</h2>
+<p>对 JVM 执行 java.lang.System.runFinalization()</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PS C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Administrator<span class="token operator">&gt;</span> jcmd <span class="token number">13204</span> GC.run_finalization
+<span class="token number">13204</span>:
+Command executed successfully<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>补充：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">system<span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span>和system<span class="token punctuation">.</span><span class="token function">runFinalization</span><span class="token punctuation">(</span><span class="token punctuation">)</span>区别作用：
+  
+<span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//告诉垃圾收集器打算进行垃圾收集，而垃圾收集器进不进行收集是不确定的 </span>
+<span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">runFinalization</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//强制调用已经失去引用的对象的finalize方法 </span>
+
+
+<span class="token comment">// java中的finalize()方法</span>
+<span class="token comment">// 当垃圾收集器认为没有指向对象实例的引用时，会在销毁该对象之前调用finalize() 方法。</span>
+<span class="token comment">// 该方法最常见的作用是确保释放实例占用的全部资源。java并不保证定时为对象实例调用该方法，甚至不保证方法会被调用，所以该方法不应该用于正常内存处理。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="jcmd-pid-VM-command-line：查看-JVM-的启动命令行">jcmd [pid] VM.command_line：查看 JVM 的启动命令行</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PS C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Administrator<span class="token operator">&gt;</span> jcmd <span class="token number">13204</span> VM.command_line
+<span class="token number">13204</span>:
+VM Arguments:
+jvm_args: <span class="token parameter variable">-Xmx1024m</span> <span class="token parameter variable">-Djava.awt.headless</span><span class="token operator">=</span>true  。。。 <span class="token parameter variable">-Dtmh.generate.line.numbers</span><span class="token operator">=</span>true
+java_command: org.jetbrains.jps.cmdline.Launcher D:/Developer/JetBrains/IntelliJ IDEA <span class="token number">2021.1</span>.1/plugins/java/lib/jps-builders.jar<span class="token punctuation">;</span>D:/Developer/JetBrains/IntelliJ IDEA <span class="token number">2021.1</span>.1/plugins/java/lib/jps-builders-6.jar<span class="token punctuation">;</span>D:/Developer/JetBrains/IntelliJ IDEA <span class="token number">2021.1</span>.1/plugins/java/lib/jps-javac-extension-1.jar<span class="token punctuation">;</span>D:/Developer/JetBrains/IntelliJ IDEA <span class="token number">2021.1</span>.1/lib/util.jar<span class="token punctuation">;</span>。。。D:/Developer/java/jdk1.8.0_131/lib/tools.jar
+Launcher Type: SUN_STANDARD<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>jps：列出系统中所有的JAVA应用程序</h1>
+<ol>
+<li>概述</li>
+</ol>
+<p>​	jps 命令类似与 linux 的 ps 命令，但是它只列出系统中所有的 Java 应用程序。 通过 jps 命令可以方便地查看 Java 进程的启动类、传入参数和 Java 虚拟机参数等信息。</p>
+<p>​	如果在 linux 中想查看 java 的进程，一般我们都需要 ps -ef | grep java 来获取进程 ID。 如果只想获取 Java 程序的进程，可以直接使用 jps 命令来直接查看。</p>
+<pre class="line-numbers language-none"><code class="language-none">PS C:\Users\Administrator&gt; jps
+16208
+5712 Jps
+13204 Launcher<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>
+<p>用法</p>
+<pre class="line-numbers language-none"><code class="language-none">PS C:\Users\Administrator&gt; jps -help
+usage: jps [-help]
+       jps [-q] [-mlvV] [&lt;hostid&gt;]
+
+Definitions:
+    &lt;hostid&gt;:      &lt;hostname&gt;[:&lt;port&gt;]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>参数说明</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-q</td>
+<td>只输出进程 ID</td>
+</tr>
+<tr>
+<td>-m</td>
+<td>输出传入 main 方法的参数</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>输出完全的包名，应用主类名，jar的完全路径名</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>输出jvm参数</td>
+</tr>
+<tr>
+<td>-V</td>
+<td>输出通过flag文件传递到JVM中的参数</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>示例</p>
+<ul>
+<li>
+<p>jps</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">无参数：显示进程的<span class="token constant">ID</span> 和 启动类的名称。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>jps -q</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">参数 <span class="token operator">-</span>q 只输出进程<span class="token constant">ID</span>，而不显示出类的名称<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PS C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Administrator<span class="token operator">&gt;</span> jps <span class="token parameter variable">-q</span>
+<span class="token number">16208</span>
+<span class="token number">13204</span>
+<span class="token number">6132</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>jps -m</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">可以输出传递给 <span class="token class-name">Java</span> 进程（main 方法）的参数。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PS C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>Administrator<span class="token operator">&gt;</span> jps <span class="token parameter variable">-m</span>
+<span class="token number">16208</span>
+<span class="token number">10244</span> Jps <span class="token parameter variable">-m</span>
+<span class="token number">13204</span> Launcher D:/Developer/JetBrains/IntelliJ IDEA <span class="token number">2021.1</span>.1/plugins/java/lib/jps-builders.jar<span class="token punctuation">;</span>D:/Developer/JetBrains/IntelliJ IDEA <span class="token number">2021.1</span>.1/plugins/java/lib/jps-builders-6.jar<span class="token punctuation">;</span>D:/Developer/JetBrains/IntelliJ IDEA <span class="token number">2021.1</span>.1/plugins/java/lib/jps-javac-extension-1.jar<span class="token punctuation">;</span>D:/Developer/JetBrains/IntelliJ IDEA <span class="token number">2021.1</span>.1/lib/util.jar<span class="token punctuation">;</span>D:/Developer/JetBrains/IntelliJ IDEA <span class="token number">2021.1</span>.1/lib/annotations.jar<span class="token punctuation">;</span>D:/Developer/JetBrains/IntelliJ IDEA <span class="token number">2021.1</span>.1/lib/3rd-party-rt.jar<span class="token punctuation">;</span>D:/Developer/JetBrains/IntelliJ IDEA <span class="token number">2021.1</span>.1/lib/jna.jar<span class="token punctuation">;</span>D:/Developer/JetBrains/IntelliJ IDEA <span class="token number">2021.1</span>.1/lib/kotlin-stdlib-jdk8.jar<span class="token punctuation">;</span>D:/Developer/JetBrains/IntelliJ IDEA <span class="token number">2021.1</span>.1/lib/protobuf.jar<span class="token punctuation">;</span>D:/Developer/JetBrains/IntelliJ IDEA <span class="token number">2021.1</span>.1/lib/platform-api.jar<span class="token punctuation">;</span>D:/Developer/JetBrains/IntelliJ IDEA <span class="token number">2021.1</span>.1/lib/jps-model.jar<span class="token punctuation">;</span>D:/Developer/JetBrains/IntelliJ IDEA <span class="token number">2021.1</span>.1/plugins/java/lib/javac2.jar<span class="token punctuation">;</span>D:/Developer/JetBrains/IntelliJ IDEA <span class="token number">2021.1</span>.1/lib/forms_rt.jar<span class="token punctuation">;</span>D:/Developer/JetBrains/IntelliJ IDEA <span class="token number">2021.1</span>.1/plugins/java/lib/qdox.jar<span class="token punctuation">;</span>D:/Developer<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>jps -l</p>
+<pre class="line-numbers language-none"><code class="language-none">可以输出主函数的完整路径（类的全路径）。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">PS C:\Users\Administrator&gt; jps -l
+16208
+13204 org.jetbrains.jps.cmdline.Launcher
+5080 sun.tools.jps.Jps<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>jsp -v</p>
+<pre class="line-numbers language-none"><code class="language-none">可以显示传递给 Java 虚拟机的参数。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">PS C:\Users\Administrator&gt; jps -v
+16208  exit -Xms128m -Xmx750m -XX:ReservedCodeCacheSize=512m -XX:+IgnoreUnrecognizedVMOptions -XX:+UseG1GC -XX:SoftRefLRUPolicyMSPerMB=50 -XX:CICompilerCount=2 -XX:+HeapDumpOnOutOfMemoryError -XX:-OmitStackTraceInFastThrow -ea -Dsun.io.useCanonCaches=false -Djdk.http.auth.tunneling.disabledSchemes="" -Djdk.attach.allowAttachSelf=true -Djdk.module.illegalAccess.silent=true -Dkotlinx.coroutines.debug=off -Xms3058m -Xmx5500m -XX:ReservedCodeCacheSize=2048m -XX:SoftRefLRUPolicyMSPerMB=100 -Djb.vmOptionsFile=C:\Users\Administrator\AppData\Roaming\JetBrains\IntelliJIdea2021.3\idea64.exe.vmoptions -Djava.system.class.loader=com.intellij.util.lang.PathClassLoader -Didea.vendor.name=JetBrains -Didea.paths.selector=IntelliJIdea2021.3 -Didea.jre.check=true -Dsplash=true -Dide.native.launcher=true -XX:ErrorFile=C:\Users\Administrator\java_error_in_idea64_%p.log -XX:HeapDumpPath=C:\Users\Administrator\java_error_in_idea64.hprof
+6708 RemoteMavenServer36 -Djava.awt.headless=true -Dmaven.defaultProjectBuilder.disableGlobalModelCache=true -Didea.version=2021.3 -Didea.maven.embedder.version=3.8.1 -Xmx1024m -Dmaven.ext.class.path=D:\Developer\JetBrains\IntelliJ IDEA 2021.1.1\plugins\maven\lib\maven-event-listener.jar -Dfile.encoding=GBK
+16968 Jps -Dapplication.home=D:\Developer\java\jdk1.8.0_131 -Xms8m
+16716 Launcher -Xmx1024m -Djava.awt.headless=true -Djava.endorsed.dirs="" -Dpreload.project.path=D:/Workspace/OWN/Learn -Dpreload.config.path=C:/Users/Administrator/AppData/Roaming/JetBrains/IntelliJIdea2021.3/options -Dexternal.project.config=C:\Users\Administrator\AppData\Local\JetBrains\IntelliJIdea2021.3\external_build_system\learn.11acc208 -Dcompile.parallel=true -Drebuild.on.dependency.change=true -Djdt.compiler.useSingleThread=true -Daether.connector.resumeDownloads=false -Dio.netty.initialSeedUniquifier=1264189494698199162 -Dfile.encoding=GBK -Duser.language=zh -Duser.country=CN -Didea.paths.selector=IntelliJIdea2021.3 -Didea.home.path=D:/Developer/JetBrains/IntelliJ IDEA 2021.1.1 -Didea.config.path=C:/Users/Administrator/AppData/Roaming/JetBrains/IntelliJIdea2021.3 -Didea.plugins.path=C:/Users/Administrator/AppData/Roaming/JetBrains/IntelliJIdea2021.3/plugins -Djps.log.dir=C:/Users/Administrator/AppData/Local/JetBrains/IntelliJIdea2021.3/log/build-log -Djps.fallback.jdk.home=D:/Developer/JetBrains/IntelliJ IDEA 202<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h1>jinfo：实时查看和调整虚拟机运行参数</h1>
+<p>命令格式 : <strong>jinfo</strong> [option] [args]  <code>LVMID</code></p>
+<p>使用<strong>jps</strong>命令的**-v**参数可以查看虚拟机启动时显式指定的参数列表，但如果想知道未被显式指定的参数的系统默认值，除了去找资料外，就只能使用jinfo的-flag选项进行查询了</p>
+<p>（如果只限于JDK 1.6或以上版本的话，使用java-XX：+PrintFlagsFinal查看参数默认值也是一个很好的选择），jinfo还可以使用-sysprops选项把虚拟机进程的System.getProperties()的内容打印出来。这个命令在JDK 1.5时期已经随着Linux版的JDK发布，当时只提供了信息查询的功能，JDK 1.6之后，jinfo在Windows和Linux平台都有提供，并且加入了运行期修改参数的能力，可以使用-flag[+|-]name或者-flag name=value修改一部分运行期可写的虚拟机参数值。JDK 1.6中，jinfo对于Windows平台功能仍然有较大限制，只提供了最基本的-flag选项。</p>
+<p>option参数:</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-flag</td>
+<td>输出指定args参数的值</td>
+</tr>
+<tr>
+<td>-flags</td>
+<td>不需要args参数，输出所有JVM参数的值<br><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230425140532043.png" alt="image-20230425140532043"></td>
+</tr>
+<tr>
+<td>-sysprops</td>
+<td>输出系统属性，等同于System.getProperties()</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1>jstat：虚拟机统计信息监视工具</h1>
+<blockquote>
+<p>它可以显示出虚拟机进程中的类装载、内存、垃圾收集、JIT编译等运行数据。</p>
+</blockquote>
+<p>命令格式<br>
+：  <strong>jstat</strong> [option] <code>LVMID</code> [interval] [count]</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[option]</td>
+<td>操作参数</td>
+</tr>
+<tr>
+<td>LVMID</td>
+<td>本地虚拟机进程ID</td>
+</tr>
+<tr>
+<td>[interval]</td>
+<td>连续输出的时间间隔</td>
+</tr>
+<tr>
+<td>[count]</td>
+<td>连续输出的次数</td>
+</tr>
+</tbody>
+</table>
+<p>对于命令格式中的VMID与LVMID需要特别说明一下：<br>
+如果是本地虚拟机进程，VMID与LVMID是一致的;</p>
+<p>如果是远程虚拟机进程，那LVMID的格式应当是：protocol://lvmid@hostname:port/servername</p>
+<p><strong>参数interval和count代表查询间隔(单位毫秒)和次数，如果省略这两个参数，说明只查询一次。</strong></p>
+<p>举例：假设需要每250毫秒查询一次进程2764垃圾收集状况，一共查询20次，那命令应当是：<code>jstat -gc 2764 250 20</code></p>
+<p>选项option代表着用户希望查询的虚拟机信息，主要分为3类：类装载、垃圾收集、运行期编译状况，具体选项及作用请参考表4-3中的描述。</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230424171605151.png" alt="image-20230424171605151"></p>
+<p>option 参数详解</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>-class</strong>：监视类装载、卸载数量、总空间以及耗费的时间</td>
+<td><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230424171946376-1682328214575-4-1682328278125-7.png" alt="image-20230424171946376"><br><br>Loaded : 加载class的数量<br>Bytes : class字节大小<br>Unloaded : 未加载class的数量<br>Bytes : 未加载class的字节大小<br>Time : 加载时间</td>
+</tr>
+<tr>
+<td><strong>-compiler</strong>：输出JIT编译过的方法数量耗时等</td>
+<td><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230424172122535-1682328140305-1-1682328290986-10.png" alt="image-20230424172122535"><br><br><br>Compiled : 编译数量 <br>Failed : 编译失败数量 <br>Invalid : 无效数量 <br>Time : 编译耗时 <br>FailedType : 失败类型 <br>FailedMethod : 失败方法的全限定名</td>
+</tr>
+<tr>
+<td><strong>-gc</strong>：垃圾回收堆的行为统计</td>
+<td>DEMO：每250毫秒查询一次进程2764垃圾收集状况，一共查询20次：<br><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230424172539124-1682328346591-13.png" alt="image-20230424172539124"><br><br>新生代Eden区（E，表示Eden）使用了6.2%的空间<br>两个Survivor区（S0、S1，表示Survivor0、Survivor1）里面都是空的<br>老年代（O，表示Old）和永久代（P，表示Permanent）则分别使用了41.42%和47.20%的空间。<br>程序运行以来共发生Minor GC（YGC，表示Young GC）16次，总耗时0.105秒，<br>发生Full GC（FGC，表示Full GC）3次，Full GC总耗时（FGCT，表示Full GC Time）为0.472秒，<br>所有GC总耗时（GCT，表示GC Time)为0.577秒。<br><br><br>C 即Capacity 总容量，U 即Used 已使用的容量.<br><strong>S0C</strong> : survivor0区的总容量 <br><strong>S1C</strong> : survivor1区的总容量 <br><strong>S0U</strong> : survivor0区已使用的容量 <br><strong>S1C</strong> : survivor1区已使用的容量 <br><strong>EC</strong> : Eden区的总容量 <br><strong>EU</strong> : Eden区已使用的容量 <br><strong>OC</strong> : Old区的总容量 <br><strong>OU</strong> : Old区已使用的容量 <br><strong>PC</strong> 当前perm的容量 (KB) <br><strong>PU</strong> perm的使用 (KB) <br><strong>YGC</strong> : 新生代垃圾回收次数 <br><strong>YGCT</strong> : 新生代垃圾回收时间 <br><strong>FGC</strong> : 老年代垃圾回收次数 <br><strong>FGCT</strong> : 老年代垃圾回收时间 <br><strong>GCT</strong> : 垃圾回收总消耗时间</td>
+</tr>
+<tr>
+<td><strong>-gccapacity</strong>：同-gc，不过还会输出Java堆各区域使用到的最大、最小空间</td>
+<td>jstat -gccapacity 1262<br><br><strong>NGCMN</strong> : 新生代占用的最小空间 <br><strong>NGCMX</strong> : 新生代占用的最大空间 <br><strong>OGCMN</strong> : 老年代占用的最小空间 <br><strong>OGCMX</strong> : 老年代占用的最大空间 <br><strong>OGC</strong>：当前年老代的容量 (KB) <br><strong>OC</strong>：当前年老代的空间 (KB) <br><strong>PGCMN</strong> : perm占用的最小空间 <br><strong>PGCMX</strong> : perm占用的最大空间</td>
+</tr>
+<tr>
+<td><strong>-gcutil</strong>：同-gc，不过输出的是已使用空间占总空间的百分比</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>-gccause</strong>： 垃圾收集统计概述（同-gcutil），附加最近两次垃圾回收事件的原因</td>
+<td><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230424173514901-1682328923881-17.png" alt="image-20230424173514901"> <br><strong>LGCC</strong>：最近垃圾回收的原因<br><strong>GCC</strong>：当前垃圾回收的原因</td>
+</tr>
+<tr>
+<td><strong>-gcnew</strong>：统计新生代的行为</td>
+<td><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230424174422588-1682329539903-20.png" alt="image-20230424174422588"> <br><br><strong>TT</strong>：Tenuring threshold(提升阈值)<br><strong>MTT</strong>：最大的tenuring threshold<br><strong>DSS</strong>：survivor区域大小 (KB)</td>
+</tr>
+<tr>
+<td><strong>-gcnewcapacity</strong>：新生代与其相应的内存空间的统计</td>
+<td>jstat -gcnewcapacity 28920 <br><br>NGC:当前年轻代的容量 (KB)<br>S0CMX:最大的S0空间 (KB)<br>S0C:当前S0空间 (KB)<br>ECMX:最大eden空间 (KB)<br>EC:当前eden空间 (KB)</td>
+</tr>
+<tr>
+<td><strong>-gcold</strong>：统计旧生代的行为</td>
+<td>jstat -gcold 28920</td>
+</tr>
+<tr>
+<td><strong>-gcoldcapacity</strong>：统计旧生代的大小和空间</td>
+<td>jstat -gcoldcapacity 28920</td>
+</tr>
+<tr>
+<td><strong>-gcpermcapacity</strong>：永生代行为统计</td>
+<td>jstat -gcpermcapacity 28920</td>
+</tr>
+<tr>
+<td><strong>-printcompilation</strong>：hotspot编译方法统计</td>
+<td><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230424175043646-1682329849562-24.png" alt="image-20230424175043646"> <br><br>Compiled：被执行的编译任务的数量<br>Size：方法字节码的字节数<br>Type：编译类型<br>Method：编译方法的类名和方法名。类名使用”/” 代替 “.” 作为空间分隔符. 方法名是给出类的方法名. 格式是一致于HotSpot – XX:+PrintComplation 选项</td>
+</tr>
+</tbody>
+</table>
+<h1>jmap</h1>
+<blockquote>
+<p>Java内存映像工具</p>
+<p>jmap（Memory Map for Java）命令用于生成堆转储快照（一般称为heapdump或dump文件）。</p>
+<p>如果不使用<strong>jmap</strong>命令，要想获取Java堆转储快照，还有一些比较“暴力”的手段：譬如加-XX：+HeapDumpOnOutOfMemoryError参数，可以让虚拟机在OOM异常出现之后自动生成dump文件，通过-XX：+HeapDumpOnCtrlBreak参数则可以使用[Ctrl]+[Break]键让虚拟机生成dump文件，又或者在Linux系统下通过Kill-3命令发送进程退出信号“吓唬”一下虚拟机，也能拿到dump文件。</p>
+<p><strong>jmap</strong>的作用并不仅仅是为了获取dump文件，它还可以查询finalize执行队列、Java堆和永久代的详细信息，如空间使用率、当前用的是哪种收集器等。</p>
+<p>和<strong>jinfo</strong>命令一样，<strong>jmap</strong>有不少功能在Windows平台下都是受限的，除了生成dump文件的**-dump**选项和用于查看每个类的实例、空间占用统计的-histo选项在所有操作系统都提供之外，其余选项都只能在Linux/Solaris下使用。</p>
+</blockquote>
+<p>命令格式<br>
+<strong>jmap</strong> [option] <strong>LVMID</strong></p>
+<p>option参数</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dump</td>
+<td>生成堆转储快照，格式为:    -dump:[live, ] format=b,file=<filename>,  <br>其中live子参数说明是否只dump出存活的对象。</filename></td>
+</tr>
+<tr>
+<td>finalizerinfo</td>
+<td>显示在F-Queue队列等待Finalizer线程执行finalizer方法的对象</td>
+</tr>
+<tr>
+<td>heap</td>
+<td>显示Java堆详细信息</td>
+</tr>
+<tr>
+<td>histo</td>
+<td>显示堆中对象的统计信息，GC使用的算法，heap的配置及wise heap的使用情况<br>可以用此来判断内存目前的使用情况以及垃圾回收情况</td>
+</tr>
+<tr>
+<td>permstat</td>
+<td>to print permanent generation statistics</td>
+</tr>
+<tr>
+<td>F</td>
+<td>当-dump没有响应时，强制生成dump快照</td>
+</tr>
+</tbody>
+</table>
+<h2 id="jmap-heap-28920：打印内存信息">jmap -heap 28920：打印内存信息</h2>
+<pre class="line-numbers language-bat" data-language="bat"><code class="language-bat">C:\Users\Administrator&gt;jmap -heap 7676
+Attaching to process ID 7676, please wait...
+Debugger attached successfully.
+Server compiler detected.
+JVM version is 25.131-b11
+
+using thread-local object allocation.
+Parallel GC with 8 thread(s) # GC 方式
+
+Heap Configuration: # 堆内存初始化配置
+   MinHeapFreeRatio         = 0  # 对应jvm启动参数-XX:MinHeapFreeRatio设置JVM堆最小空闲比率(default 40)
+   MaxHeapFreeRatio         = 100 # 对应jvm启动参数 -XX:MaxHeapFreeRatio设置JVM堆最大空闲比率(default 70)
+   MaxHeapSize              = 8562671616 (8166.0MB) # 对应jvm启动参数-XX:MaxHeapSize=设置JVM堆的最大大小
+   NewSize                  = 178782208 (170.5MB) # 对应jvm启动参数-XX:NewSize=设置JVM堆的‘新生代’的默认大小
+   MaxNewSize               = 2854223872 (2722.0MB) # 对应jvm启动参数-XX:MaxNewSize=设置JVM堆的‘新生代’的最大大小
+   OldSize                  = 358088704 (341.5MB) # 对应jvm启动参数-XX:OldSize=&lt;value&gt;:设置JVM堆的‘老生代’的大小
+   NewRatio                 = 2 # 对应jvm启动参数-XX:NewRatio=:‘新生代’和‘老生代’的大小比率
+   SurvivorRatio            = 8 # 对应jvm启动参数-XX:SurvivorRatio=设置年轻代中Eden区与Survivor区的大小比值
+   MetaspaceSize            = 21807104 (20.796875MB)
+   CompressedClassSpaceSize = 1073741824 (1024.0MB)
+   MaxMetaspaceSize         = 17592186044415 MB
+   G1HeapRegionSize         = 0 (0.0MB)
+
+Heap Usage: # 堆内存使用情况
+PS Young Generation
+Eden Space: # Eden区内存分布
+   capacity = 2394423296 (2283.5MB) # Eden区总容量
+   used     = 42456832 (40.489990234375MB) # Eden区已使用
+   free     = 2351966464 (2243.010009765625MB) # Eden区剩余容量
+   1.7731548164823736% used  # Eden区使用比率
+From Space: # 其中一个Survivor区的内存分布
+   capacity = 212336640 (202.5MB)
+   used     = 0 (0.0MB)
+   free     = 212336640 (202.5MB)
+   0.0% used 
+To Space: # 另一个Survivor区的内存分布
+   capacity = 221773824 (211.5MB)
+   used     = 0 (0.0MB)
+   free     = 221773824 (211.5MB)
+   0.0% used
+PS Old Generation # 当前的Old区内存分布
+   capacity = 1039138816 (991.0MB)
+   used     = 487669936 (465.0782928466797MB)
+   free     = 551468880 (525.9217071533203MB)
+   46.93020109451864% used
+
+49107 interned Strings occupying 4515704 bytes.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="jmap-histo-live-7676-more：打印堆的对象统计，包括对象数、内存大小等等">jmap -histo:live 7676| more：打印堆的对象统计，包括对象数、内存大小等等</h2>
+<blockquote>
+<p>因为在<strong>dump:live</strong>前会进行<strong>full gc</strong>，如果带上<strong>live</strong>则只统计活对象，因此不加<strong>live</strong>的堆大小要大于加<strong>live</strong>堆的大小</p>
+</blockquote>
+<pre class="line-numbers language-bat" data-language="bat"><code class="language-bat"> num    #instances       #bytes  class name
+----------------------------------------------
+   1:       264504      133851  [C
+   2:       266752       64020  java.lang.String
+   3:       197556       63217  java.util.HashMap$Node
+   4:         9794       54849  com.ssp.user.model.Userinfo
+   5:        58254       36364  [Ljava.lang.Object;
+   6:        11204       18546  [Ljava.util.HashMap$Node;
+   7:        72959       17510  java.util.ArrayList
+   8:         4897       13321  com.ssp.model.WareInfo
+   9:        16716        8023  java.util.TreeMap
+  10:        15798        7583  java.util.HashMap
+  11:        17063        6825  java.util.TreeMap$Entry
+  12:        11155        6247  java.util.LinkedHashMap
+  13:        16706        5346  java.util.Collections$SynchronizedMap
+  14:         5635        4959  java.lang.reflect.Method
+  15:         4895        4699  com.ssp.index.model.DataAuthor
+  16:          795        4262  [B
+  17:        16694        4006  jeasy.analysis.Dictionary
+  18:        16779        2684  java.lang.Character
+  19:         8271        2646  java.util.concurrent.ConcurrentHashMap$Node
+  20:          947        1737  [I
+  21:         1336        1502  java.lang.Class
+  22:         2658        1063  java.util.LinkedHashMap$Entry
+  23:         2212        1062  org.aspectj.weaver.reflect.ShadowMatchImpl
+  24:          432         899  com.ssp.model.report.Aport
+  25:         5177         828  java.util.LinkedHashMap$LinkedKeySet
+  26:         3658         820  [Ljava.lang.Class;
+-- More  --<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>xml <strong>class</strong> name是对象类型，说明如下：</p>
+<table>
+<thead>
+<tr>
+<th>显示</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B</td>
+<td>byte</td>
+</tr>
+<tr>
+<td>C</td>
+<td>char</td>
+</tr>
+<tr>
+<td>D</td>
+<td>double</td>
+</tr>
+<tr>
+<td>F</td>
+<td>float</td>
+</tr>
+<tr>
+<td>I</td>
+<td>int</td>
+</tr>
+<tr>
+<td>J</td>
+<td>long</td>
+</tr>
+<tr>
+<td>Z</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>[ 数组</td>
+<td>如[I表示int[]</td>
+</tr>
+<tr>
+<td>[L+类名</td>
+<td>其他对象</td>
+</tr>
+</tbody>
+</table>
+<h2 id="jmap-finalizerinfo-7676：打印等待回收对象的信息">jmap -finalizerinfo 7676：打印等待回收对象的信息</h2>
+<pre class="line-numbers language-bat" data-language="bat"><code class="language-bat">C:\Users\Administrator&gt;  jmap -finalizerinfo 7676
+Attaching to process ID 7676, please wait...
+Debugger attached successfully.
+Server compiler detected.
+JVM version is 25.131-b11
+Number of objects pending for finalization: 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>可以看到当前F-QUEUE队列中并没有等待Finalizer线程执行finalizer方法的对象。</p>
+<h2 id="jmap-dump-live-format-b-file-dump-hprof-7676-提取MAT分析文件">jmap -dump:live,format=b,file=dump.hprof 7676 : 提取MAT分析文件</h2>
+<p>dump.hprof 这个后缀是为了后续可以直接用MAT(Memory Anlysis Tool)打开。</p>
+<h1>jhat：虚拟机堆转储快照分析工具</h1>
+<p>jhat（JVM Heap Analysis Tool）命令与jmap搭配使用，来<strong>分析jmap生成的堆转储快照</strong>。</p>
+<p>jhat内置了一个微型的HTTP/HTML服务器，生成dump文件的分析结果后，可以在浏览器中查看。</p>
+<p>不过实事求是地说，在实际工作中，除非手上真的没有别的工具可用，否则一般都不会去直接使用jhat命令来分析dump文件，主要原因有二：</p>
+<p>一是一般不会在部署应用程序的服务器上直接分析dump文件，即使可以这样做，也会尽量将dump文件复制到其他机器。</p>
+<p>二是用于分析的机器一般也是服务器，由于加载dump快照文件需要比生成dump更大的内存，所以一般在64位JDK、大内存的服务器上进行分析，因为分析工作是一个耗时而且消耗硬件资源的过程，既然都要在其他机器进行，就没有必要受到命令行工具的限制了；</p>
+<p>另一个原因是jhat的分析功能相对来说比较简陋，VisualVM，以及专业用于分析dump文件的Eclipse Memory Analyzer、IBM HeapAnalyzer等工具，都能实现比jhat更强大更专业的分析功能。</p>
+<p>命令格式：  <strong>jhat</strong> [option] [dumpfile]</p>
+<p>OPTION参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-stack false|true</td>
+<td>默认值为 true<br>关闭对象分配调用栈跟踪(tracking object allocation call stack) <br>如果分配位置信息在堆转储中不可用，则必须将此标志设置为 false<br></td>
+</tr>
+<tr>
+<td>-refs false|true</td>
+<td>关闭对象引用跟踪(tracking of references to objects)。  默认值为 true。  <br>默认情况下, 返回的指针是指向其他特定对象的对象,如反向链接或输入引用(referrers or incoming references), 会统计/计算堆中的所有对象。</td>
+</tr>
+<tr>
+<td>-port port-number</td>
+<td>设置 jhat HTTP server 的端口号。  默认值 7000</td>
+</tr>
+<tr>
+<td>-exclude exclude-file</td>
+<td>指定对象查询时需要排除的数据成员列表文件(a file that lists data members that should be excluded from the reachable objects query)。 <br>例如, 如果文件列列出了 java.lang.String.value , 那么当从某个特定对象 Object o 计算可达的对象列表时, 引用路径涉及 java.lang.String.value 的都会被排除。</td>
+</tr>
+<tr>
+<td>-baseline exclude-file</td>
+<td>指定一个基准堆转储(baseline heap dump)。 <br>在两个 heap dumps 中有相同 object ID 的对象会被标记为不是新的(marked as not being new)<br>其他对象被标记为新的(new)。   在比较两个不同的堆转储时很有用</td>
+</tr>
+<tr>
+<td>-debug int</td>
+<td>设置 debug 级别. 0 表示不输出调试信息。 <br>值越大则表示输出更详细的 debug 信息。</td>
+</tr>
+<tr>
+<td>-version</td>
+<td>启动后只显示版本信息就退出</td>
+</tr>
+<tr>
+<td>-J&lt; flag &gt;</td>
+<td>因为 jhat 命令实际上会启动一个JVM来执行, 通过 -J 可以在启动JVM时传入一些启动参数。  <br>例如, -J-Xmx512m 则指定运行 jhat 的Java虚拟机使用的最大堆内存为 512 MB<br>如果需要使用多个JVM启动参数,则传入多个 -Jxxxxxx.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>jhat dump.hprof</strong>：查看之前jmap生成的 <strong>dump.hprof</strong></p>
+<pre class="line-numbers language-bat" data-language="bat"><code class="language-bat">C:\Users\Administrator&gt;jhat dump.hprof
+Reading from dump.hprof...
+Dump file created Wed Apr 26 10:44:41 CST 2023
+Snapshot read, resolving...
+Resolving 185857 objects...
+Chasing references, expect 37 dots.....................................
+Eliminating duplicate references.....................................
+Snapshot resolved.
+Started HTTP server on port 7000
+Server is ready.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>屏幕显示 <strong>Server is ready</strong>的提示后，用户在浏览器中键入http://localhost:7000/就可以看到分析结果</p>
+<blockquote>
+<p>分析结果默认是以包为单位进行分组显示。</p>
+<p>分析内存泄漏问题主要会使用到其中的“Heap Histogram”（与jmap -histo功能一样）与OQL页签的功能。</p>
+<p>前者可以找到内存中总容量最大的对象，后者是标准的对象查询语言，使用类似SQL的语法对内存中的对象进行查询统计</p>
+</blockquote>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Alisa</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://hmxyl.github.io/20221027/cc1c3bcb.html">https://hmxyl.github.io/20221027/cc1c3bcb.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Alisa</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/JVM/">
+                                    <span class="chip bg-color">JVM</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/20221027/6cd20d81.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="JVM基础回顾">
+                        
+                        <span class="card-title">JVM基础回顾</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            JVM基础
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-27
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
+                                    后端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JVM/">
+                        <span class="chip bg-color">JVM</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/20221027/c3539d05.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Java中printf的用法总结">
+                        
+                        <span class="card-title">Java中printf的用法总结</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Java中printf的用法总结
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
+                                    后端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('5'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2023</span>
+            
+            <span id="year">2023</span>
+            <a href="/about" target="_blank">Alisa</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+
+
+    <a href="mailto:hmxyldh@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

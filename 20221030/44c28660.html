@@ -1,0 +1,1164 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Linux系统文件操作命令, Alisa&#39;s Home">
+    <meta name="description" content="学习笔记、工作心得">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Linux系统文件操作命令 | Alisa&#39;s Home</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Alisa's Home" type="application/atom+xml">
+</head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Alisa&#39;s Home</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Alisa&#39;s Home</div>
+        <div class="logo-desc">
+            
+            学习笔记、工作心得
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Linux系统文件操作命令</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                操作系统
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-10-30
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="tree：树形结构查看文件">tree：树形结构查看文件</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt</span> <span class="token function">install</span> tree
+或者
+yum <span class="token function">install</span> tree<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="du：查看文件和目录磁盘使用的空间">du：查看文件和目录磁盘使用的空间</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">格式：du <span class="token punctuation">[</span>选项<span class="token punctuation">]</span> <span class="token punctuation">[</span>文件<span class="token punctuation">]</span>
+参数:
+    -a或-all 显示目录中个别文件的大小
+    -b或-bytes 显示目录或文件大小时，以byte为单位
+    -c或--total 除了显示个别目录或文件的大小外，同时也显示所有目录或文件的总和
+    -k或--kilobytes 以KB<span class="token punctuation">(</span>1024bytes<span class="token punctuation">)</span>为单位输出
+    -m或--megabytes 以MB为单位输出
+    -s或--summarize 仅显示总计，只列出最后加总的值
+    -h或--human-readable 以K，M，G为单位，提高信息的可读性
+    -x或--one-file-xystem 以一开始处理时的文件系统为准，若遇上其它不同的文件系统目录则略过
+    -L<span class="token operator">&lt;</span>符号链接<span class="token operator">&gt;</span>或--dereference<span class="token operator">&lt;</span>符号链接<span class="token operator">&gt;</span> 显示选项中所指定符号链接的源文件大小
+    -S或--separate-dirs 显示个别目录的大小时，并不含其子目录的大小
+    -X<span class="token operator">&lt;</span>文件<span class="token operator">&gt;</span>或--exclude-from<span class="token operator">=</span><span class="token operator">&lt;</span>文件<span class="token operator">&gt;</span> 在<span class="token operator">&lt;</span>文件<span class="token operator">&gt;</span>指定目录或文件
+    <span class="token parameter variable">--exclude</span><span class="token operator">=</span><span class="token operator">&lt;</span>目录或文件<span class="token operator">&gt;</span> 略过指定的目录或文件
+    -D或--dereference-args 显示指定符号链接的源文件大小
+    -H或--si 与-h参数相同，但是K，M，G是以1000为换算单位
+    -l或--count-links 重复计算硬件链接的文件。
+范例：du <span class="token parameter variable">-hm</span> 目录名称<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="文件操作-find-将符合-expression-的文件列出来">文件操作-find 将符合 expression 的文件列出来</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">格式 <span class="token builtin class-name">:</span> <span class="token function">find</span> <span class="token punctuation">[</span>path<span class="token punctuation">..</span>.<span class="token punctuation">]</span> <span class="token punctuation">[</span>expression<span class="token punctuation">]</span>
+说明 <span class="token builtin class-name">:</span> 将符合 expression 的文件列出来。                    
+  <span class="token parameter variable">-amin</span> n <span class="token builtin class-name">:</span> 在过去 n 分钟内被读取过的文件
+  <span class="token parameter variable">-anewer</span> <span class="token function">file</span> <span class="token builtin class-name">:</span> 比文件 <span class="token function">file</span> 更晚被读取过的文件
+  <span class="token parameter variable">-atime</span> n <span class="token builtin class-name">:</span> 在过去 n 天被读取过的文件
+  <span class="token parameter variable">-cmin</span> n <span class="token builtin class-name">:</span> 在过去 n 分钟内被修改过的文件
+  <span class="token parameter variable">-cnewer</span> <span class="token function">file</span> :比文件 <span class="token function">file</span> 更新的文件
+  <span class="token parameter variable">-ctime</span> n <span class="token builtin class-name">:</span> 在过去 n 天过修改过的文件
+  <span class="token parameter variable">-name</span> filename, <span class="token parameter variable">-iname</span> filename <span class="token builtin class-name">:</span> 符合 filename 的文件。iname 会忽略大小写
+  <span class="token parameter variable">-size</span> n <span class="token builtin class-name">:</span> 档案大小 是 n 单位，b 代表 <span class="token number">512</span> 位元组的区块，c 表示字元数，k表示 kilo bytes，w 是二个位元组。
+  <span class="token parameter variable">-type</span> c <span class="token builtin class-name">:</span> 档案类型是 c 的档案。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>范例:</p>
+<ol>
+<li>
+<p>将当前目录及其子目录下所有扩展名是 c 的文件列出来。</p>
+ <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">find</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-name</span> <span class="token string">"*.c"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>将当前目录及其子目录下所有最近 20 分钟内更新过的文件列出</p>
+ <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">find</span> <span class="token builtin class-name">.</span> <span class="token parameter variable">-cmin</span> <span class="token parameter variable">-20</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>查找包含字符串的文件</p>
+ <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">find</span> /opt/Tomcat7  <span class="token parameter variable">-name</span> <span class="token string">"system.properties"</span><span class="token operator">|</span><span class="token function">xargs</span> <span class="token function">grep</span> <span class="token parameter variable">-ri</span> <span class="token string">"BASCI_SCI_UPDATE"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>将/usr/local/backups目录下所有10天前带"."的文件删除</p>
+ <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">find</span> /usr/local/backups <span class="token parameter variable">-mtime</span> +10 <span class="token parameter variable">-name</span> <span class="token string">"*.*"</span> <span class="token operator">|</span><span class="token function">xargs</span> <span class="token function">rm</span> <span class="token parameter variable">-rf</span>
+或者
+<span class="token function">find</span> /usr/local/backups <span class="token parameter variable">-mtime</span> +10 <span class="token parameter variable">-name</span> <span class="token string">"*.*"</span> <span class="token parameter variable">-exec</span> <span class="token function">rm</span> <span class="token parameter variable">-rf</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">\</span><span class="token punctuation">;</span>
+
+
+
+说明： 　　
+find：linux的查找命令，用户查找指定条件的文件 　　
+/usr/local/backups：想要进行清理的任意目录 　　
+-mtime：标准语句写法 　　
+＋10：查找10天前的文件，这里用数字代表天数，＋30表示查找30天前的文件
+<span class="token string">"*.*"</span>：希望查找的数据类型，<span class="token string">"*.jpg"</span>表示查找扩展名为jpg的所有文件，<span class="token string">"*"</span>表示查找所有文件，这个可以灵活运用，举一反三 　　
+
+
+<span class="token parameter variable">-exec</span> <span class="token function">rm</span> <span class="token parameter variable">-rf</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">\</span><span class="token punctuation">;</span> ：find发现的结果一次性传给exec选项，删除
+<span class="token operator">|</span><span class="token function">xargs</span> <span class="token function">rm</span> <span class="token parameter variable">-rf</span> <span class="token builtin class-name">:</span> 分批次的处理删除（推荐）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<h2 id="文件操作-grep：-搜索字符串命令">文件操作-grep： 搜索字符串命令</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">格式：grep <span class="token punctuation">[</span>-no<span class="token punctuation">]</span> pattern files
+参数：
+     <span class="token parameter variable">-n</span> 显示行号
+     <span class="token parameter variable">-o</span> 只显示匹配的串<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>范例：</p>
+<pre class="line-numbers language-none"><code class="language-none">grep  printf *
+    file1.c:   printf("\nHello\n");
+    file2.c:   printf("\nSample\n");
+
+grep -n  printf *
+    file1.c:4   printf("\nHello\n");
+    file2.c:9   printf("\nSample\n");
+
+grep -o  printf *
+   file1.c:   printf
+   file2.c:   printf
+
+如果搜索的串中有空格，则用引号括起来
+
+grep "asd abc" *<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="wc：统计指定文件中的字节数、字数、行数，并将统计结果显示输出">wc：统计指定文件中的字节数、字数、行数，并将统计结果显示输出</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">格式：wc <span class="token punctuation">[</span>选项<span class="token punctuation">]</span> 文件名称
+选项 ：
+   <span class="token parameter variable">-c</span> 统计字节数。
+   <span class="token parameter variable">-l</span> 统计行数。
+   <span class="token parameter variable">-m</span> 统计字符数。这个标志不能与 <span class="token parameter variable">-c</span> 标志一起使用。
+   <span class="token parameter variable">-w</span> 统计字数。一个字被定义为由空白、跳格或换行字符分隔的字符串。
+   <span class="token parameter variable">-L</span> 打印最长行的长度。
+   <span class="token parameter variable">-help</span> 显示帮助信息
+   <span class="token parameter variable">--version</span> 显示版本信息<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="cp：-源文件存在-将一个文件拷贝至另一文件，或将数个文件拷贝至另一目录">cp：(源文件存在)将一个文件拷贝至另一文件，或将数个文件拷贝至另一目录</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">格式：cp <span class="token punctuation">[</span>-arf<span class="token punctuation">]</span> <span class="token builtin class-name">source</span> dest
+参数:
+   <span class="token parameter variable">-a</span> 将文件状态、权限等信息都照原状予以复制。
+   <span class="token parameter variable">-r</span>  若 <span class="token builtin class-name">source</span> 中含有目录名，则将目录下的文件顺序拷贝至目的地。
+   <span class="token parameter variable">-f</span>  若目的地已经有相同的文件名存在，则在复制前先予以删除再行复制。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>范例：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">1</span>. 将文件 aaa 复制一份名字为 bbb 的文件:         
+   <span class="token function">cp</span> aaa bbb   
+<span class="token number">2</span>. 将当前目录下的所有C程序拷贝到当前目录下的Finished 子目录中：
+   <span class="token function">cp</span> *.c Finished<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="mv：-源文件不存在-将一个文件改名为另一文件，或将数个文件移至另一目录。">mv：(源文件不存在)将一个文件改名为另一文件，或将数个文件移至另一目录。</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">格式： <span class="token function">mv</span> <span class="token punctuation">[</span>-i<span class="token punctuation">]</span> <span class="token builtin class-name">source</span> dest
+        <span class="token function">mv</span> <span class="token punctuation">[</span>-i<span class="token punctuation">]</span> source<span class="token punctuation">..</span>. directory
+参数：-i 若目的地已有同名文件，则先询问是否覆盖旧文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>范例：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">1</span>. 将文件 aaa 改名为 bbb <span class="token builtin class-name">:</span>
+   <span class="token function">mv</span> aaa bbb
+<span class="token number">2</span>. 将所有的C程序移至 Finished 子目录中：
+   <span class="token function">mv</span> <span class="token parameter variable">-i</span> *.c  Finished<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="rm：删除文件及目录">rm：删除文件及目录</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">格式：rm <span class="token punctuation">[</span>-ifr<span class="token punctuation">]</span> name<span class="token punctuation">..</span>.
+   <span class="token parameter variable">-i</span>  删除前逐一询问确认。
+   <span class="token parameter variable">-f</span>  即使原文件属性设为只读，也直接删除，无需逐一确认。
+   <span class="token parameter variable">-r</span>  将目录及以下之文件逐一删除。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>范例</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">1</span>.  删除所有C程序文件并删除前逐一询问确认 <span class="token builtin class-name">:</span>
+<span class="token function">rm</span> <span class="token parameter variable">-i</span> *.c
+<span class="token number">2</span>. 将 Finished 子目录及子目录中所有文件删除 <span class="token builtin class-name">:</span>
+<span class="token function">rm</span> <span class="token parameter variable">-r</span> Finished<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="tail条件查看文件内容">tail条件查看文件内容</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">格式：tail <span class="token punctuation">[</span> <span class="token parameter variable">-f</span> <span class="token punctuation">]</span> <span class="token punctuation">[</span> <span class="token parameter variable">-c</span> Number <span class="token operator">|</span> <span class="token parameter variable">-n</span> Number <span class="token operator">|</span> <span class="token parameter variable">-m</span> Number <span class="token operator">|</span> <span class="token parameter variable">-b</span> Number <span class="token operator">|</span> <span class="token parameter variable">-k</span> Number <span class="token punctuation">]</span>  文件名称
+<span class="token parameter variable">-f</span>  该参数用于监视File文件增长。
+<span class="token parameter variable">-c</span>  Number 从 Number 字节位置读取指定文件
+<span class="token parameter variable">-n</span>  Number 从 Number 行位置读取指定文件。
+<span class="token parameter variable">-m</span>  Number 从 Number 多字节字符位置读取指定文件，比方你的文件假设包括中文字，假设指定-c参数，可能导致截断，但使用-m则会避免该问题。
+<span class="token parameter variable">-b</span>  Number 从 Number 表示的512字节块位置读取指定文件。
+<span class="token parameter variable">-k</span>  Number 从 Number 表示的1KB块位置读取指定文件。
+上述命令中，都涉及到number，假设不指定，默认显示10行。
+Number前面可使用正负号，表示该偏移从顶部还是从尾部開始计算。
+tail可运行文件一般在/usr/bin/以下。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>示例</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">1</span>、  <span class="token function">tail</span> <span class="token parameter variable">-f</span> filename 
+说明：监视filename文件的尾部内容（默认10行，相当于增加参数 <span class="token parameter variable">-n</span> <span class="token number">10</span>），刷新显示在屏幕上。退出，按下CTRL+C。 
+<span class="token number">2</span>、  <span class="token function">tail</span> <span class="token parameter variable">-n</span> <span class="token number">20</span> filename 
+说明：显示filename最后20行。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="cat：-查看文件-文件拼接">cat： 查看文件(文件拼接)</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">格式：cat <span class="token punctuation">[</span>-AbeEnstTuv<span class="token punctuation">]</span> <span class="token punctuation">[</span>--help<span class="token punctuation">]</span> <span class="token punctuation">[</span>--version<span class="token punctuation">]</span> fileName
+说明：把文件串连接后输出到荧幕或加 <span class="token operator">&gt;</span> fileName 到另一个档案
+参数：
+    <span class="token parameter variable">-A</span> 等价于 <span class="token parameter variable">-vET</span>
+    -n或 <span class="token parameter variable">--number</span> 由 <span class="token number">1</span> 开始对所有输出的行数编号
+    -b或 --number-nonblank和 <span class="token parameter variable">-n</span> 相似，只不过对于空白行不编号
+    <span class="token parameter variable">-e</span> 等价于 –vE
+    <span class="token parameter variable">-E</span> 每行末尾显示一个$符号
+    -s或 --squeeze-blank 当遇到有连续两行以上的空白行，就代换为一行的空白行
+    <span class="token parameter variable">-t</span> 等价于 –vT
+    <span class="token parameter variable">-T</span> 显示制表符为 ^I
+    -v或 --show-nonprinting,  dos格式的回车换行显示为^M<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>范例：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">1</span>. 把 textfile1 的文件内容加上行号后输入到 textfile2 文件里：
+ <span class="token function">cat</span> <span class="token parameter variable">-n</span> textfile1 <span class="token operator">&gt;</span> textfile2
+<span class="token number">2</span>. 把 textfile1 和 textfile2 的文件内容加上行号（空白行不加）之后将内容附加到 textfile3 ：
+ <span class="token function">cat</span> <span class="token parameter variable">-b</span> textfile1 textfile2 <span class="token operator">&gt;&gt;</span> textfile3
+（ <span class="token operator">&gt;</span> 为重定向操作符， <span class="token operator">&gt;&gt;</span>为重定向追加操作符 ）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="more：文件查看">more：文件查看</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">格式：more  <span class="token punctuation">[</span>-num<span class="token punctuation">]</span> <span class="token punctuation">[</span>+linenum<span class="token punctuation">]</span> <span class="token punctuation">[</span>fileNames<span class="token punctuation">..</span><span class="token punctuation">]</span>
+说明：类似 <span class="token function">cat</span> ，不过是以一页一页的方式显示。而最基本的指令就是按空白键（space）就往下一页显示，按 b 键就会往回（back）一页显示。
+参数：
+   <span class="token parameter variable">-num</span> 一次显示的行数
+    +linenum 从第 num 行开始显示
+         fileNames 欲显示内容的文件，可为多个文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>范例：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">从第 <span class="token number">20</span> 行开始显示 testfile 之文件内容。
+
+<span class="token function">more</span> +20 testfile<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="less：文件查看">less：文件查看</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">格式： <span class="token function">less</span> <span class="token punctuation">[</span>Option<span class="token punctuation">]</span>  filename
+说明： <span class="token function">less</span> 的作用与 <span class="token function">more</span> 十分相似，都可以用来浏览文本文件的内容，不同的是 <span class="token function">less</span> 允许使用者往回卷动（PageUp PageDown）以浏览已经看过的部份，同时因为 <span class="token function">less</span> 并未在一开始就读入整个文件，因此在遇上大型文件的开启时，会比一般的文本编辑器<span class="token punctuation">(</span>如  <span class="token function">vi</span><span class="token punctuation">)</span>来的快速。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="touch：新建文件">touch：新建文件</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">touch</span> 文件名<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="mkdir：创建目录">mkdir：创建目录</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span>  dirName<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="ln：创建软链接">ln：创建软链接</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">root@hots-Lenovo:/data<span class="token comment"># apt install tree</span>
+root@hots-Lenovo:/data<span class="token comment"># tree</span>
+<span class="token builtin class-name">.</span>
+├── link-real
+│   ├── a-real
+│   └── b-real
+│       └── test.txt
+└── link-soft
+
+<span class="token number">4</span> directories, <span class="token number">1</span> <span class="token function">file</span>
+root@hots-Lenovo:/data<span class="token comment"># ln -s /data/link-real/a-real  /data/link-soft/a-soft</span>
+root@hots-Lenovo:/data<span class="token comment"># </span>
+root@hots-Lenovo:/data<span class="token comment"># </span>
+root@hots-Lenovo:/data<span class="token comment"># ln -s /data/link-real/b-real  /data/link-soft/b-soft</span>
+root@hots-Lenovo:/data<span class="token comment"># tree</span>
+<span class="token builtin class-name">.</span>
+├── link-real
+│   ├── a-real
+│   └── b-real
+│       └── test.txt
+└── link-soft
+    ├── a-soft -<span class="token operator">&gt;</span> /data/link-real/a-real
+    └── b-soft -<span class="token operator">&gt;</span> /data/link-real/b-real
+
+<span class="token number">6</span> directories, <span class="token number">1</span> <span class="token function">file</span>
+root@hots-Lenovo:/data<span class="token comment"># realpath /data/link-soft/a-soft</span>
+/data/link-real/a-real
+root@hots-Lenovo:/data<span class="token comment"># realpath /data/link-soft/b-soft</span>
+/data/link-real/b-real
+root@hots-Lenovo:/data<span class="token comment"># </span>
+root@hots-Lenovo:/data<span class="token comment"># </span>
+root@hots-Lenovo:/data<span class="token comment"># cd /data/link-soft/b-soft</span>
+root@hots-Lenovo:/data/link-soft/b-soft<span class="token comment"># ls</span>
+test.txt
+root@hots-Lenovo:/data/link-soft/b-soft<span class="token comment"># </span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>验证软链接创建</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">root@hots-Lenovo:/yunzhou/docker_mirror<span class="token comment"># realpath /yunzhou/docker_mirror</span>
+/data/docker_mirror
+root@hots-Lenovo:/yunzhou/docker_mirror<span class="token comment"># realpath /yunzhou/yunzhou_data</span>
+/data/yunzhou_data<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>truncate：清空文件</h1>
+<blockquote>
+<p>清空正在使用的 catalina.out文件</p>
+</blockquote>
+<ul>
+<li>
+<p>使用 truncate 命令清空文件</p>
+  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># -s 参数是设置文件的大小，清空文件的话，就设定为0</span>
+truncate <span class="token parameter variable">-s</span> <span class="token number">0</span> catalina.out<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>使用 echo 命令清空文件</p>
+  <pre class="line-numbers language-none"><code class="language-none">echo -n " " &gt; catalina.out  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Alisa</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://hmxyl.github.io/20221030/44c28660.html">https://hmxyl.github.io/20221030/44c28660.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Alisa</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/20221030/b9528813.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Linux系统命令">
+                        
+                        <span class="card-title">Linux系统命令</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Linux系统命令记录
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-30
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                    操作系统
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/20221030/e26546c7.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Linux防火墙">
+                        
+                        <span class="card-title">Linux防火墙</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Linux防火墙
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-30
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                    操作系统
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('5'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2023</span>
+            
+            <span id="year">2023</span>
+            <a href="/about" target="_blank">Alisa</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+
+
+    <a href="mailto:hmxyldh@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

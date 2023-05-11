@@ -1,0 +1,1190 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Redis-发布订阅, Alisa&#39;s Home">
+    <meta name="description" content="学习笔记、工作心得">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Redis-发布订阅 | Alisa&#39;s Home</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Alisa's Home" type="application/atom+xml">
+</head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Alisa&#39;s Home</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Alisa&#39;s Home</div>
+        <div class="logo-desc">
+            
+            学习笔记、工作心得
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Redis-发布订阅</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Redis/">
+                                <span class="chip bg-color">Redis</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                数据库
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-11-02
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1>Redis  发布订阅简介</h1>
+<blockquote>
+<p>Redis 发布订阅(pub/sub)是一种消息通信模式：发送者(pub)发送消息，订阅者(sub)接收消息。</p>
+</blockquote>
+<p>Redis 的 SUBSCRIBE 命令可以让客户端订阅任意数量的频道， 每当有新信息发送到被订阅的频道时， 信息就会被发送给所有订阅指定频道的客户端。</p>
+<p>作为例子， 下图展示了频道 channel1 ， 以及订阅这个频道的三个客户端 —— client2 、 client5 和 client1 之间的关系：</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/db-redis-sub-1.svg" alt="img"></p>
+<p>当有新消息通过 PUBLISH 命令发送给频道 channel1 时， 这个消息就会被发送给订阅它的三个客户端：</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/db-redis-sub-2.svg" alt="img"></p>
+<h2 id="发布-订阅使用">发布/订阅使用</h2>
+<blockquote>
+<p>Redis有两种发布/订阅模式：</p>
+<ul>
+<li>基于频道(Channel)的发布/订阅</li>
+<li>基于模式(pattern)的发布/订阅</li>
+</ul>
+</blockquote>
+<h3 id="基于频道-Channel-的发布-订阅">基于频道(Channel)的发布/订阅</h3>
+<p>"发布/订阅"模式包含两种角色，分别是发布者和订阅者。发布者可以向指定的频道(channel)发送消息; 订阅者可以订阅一个或者多个频道(channel),所有订阅此频道的订阅者都会收到此消息。</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/db-redis-sub-8.png" alt="img"></p>
+<ul>
+<li>
+<p><strong>发布者发布消息</strong></p>
+<p>发布者发布消息的命令是 <code>publish</code>,用法是<code> publish channel message</code>，如向 channel1.1说一声hi</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>&gt;</span> publish channel:1 hi
+<span class="token punctuation">(</span>integer<span class="token punctuation">)</span> <span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>这样消息就发出去了。返回值表示接收这条消息的订阅者数量。发出去的消息不会被持久化，也就是有客户端订阅channel:1后只能接收到后续发布到该频道的消息，之前的就接收不到了。</p>
+</li>
+<li>
+<p><strong>订阅者订阅频道</strong></p>
+<p>订阅频道的命令是 <code>subscribe</code>，可以同时订阅多个频道，用法是 <code>subscribe channel1 [channel2 ...]</code>,例如新开一个客户端订阅上面频道:(不会收到消息，因为不会收到订阅之前就发布到该频道的消息)</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">127.0</span>.0.1:637<span class="token operator"><span class="token file-descriptor important">9</span>&gt;</span> subscribe channel:1
+Reading messages<span class="token punctuation">..</span>. <span class="token punctuation">(</span>press Ctrl-C to quit<span class="token punctuation">)</span>
+<span class="token number">1</span><span class="token punctuation">)</span> <span class="token string">"subscribe"</span> // 消息类型
+<span class="token number">2</span><span class="token punctuation">)</span> <span class="token string">"channel:1"</span> // 频道
+<span class="token number">3</span><span class="token punctuation">)</span> <span class="token string">"hi"</span> // 消息内容<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>执行上面命令客户端会进入订阅状态，处于此状态下客户端不能使用除<code>subscribe</code>、<code>unsubscribe</code>、<code>psubscribe</code>和<code>punsubscribe</code>这四个属于"发布/订阅"之外的命令，否则会报错。</p>
+<p>进入订阅状态后客户端可能收到3种类型的回复。每种类型的回复都包含3个值，第一个值是消息的类型，根据消类型的不同，第二个和第三个参数的含义可能不同。</p>
+<p>消息类型的取值可能是以下3个:</p>
+<ul>
+<li><strong>subscribe</strong>。表示订阅成功的反馈信息。第二个值是订阅成功的频道名称，第三个是当前客户端订阅的频道数量。</li>
+<li><strong>message</strong>。表示接收到的消息，第二个值表示产生消息的频道名称，第三个值是消息的内容。</li>
+<li><strong>unsubscribe</strong>。表示成功取消订阅某个频道。第二个值是对应的频道名称，第三个值是当前客户端订阅的频道数量，当此值为0时客户端会退出订阅状态，之后就可以执行其他非"发布/订阅"模式的命令了。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>消息发布者</strong></th>
+<th><strong>订阅者A</strong></th>
+<th><strong>订阅者B</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&gt; PUBLISH channel:a hi <br>(integer) 0</td>
+<td>&gt; SUBSCRIBE channel:a channel:b <br>1) “subscribe” <br>2) “channel:a”<br> 3) (integer) 1 <br>1) “subscribe” <br>2) “channel:b” <br>3) (integer) 2</td>
+<td>&gt; SUBSCRIBE channel:b channel:c <br>1) “subscribe” <br>2) “channel:b” <br>3) (integer) 1 <br>1) “subscribe” <br>2) “channel:c” <br>3) (integer) 2</td>
+</tr>
+<tr>
+<td>&gt; PUBLISH channel:a hi <br>(integer) 1</td>
+<td>1) “message” <br>2) “channel:a” <br>3) “hi”</td>
+<td></td>
+</tr>
+<tr>
+<td>&gt; PUBLISH channel:b hello <br>(integer) 2</td>
+<td>1) “message” <br>2) “channel:b” <br>3) “hello”</td>
+<td>1) “message”<br>2) “channel:b”<br>3) “hello”</td>
+</tr>
+<tr>
+<td>&gt; PUBLISH channel:c lalalala <br>(integer) 1</td>
+<td></td>
+<td>1) “message”<br>2) “channel:c” <br>3) “lalalala”</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h3 id="基于模式-pattern-的发布-订阅">基于模式(pattern)的发布/订阅</h3>
+<p>如果有某个/某些模式和这个频道匹配的话，那么所有订阅这个/这些频道的客户端也同样会收到信息。</p>
+<ul>
+<li>
+<p><strong>用图例解释什么是基于模式的发布订阅</strong></p>
+<p>下图展示了一个带有频道和模式的例子， 其中 <code>tweet.shop.*</code> 模式匹配了 <code>tweet.shop.kindle</code> 频道和 <code>tweet.shop.ipad</code> 频道， 并且有不同的客户端分别订阅它们三个：</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/db-redis-sub-5.svg" alt="img"></p>
+<p>当有信息发送到<code> tweet.shop.kindle</code> 频道时， 信息除了发送给 clientX 和 clientY 之外， 还会发送给订阅<code>tweet.shop.*</code>模式的 client123 和 client256 ：</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/db-redis-sub-6.svg" alt="img"></p>
+<p>另一方面， 如果接收到信息的是频道 <code>tweet.shop.ipad</code> ， 那么 client123 和 client256 同样会收到信息：</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/db-redis-sub-7.svg" alt="img"></p>
+</li>
+<li>
+<p><strong>基于模式的例子</strong></p>
+<p>通配符中<code>?</code>表示1个占位符，<code>*</code>表示任意个占位符(包括0)，<code>?*</code>表示1个以上占位符。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>消息发布者</strong></th>
+<th><strong>订阅者A</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>准备</td>
+<td></td>
+<td>&gt; <strong>psubscribe a? b* d?*</strong> <br>1) “psubscribe”  <br>2) “a?”  <br>3) (integer) 1  <br>1) “psubscribe”  <br>2) “b” 3) (integer) 2  <br>1) “psubscribe”  <br>2) “d?”  <br>3) (integer) 3 <br></td>
+<td>&gt; <strong>psubscribe c? b* d?*</strong> <br>“psubscribe”  <br>2) “c?”  <br>3) (integer) 1  <br>1) “psubscribe”  <br>2) “b” 3) (integer) 2  <br>1) “psubscribe”  <br>2) “d?”  <br>3) (integer) 3</td>
+</tr>
+<tr>
+<td>发送消息</td>
+<td>&gt; publish a m1<br> (integer) 0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>发送消息</td>
+<td>&gt; publish a1 m1<br> (integer) 1</td>
+<td>1) “pmessage”<br>2) “a?”<br>3) “a1”<br>4) “m1”</td>
+<td></td>
+</tr>
+<tr>
+<td>发送消息</td>
+<td>&gt; publish a11 m1 <br>(integer) 0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>发送消息</td>
+<td>&gt; publish b abc <br>(integer) 2</td>
+<td>1) “pmessage” <br>2) “b*” <br>3) “b” <br>4) “abc”</td>
+<td>1) “pmessage” <br>2) “b*” <br>3) “b” <br>4) “abc”</td>
+</tr>
+<tr>
+<td>发送消息</td>
+<td>&gt; publish c abc<br> (integer) 0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>发送消息</td>
+<td>&gt; publish c1 m1<br> (integer) 1</td>
+<td></td>
+<td>1) “pmessage” <br>2) “c?” <br>3) “c1” <br>4) “m1”</td>
+</tr>
+<tr>
+<td>发送消息</td>
+<td>&gt; publish c11 m1 <br>(integer) 0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>发送消息</td>
+<td>&gt; publish d m1 <br>(integer) 0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>发送消息</td>
+<td>&gt; publish d1 m1 <br>(integer) 2</td>
+<td>1) “pmessage” <br>2) “d?*” <br>3) “d1” <br>4) “m1”</td>
+<td>1) “pmessage” <br>2) “d?*” <br>3) “d1” <br>4) “m1”</td>
+</tr>
+<tr>
+<td>发送消息</td>
+<td>&gt; publish d11 m1<br> (integer) 2</td>
+<td>1) “pmessage” <br>2) “d?*” <br>3) “d11” <br>4) “m1”</td>
+<td>1) “pmessage” <br>2) “d?*” <br>3) “d11” <br>4) “m1”</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>注意点</strong></p>
+</li>
+</ul>
+<ol>
+<li>
+<p>使用<code>psubscribe</code>命令可以重复订阅同一个频道，如客户端执行了<code>psubscribe c? c?*</code>。这时向c1发布消息客户端会接受到两条消息，而同时<code>publish</code>命令的返回值是2而不是1。同样的，如果有另一个客户端执行了<code>subscribe c1</code> 和<code>psubscribe c?*</code>的话，向c1发送一条消息该客户顿也会受到两条消息(但是是两种类型:message和pmessage)，同时<code>publish</code>命令也返回2.</p>
+</li>
+<li>
+<p><code>punsubscribe</code>命令可以退订指定的规则，用法是: <code>punsubscribe [pattern [pattern ...]]</code>,如果没有参数则会退订所有规则。</p>
+</li>
+<li>
+<p>使用<code>punsubscribe</code>只能退订通过psubscribe命令订阅的规则，不会影响直接通过<code>subscribe</code>命令订阅的频道；同样<code>unsubscribe</code>命令也不会影响通过<code>psubscribe</code>命令订阅的规则。另外需要注意<code>punsubscribe</code>命令退订某个规则时不会将其中的通配符展开，而是进行严格的字符串匹配，所以<code>punsubscribe *</code> 无法退订<code>c*</code>规则，而是必须使用<code>punsubscribe c*</code>才可以退订。（它们是相互独立的，后文可以看到数据结构上看也是两种实现）</p>
+</li>
+</ol>
+<h2 id="深入理解">深入理解</h2>
+<blockquote>
+<p>我们通过几个问题，来深入理解Redis的订阅发布机制</p>
+</blockquote>
+<h3 id="基于频道-Channel-的发布-订阅如何实现的？">基于频道(Channel)的发布/订阅如何实现的？</h3>
+<p>底层是通过字典（图中的pubsub_channels）实现的，这个字典就用于保存订阅频道的信息：字典的键为正在被订阅的频道， 而字典的值则是一个链表， 链表中保存了所有订阅这个频道的客户端。</p>
+<ul>
+<li>
+<p><strong>数据结构</strong></p>
+<p>比如说，在下图展示的这个 pubsub_channels 示例中， client2 、 client5 和 client1 就订阅了 channel1 ， 而其他频道也分别被别的客户端所订阅：</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/db-redis-sub-3.svg" alt="img"></p>
+</li>
+<li>
+<p><strong>订阅</strong></p>
+<p>当客户端调用 SUBSCRIBE 命令时， 程序就将客户端和要订阅的频道在 pubsub_channels 字典中关联起来。</p>
+<p>举个例子，如果客户端 client10086 执行命令 <code>SUBSCRIBE channel1 channel2 channel3</code> ，那么前面展示的 pubsub_channels 将变成下面这个样子：</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/db-redis-sub-4.svg" alt="img"></p>
+</li>
+<li>
+<p><strong>发布</strong></p>
+<p>当调用 <code>PUBLISH channel message</code> 命令， 程序首先根据 channel 定位到字典的键， 然后将信息发送给字典值链表中的所有客户端。</p>
+<p>比如说，对于以下这个 pubsub_channels 实例， 如果某个客户端执行命令 <code>PUBLISH channel1 "hello moto"</code> ，那么 client2 、 client5 和 client1 三个客户端都将接收到 “hello moto” 信息：</p>
+</li>
+<li>
+<p><strong>退订</strong></p>
+<p>使用 UNSUBSCRIBE 命令可以退订指定的频道， 这个命令执行的是订阅的反操作： 它从 <code>pubsub_channels </code>字典的给定频道（键）中， 删除关于当前客户端的信息， 这样被退订频道的信息就不会再发送给这个客户端。</p>
+</li>
+</ul>
+<h3 id="基于模式-Pattern-的发布-订阅如何实现的？">基于模式(Pattern)的发布/订阅如何实现的？</h3>
+<p>底层是pubsubPattern节点的链表。</p>
+<ul>
+<li>
+<p><strong>数据结构</strong></p>
+<p>redisServer.pubsub_patterns 属性是一个链表，链表中保存着所有和模式相关的信息：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">struct</span> <span class="token class-name">redisServer</span> <span class="token punctuation">{</span>
+    <span class="token comment">// ...</span>
+    list <span class="token operator">*</span>pubsub_patterns<span class="token punctuation">;</span>
+    <span class="token comment">// ...</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>链表中的每个节点都包含一个 redis.h/pubsubPattern 结构：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">pubsubPattern</span> <span class="token punctuation">{</span>
+    redisClient <span class="token operator">*</span>client<span class="token punctuation">;</span>
+    robj <span class="token operator">*</span>pattern<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> pubsubPattern<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>client 属性保存着订阅模式的客户端，而 pattern 属性则保存着被订阅的模式。</p>
+<p>每当调用 PSUBSCRIBE 命令订阅一个模式时， 程序就创建一个包含客户端信息和被订阅模式的 pubsubPattern 结构， 并将该结构添加到 redisServer.pubsub_patterns 链表中。</p>
+<p>作为例子，下图展示了一个包含两个模式的 pubsub_patterns 链表， 其中 client123 和 client256 都正在订阅 <a target="_blank" rel="noopener" href="http://tweet.shop">tweet.shop</a>.* 模式：</p>
+<p>!</p>
+<p>](<a target="_blank" rel="noopener" href="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/db-redis-sub-9.svg">https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/db-redis-sub-9.svg</a>)</p>
+</li>
+<li>
+<p><strong>订阅</strong></p>
+<p>如果这时客户端 client10086 执行 <code>PSUBSCRIBE broadcast.list.*</code> ， 那么 pubsub_patterns 链表将被更新成这样：</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/db-redis-sub-10.svg" alt="img"></p>
+<p>通过遍历整个 pubsub_patterns 链表，程序可以检查所有正在被订阅的模式，以及订阅这些模式的客户端。</p>
+</li>
+<li>
+<p><strong>发布</strong></p>
+<p>发送信息到模式的工作也是由 PUBLISH 命令进行的, 显然就是匹配模式获得Channels，然后再把消息发给客户端。</p>
+</li>
+<li>
+<p><strong>退订</strong></p>
+<p>使用 PUNSUBSCRIBE 命令可以退订指定的模式， 这个命令执行的是订阅模式的反操作： 程序会删除 redisServer.pubsub_patterns 链表中， 所有和被退订模式相关联的 pubsubPattern 结构， 这样客户端就不会再收到和模式相匹配的频道发来的信息。</p>
+</li>
+</ul>
+<h2 id="SpringBoot结合Redis发布-订阅实例？">SpringBoot结合Redis发布/订阅实例？</h2>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/llll234/article/details/80966952">https://blog.csdn.net/llll234/article/details/80966952</a></p>
+<p>最佳实践是通过RedisTemplate，关键代码如下：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 发布</span>
+redisTemplate<span class="token punctuation">.</span><span class="token function">convertAndSend</span><span class="token punctuation">(</span><span class="token string">"my_topic_name"</span><span class="token punctuation">,</span> <span class="token string">"message_content"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 配置订阅</span>
+<span class="token class-name">RedisMessageListenerContainer</span> container <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RedisMessageListenerContainer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+container<span class="token punctuation">.</span><span class="token function">setConnectionFactory</span><span class="token punctuation">(</span>connectionFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+container<span class="token punctuation">.</span><span class="token function">addMessageListener</span><span class="token punctuation">(</span>xxxMessageListenerAdapter<span class="token punctuation">,</span> <span class="token string">"my_topic_name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Alisa</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://hmxyl.github.io/20221102/4cdb4706.html">https://hmxyl.github.io/20221102/4cdb4706.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Alisa</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Redis/">
+                                    <span class="chip bg-color">Redis</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/20221102/3fb18050.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="配置 序列化成JSON字符串.md">
+                        
+                        <span class="card-title">配置 序列化成JSON字符串.md</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Spring Cache 适用记录
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-11-02
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
+                                    后端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Redis/">
+                        <span class="chip bg-color">Redis</span>
+                    </a>
+                    
+                    <a href="/tags/Spring-Cache/">
+                        <span class="chip bg-color">Spring Cache</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/20221102/c9f6f059.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Redis安装">
+                        
+                        <span class="card-title">Redis安装</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Redis安装
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-02
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Redis/">
+                        <span class="chip bg-color">Redis</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('5'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2023</span>
+            
+            <span id="year">2023</span>
+            <a href="/about" target="_blank">Alisa</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+
+
+    <a href="mailto:hmxyldh@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

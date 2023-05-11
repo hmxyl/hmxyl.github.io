@@ -1,0 +1,1377 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="MySQL基础, Alisa&#39;s Home">
+    <meta name="description" content="学习笔记、工作心得">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>MySQL基础 | Alisa&#39;s Home</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Alisa's Home" type="application/atom+xml">
+</head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Alisa&#39;s Home</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Alisa&#39;s Home</div>
+        <div class="logo-desc">
+            
+            学习笔记、工作心得
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">MySQL基础</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/MySQL/">
+                                <span class="chip bg-color">MySQL</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                数据库
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-10-31
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1>字段加密/解密</h1>
+<ol>
+<li>
+<p>PASSWORD(明文)：</p>
+<p>创建一个经过加密的密码字符串，适合于插入到MySQL的安全系统。该加密过程不可逆，和unix密码加密过程使用不同的算法。主要用于MySQL的认证系统。</p>
+</li>
+<li>
+<p>AES_ENCRYPT(明文，加密串)  AES_DECRYPT( 密文, 加密串 )</p>
+<p>使用UNIX crypt()系统加密字符串，AES_ENCRYPT()函数接收要加密的字符串和（可选的）用于加密过程的salt（一个可以唯一确定口令的字符串，就像钥匙一样）。加密程度比ENCODE较强。</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">举例：
+
+加密
+  <span class="token keyword">SELECT</span> HEX<span class="token punctuation">(</span>AES_ENCRYPT<span class="token punctuation">(</span><span class="token string">'测试'</span><span class="token punctuation">,</span> <span class="token string">'29a70b6c'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">FROM</span> DUAL<span class="token punctuation">;</span> 
+  输出：AFA3016D4EE259FE76D0D625F9BDF889
+  
+解密
+  <span class="token keyword">SELECT</span> <span class="token keyword">CONVERT</span><span class="token punctuation">(</span>AES_DECRYPT<span class="token punctuation">(</span>UNHEX<span class="token punctuation">(</span><span class="token string">'AFA3016D4EE259FE76D0D625F9BDF889'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'29a70b6c'</span><span class="token punctuation">)</span> <span class="token keyword">USING</span> utf8<span class="token punctuation">)</span> <span class="token keyword">FROM</span> DUAL<span class="token punctuation">;</span>
+  输出：测试 （<span class="token keyword">CONVERT</span>，字符集转换）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>ENCODE(明文, 加密串)  DECODE(密文, 加密串)<br>
+加密解密字符串。该函数有两个参数：被加密或解密的字符串和作为加密或解密基础的密钥。Encode结果是一个二进制字符串，以BLOB类型存储。加密成度相对比较弱。</p>
+</li>
+<li>
+<p>MD5()：计算字符串的MD5校验和（128位），</p>
+</li>
+<li>
+<p>SHA5()：计算字符串的SHA5校验和（160位）</p>
+<p>MD5()、SHA5() 这两个函数返回的校验和是16进制的，适合与认证系统中使用的口令。</p>
+</li>
+</ol>
+<h1>CONCAT函数</h1>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">注意：和<span class="token boolean">NULL</span>连接的结果为<span class="token boolean">NULL</span>
+
+<span class="token keyword">SELECT</span> CONCAT<span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">,</span> <span class="token string">'-'</span><span class="token punctuation">,</span> <span class="token string">'1'</span><span class="token punctuation">)</span> <span class="token keyword">FROM</span> DUAL<span class="token punctuation">;</span> 返回：test<span class="token operator">-</span><span class="token number">1</span>
+<span class="token keyword">SELECT</span> CONCAT<span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">,</span> <span class="token string">'-'</span><span class="token punctuation">,</span> <span class="token boolean">NULL</span><span class="token punctuation">)</span> <span class="token keyword">FROM</span> DUAL<span class="token punctuation">;</span> 返回：<span class="token boolean">NULL</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>IP地址/Long数据</h1>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> INET_ATON<span class="token punctuation">(</span><span class="token string">'112.253.20.48'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token number">1895633968</span>
+<span class="token keyword">SELECT</span> INET_NTOA<span class="token punctuation">(</span><span class="token string">'1895633968'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token number">112.253</span><span class="token number">.20</span><span class="token number">.48</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h1>日期函数</h1>
+<h2 id="date-format参数">date_format参数</h2>
+<table>
+<thead>
+<tr>
+<th>参数（年）</th>
+<th></th>
+<th>参数（月）</th>
+<th></th>
+<th>参数（日）</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%Y</td>
+<td>年，4 位</td>
+<td>%b</td>
+<td>缩写月名</td>
+<td>%D</td>
+<td>带有英文前缀的月中的天</td>
+</tr>
+<tr>
+<td>%y</td>
+<td>年，2 位</td>
+<td>%c</td>
+<td>月份的数值（1-12）</td>
+<td>%d</td>
+<td>月的天，数值(00-31)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>%M</td>
+<td>月名</td>
+<td>%e</td>
+<td>月的天，数值(0-31)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>%m</td>
+<td>月，数值(01-12)</td>
+<td>%j</td>
+<td>年的天 (001-366)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>参数（时间）</th>
+<th></th>
+<th>参数（时）</th>
+<th></th>
+<th>参数（分）</th>
+<th></th>
+<th>参数（秒）</th>
+<th></th>
+<th>参数（微秒）</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%T</td>
+<td>时间，24-小时 (hh:mm:ss)</td>
+<td>%H</td>
+<td>小时 (00-23)</td>
+<td>%i</td>
+<td>分钟，数值(00-59)</td>
+<td>%S</td>
+<td>或者 %s 秒(00-59)</td>
+<td>%f</td>
+<td>微秒</td>
+</tr>
+<tr>
+<td>%r</td>
+<td>时间，12-小时（hh:mm:ss AM 或 PM）</td>
+<td>%h</td>
+<td>小时 (01-12)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>%p</td>
+<td>AM 或 PM</td>
+<td>%I</td>
+<td>小时 (01-12)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>%k</td>
+<td>小时 (0-23)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>参数（年天）</th>
+<th></th>
+<th>参数（周天）</th>
+<th></th>
+<th>参数（星期）</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%X</td>
+<td>年，其中的星期日是周的第一天，4 位，与 %V 使用</td>
+<td>%U</td>
+<td>年周 (00-53) 星期日是一周的第一天</td>
+<td>%a</td>
+<td>缩写星期名</td>
+</tr>
+<tr>
+<td>%x</td>
+<td>年，其中的星期一是周的第一天，4 位，与 %v 使用</td>
+<td>%u</td>
+<td>年周 (00-53) 星期一是一周的第一天</td>
+<td>%W</td>
+<td>星期名</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>%V</td>
+<td>年周 (01-53) 星期日是一周的第一天，与 %X 使用</td>
+<td>%w</td>
+<td>周的天 （0=星期日, 6=星期六）</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>%v</td>
+<td>年周 (01-53) 星期一是一周的第一天，与 %x 使用</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>举例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CURDATE()  <br>CURRENT_DATE()</td>
+<td>SELECT CURDATE()<br> 2021-11-30</td>
+<td>返回当前的日期（%Y-%m-%d）</td>
+</tr>
+<tr>
+<td>CURTIME()  <br>CURRENT_TIME()</td>
+<td>SELECT CURTIME();<br>18:34:12</td>
+<td>返回当前的时间（%T或者%H:%i:%s）</td>
+</tr>
+<tr>
+<td><strong>DATE_ADD(date,INTERVAL expr unit)</strong></td>
+<td>SELECT DATE_ADD(CURRENT_DATE,INTERVAL 6 MONTH);<br>2022-05-30</td>
+<td>返回日期date加上间隔时间int的结果<br>(int必须按照关键字进行格式化)</td>
+</tr>
+<tr>
+<td><strong>DATE_SUB(date,INTERVAL int keyword)</strong></td>
+<td>SELECT DATE_SUB( CURRENT_DATE, INTERVAL 6 MONTH );<br>2021-05-30</td>
+<td>返回日期date加上间隔时间int的结果<br>(int必须按照关键字进行格式化)</td>
+</tr>
+<tr>
+<td><strong>PERIOD_DIFF(P1, P2)</strong></td>
+<td># 月份差值<br>SELECT PERIOD_DIFF(date_format(‘2021-09-30’, ‘%Y%m’), date_format(‘2021-06-20’, ‘%Y%m’))<br><br>#天数差值<br>SELECT PERIOD_DIFF(date_format(‘2021-09-30’, ‘%Y%m%d’), date_format(‘2021-06-20’, ‘%Y%m%d’))<br><br># 上一个月<br> SELECT * FROM 表名 WHERE PERIOD_DIFF(date_format(now(),‘%Y%m’),date_format(时间字段名,‘%Y%m’) =1</td>
+<td>计算两个日期之间的差值</td>
+</tr>
+<tr>
+<td>TO_DAYS(date)</td>
+<td># 今天<br>SELECT * FROM 表名 WHERE TO_DAYS(时间字段名) =TO_DAYS(NOW());<br><br> # 昨天<br>SELECT * FROM 表名 WHERE TO_DAYS(NOW()) - TO_DAYS( 时间字段名) &lt;= 1</td>
+<td>日期转天数</td>
+</tr>
+<tr>
+<td>YEARWEEK</td>
+<td>SELECT YEARWEEK(now()) <br>返回：202148<br><br># 本周<br>SELECT * FROM 表名 WHERE YEARWEEK( date_format( 时间字段名,‘%Y-%m-%d’ ) ) = YEARWEEK( now() ) ;</td>
+<td></td>
+</tr>
+<tr>
+<td>WEEK</td>
+<td></td>
+<td>返回日期date为一年中第几周(0~53)</td>
+</tr>
+<tr>
+<td>DAYOFWEEK</td>
+<td></td>
+<td>返回date所代表的一星期中的第几天(1~7)</td>
+</tr>
+<tr>
+<td>DAYOFMONTH</td>
+<td></td>
+<td>返回date是一个月的第几天(1~31)</td>
+</tr>
+<tr>
+<td>DAYOFYEAR(date)</td>
+<td></td>
+<td>返回date是一年的第几天(1~366)</td>
+</tr>
+<tr>
+<td>DAYNAME</td>
+<td>SELECT DAYNAME(CURRENT_DATE);<br>返回：Tuesday</td>
+<td>返回date的星期名</td>
+</tr>
+<tr>
+<td>FROM_UNIXTIME(ts,fmt)</td>
+<td></td>
+<td>根据指定的fmt格式，格式化UNIX时间戳ts</td>
+</tr>
+<tr>
+<td>YEAR</td>
+<td># 本年<br> SELECT * FROM 表名 WHERE YEAR( 时间字段名 ) = YEAR( NOW( ) )</td>
+<td></td>
+</tr>
+<tr>
+<td>MONTH</td>
+<td></td>
+<td>返回date的月份(1~12)</td>
+</tr>
+<tr>
+<td>MONTHNAME</td>
+<td></td>
+<td>返回date的月份名</td>
+</tr>
+<tr>
+<td>HOUR</td>
+<td></td>
+<td>返回time的小时值(0~23)</td>
+</tr>
+<tr>
+<td>MINUTE</td>
+<td></td>
+<td>返回time的分钟值(0~59)</td>
+</tr>
+<tr>
+<td>QUARTER</td>
+<td>SELECT QUARTER(CURRENT_DATE);<br>返回：4</td>
+<td>返回date在一年中的季度(1~4)</td>
+</tr>
+</tbody>
+</table>
+<h1>MySQL外键设置</h1>
+<p>MySQL外键设置: Cascade、NO ACTION、Restrict、SET NULL</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cascade</td>
+<td>在父表上update/delete记录时，同步update/delete掉子表的匹配记录</td>
+</tr>
+<tr>
+<td>set null</td>
+<td>在父表上update/delete记录时，将子表上匹配记录的列设为null，要注意子表的外键列不能为not null</td>
+</tr>
+<tr>
+<td>No action</td>
+<td>如果子表中有匹配的记录,则不允许对父表对应候选键进行update/delete操作</td>
+</tr>
+<tr>
+<td>Restrict</td>
+<td>同no action, 都是立即检查外键约束</td>
+</tr>
+<tr>
+<td>Set default</td>
+<td>父表有变更时,子表将外键列设置成一个默认的值 但Innodb不能识别</td>
+</tr>
+</tbody>
+</table>
+<h1>查看/修改系统参数</h1>
+<h2 id="版本号">版本号</h2>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> version<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 查看的是innodb_version</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="查看数据库运行中的进程">查看数据库运行中的进程</h2>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">show</span> <span class="token keyword">full</span> processlist  或
+selec <span class="token operator">*</span> <span class="token keyword">from</span> processlist<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="查看系统运行状态">查看系统运行状态</h2>
+<p>性能优化的时候可参考</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">show</span> <span class="token keyword">status</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="系统参数配置">系统参数配置</h2>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">show</span> variables<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="最大连接数">最大连接数</h2>
+<p>查看</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> @<span class="token variable">@global.max_connections</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>修改</p>
+<pre class="line-numbers language-none"><code class="language-none">set global max_connections=1024;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="配置-sql-mode">配置 sql_mode</h2>
+<p>查看</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 全局配置</span>
+<span class="token keyword">select</span> @<span class="token variable">@global.sql_mode</span><span class="token punctuation">;</span> 
+<span class="token comment"># 已经存在的数据库sql_mode</span>
+<span class="token keyword">select</span> @<span class="token variable">@sql_mode</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>修改（建议先查后改）</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 改变已经存在的数据库sql_mode </span>
+<span class="token keyword">set</span> sql_mode<span class="token operator">=</span><span class="token string">' '</span> 
+
+<span class="token comment"># 改变全局配置sql_mode</span>
+<span class="token keyword">set</span> @<span class="token variable">@global.sql_mode</span><span class="token operator">=</span><span class="token string">' '</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="系统参数总表参考">系统参数总表参考</h2>
+<p>查询</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SHOW</span> VARIABLES<span class="token punctuation">;</span>
+<span class="token keyword">SHOW</span> VARIABLES <span class="token operator">LIKE</span> <span class="token string">'autocommit'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="配置执行语句长度限制">配置执行语句长度限制</h2>
+<p>配置不够，执行错误提示</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">ERROR:The size <span class="token keyword">of</span> <span class="token keyword">BLOB</span><span class="token operator">/</span><span class="token keyword">TEXT</span> <span class="token keyword">data</span> inserted <span class="token operator">in</span> one <span class="token keyword">transaction</span> <span class="token operator">is</span> greater than  <span class="token number">10</span><span class="token operator">%</span> <span class="token keyword">of</span> redo log size<span class="token punctuation">.</span> Increase the redo log size <span class="token keyword">using</span> innodb_log_file_size<span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>查看配置</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> @<span class="token variable">@global.max_allowed_packet</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>修改配置（临时）</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">set</span> <span class="token keyword">global</span> max_allowed_packet  <span class="token operator">=</span> <span class="token number">1024</span><span class="token operator">*</span><span class="token number">1024</span><span class="token operator">*</span><span class="token number">1024</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>修改配置（永久）</p>
+<pre class="line-numbers language-none"><code class="language-none">在mysqld下面添加配置max_allowed_packed=1024M  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1>批量执行insert语句，进入了阻塞状态</h1>
+<p>原因一：磁盤空間已滿</p>
+<p>原因二：<code>innodb_flush_log_at_trx_commit</code>是配置MySql日志何时写入硬盘的参数：</p>
+<ul>
+<li>参数值说明</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>log buffer将每秒一次地写入log file中，并且log  file的flush(刷到磁盘)操作同时进行。该模式下在事务提交的时候，不会主动触发写入磁盘的操作。<br>当设置为0，该模式速度最快，但不太安全，mysqld进程的崩溃会导致上一秒钟所有事务数据的丢失</td>
+</tr>
+<tr>
+<td>1</td>
+<td>每次事务提交时MySQL都会把log buffer的数据写入log  file，并且flush(刷到磁盘)中去，该模式为系统默认。<br><br>当设置为1，该模式是最安全的，但也是最慢的一种方式。在mysqld 服务崩溃或者服务器主机crash的情况下，binary log 只有可能丢失最多一个语句或者一个事务</td>
+</tr>
+<tr>
+<td>2</td>
+<td>每次事务提交时mysql都会把log buffer的数据写入log  file，但是flush(刷到磁盘)操作并不会同时进行。<br>该模式下，MySQL会每秒执行一次 flush(刷到磁盘)操作<br><br>当设置为2，该模式速度较快，也比0安全，只有在操作系统崩溃或者系统断电的情况下，上一秒钟所有事务数据才可能丢失</td>
+</tr>
+</tbody>
+</table>
+<p>解决</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">innodb_flush_log_at_trx_commit<span class="token operator">=</span><span class="token number">2</span>，sync_binlog<span class="token operator">=</span><span class="token number">500</span> 或<span class="token number">1000</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>​		查找资料时候看到其他文章说innodb_flush_log_at_trx_commit和sync_binlog 两个参数是控制MySQL 磁盘写入策略以及数据安全性的关键参数，当两个参数都设置为1的时候写入性能最差。</p>
+<p>​		推荐做法是innodb_flush_log_at_trx_commit=2，sync_binlog=500 或1000</p>
+<h1>表联合查询</h1>
+<h2 id="两个数据表的关联">两个数据表的关联</h2>
+<p><strong>USING(userid, unit_id)</strong></p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment"># 使用 USING：关联字段一致</span>
+<span class="token keyword">SELECT</span> claim<span class="token punctuation">.</span>userid<span class="token punctuation">,</span> person<span class="token punctuation">.</span>real_name
+<span class="token keyword">FROM</span> ware_resouce_info_claim  claim
+<span class="token keyword">LEFT</span> <span class="token keyword">JOIN</span> personal_userinfo person <span class="token keyword">USING</span><span class="token punctuation">(</span>userid<span class="token punctuation">,</span> unit_id<span class="token punctuation">)</span> <span class="token punctuation">;</span>
+
+
+<span class="token comment"># 使用字段组合</span>
+<span class="token keyword">SELECT</span> claim<span class="token punctuation">.</span>userid<span class="token punctuation">,</span> person<span class="token punctuation">.</span>real_name
+<span class="token keyword">FROM</span> ware_resouce_info_claim claim
+<span class="token keyword">LEFT</span> <span class="token keyword">JOIN</span> personal_userinfo person <span class="token keyword">ON</span> person<span class="token punctuation">.</span>userid <span class="token operator">=</span> claim<span class="token punctuation">.</span>userid<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="GROUP-BY-…-WITH-ROLLUP">GROUP BY … WITH ROLLUP</h2>
+<p>加上<code>WITH ROLLUP</code>关键字的效果是MySQL将在查询结果的最后一-行将自动增加一条总数统计记录，这条记录的ID字段取值或者说这条记录的名字永远是NULL.</p>
+<ol>
+<li>
+<p>如下所示：</p>
+ <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> document_type_id<span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> 
+<span class="token keyword">FROM</span> resource_info
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> document_type_id <span class="token keyword">WITH ROLLUP</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230418140341120.png" alt="image-20230418140341120"></p>
+</li>
+<li>
+<p>GROUP BY 结果中有NULL 的聚类项</p>
+ <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> document_type_id<span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> 
+<span class="token keyword">FROM</span> resource_info 
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> document_type_id <span class="token keyword">WITH ROLLUP</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230418140852053.png" alt="image-20230418140852053"></p>
+</li>
+<li>
+<p>多个聚类项目：按照每个聚类项统计（小计和总计的概念）</p>
+ <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> document_type_id<span class="token punctuation">,</span> department_id<span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> 
+<span class="token keyword">FROM</span> resource_info 
+<span class="token keyword">GROUP</span> <span class="token keyword">BY</span> document_type_id<span class="token punctuation">,</span> department_id
+<span class="token keyword">WITH ROLLUP</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230418142243995.png" alt="image-20230418142243995"></p>
+</li>
+</ol>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Alisa</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://hmxyl.github.io/20221031/bce68613.html">https://hmxyl.github.io/20221031/bce68613.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Alisa</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/MySQL/">
+                                    <span class="chip bg-color">MySQL</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/20221031/4c28b48e.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="MySQL安装、版本差异、JDBC连接配置">
+                        
+                        <span class="card-title">MySQL安装、版本差异、JDBC连接配置</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            MySQL安装、版本差异、JDBC连接配置
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-31
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/MySQL/">
+                        <span class="chip bg-color">MySQL</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/20221030/932ec968.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Tomcat异常排查记录">
+                        
+                        <span class="card-title">Tomcat异常排查记录</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Tomcat异常排查记录
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-30
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-category">
+                                    服务器
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%82%B9%E6%BB%B4/">
+                        <span class="chip bg-color">点滴</span>
+                    </a>
+                    
+                    <a href="/tags/Tomcat/">
+                        <span class="chip bg-color">Tomcat</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('5'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2023</span>
+            
+            <span id="year">2023</span>
+            <a href="/about" target="_blank">Alisa</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+
+
+    <a href="mailto:hmxyldh@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+    
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
