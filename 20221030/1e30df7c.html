@@ -403,18 +403,6 @@
 <ol>
 <li>
 <p>准备安装VMware和下载Centos</p>
- <pre class="line-numbers language-none"><code class="language-none">安装VMware Workstation 15 Pro （永久激活密钥）
- YG5H2-ANZ0H-M8ERY-TXZZZ-YKRV8
- UG5J2-0ME12-M89WY-NPWXX-WQH88
- UA5DR-2ZD4H-089FY-6YQ5T-YPRX6
- GA590-86Y05-4806Y-X4PEE-ZV8E0
- ZF582-0NW5N-H8D2P-0XZEE-Z22VA
- YA18K-0WY8P-H85DY-L4NZG-X7RAD
-
- 安装VMware Workstation 16 （永久激活密钥）
- ZF3R0-FHED2-M80TY-8QYGC-NPKYFYF390-0HF8P-M81RQ-2DXQE-M2UT6ZF71R-DMX85-08DQY-8YMNC-PPHV8
-
- 下载虚拟机Centos：https://www.centos.org/download/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>
 <p>虚拟网络说明</p>
@@ -438,40 +426,9 @@
 场景：在宿主机安装多台虚拟机，和宿主组成一个小局域网，宿主机，虚拟机之间都可以互相通信，虚拟机也可访问外网，例如 搭建 hadoop 集群，分布式服务<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 </li>
 </ul>
-<h2 id="安装图形界面">安装图形界面</h2>
-<ul>
-<li>
-<p>命令安装</p>
-  <pre class="line-numbers language-none"><code class="language-none">yum groupinstall "X Window System"
-
-yum groupinstall "GNOME Desktop"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>进入图形界面</p>
-  <pre class="line-numbers language-none"><code class="language-none">startx 或者 init 5 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>
-<p>修改图形界面为默认启动方式</p>
-  <pre class="line-numbers language-none"><code class="language-none">命令行输入命令后重启系统 
-
-systemctl set-default graphical.target <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>安装中文支持</p>
-  <pre class="line-numbers language-none"><code class="language-none">yum groupinstall "Chinese Support" -y <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li>
-<p>修改系统默认语言为中文</p>
-  <pre class="line-numbers language-none"><code class="language-none">命令行输入命令后重启系统
-
-localectl set-locale LANG=zh_CN.UTF-8 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>
-<p>图形界面想要卸载</p>
-  <pre class="line-numbers language-none"><code class="language-none">yum groupremove "GNOME Desktop Environment"
-yum groupremove "X Window System"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-</ul>
+<ol start="3">
+<li>下载虚拟机Centos：<a target="_blank" rel="noopener" href="https://www.centos.org/download/">https://www.centos.org/download/</a></li>
+</ol>
 <h2 id="系统基础配置">系统基础配置</h2>
 <h3 id="修改-hotsname">修改 hotsname</h3>
 <pre class="line-numbers language-none"><code class="language-none">hostnamectl --static set-hostname 名称 
@@ -492,27 +449,32 @@ AutomaticLogin=root<span aria-hidden="true" class="line-numbers-rows"><span></sp
 <h3 id="虚拟机手动配置静态IP">虚拟机手动配置静态IP</h3>
 <ol>
 <li>
-<p><code>cat</code> `/etc/sysconfig/network-scripts/ifcfg-ens32</p>
- <pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token key attr-name">TYPE</span><span class="token punctuation">=</span><span class="token value attr-value">Ethernet</span>
-<span class="token key attr-name">PROXY_METHOD</span><span class="token punctuation">=</span><span class="token value attr-value">none</span>
-<span class="token key attr-name">BROWSER_ONLY</span><span class="token punctuation">=</span><span class="token value attr-value">no</span>
-<span class="token key attr-name">BOOTPROTO</span><span class="token punctuation">=</span><span class="token value attr-value">static</span>
-<span class="token key attr-name">DEFROUTE</span><span class="token punctuation">=</span><span class="token value attr-value">yes</span>
-<span class="token key attr-name">IPV4_FAILURE_FATAL</span><span class="token punctuation">=</span><span class="token value attr-value">no</span>
-<span class="token key attr-name">IPV6INIT</span><span class="token punctuation">=</span><span class="token value attr-value">yes</span>
-<span class="token key attr-name">IPV6_AUTOCONF</span><span class="token punctuation">=</span><span class="token value attr-value">yes</span>
-<span class="token key attr-name">IPV6_DEFROUTE</span><span class="token punctuation">=</span><span class="token value attr-value">yes</span>
-<span class="token key attr-name">IPV6_FAILURE_FATAL</span><span class="token punctuation">=</span><span class="token value attr-value">no</span>
-<span class="token key attr-name">IPV6_ADDR_GEN_MODE</span><span class="token punctuation">=</span><span class="token value attr-value">stable-privacy</span>
-<span class="token key attr-name">NAME</span><span class="token punctuation">=</span><span class="token value attr-value">ens32</span>
-<span class="token key attr-name">UUID</span><span class="token punctuation">=</span><span class="token value attr-value">066b4926-b40c-4c28-a5b4-2310d2b96613</span>
-<span class="token key attr-name">DEVICE</span><span class="token punctuation">=</span><span class="token value attr-value">ens32</span>
-<span class="token key attr-name">ONBOOT</span><span class="token punctuation">=</span><span class="token value attr-value">yes</span>
-<span class="token key attr-name">IPADDR</span><span class="token punctuation">=</span><span class="token value attr-value">192.168.1.200</span>
-<span class="token key attr-name">NETMASK</span><span class="token punctuation">=</span><span class="token value attr-value">255.255.255.0</span>
-<span class="token key attr-name">GATEWAY</span><span class="token punctuation">=</span><span class="token value attr-value">192.168.1.254</span>
-<span class="token key attr-name">DNS1</span><span class="token punctuation">=</span><span class="token value attr-value">223.5.5.5</span>
-<span class="token key attr-name">PREFIX</span><span class="token punctuation">=</span><span class="token value attr-value">24</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code class="language-sh"> cat /etc/sysconfig/network-scripts/ifcfg-ens32
+ <pre class="line-numbers language-none"><code class="language-none">
+```properties
+TYPE=Ethernet
+PROXY_METHOD=none
+BROWSER_ONLY=no
+
+BOOTPROTO=static
+IPADDR=192.168.23.128
+NETMASK=255.255.255.0
+GATEWAY=192.168.23.2
+
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=no
+IPV6INIT=yes
+IPV6_AUTOCONF=yes
+IPV6_DEFROUTE=yes
+IPV6_FAILURE_FATAL=no
+IPV6_ADDR_GEN_MODE=stable-privacy
+NAME=ens32
+UUID=066b4926-b40c-4c28-a5b4-2310d2b96613
+DEVICE=ens32
+ONBOOT=yes
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+</code></pre>
 </li>
 <li>
 <p>使用nmcli重新回载网络配置：<code>nmcli c reload</code></p>
@@ -547,7 +509,7 @@ AutomaticLogin=root<span aria-hidden="true" class="line-numbers-rows"><span></sp
  <pre class="line-numbers language-none"><code class="language-none">systemctl enable chronyd.service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 </ol>
-<h3 id="CentOS-8修改yum源为国内源">CentOS 8修改yum源为国内源</h3>
+<h3 id="CentOS-8-修改yum源为国内源">CentOS 8 修改yum源为国内源</h3>
 <ol>
 <li>
 <p>备份</p>
@@ -555,10 +517,10 @@ AutomaticLogin=root<span aria-hidden="true" class="line-numbers-rows"><span></sp
 </li>
 <li>
 <p>修改为阿里云</p>
-<p><code>wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-8.repo</code></p>
+<p><code>wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-8.repo</code></p>
 </li>
 <li>
-<p>清理&amp;拉取</p>
+<p>删除yum旧的缓存，生成新的换源后的缓存</p>
 <p><code>yum clean all</code></p>
 <p><code>yum makecache</code></p>
 <blockquote>
@@ -568,25 +530,44 @@ AutomaticLogin=root<span aria-hidden="true" class="line-numbers-rows"><span></sp
 <p>解决：修改yum源文件，把$releasever全部替换为8-strea</p>
 </blockquote>
 </li>
-</ol>
-<h2 id="安装过程中的问题以及解决措施">安装过程中的问题以及解决措施</h2>
-<h3 id="虚拟机ping不通主机，但是主机可以ping通虚拟机">虚拟机ping不通主机，但是主机可以ping通虚拟机</h3>
-<ol>
-<li>Windows10的防火墙没有打开ICMPv4-in这个规则
-<ul>
-<li>打开WIN10防火墙-&gt;选择高级设置-&gt;入站规则</li>
-<li>找到配置文件类型为<code>公用</code>的<code>文件和打印共享（回显请求 – ICMPv4-In）</code>规则，设置为允许</li>
-</ul>
-</li>
-<li>确认本地主机IP
-<ul>
-<li>Vmware-&gt;编辑-&gt;虚拟网络编辑器</li>
-<li>查看VMnet8-&gt;NAT模式-&gt;NAT设置中网段信息</li>
-<li>本地windows主机打开：网络和Internet设置-&gt;以太网-&gt;更改适配器选项</li>
-<li>打开VMnet8，设置IPV4地址</li>
-</ul>
+<li>
+<p>cat /etc/yum.repos.d/CentOS-Base.repo</p>
 </li>
 </ol>
+<h2 id="安装图形界面">安装图形界面</h2>
+<ul>
+<li>
+<p>命令安装</p>
+<pre class="line-numbers language-none"><code class="language-none">yum groupinstall "X Window System"
+
+yum groupinstall "GNOME Desktop"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>进入图形界面</p>
+<pre class="line-numbers language-none"><code class="language-none">startx 或者 init 5 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>修改图形界面为默认启动方式</p>
+<pre class="line-numbers language-none"><code class="language-none">命令行输入命令后重启系统 
+
+systemctl set-default graphical.target <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>安装中文支持</p>
+<pre class="line-numbers language-none"><code class="language-none">yum groupinstall "Chinese Support" -y <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>修改系统默认语言为中文</p>
+<pre class="line-numbers language-none"><code class="language-none">命令行输入命令后重启系统
+
+localectl set-locale LANG=zh_CN.UTF-8 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>图形界面想要卸载</p>
+<pre class="line-numbers language-none"><code class="language-none">yum groupremove "GNOME Desktop Environment"
+yum groupremove "X Window System"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+</ul>
 
                 
             </div>
@@ -749,19 +730,19 @@ AutomaticLogin=root<span aria-hidden="true" class="line-numbers-rows"><span></sp
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/20221030/fb3eb231.html">
+                <a href="/20221030/a9baf1a9.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Linux日常使用">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Linux系统增加zysong字体">
                         
-                        <span class="card-title">Linux日常使用</span>
+                        <span class="card-title">Linux系统增加zysong字体</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Linux系统命令记录
+                            Linux系统增加zysong字体
                         
                     </div>
                     <div class="publish-info">
@@ -782,10 +763,6 @@ AutomaticLogin=root<span aria-hidden="true" class="line-numbers-rows"><span></sp
                 </div>
                 
                 <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E7%82%B9%E6%BB%B4/">
-                        <span class="chip bg-color">点滴</span>
-                    </a>
                     
                     <a href="/tags/Linux/">
                         <span class="chip bg-color">Linux</span>
