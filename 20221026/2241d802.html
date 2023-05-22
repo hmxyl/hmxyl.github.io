@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="找不到包或者找不到符号, Alisa&#39;s Home">
+    <meta name="keywords" content="IDEA 使用技巧, Alisa&#39;s Home">
     <meta name="description" content="学习笔记、工作心得">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>找不到包或者找不到符号 | Alisa&#39;s Home</title>
+    <title>IDEA 使用技巧 | Alisa&#39;s Home</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -228,12 +228,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">找不到包或者找不到符号</h1>
+                    <h1 class="description center-align post-title">IDEA 使用技巧</h1>
                 </div>
             </div>
         </div>
@@ -398,21 +398,234 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>类文件存在的前提下，报错：找不到包或者找不到符号</p>
+                <p>[Toc]</p>
+<h1>IDEA添加自定义模板方法</h1>
+<ol>
+<li>
+<p>首先，点击File–&gt;Settings–&gt;Editor–&gt;Live Templates</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230339392-1678440029358-27.png" alt="image-20211127230339392"></p>
+</li>
+<li>
+<p>接着，点击右上角“+”添加“Template Group”模板组，如Java</p>
+</li>
+</ol>
+<p>​        ​<img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211127230357335-1678440029363-33-1684719815381-36.png" alt="image-20211127230357335"></p>
+<ol start="3">
+<li>
+<p>在新增的模板组内添加模板，点击右上角“+”添加“Live Template”</p>
+<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211127230437624-1678441147652-124-1684719815381-38.png" alt="image-20211127230437624"></p>
+</li>
+<li>
+<p>填写模板内容，定义出发快捷键选择 Enter</p>
+</li>
+</ol>
+<p>​        <img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211127230500953-1678440029363-35-1684719815381-34.png" alt="image-20211127230500953"></p>
+<ol start="5">
+<li>
+<p>定义作用域</p>
+<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211127230524523-1678441147652-126-1684719815381-32.png" alt="image-20211127230524523"></p>
+<p>这样就OK了，可以仿照这种方式，自定义很多快捷输入的语句，比如输入，输出等：</p>
+<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211127230606315-1678441147653-128-1684719815381-40.png" alt="image-20211127230606315"></p>
+</li>
+</ol>
+<h1>IDEA 针对Terminal更新环境变量</h1>
+<ol>
+<li>修改shell path 调用的程序</li>
+</ol>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230522093839928.png" alt="image-20230522093839928"></p>
+<ol start="2">
+<li>Git 环境变量</li>
+</ol>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230522094033065.png" alt="image-20230522094033065"></p>
+<ol start="3">
+<li>在IDEA中的命令行终端中输入<strong>bash</strong> 即可调用<strong>git bash</strong> ，使用结束后输入<strong>exit</strong>退出</li>
+</ol>
+<h1>IDEA 开启RunDashboard</h1>
+<p>修改 .idea/workspace.xml 文件</p>
+<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cclip_image002-163802692934114-1678440286408-97-1684409715194-1.png" alt="b8b40c372c3114cb88d98abdc1621768.png"></p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">找到<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>component</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>RunDashboard<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span> 添加配置：
+
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>configurationTypes<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span> 
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>set</span><span class="token punctuation">&gt;</span></span> 
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>SpringBootApplicationConfigurationType<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span> 
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>set</span><span class="token punctuation">&gt;</span></span> 
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>最终配置：</p>
+<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cclip_image004-1678440286408-99-1684409715194-3.png" alt="c8e483b781cfd443e68a15b94345844b.png"><br>
+显示效果：</p>
+<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cclip_image005-1678440286408-101-1684409715194-5.png" alt="511e587a5be1655e22f23d7981c2b8c8.png"></p>
+<h1>IDEA 配置Git忽略提交文件</h1>
+<ol>
+<li>
+<p>点击<strong>File-&gt;Settings-&gt;Plugins</strong>，点击Browse repositories…</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-163802704819915-1678440995166-112.png" alt="3b2f62bb2f51c955400f9d9ff9945a6e.png"></p>
+</li>
+<li>
+<p>搜索**.ignore**，点击<strong>Install</strong>，安装完成后，重启IDEA</p>
+</li>
+<li>
+<p>在 项目上 右键-&gt;New -&gt;.ignore file -&gt;.gitignore file(Git)</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image004-163802704820016.png" alt="bdd020c028cf2b207232d1c58ac45f66.png"></p>
+</li>
+<li>
+<p>先选择Example user template好了，以后有什么想过滤的可以自行添加，~最后点击Generate生成</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image006-1678440995166-116.png" alt="3e4705d5b72a8e3944b7e70d4f967e89.png"></p>
+</li>
+<li>
+<p>然后就会发现被忽略的文件名变成了灰色</p>
+</li>
+<li>
+<p>也可以右键文件将其加入忽略的名单中</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image008-1678440995166-118.png" alt="89c2f940c462b9558a9158f433a6e13b.png"></p>
+</li>
+<li>
+<p>以下是一些.gitignore文件忽略的匹配规则：</p>
+<table>
+<thead>
+<tr>
+<th>通配符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.a</td>
+<td>忽略所有 .a 结尾的文件</td>
+</tr>
+<tr>
+<td>!lib.a</td>
+<td>但 lib.a 除外</td>
+</tr>
+<tr>
+<td>/TODO</td>
+<td>仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO</td>
+</tr>
+<tr>
+<td>build/</td>
+<td>忽略 build/ 目录下的所有文件</td>
+</tr>
+<tr>
+<td>doc/.txt</td>
+<td>会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>注意</p>
+<p>.gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。<br>
+那么解决方法就是先把本地缓存删除（改变成未track状态），然后再提交：</p>
+ <pre class="line-numbers language-none"><code class="language-none">输入：
+git rm -r –cached filePath
+git commit -m “remove xx”
+
+或者：
+git rm -r –cached .
+git add .
+git commit -m “update .gitignore”
+
+
+来解释下几个参数
+-r 是删除文件夹及其子目录
+–cached 是删除暂存区里的文件而不删除工作区里的文件，
+
+第一种是删除某个文件，第二种方法就把所有暂存区里的文件删了，再加一遍，相当于更新了一遍。
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<h1>IDEA 配置SpringBoot热部署</h1>
+<ul>
+<li>
+<p>导入devtools依赖即可</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span> 
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span> 
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-boot-devtools<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span> 
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>optional</span><span class="token punctuation">&gt;</span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>optional</span><span class="token punctuation">&gt;</span></span> 
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>然后到<code>setting</code>框中，输入<code>compiler</code>，然后勾选**<code>Build project automatically</code>**</p>
+</li>
+<li>
+<p>然后按住<strong>shift+alt+ctrl+/</strong>，进入**<code>maintenance</code><strong>,然后选择进入</strong>Registry**</p>
+</li>
+<li>
+<p>勾选**<code>compiler.automake.when.app.running</code>**</p>
+</li>
+</ul>
+<h1>IDEA 针对Terminal更新环境变量</h1>
+<blockquote>
+<p>目的： Terminal 终端直接使用GitBash，IDEA默认使用的是<code>cmd</code></p>
 </blockquote>
-<h1>利用Maven-Reimport</h1>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125093632598-1667118386299-59-1678443310910-183.png" alt="image-20211125093632598"></p>
-<h1>Invalidate and Restart</h1>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125093653072-1667118386300-60-1678443310909-175.png" alt="image-20211125093653072"></p>
-<h1>重新编译</h1>
-<h2 id="点开Project-Structure-找到项目编译输出目录">点开Project Structure 找到项目编译输出目录</h2>
-<h2 id="将target目录下文件清空">将target目录下文件清空</h2>
-<h2 id="右键项目重新build">右键项目重新build</h2>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125093733929-1667118386300-61-1678443310910-181.png" alt="image-20211125093733929"></p>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125093748957-1667118386300-62-1678443310909-177.png" alt="image-20211125093748957"></p>
-<h1>利用Maven-Install</h1>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125093759368-1667118386300-63-1678443310909-179.png" alt="image-20211125093759368"></p>
+<p>打开Terminal 的Settings， 可以看到 默认的shell path</p>
+<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20230310184202752-1684410325349-13.png" alt="image-20230310184202752"></p>
+<h2 id="方法一：修改默认的schell-path">方法一：修改默认的schell path</h2>
+<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20230310184346589-1684410325349-15.png" alt="image-20230310184346589"></p>
+<h2 id="方法二：将git的bash-exe配置到操作系统环境变量path中">方法二：将git的bash.exe配置到操作系统环境变量path中</h2>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230310184700388.png" alt=" "></p>
+<p>此时，在Terminal中 输入 <code>bash</code>  直接打开 git bash</p>
+<h1>远程调试 TOMCAT</h1>
+<h2 id="TOMCAT服务器配置">TOMCAT服务器配置</h2>
+<ul>
+<li>
+<p>方式一：官方推荐</p>
+<p>在<code>catalina.sh</code>文件的文件头加上如下配置项即可。其中<code>address=8000</code>的端口号8000 自定义</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">JAVA_OPTS</span><span class="token operator">=</span><span class="token string">'-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li>
+<p>方式二：</p>
+<p>修改<code>catalina.sh</code>  的 <code>JPDA_ADDRESS</code></p>
+<p>修改前：</p>
+<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20221216141033811-1684719109569-5.png" alt="image-20221216141033811"></p>
+<p>修改后：</p>
+<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20221216141158238-1684719109569-1.png" alt="image-20221216141158238"></p>
+</li>
+</ul>
+<h2 id="本地IDEA配置">本地IDEA配置</h2>
+<p>IDEA 版本号：2022.3</p>
+<ul>
+<li>
+<p>方式一：Remote JVM Debug</p>
+<ol>
+<li>
+<p>工具栏：Run-&gt; Edit Configurations , 添加 <code>Remote JVM Debug</code></p>
+<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20221216141658513-1684719109569-3.png" alt="image-20221216141658513"></p>
+</li>
+<li>
+<p>配置远程服务器IP和DEBUG端口，以及选择本地项目</p>
+<img src="D:\Notespace\Hexo\hmxyl\source\_images\image-20221216142129704-1684719109569-7.png" alt="image-20221216142129704" style="zoom: 80%;"> 
+</li>
+<li>
+<p>本地DEBUG启动,启动成功之后，控制台会输出相应链接成功日志</p>
+<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20221216142244190-1671172511331-28-1684719109569-9.png" alt="image-20221216142244190"></p>
+</li>
+</ol>
+</li>
+<li>
+<p>方式二：Tomcat Remote 模式</p>
+<ol>
+<li>
+<p>添加Tomcat Server 配置</p>
+<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20221216142501412-1684719109569-11.png" alt="image-20221216142501412"></p>
+</li>
+<li>
+<p>配置远程服务器IP和应用端口</p>
+<p><img src="D:\Notespace\Hexo\hmxyl\source\_images\image-20221216142946755-1684719109569-15.png" alt="image-20221216142946755" style="zoom:80%;"> c.</p>
+</li>
+<li>
+<p>配置远程服务器DEBUG端口</p>
+<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20221216143100989-1684719109569-17.png" alt="image-20221216143100989"></p>
+</li>
+<li>
+<p>debug 启动</p>
+<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20221216143344220-1684719109569-13.png" alt="image-20221216143344220"></p>
+<p>服务器监听：</p>
+<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20221216143412864-1684719109569-19.png" alt="image-20221216143412864"></p>
+</li>
+</ol>
+</li>
+</ul>
 
                 
             </div>
@@ -439,7 +652,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://hmxyl.github.io/20221026/328bb032.html">https://hmxyl.github.io/20221026/328bb032.html</a>
+                    <a href="https://hmxyl.github.io/20221026/2241d802.html">https://hmxyl.github.io/20221026/2241d802.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -526,19 +739,19 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/20221026/764e2995.html">
+                <a href="/20221026/69c3279c.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="IDEA配置tomcat日志乱码">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Git">
                         
-                        <span class="card-title">IDEA配置tomcat日志乱码</span>
+                        <span class="card-title">Git</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            IDEA配置tomcat日志乱码
+                            Git日常使用记录
                         
                     </div>
                     <div class="publish-info">
@@ -560,8 +773,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/IDEA/">
-                        <span class="chip bg-color">IDEA</span>
+                    <a href="/tags/Git/">
+                        <span class="chip bg-color">Git</span>
                     </a>
                     
                 </div>
@@ -575,31 +788,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/20221025/f2c40356.html">
+                <a href="/20221026/610bdf07.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hexo主题修改">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="IDEA快捷键">
                         
-                        <span class="card-title">Hexo主题修改</span>
+                        <span class="card-title">IDEA快捷键</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Hexo主题使用记录
+                            IDEA快捷键
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-25
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-26
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Hexo/" class="post-category">
-                                    Hexo
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
                                 </a>
                             
                             
@@ -609,8 +822,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
+                    <a href="/tags/IDEA/">
+                        <span class="chip bg-color">IDEA</span>
                     </a>
                     
                 </div>

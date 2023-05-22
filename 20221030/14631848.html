@@ -441,6 +441,7 @@
 <span class="token key attr-name">log4j.appender.STDOUT.layout</span><span class="token punctuation">=</span><span class="token value attr-value">org.apache.log4j.PatternLayout</span>
 <span class="token comment">## 上一句设置了PatternLayout灵活指定格式，则要指定打印参数 [%-5p][%d{HH:mm:ss}][%c-%M] %m%n [%-5p][%d{HH:mm:ss}][%l] %m%n</span>
 <span class="token key attr-name">log4j.appender.STDOUT.layout.ConversionPattern</span><span class="token punctuation">=</span><span class="token value attr-value">[%-5p][%d{yyyy-MM-dd HH:mm:ss sss}][%t][%c-%M][%L](%F:%L) - %m%n</span>
+
 <span class="token comment"># QUERY:目的地 -- 输出到文件(限定每个文件大小)</span>
 <span class="token comment">## 凡是 info、warn、error、fatal 级别的数据都会在这里执行输出到 query.log 日志文件中</span>
 <span class="token comment">##log4j.logger.QUERY=INFO,QUERY</span>
@@ -457,6 +458,7 @@
 <span class="token key attr-name">log4j.appender.QUERY.MaxFileSize</span><span class="token punctuation">=</span><span class="token value attr-value">2048KB</span>
 <span class="token comment">## 可被备份的日志数</span>
 <span class="token key attr-name">log4j.appender.QUERY.MaxBackupIndex</span><span class="token punctuation">=</span><span class="token value attr-value">100</span>
+
 <span class="token comment"># SYS:目的地 -- 输出到文件(每天产生一个文件)</span>
 <span class="token comment">## 凡是 error、fatal 级别的数据都会在这里执行输出到 sys.log 日志文件中</span>
 <span class="token comment">#log4j.logger.SYS=error,SYS</span>
@@ -533,7 +535,7 @@
 <span class="token comment">##日志布局模式</span>
 <span class="token key attr-name">log4j.appender.db.layout</span> <span class="token punctuation">=</span> <span class="token value attr-value">org.apache.log4j.PatternLayout</span>
 <span class="token comment">##日志插入数据库中，t_logs 表字段可自定义</span>
-<span class="token key attr-name">log4j.appender.db.layout.ConversionPattern</span> <span class="token punctuation">=</span> <span class="token value attr-value">INSERT INTO t_logs(createDate, thread, priority, category,&lt;br /&gt; methodName, message) values('%d', '%t', '%-5p', '%c','%M', '[%l]-%m')</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token key attr-name">log4j.appender.db.layout.ConversionPattern</span> <span class="token punctuation">=</span> <span class="token value attr-value">INSERT INTO t_logs(createDate, thread, priority, category,&lt;br /&gt; methodName, message) values('%d', '%t', '%-5p', '%c','%M', '[%l]-%m')</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1>打印SQL语句</h1>
 <pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token key attr-name">log4j.logger.java.sql.Connection</span><span class="token punctuation">=</span><span class="token value attr-value">DEBUG</span>
 <span class="token key attr-name">log4j.logger.java.sql.Statement</span><span class="token punctuation">=</span><span class="token value attr-value">DEBUG</span>
@@ -652,19 +654,19 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/20221030/8c5d6123.html">
+                <a href="/20221030/f1c78c8.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="配置Docker环境">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Lombox日常使用记录">
                         
-                        <span class="card-title">配置Docker环境</span>
+                        <span class="card-title">Lombox日常使用记录</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            配置Docker环境
+                            Logback日常使用记录
                         
                     </div>
                     <div class="publish-info">
@@ -675,8 +677,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-category">
-                                    服务器
+                            <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
+                                    后端
                                 </a>
                             
                             
@@ -686,8 +688,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Docker/">
-                        <span class="chip bg-color">Docker</span>
+                    <a href="/tags/Lombox/">
+                        <span class="chip bg-color">Lombox</span>
                     </a>
                     
                 </div>
@@ -701,19 +703,19 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/20221030/4b5ef04d.html">
+                <a href="/20221030/e291c7ca.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Logback日常使用记录">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="压测工具概述">
                         
-                        <span class="card-title">Logback日常使用记录</span>
+                        <span class="card-title">压测工具概述</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Logback日常使用记录
+                            压测工具概述
                         
                     </div>
                     <div class="publish-info">
@@ -735,8 +737,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Logback/">
-                        <span class="chip bg-color">Logback</span>
+                    <a href="/tags/TODO/">
+                        <span class="chip bg-color">TODO</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%B5%8B%E8%AF%95/">
+                        <span class="chip bg-color">测试</span>
                     </a>
                     
                 </div>

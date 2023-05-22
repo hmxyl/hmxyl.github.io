@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="IDEA配置tomcat日志乱码, Alisa&#39;s Home">
+    <meta name="keywords" content="IDEA 使用问题记录, Alisa&#39;s Home">
     <meta name="description" content="学习笔记、工作心得">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>IDEA配置tomcat日志乱码 | Alisa&#39;s Home</title>
+    <title>IDEA 使用问题记录 | Alisa&#39;s Home</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -228,12 +228,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">IDEA配置tomcat日志乱码</h1>
+                    <h1 class="description center-align post-title">IDEA 使用问题记录</h1>
                 </div>
             </div>
         </div>
@@ -398,7 +398,25 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <ol>
+                <p>[Toc]</p>
+<h1>找不到包或者找不到符号</h1>
+<blockquote>
+<p>类文件存在的前提下，报错：找不到包或者找不到符号</p>
+</blockquote>
+<h2 id="利用Maven-Reimport">利用Maven-Reimport</h2>
+<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125093632598-1667118386299-59-1678443310910-183-1684721362098-63.png" alt="image-20211125093632598"></p>
+<h2 id="Invalidate-and-Restart">Invalidate and Restart</h2>
+<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125093653072-1667118386300-60-1678443310909-175-1684721362098-65.png" alt="image-20211125093653072"></p>
+<h2 id="重新编译">重新编译</h2>
+<h3 id="点开Project-Structure-找到项目编译输出目录">点开Project Structure 找到项目编译输出目录</h3>
+<h3 id="将target目录下文件清空">将target目录下文件清空</h3>
+<h3 id="右键项目重新build">右键项目重新build</h3>
+<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125093733929-1667118386300-61-1678443310910-181-1684721362098-59.png" alt="image-20211125093733929"></p>
+<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125093748957-1667118386300-62-1678443310909-177-1684721362098-61.png" alt="image-20211125093748957"></p>
+<h2 id="利用Maven-Install">利用Maven-Install</h2>
+<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125093759368-1667118386300-63-1678443310909-179-1684721362098-67.png" alt="image-20211125093759368"></p>
+<h1>IDEA配置tomcat日志乱码</h1>
+<ol>
 <li>
 <p>第一步（tomcat7/8）tomcat：<br>
 找到tomcat文件夹下的conf文件夹，去修改里面的logging.properties文件两种修改方式（第一种方法不行再用第二种）：</p>
@@ -409,17 +427,17 @@
 <ul>
 <li>将文件中的有关UTF-8的行用’#'注释掉</li>
 </ul>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125094101237-1667118386301-65-1678443072139-168.png" alt="image-20211125094101237"></p>
+<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125094101237-1667118386301-65-1678443072139-168-1684721279471-51.png" alt="image-20211125094101237"></p>
 </li>
 <li>
 <p>第二步（IDEA2019）<br>
 进入文件后添加一段代码：-Dfile.encoding=UTF-8</p>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125094120088-1667118386301-66-1678443072138-160.png" alt="image-20211125094120088"></p>
+<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125094120088-1667118386301-66-1678443072138-160-1684721279471-47.png" alt="image-20211125094120088"></p>
 </li>
 <li>
 <p>第三步</p>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125094148869-1667118386301-67-1678443072138-162.png" alt="image-20211125094148869"></p>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125094213607-1667118386301-68-1678443072139-166.png" alt="image-20211125094213607"></p>
+<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125094148869-1667118386301-67-1678443072138-162-1684721279471-49.png" alt="image-20211125094148869"></p>
+<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211125094213607-1667118386301-68-1678443072139-166-1684721279471-53.png" alt="image-20211125094213607"></p>
 </li>
 <li>
 <p>第四步重启IDEA</p>
@@ -538,19 +556,19 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/20221026/162d0c80.html">
+                <a href="/20221026/610bdf07.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="IDEA针对Terminal更新环境变量">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="IDEA快捷键">
                         
-                        <span class="card-title">IDEA针对Terminal更新环境变量</span>
+                        <span class="card-title">IDEA快捷键</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            IDEA针对Terminal更新环境变量
+                            IDEA快捷键
                         
                     </div>
                     <div class="publish-info">
@@ -587,19 +605,19 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/20221026/328bb032.html">
+                <a href="/20221026/ee604b16.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="找不到包或者找不到符号">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="IDEA插件">
                         
-                        <span class="card-title">找不到包或者找不到符号</span>
+                        <span class="card-title">IDEA插件</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            找不到包或者找不到符号
+                            IDEA插件使用记录
                         
                     </div>
                     <div class="publish-info">
