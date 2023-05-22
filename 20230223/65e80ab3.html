@@ -435,6 +435,14 @@ response<span class="token punctuation">.</span><span class="token function">set
 <p>@Test导入的包错了，spring-test 需要的Junit是org.junit.Test，但是在@Test有两个包，另一个是org.junit.jupiter.api.Test，</p>
 </li>
 </ul>
+<h1>jquery – 在SPAN元素上禁用设置属性不会阻止点击事件</h1>
+<p>来源：<a target="_blank" rel="noopener" href="https://www.jb51.cc/jquery/182333.html">https://www.jb51.cc/jquery/182333.html</a></p>
+<p>一个SPAN元素，在点击事件上做某事。当我禁用它，使用jQuery：<code>$(“span”).attr(“disabled”，true)</code> 无效</p>
+<h3 id="解决方法">解决方法</h3>
+<p>尝试这个：</p>
+<pre class="line-numbers language-none"><code class="language-none">$("span").css("pointer-events","none");<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>你可以启用这些</p>
+<pre class="line-numbers language-none"><code class="language-none">$("span").css("pointer-events","auto");<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
                 
             </div>
@@ -552,19 +560,19 @@ response<span class="token punctuation">.</span><span class="token function">set
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/20230301/c383a3c4.html">
+                <a href="/20230301/d8cb1733.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Nacos">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Nacos 使用示例">
                         
-                        <span class="card-title">Nacos</span>
+                        <span class="card-title">Nacos 使用示例</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Nacos 是一个更易于帮助构建云原生应用的动态服务发现、配置和服务管理平台
+                            Nacos 使用示例
                         
                     </div>
                     <div class="publish-info">

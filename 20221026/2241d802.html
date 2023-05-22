@@ -399,6 +399,50 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>[Toc]</p>
+<h1>IDEA：Java项目打包成exe文件</h1>
+<p>来源：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zmq836010/article/details/124257340">https://blog.csdn.net/zmq836010/article/details/124257340</a></p>
+<h2 id="将Java项目打包成Jar包">将Java项目打包成Jar包</h2>
+<ol>
+<li>
+<p>打开Idea，点击File》Project Settings</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5YaZ5Luj56CB6LWa6ZKx5Lmw5YyF5YyF,size_13,color_FFFFFF,t_70,g_se,x_16.png" alt="img"></p>
+</li>
+<li>
+<p>Main Class：选择你项目的main函数所在的类。点击OK</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5YaZ5Luj56CB6LWa6ZKx5Lmw5YyF5YyF,size_11,color_FFFFFF,t_70,g_se,x_16.png" alt="img"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5YaZ5Luj56CB6LWa6ZKx5Lmw5YyF5YyF,size_20,color_FFFFFF,t_70,g_se,x_16.png" alt=" "></p>
+<ol start="3">
+<li>选中Build，点击Build Project，再点击Build Artifacts，点击回车键，即可。</li>
+<li>在项目的out\artifacts\Demo_jar目录下，生成了一个Jar文件（可以将Jar文件复制到桌面，方便接下来操作）</li>
+</ol>
+</li>
+</ol>
+<h2 id="下载并安装exe4j-exe文件，将Jar包转成exe可执行文件">下载并安装exe4j.exe文件，将Jar包转成exe可执行文件</h2>
+<ol>
+<li>
+<p>启动exe4j，点击Next，后选择“JAR in EXE” mode</p>
+</li>
+<li>
+<p>点击Next，Output directory 可以选择桌面，选择你想要保存的exe文件的目录</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5YaZ5Luj56CB6LWa6ZKx5Lmw5YyF5YyF,size_16,color_FFFFFF,t_70,g_se,x_16.png" alt="img"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5YaZ5Luj56CB6LWa6ZKx5Lmw5YyF5YyF,size_16,color_FFFFFF,t_70,g_se,x_16-1684724432885-111.png" alt="img"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5YaZ5Luj56CB6LWa6ZKx5Lmw5YyF5YyF,size_15,color_FFFFFF,t_70,g_se,x_16.png" alt="img"></p>
+</li>
+<li>
+<p>点击Next</p>
+</li>
+</ol>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5YaZ5Luj56CB6LWa6ZKx5Lmw5YyF5YyF,size_15,color_FFFFFF,t_70,g_se,x_16-1684724474981-116.png" alt="img"></p>
+<ol start="4">
+<li>
+<p>点击绿色的加号</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5YaZ5Luj56CB6LWa6ZKx5Lmw5YyF5YyF,size_16,color_FFFFFF,t_70,g_se,x_16-1684724512104-119.png" alt="img"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5YaZ5Luj56CB6LWa6ZKx5Lmw5YyF5YyF,size_15,color_FFFFFF,t_70,g_se,x_16-1684724525195-122.png" alt="img"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5YaZ5Luj56CB6LWa6ZKx5Lmw5YyF5YyF,size_16,color_FFFFFF,t_70,g_se,x_16-1684724534909-125.png" alt="img"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5YaZ5Luj56CB6LWa6ZKx5Lmw5YyF5YyF,size_16,color_FFFFFF,t_70,g_se,x_16-1684724552612-128.png" alt="img"></p>
+<p>点击Next（后面直接点next，不用配置，最后就会生成exe文件）</p>
+</li>
+</ol>
 <h1>IDEA添加自定义模板方法</h1>
 <ol>
 <li>
@@ -409,23 +453,23 @@
 <p>接着，点击右上角“+”添加“Template Group”模板组，如Java</p>
 </li>
 </ol>
-<p>​        ​<img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211127230357335-1678440029363-33-1684719815381-36.png" alt="image-20211127230357335"></p>
+<p>​        ​<img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230357335-1678440029363-33-1684719815381-36.png" alt="image-20211127230357335"></p>
 <ol start="3">
 <li>
 <p>在新增的模板组内添加模板，点击右上角“+”添加“Live Template”</p>
-<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211127230437624-1678441147652-124-1684719815381-38.png" alt="image-20211127230437624"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230437624-1678441147652-124-1684719815381-38.png" alt="image-20211127230437624"></p>
 </li>
 <li>
 <p>填写模板内容，定义出发快捷键选择 Enter</p>
 </li>
 </ol>
-<p>​        <img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211127230500953-1678440029363-35-1684719815381-34.png" alt="image-20211127230500953"></p>
+<p>​        <img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230500953-1678440029363-35-1684719815381-34.png" alt="image-20211127230500953"></p>
 <ol start="5">
 <li>
 <p>定义作用域</p>
-<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211127230524523-1678441147652-126-1684719815381-32.png" alt="image-20211127230524523"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230524523-1678441147652-126-1684719815381-32.png" alt="image-20211127230524523"></p>
 <p>这样就OK了，可以仿照这种方式，自定义很多快捷输入的语句，比如输入，输出等：</p>
-<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20211127230606315-1678441147653-128-1684719815381-40.png" alt="image-20211127230606315"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230606315-1678441147653-128-1684719815381-40.png" alt="image-20211127230606315"></p>
 </li>
 </ol>
 <h1>IDEA 针对Terminal更新环境变量</h1>
@@ -442,7 +486,7 @@
 </ol>
 <h1>IDEA 开启RunDashboard</h1>
 <p>修改 .idea/workspace.xml 文件</p>
-<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cclip_image002-163802692934114-1678440286408-97-1684409715194-1.png" alt="b8b40c372c3114cb88d98abdc1621768.png"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-163802692934114-1678440286408-97-1684409715194-1.png" alt="b8b40c372c3114cb88d98abdc1621768.png"></p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">找到<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>component</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>RunDashboard<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span> 添加配置：
 
 
@@ -452,9 +496,9 @@
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>set</span><span class="token punctuation">&gt;</span></span> 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>最终配置：</p>
-<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cclip_image004-1678440286408-99-1684409715194-3.png" alt="c8e483b781cfd443e68a15b94345844b.png"><br>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image004-1678440286408-99-1684409715194-3.png" alt="c8e483b781cfd443e68a15b94345844b.png"><br>
 显示效果：</p>
-<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cclip_image005-1678440286408-101-1684409715194-5.png" alt="511e587a5be1655e22f23d7981c2b8c8.png"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image005-1678440286408-101-1684409715194-5.png" alt="511e587a5be1655e22f23d7981c2b8c8.png"></p>
 <h1>IDEA 配置Git忽略提交文件</h1>
 <ol>
 <li>
@@ -559,9 +603,9 @@ git commit -m “update .gitignore”
 <p>目的： Terminal 终端直接使用GitBash，IDEA默认使用的是<code>cmd</code></p>
 </blockquote>
 <p>打开Terminal 的Settings， 可以看到 默认的shell path</p>
-<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20230310184202752-1684410325349-13.png" alt="image-20230310184202752"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230310184202752-1684410325349-13.png" alt="image-20230310184202752"></p>
 <h2 id="方法一：修改默认的schell-path">方法一：修改默认的schell path</h2>
-<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20230310184346589-1684410325349-15.png" alt="image-20230310184346589"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230310184346589-1684410325349-15.png" alt="image-20230310184346589"></p>
 <h2 id="方法二：将git的bash-exe配置到操作系统环境变量path中">方法二：将git的bash.exe配置到操作系统环境变量path中</h2>
 <p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230310184700388.png" alt=" "></p>
 <p>此时，在Terminal中 输入 <code>bash</code>  直接打开 git bash</p>
@@ -577,9 +621,9 @@ git commit -m “update .gitignore”
 <p>方式二：</p>
 <p>修改<code>catalina.sh</code>  的 <code>JPDA_ADDRESS</code></p>
 <p>修改前：</p>
-<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20221216141033811-1684719109569-5.png" alt="image-20221216141033811"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20221216141033811-1684719109569-5.png" alt="image-20221216141033811"></p>
 <p>修改后：</p>
-<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20221216141158238-1684719109569-1.png" alt="image-20221216141158238"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20221216141158238-1684719109569-1.png" alt="image-20221216141158238"></p>
 </li>
 </ul>
 <h2 id="本地IDEA配置">本地IDEA配置</h2>
@@ -590,15 +634,15 @@ git commit -m “update .gitignore”
 <ol>
 <li>
 <p>工具栏：Run-&gt; Edit Configurations , 添加 <code>Remote JVM Debug</code></p>
-<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20221216141658513-1684719109569-3.png" alt="image-20221216141658513"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20221216141658513-1684719109569-3.png" alt="image-20221216141658513"></p>
 </li>
 <li>
 <p>配置远程服务器IP和DEBUG端口，以及选择本地项目</p>
-<img src="D:\Notespace\Hexo\hmxyl\source\_images\image-20221216142129704-1684719109569-7.png" alt="image-20221216142129704" style="zoom: 80%;"> 
+<img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20221216142129704-1684719109569-7.png" alt="image-20221216142129704" style="zoom: 80%;"> 
 </li>
 <li>
 <p>本地DEBUG启动,启动成功之后，控制台会输出相应链接成功日志</p>
-<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20221216142244190-1671172511331-28-1684719109569-9.png" alt="image-20221216142244190"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20221216142244190-1671172511331-28-1684719109569-9.png" alt="image-20221216142244190"></p>
 </li>
 </ol>
 </li>
@@ -607,21 +651,21 @@ git commit -m “update .gitignore”
 <ol>
 <li>
 <p>添加Tomcat Server 配置</p>
-<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20221216142501412-1684719109569-11.png" alt="image-20221216142501412"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20221216142501412-1684719109569-11.png" alt="image-20221216142501412"></p>
 </li>
 <li>
 <p>配置远程服务器IP和应用端口</p>
-<p><img src="D:\Notespace\Hexo\hmxyl\source\_images\image-20221216142946755-1684719109569-15.png" alt="image-20221216142946755" style="zoom:80%;"> c.</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20221216142946755-1684719109569-15.png" alt="image-20221216142946755" style="zoom:80%;"> c.</p>
 </li>
 <li>
 <p>配置远程服务器DEBUG端口</p>
-<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20221216143100989-1684719109569-17.png" alt="image-20221216143100989"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20221216143100989-1684719109569-17.png" alt="image-20221216143100989"></p>
 </li>
 <li>
 <p>debug 启动</p>
-<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20221216143344220-1684719109569-13.png" alt="image-20221216143344220"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20221216143344220-1684719109569-13.png" alt="image-20221216143344220"></p>
 <p>服务器监听：</p>
-<p><img src="D:%5CNotespace%5CHexo%5Chmxyl%5Csource_images%5Cimage-20221216143412864-1684719109569-19.png" alt="image-20221216143412864"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20221216143412864-1684719109569-19.png" alt="image-20221216143412864"></p>
 </li>
 </ol>
 </li>
@@ -739,31 +783,31 @@ git commit -m “update .gitignore”
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/20221026/69c3279c.html">
+                <a href="/20221027/5296b9c2.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Git">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Java枚举类型7种常见的用法">
                         
-                        <span class="card-title">Git</span>
+                        <span class="card-title">Java枚举类型7种常见的用法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Git日常使用记录
+                            Java枚举类型7种常见的用法
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-26
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-27
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    工具
+                            <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
+                                    后端
                                 </a>
                             
                             
@@ -773,8 +817,8 @@ git commit -m “update .gitignore”
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Git/">
-                        <span class="chip bg-color">Git</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>
@@ -788,19 +832,19 @@ git commit -m “update .gitignore”
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/20221026/610bdf07.html">
+                <a href="/20221026/764e2995.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="IDEA快捷键">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="IDEA 使用问题记录">
                         
-                        <span class="card-title">IDEA快捷键</span>
+                        <span class="card-title">IDEA 使用问题记录</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            IDEA快捷键
+                            IDEA 使用问题记录
                         
                     </div>
                     <div class="publish-info">

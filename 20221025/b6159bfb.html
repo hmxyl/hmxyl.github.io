@@ -398,7 +398,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>Hexo 安装和配置</h1>
+                <p>[Toc]</p>
+<h1>Hexo 安装和配置</h1>
 <h2 id="Hexo相关软件">Hexo相关软件</h2>
 <blockquote>
 <p>在使用hexo命令时，请使用windows自带的命令行，管理员运行</p>
@@ -680,6 +681,30 @@ abbrlink:
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ol>
+<h1>问题记录</h1>
+<h2 id="运行Hexo报错hexo-无法加载文件hexo-ps1，因为在此系统上禁止运行脚本">运行Hexo报错hexo : 无法加载文件hexo.ps1，因为在此系统上禁止运行脚本</h2>
+<ul>
+<li>
+<p>问题描述</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PS C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span><span class="token number">87897</span><span class="token punctuation">\</span>Desktop<span class="token punctuation">\</span>xavierjiezou.github.io<span class="token operator">&gt;</span> hexo s
+hexo <span class="token builtin class-name">:</span> 无法加载文件 C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span><span class="token number">87897</span><span class="token punctuation">\</span>AppData<span class="token punctuation">\</span>Roaming<span class="token punctuation">\</span>npm<span class="token punctuation">\</span>hexo.ps1，因为在此系统上禁止运行脚本。有关详细信息，请参阅 https:/go.microsoft.com/fwlink/?LinkID
+<span class="token operator">=</span><span class="token number">135170</span> 中的 about_Execution_Policies。
+所在位置 行:1 字符: <span class="token number">1</span>
++ hexo s
++ ~~~~
+    + CategoryInfo          <span class="token builtin class-name">:</span> SecurityError: <span class="token punctuation">(</span>:<span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>，PSSecurityException
+    + FullyQualifiedErrorId <span class="token builtin class-name">:</span> UnauthorizedAccess<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>解决方案</p>
+<p>设置-&gt;隐私和安全性-&gt;开发者选项-&gt;允许本地PowerShell脚本在为签名的情况下运行</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAWGF2aWVyIEppZXpvdQ==,size_20,color_FFFFFF,t_70,g_se,x_16.png" alt=""></p>
+</li>
+<li>
+<p>引用参考<br>
+<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42951560/article/details/123678786">https://blog.csdn.net/qq_42951560/article/details/123678786</a></p>
+</li>
+</ul>
 
                 
             </div>
