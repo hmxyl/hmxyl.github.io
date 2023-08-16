@@ -398,39 +398,76 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>Centos7防火墙开放端口/关闭端口</h1>
-<ul>
-<li>
-<p>查看</p>
-  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 查看指定</span>
-firewall-cmd <span class="token parameter variable">--zone</span><span class="token operator">=</span>public --query-port<span class="token operator">=</span><span class="token number">3306</span>/tcp
-<span class="token comment"># 查看全部</span>
-firewall-cmd <span class="token parameter variable">--zone</span><span class="token operator">=</span>public --list-ports
-<span class="token comment"># 重新载入</span>
+                <h1>Centos 防火墙</h1>
+<h2 id="firewall服务">firewall服务</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">
+<span class="token comment"># 查看默认防火墙状态</span>
+firewall-cmd <span class="token parameter variable">--state</span>
+
+<span class="token comment"># 启动</span>
+systemctl start firewalld
+<span class="token comment"># 开机启动</span>
+systemctl <span class="token builtin class-name">enable</span> firewalld
+
+<span class="token comment"># 重新载入，更新防火墙规则</span>
 firewall-cmd <span class="token parameter variable">--reload</span>
 
-<span class="token comment">#添加端口 </span>
-firewall-cmd <span class="token parameter variable">--zone</span><span class="token operator">=</span>public --add-port<span class="token operator">=</span><span class="token number">3306</span>/tcp <span class="token parameter variable">--permanent</span>
-<span class="token comment">#删除端口</span>
-firewall-cmd  --remove-port<span class="token operator">=</span><span class="token number">15672</span>/tcp <span class="token parameter variable">--permanent</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<span class="token comment"># 关闭防火墙</span>
+systemctl stop firewalld.service 
+<span class="token comment"># 或者关闭防火墙</span>
+systemctl disable firewalld.service
+
+
+<span class="token comment"># 重启防火墙</span>
+systemctl restart firewalld.service
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="firewall配置">firewall配置</h2>
+<ul>
+<li>
+<p>查看防火墙规则</p>
+  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 查看全部端口</span>
+firewall-cmd <span class="token parameter variable">--zone</span><span class="token operator">=</span>public --list-ports
+<span class="token comment"># 全部规则</span>
+firewall-cmd --list-all
+<span class="token comment"># 查看指定端口</span>
+firewall-cmd <span class="token parameter variable">--zone</span><span class="token operator">=</span>public --query-port<span class="token operator">=</span><span class="token number">3306</span>/tcp
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>
-<p>关闭防火墙</p>
-  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl stop firewalld.service 
-或者
-systemctl disable firewalld.service<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>查看区域信息</p>
+  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">firewall-cmd --get-active-zones
+firewall-cmd --list-all-zones<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>暴露端口</p>
+  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#添加端口 </span>
+firewall-cmd <span class="token parameter variable">--permanent</span> <span class="token parameter variable">--zone</span><span class="token operator">=</span>public --add-port<span class="token operator">=</span><span class="token number">3306</span>/tcp
+<span class="token comment">#删除端口</span>
+firewall-cmd  <span class="token parameter variable">-permanent</span> --remove-port<span class="token operator">=</span><span class="token number">3306</span>/tcp <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>
 <p>IP白名单（添加）</p>
   <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 添加白名单</span>
 firewall-cmd <span class="token parameter variable">--permanent</span> <span class="token parameter variable">--zone</span><span class="token operator">=</span>trusted --add-source<span class="token operator">=</span><span class="token number">10.42</span>.0.15
 <span class="token comment"># 移除白名单</span>
-<span class="token comment"># firewall-cmd --permanent --zone=trusted --remove-source=10.42.0.15</span>
+firewall-cmd <span class="token parameter variable">--permanent</span> <span class="token parameter variable">--zone</span><span class="token operator">=</span>trusted --remove-source<span class="token operator">=</span><span class="token number">10.42</span>.0.15
+<span class="token comment"># 更新防火墙规则</span>
 firewall-cmd  <span class="token parameter variable">--reload</span>
 <span class="token comment"># 查看IP白名单</span>
 firewall-cmd  <span class="token parameter variable">--zone</span><span class="token operator">=</span>trusted --list-all
-<span class="token comment"># 重启</span>
-systemctl restart firewalld.service<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<span class="token comment">#开启某个端口(指定IP可访问)</span>
+firewall-cmd <span class="token parameter variable">--permanent</span> <span class="token parameter variable">--zone</span><span class="token operator">=</span>public --add-rich-rule<span class="token operator">=</span><span class="token string">'rule family="ipv4" source address="10.1.1.14/32" port protocol="tcp" port="80" accept'</span>
+<span class="token comment">#删除策略</span>
+firewall-cmd <span class="token parameter variable">--permanent</span> <span class="token parameter variable">--zone</span><span class="token operator">=</span>public --remove-rich-rule<span class="token operator">=</span><span class="token string">'rule family="ipv4" source address="10.1.1.14/32" port protocol="tcp" port="80" accept'</span>
+
+
+
+<span class="token comment"># 把docker0网卡添加到trusted域</span>
+firewall-cmd <span class="token parameter variable">--permanent</span> <span class="token parameter variable">--zone</span><span class="token operator">=</span>trusted --change-interface<span class="token operator">=</span>docker0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
 
@@ -546,19 +583,19 @@ systemctl restart firewalld.service<span aria-hidden="true" class="line-numbers-
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/20221030/530cfffd.html">
+                <a href="/20221030/44c28660.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Tomcat基础">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Linux系统文件操作命令">
                         
-                        <span class="card-title">Tomcat基础</span>
+                        <span class="card-title">Linux系统文件操作命令</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Tomcat日常使用记录
+                            Linux系统文件操作命令
                         
                     </div>
                     <div class="publish-info">
@@ -569,8 +606,8 @@ systemctl restart firewalld.service<span aria-hidden="true" class="line-numbers-
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-category">
-                                    服务器
+                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                    操作系统
                                 </a>
                             
                             
@@ -580,8 +617,8 @@ systemctl restart firewalld.service<span aria-hidden="true" class="line-numbers-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Tomcat/">
-                        <span class="chip bg-color">Tomcat</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                 </div>
@@ -595,19 +632,19 @@ systemctl restart firewalld.service<span aria-hidden="true" class="line-numbers-
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/20221030/6f43f742.html">
+                <a href="/20221030/a9baf1a9.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="安装Tomcat服务">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Linux系统增加zysong字体">
                         
-                        <span class="card-title">安装Tomcat服务</span>
+                        <span class="card-title">Linux系统增加zysong字体</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            安装Tomcat服务
+                            Linux系统增加zysong字体
                         
                     </div>
                     <div class="publish-info">
@@ -618,8 +655,8 @@ systemctl restart firewalld.service<span aria-hidden="true" class="line-numbers-
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-category">
-                                    服务器
+                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                    操作系统
                                 </a>
                             
                             
@@ -629,8 +666,8 @@ systemctl restart firewalld.service<span aria-hidden="true" class="line-numbers-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Tomcat/">
-                        <span class="chip bg-color">Tomcat</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                 </div>

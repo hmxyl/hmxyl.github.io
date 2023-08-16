@@ -432,9 +432,10 @@
 <h2 id="系统基础配置">系统基础配置</h2>
 <h3 id="修改-hotsname">修改 hotsname</h3>
 <pre class="line-numbers language-none"><code class="language-none">hostnamectl --static set-hostname 名称 
+
 vi /etc/hostname(缓存？)，要先把这个改好了，下面的配置文件才会生效。 
 vi  /etc/sysconfig/network（重启，永久） 
-echo hostname &gt; /proc/sys/kernel/hostname（即时生效，临时）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+echo hostname &gt; /proc/sys/kernel/hostname（即时生效，临时）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="基础工具安装">基础工具安装</h3>
 <ul>
 <li>yum -y install wget        (wget)</li>
@@ -443,7 +444,7 @@ echo hostname &gt; /proc/sys/kernel/hostname（即时生效，临时）<span ari
 <li>yum -y install tree</li>
 </ul>
 <h3 id="默认ROOT用户登录">默认ROOT用户登录</h3>
-<p>使用root账户进入系统后，打开’/etc/gdm/custom.conf’文件，在[daemon]下添加两行：</p>
+<p>使用root账户进入系统后，打开<code>/etc/gdm/custom.conf</code>文件，在[daemon]下添加两行：</p>
 <pre class="line-numbers language-none"><code class="language-none">AutomaticLoginEnable=True
 AutomaticLogin=root<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="虚拟机手动配置静态IP">虚拟机手动配置静态IP</h3>
@@ -681,13 +682,13 @@ yum groupremove "X Window System"<span aria-hidden="true" class="line-numbers-ro
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/20221030/b9528813.html">
+                <a href="/20221030/fb3eb231.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Linux系统命令">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Linux日常使用">
                         
-                        <span class="card-title">Linux系统命令</span>
+                        <span class="card-title">Linux日常使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -715,6 +716,10 @@ yum groupremove "X Window System"<span aria-hidden="true" class="line-numbers-ro
                 
                 <div class="card-action article-tags">
                     
+                    <a href="/tags/%E7%82%B9%E6%BB%B4/">
+                        <span class="chip bg-color">点滴</span>
+                    </a>
+                    
                     <a href="/tags/Linux/">
                         <span class="chip bg-color">Linux</span>
                     </a>
@@ -730,19 +735,19 @@ yum groupremove "X Window System"<span aria-hidden="true" class="line-numbers-ro
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/20221030/fb3eb231.html">
+                <a href="/20221030/d81e4de4.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Linux日常使用">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Ubuntu 查看系统信息">
                         
-                        <span class="card-title">Linux日常使用</span>
+                        <span class="card-title">Ubuntu 查看系统信息</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Linux系统命令记录
+                            Ubuntu 查看系统信息
                         
                     </div>
                     <div class="publish-info">
@@ -764,12 +769,8 @@ yum groupremove "X Window System"<span aria-hidden="true" class="line-numbers-ro
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%82%B9%E6%BB%B4/">
-                        <span class="chip bg-color">点滴</span>
-                    </a>
-                    
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/Ubuntu/">
+                        <span class="chip bg-color">Ubuntu</span>
                     </a>
                     
                 </div>
