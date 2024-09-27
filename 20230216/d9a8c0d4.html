@@ -746,6 +746,28 @@ sc delete MyApp<span aria-hidden="true" class="line-numbers-rows"><span></span><
 </tr>
 </tbody>
 </table>
+<h1>windows下powershell执行脚本报错</h1>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45228198/article/details/122677084">https://blog.csdn.net/weixin_45228198/article/details/122677084</a></p>
+<p>window power shell 禁止运行脚本</p>
+<img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/470d9697342be97e0646a2b0549a0dc2.png" alt="在这里插入图片描述" style="zoom:67%;"> 
+<p>vscode命令行 禁止运行脚本</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/9b37439de951fc3fbd6fc3a246010250.png" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>解决方案<br>
+windows系统中== PowerShell 执行策略==的问题。解决：</p>
+<p>电脑左下角搜索<code>windows powershell</code> , 以管理员身份运行。输入<code>get-ExecutionPolicy</code>， 回车</p>
+<p>显示<code>Restricted</code>，表示受限制的，执行脚本受限。输入<code>set-ExecutionPolicy</code>， 回车，然后输入：<code>RemoteSigned</code>， 即下载的脚本执行时才需要签名</p>
+<p>确认操作，输入Y</p>
+<p>搞定！！</p>
+</blockquote>
+<p>Windows给powershell设定一个叫“执行策略”的东西。为了避免一些恶意脚本直接运行，一般家用的windows系统默认将执行策略设置成了“Restricted”，即受限制的。</p>
+<p>所有的执行策略如下所示:</p>
+<p>AllSigned. 要求所有脚本和配置文件均需受信任的发布者签名，包括在本地计算机上编写的脚本。（安全但是本地编写的脚本也要签名，麻烦）<br>
+Bypass. 不会阻止你运行任何脚本，也没有提示和警告。（不安全）<br>
+Default. 默认的执行策略，普通桌面Windows默认Restricted，服务器windows默认RemoteSigned。<br>
+RemoteSigned. 要求从互联网上下载的所有脚本和配置文件均需要受信任的发布者签名，本地脚本则不需要签名。是Windows服务器的默认执行策略。（较为安全）<br>
+Restricted. 无法加载配置文件或运行脚本。桌面Windows的默认执行策略。(安全，但无法运行脚本)<br>
+Unrestricted 为允许所有的脚本运行</p>
 
                 
             </div>
