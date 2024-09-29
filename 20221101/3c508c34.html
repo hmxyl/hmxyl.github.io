@@ -1,404 +1,272 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="zh-CN">
-
-
 <head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="Java并发包, Alisa&#39;s Home">
-    <meta name="description" content="学习笔记、工作心得">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
-    <title>Java并发包 | Alisa&#39;s Home</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
 
-    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-    <script src="/libs/jquery/jquery.min.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hmxyl.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":"ture","preload":false}}</script><script src="/js/config.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0">
+    <meta name="description" content="Atomic包 CAS(Compare And Swap)：比较并交换 CAS即Compare And Swap的缩写，翻译成中文就是比较并交换，其作用是让CPU比较内存中某个值是否和预期的值相同，如果相同则将这个值更新为新值，不相同则不做更新，也就是CAS是原子性的操作(读和写两者同时具有原子性)，其实现方式是通过借助C&#x2F;C++调用CPU指令完成的，所以效率很高。(使用的是最快失败策略) CAS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java并发包">
+<meta property="og:url" content="https://hmxyl.github.io/20221101/3c508c34.html">
+<meta property="og:site_name" content="Alisa&#39;s Home">
+<meta property="og:description" content="Atomic包 CAS(Compare And Swap)：比较并交换 CAS即Compare And Swap的缩写，翻译成中文就是比较并交换，其作用是让CPU比较内存中某个值是否和预期的值相同，如果相同则将这个值更新为新值，不相同则不做更新，也就是CAS是原子性的操作(读和写两者同时具有原子性)，其实现方式是通过借助C&#x2F;C++调用CPU指令完成的，所以效率很高。(使用的是最快失败策略) CAS">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/7126254-55d47d5ebef3b1e2-16380810237142.webp">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20220222105628308-1667231117133-83.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20220222105835195-1667231117133-84.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20220222113453875-1667231117133-86.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20220222113625291-1667231117133-85.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/CountDown.drawio-1667231117133-87.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/arrive.drawio-1667231117133-89.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/Executor%E6%A1%86%E6%9E%B6-16588299109821-1667231117133-88.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20220725112237287-1667231117133-90.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20220725171152798-1667231117133-91.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/1620-1667231117133-93.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20220726163319524-1667231117133-92.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/BlockingDeque-1667231117133-94.png">
+<meta property="article:published_time" content="2022-10-31T22:52:00.000Z">
+<meta property="article:modified_time" content="2023-03-17T06:52:48.000Z">
+<meta property="article:author" content="Alisa">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/7126254-55d47d5ebef3b1e2-16380810237142.webp">
+
+
+<link rel="canonical" href="https://hmxyl.github.io/20221101/3c508c34.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hmxyl.github.io/20221101/3c508c34.html","path":"20221101/3c508c34.html","title":"Java并发包"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java并发包 | Alisa's Home</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Alisa's Home" type="application/atom+xml">
 </head>
 
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
 
-
-
-<body>
-    <header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">Alisa&#39;s Home</span>
-                </a>
-            </div>
-            
-
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" class="waves-effect waves-light">
-      
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
-      
-      <span>首页</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>标签</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>分类</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/friends" class="waves-effect waves-light">
-      
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
-      
-      <span>友情链接</span>
-    </a>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-</ul>
-
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
-        
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
-        
-        <div class="logo-name">Alisa&#39;s Home</div>
-        <div class="logo-desc">
-            
-            学习笔记、工作心得
-            
-        </div>
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
+  </div>
 
-    
+  <div class="site-meta">
 
-    <ul class="menu-list mobile-menu-list">
-        
-        <li class="m-nav-item">
-	  
-		<a href="/" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-home"></i>
-			
-			首页
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			标签
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			归档
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/friends" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-address-book"></i>
-			
-			友情链接
-		</a>
-          
-        </li>
-        
-        
-    </ul>
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Alisa's Home</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Alisa's Home</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
 </div>
 
 
-        </div>
 
-        
-    </nav>
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </header>
+        
+  
+  <aside class="sidebar">
 
-    
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
 
-
-
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
-    <div class="container" style="right: 0px;left: 0px;">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    <h1 class="description center-align post-title">Java并发包</h1>
-                </div>
-            </div>
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Atomic包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CAS-Compare-And-Swap-%EF%BC%9A%E6%AF%94%E8%BE%83%E5%B9%B6%E4%BA%A4%E6%8D%A2"><span class="nav-number">1.1.</span> <span class="nav-text">CAS(Compare And Swap)：比较并交换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Unsafe%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="nav-number">1.1.1.</span> <span class="nav-text">Unsafe源码分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CAS%E7%9A%84%E7%BC%BA%E7%82%B9%EF%BC%9AABA"><span class="nav-number">1.1.2.</span> <span class="nav-text">CAS的缺点：ABA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CAS%E7%9A%84%E7%BC%BA%E7%82%B9%EF%BC%9A%E5%BE%AA%E7%8E%AF%E6%97%B6%E9%97%B4%E9%95%BF%E5%BC%80%E9%94%80%E5%A4%A7"><span class="nav-number">1.1.3.</span> <span class="nav-text">CAS的缺点：循环时间长开销大</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CAS%E7%9A%84%E7%BC%BA%E7%82%B9%EF%BC%9A%E5%8F%AA%E8%83%BD%E4%BF%9D%E8%AF%81%E4%B8%80%E4%B8%AA%E5%85%B1%E4%BA%AB%E5%8F%98%E9%87%8F%E7%9A%84%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C"><span class="nav-number">1.1.4.</span> <span class="nav-text">CAS的缺点：只能保证一个共享变量的原子操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CAS%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">1.1.5.</span> <span class="nav-text">CAS的应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AtomicLong"><span class="nav-number">1.2.</span> <span class="nav-text">AtomicLong</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AtomicReference"><span class="nav-number">1.3.</span> <span class="nav-text">AtomicReference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AtomicXXXFieldUpdater"><span class="nav-number">1.4.</span> <span class="nav-text">AtomicXXXFieldUpdater</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unsafe"><span class="nav-number">1.5.</span> <span class="nav-text">Unsafe</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%A0%E7%A7%8DCounter%E6%96%B9%E6%A1%88%E7%9A%84%E6%80%A7%E8%83%BD%E5%AF%B9%E6%AF%94%E3%80%82"><span class="nav-number">1.5.1.</span> <span class="nav-text">几种Counter方案的性能对比。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-%E8%B0%83%E7%94%A8-C-%E6%B5%81%E7%A8%8B%EF%BC%88JNI-%EF%BC%89"><span class="nav-number">1.5.2.</span> <span class="nav-text">Java 调用 C 流程（JNI ）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%95%E5%B1%82%E6%B1%87%E7%BC%96%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4"><span class="nav-number">1.6.</span> <span class="nav-text">底层汇编相关指令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">CountDownLatch</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%80%E5%87%BA%E6%9D%A1%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">退出条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">2.2.</span> <span class="nav-text">使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AD%89%E5%BE%85%E6%89%80%E6%9C%89%E7%BA%BF%E7%A8%8B%E6%89%A7%E8%A1%8C%E5%AE%8C%E6%88%90"><span class="nav-number">2.2.1.</span> <span class="nav-text">等待所有线程执行完成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A1%E6%8B%86%E5%88%86%E7%A6%BB%E6%95%A3%E5%B9%B6%E8%A1%8C%E5%8C%96%E5%A4%84%E7%90%86"><span class="nav-number">2.2.2.</span> <span class="nav-text">任务拆分离散并行化处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF%E5%AE%9A%E4%B9%89"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">基本信息定义</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">CyclicBarrier</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B2%EF%BC%9A%E4%BD%BF%E7%94%A8reset-%E9%87%8D%E7%BD%AE"><span class="nav-number">3.1.</span> <span class="nav-text">示例2：使用reset()重置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CountDownLatch-%E5%92%8C-CyclicBarrier-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.2.</span> <span class="nav-text">CountDownLatch 和 CyclicBarrier 的区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">Exchanger</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">Semaphore</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">Lock包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ReentrantLock"><span class="nav-number">6.1.</span> <span class="nav-text">ReentrantLock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ReadWriteLock"><span class="nav-number">6.2.</span> <span class="nav-text">ReadWriteLock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Condition"><span class="nav-number">6.3.</span> <span class="nav-text">Condition</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%93%E4%B8%AA%E7%AD%89%E5%BE%85%E9%94%81%E9%98%9F%E5%88%97"><span class="nav-number">6.3.1.</span> <span class="nav-text">当个等待锁队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E7%AD%89%E5%BE%85%E9%94%81%E9%98%9F%E5%88%97"><span class="nav-number">6.3.2.</span> <span class="nav-text">多个等待锁队列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#StampedLock"><span class="nav-number">6.4.</span> <span class="nav-text">StampedLock</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A7%E7%94%9F%E8%83%8C%E6%99%AF"><span class="nav-number">6.4.1.</span> <span class="nav-text">产生背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StampedLock%E7%9A%84%E4%B8%BB%E8%A6%81%E7%89%B9%E7%82%B9"><span class="nav-number">6.4.2.</span> <span class="nav-text">StampedLock的主要特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%82%B2%E8%A7%82%E8%AF%BB%EF%BC%88%E8%AF%BB%E9%94%81%E5%92%8C%E5%86%99%E9%94%81%E4%BA%92%E6%96%A5%EF%BC%89"><span class="nav-number">6.4.3.</span> <span class="nav-text">悲观读（读锁和写锁互斥）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%90%E8%A7%82%E8%AF%BB%EF%BC%9AOptimistic-reading"><span class="nav-number">6.4.4.</span> <span class="nav-text">乐观读：Optimistic reading</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text">Fork&#x2F;Join框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RecursiveTask%EF%BC%9A%E6%9C%89%E8%BF%94%E5%9B%9E"><span class="nav-number">7.1.</span> <span class="nav-text">RecursiveTask：有返回</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RecursiveAction%EF%BC%9A%E6%97%A0%E8%BF%94%E5%9B%9E"><span class="nav-number">7.2.</span> <span class="nav-text">RecursiveAction：无返回</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">8.</span> <span class="nav-text">Phaser</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%91%E6%8E%A7%E6%96%B9%E6%B3%95"><span class="nav-number">8.1.</span> <span class="nav-text">监控方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E6%B3%A8%E5%86%8C%E7%89%B9%E6%80%A7"><span class="nav-number">8.2.</span> <span class="nav-text">动态注册特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E5%A4%8D%E4%BD%BF%E7%94%A8%E8%AE%A1%E6%95%B0%E5%99%A8"><span class="nav-number">8.3.</span> <span class="nav-text">重复使用计数器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%8F%E5%B0%91%E8%AE%A1%E6%95%B0%E5%99%A8%EF%BC%88%E5%8A%A8%E6%80%81%E9%94%80%E6%88%B7%EF%BC%89"><span class="nav-number">8.4.</span> <span class="nav-text">减少计数器（动态销户）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%BA%E4%B8%BA%E6%8E%A7%E5%88%B6Phase%E7%9A%84%E7%BB%88%E7%BB%93%EF%BC%9AonAdvance"><span class="nav-number">8.5.</span> <span class="nav-text">人为控制Phase的终结：onAdvance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%B0%E8%BE%BE%E4%B9%8B%E5%90%8E%EF%BC%8C%E4%B8%8D%E9%98%BB%E5%A1%9E%E7%AD%89%E5%BE%85%EF%BC%9Aarrive"><span class="nav-number">8.6.</span> <span class="nav-text">到达之后，不阻塞等待：arrive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%85%E5%AE%8C%E6%88%90%E7%9B%91%E6%8E%A7%E4%BB%BB%E5%8A%A1%EF%BC%9AawaitAdvance"><span class="nav-number">8.7.</span> <span class="nav-text">仅完成监控任务：awaitAdvance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%93%E6%96%AD-%E8%B6%85%E6%97%B6-%E7%BB%88%E6%AD%A2%EF%BC%9AawaitAdvanceInterruptibly"><span class="nav-number">8.8.</span> <span class="nav-text">打断&#x2F;超时 终止：awaitAdvanceInterruptibly</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%BA%E5%88%B6%E9%94%80%E6%AF%81%EF%BC%9AforceTermination"><span class="nav-number">8.9.</span> <span class="nav-text">强制销毁：forceTermination</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">9.</span> <span class="nav-text">Executor框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ExecutorService%E6%8E%A5%E5%8F%A3"><span class="nav-number">9.1.</span> <span class="nav-text">ExecutorService接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ExecutorService-%E7%BB%A7%E6%89%BF%E6%A0%91"><span class="nav-number">9.1.1.</span> <span class="nav-text">ExecutorService 继承树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ExecutorService%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="nav-number">9.1.2.</span> <span class="nav-text">ExecutorService的创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ExecutorService%E7%9A%84%E6%89%A7%E8%A1%8C"><span class="nav-number">9.1.3.</span> <span class="nav-text">ExecutorService的执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ExecutorService%E7%9A%84%E5%85%B3%E9%97%AD"><span class="nav-number">9.1.4.</span> <span class="nav-text">ExecutorService的关闭</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Executors%E5%B7%A5%E5%85%B7"><span class="nav-number">9.2.</span> <span class="nav-text">Executors工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ThreadPoolExecutor"><span class="nav-number">9.3.</span> <span class="nav-text">ThreadPoolExecutor</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E4%B8%AA%E5%86%85%E7%BD%AE%E6%8B%92%E7%BB%9D%E7%AD%96%E7%95%A5"><span class="nav-number">9.3.1.</span> <span class="nav-text">四个内置拒绝策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89ThreadFactory"><span class="nav-number">9.3.2.</span> <span class="nav-text">自定义ThreadFactory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%81%E8%AE%B8%E5%9B%9E%E6%94%B6%E6%89%A7%E8%A1%8C%E7%BA%BF%E7%A8%8B%EF%BC%9AallowCoreThreadTimeOut"><span class="nav-number">9.3.3.</span> <span class="nav-text">允许回收执行线程：allowCoreThreadTimeOut</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E4%BB%BB%E5%8A%A1%EF%BC%9Aremove"><span class="nav-number">9.3.4.</span> <span class="nav-text">删除任务：remove</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prestartCoreThread-%EF%BC%9A-%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AA%E6%89%A7%E8%A1%8C%E7%BA%BF%E7%A8%8B"><span class="nav-number">9.3.5.</span> <span class="nav-text">prestartCoreThread ： 启动一个执行线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prestartAllCoreThreads%EF%BC%9A%E5%90%AF%E5%8A%A8%E6%89%80%E6%9C%89%E6%89%A7%E8%A1%8C%E7%BA%BF%E7%A8%8B"><span class="nav-number">9.3.6.</span> <span class="nav-text">prestartAllCoreThreads：启动所有执行线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#beforeExecute-afterExecute"><span class="nav-number">9.3.7.</span> <span class="nav-text">beforeExecute&#x2F;afterExecute</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Future%E4%B8%8EFutureTask"><span class="nav-number">9.4.</span> <span class="nav-text">Future与FutureTask</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Future-%E6%8E%A5%E5%8F%A3"><span class="nav-number">9.4.1.</span> <span class="nav-text">Future 接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FutureTask%E7%B1%BB"><span class="nav-number">9.4.2.</span> <span class="nav-text">FutureTask类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CompletionService%E6%8E%A5%E5%8F%A3"><span class="nav-number">9.5.</span> <span class="nav-text">CompletionService接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ScheduledExecutorService"><span class="nav-number">9.6.</span> <span class="nav-text">ScheduledExecutorService</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">10.</span> <span class="nav-text">CompletableFuture</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="nav-number">10.0.1.</span> <span class="nav-text">创建对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#runAsync"><span class="nav-number">10.0.1.1.</span> <span class="nav-text">runAsync</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#supplyAsync"><span class="nav-number">10.0.1.2.</span> <span class="nav-text">supplyAsync</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C%E5%A4%84%E7%90%86"><span class="nav-number">10.0.2.</span> <span class="nav-text">结果处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#whenComplete"><span class="nav-number">10.0.2.1.</span> <span class="nav-text">whenComplete</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exceptionally"><span class="nav-number">10.0.2.2.</span> <span class="nav-text">exceptionally</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#handle"><span class="nav-number">10.0.2.3.</span> <span class="nav-text">handle</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C%E8%BD%AC%E6%8D%A2%EF%BC%88Function%EF%BC%89"><span class="nav-number">10.0.3.</span> <span class="nav-text">结果转换（Function）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#thenApply"><span class="nav-number">10.0.3.1.</span> <span class="nav-text">thenApply</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#thenCompose"><span class="nav-number">10.0.3.2.</span> <span class="nav-text">thenCompose</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C%E6%B6%88%E8%B4%B9%EF%BC%88Consumer%EF%BC%89"><span class="nav-number">10.0.4.</span> <span class="nav-text">结果消费（Consumer）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#thenAccept"><span class="nav-number">10.0.4.1.</span> <span class="nav-text">thenAccept</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#thenAcceptBoth"><span class="nav-number">10.0.4.2.</span> <span class="nav-text">thenAcceptBoth</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#thenRun"><span class="nav-number">10.0.4.3.</span> <span class="nav-text">thenRun</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C%E7%BB%84%E5%90%88"><span class="nav-number">10.0.5.</span> <span class="nav-text">结果组合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#thenCombine"><span class="nav-number">10.0.5.1.</span> <span class="nav-text">thenCombine</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A1%E4%BA%A4%E4%BA%92"><span class="nav-number">10.0.6.</span> <span class="nav-text">任务交互</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#applyToEither%EF%BC%88%E8%BD%AC%E6%8D%A2%EF%BC%89"><span class="nav-number">10.0.6.1.</span> <span class="nav-text">applyToEither（转换）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#acceptEither%EF%BC%88%E6%B6%88%E8%B4%B9%EF%BC%89"><span class="nav-number">10.0.6.2.</span> <span class="nav-text">acceptEither（消费）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#runAfterEither"><span class="nav-number">10.0.6.3.</span> <span class="nav-text">runAfterEither</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#runAfterBoth"><span class="nav-number">10.0.6.4.</span> <span class="nav-text">runAfterBoth</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#anyOf"><span class="nav-number">10.0.6.5.</span> <span class="nav-text">anyOf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#allOf"><span class="nav-number">10.0.6.6.</span> <span class="nav-text">allOf</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CompletableFuture%EF%BC%9A%E5%85%B6%E4%BB%96"><span class="nav-number">10.0.7.</span> <span class="nav-text">CompletableFuture：其他</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#getNow%EF%BC%9A%E6%8F%90%E4%BA%A4%E4%BB%BB%E5%8A%A1%E7%BB%A7%E7%BB%AD%E8%BF%90%E8%A1%8C"><span class="nav-number">10.0.7.1.</span> <span class="nav-text">getNow：提交任务继续运行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#complete%EF%BC%9A%E6%8F%90%E4%BA%A4%E4%BB%BB%E5%8A%A1%E4%B8%8D%E4%BC%9A%E7%BB%A7%E7%BB%AD%E8%BF%90%E8%A1%8C"><span class="nav-number">10.0.7.2.</span> <span class="nav-text">complete：提交任务不会继续运行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#completeExceptionally"><span class="nav-number">10.0.7.3.</span> <span class="nav-text">completeExceptionally</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">11.</span> <span class="nav-text">并发集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BlockingQueue%E9%9B%86%E5%90%88%E7%B1%BB%E5%85%B3%E7%B3%BB%E5%9B%BE"><span class="nav-number">11.1.</span> <span class="nav-text">BlockingQueue集合类关系图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BlockingQueue%E7%9A%847%E4%B8%AA%E5%AD%90%E7%B1%BB"><span class="nav-number">11.2.</span> <span class="nav-text">BlockingQueue的7个子类</span></a></li></ol></li></ol></div>
         </div>
-    </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Alisa</p>
+  <div class="site-description" itemprop="description">学习笔记、工作心得</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">91</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
 </div>
 
-
-
-
-<main class="post-container content">
+        </div>
+      </div>
+    </div>
 
     
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-<style>
-    #articleContent h1::before,
-    #articleContent h2::before,
-    #articleContent h3::before,
-    #articleContent h4::before,
-    #articleContent h5::before,
-    #articleContent h6::before {
-        display: block;
-        content: " ";
-        height: 100px;
-        margin-top: -100px;
-        visibility: hidden;
-    }
+  </aside>
 
-    #articleContent :focus {
-        outline: none;
-    }
 
-    .toc-fixed {
-        position: fixed;
-        top: 64px;
-    }
+    </div>
 
-    .toc-widget {
-        width: 345px;
-        padding-left: 20px;
-    }
+    <div class="main-inner post posts-expand">
 
-    .toc-widget .toc-title {
-        padding: 35px 0 15px 17px;
-        font-size: 1.5rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
 
-    .toc-widget ol {
-        padding: 0;
-        list-style: none;
-    }
+  
 
-    #toc-content {
-        padding-bottom: 30px;
-        overflow: auto;
-    }
 
-    #toc-content ol {
-        padding-left: 10px;
-    }
+<div class="post-block">
+  
+  
 
-    #toc-content ol li {
-        padding-left: 10px;
-    }
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/20221101/3c508c34.html">
 
-    #toc-content .toc-link:hover {
-        color: #42b983;
-        font-weight: 700;
-        text-decoration: underline;
-    }
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Alisa">
+    </span>
 
-    #toc-content .toc-link::before {
-        background-color: transparent;
-        max-height: 25px;
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alisa's Home">
+      <meta itemprop="description" content="学习笔记、工作心得">
+    </span>
 
-        position: absolute;
-        right: 23.5vw;
-        display: block;
-    }
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java并发包 | Alisa's Home">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java并发包
+        </h1>
 
-    #toc-content .is-active-link {
-        color: #42b983;
-    }
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
 
-    #floating-toc-btn {
-        position: fixed;
-        right: 15px;
-        bottom: 76px;
-        padding-top: 15px;
-        margin-bottom: 0;
-        z-index: 998;
-    }
+      <time title="创建时间：2022-11-01 06:52:00" itemprop="dateCreated datePublished" datetime="2022-11-01T06:52:00+08:00">2022-11-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-03-17 14:52:48" itemprop="dateModified" datetime="2023-03-17T14:52:48+08:00">2023-03-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+        </span>
+    </span>
 
-    #floating-toc-btn .btn-floating {
-        width: 48px;
-        height: 48px;
-    }
+  
+</div>
 
-    #floating-toc-btn .btn-floating i {
-        line-height: 48px;
-        font-size: 1.4rem;
-    }
-</style>
-<div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
-<div id="artDetail">
-    <div class="card">
-        <div class="card-content article-info">
-            <div class="row tag-cate">
-                <div class="col s7">
-                    
-                    <div class="article-tag">
-                        
-                            <a href="/tags/Java/">
-                                <span class="chip bg-color">Java</span>
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-                <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
-                                后端
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-
-            <div class="post-info">
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-11-01
-                </div>
-                
-
-                
-
-                
-
-                
-
-                
-            </div>
         </div>
-        <hr class="clearfix">
+      </header>
 
-        
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.css">
-        
-
-        
-
-        <div class="card-content article-card-content">
-            <div id="articleContent">
-                <h1>Atomic包</h1>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1>Atomic包</h1>
 <h2 id="CAS-Compare-And-Swap-：比较并交换">CAS(Compare And Swap)：比较并交换</h2>
 <p><code>CAS</code>即<code>Compare And Swap</code>的缩写，翻译成中文就是<strong>比较并交换</strong>，其作用是让CPU比较内存中某个值是否和预期的值相同，如果相同则将这个值更新为新值，不相同则不做更新，也就是CAS是<strong>原子性</strong>的操作(读和写两者同时具有原子性)，其实现方式是通过借助<code>C/C++</code>调用CPU指令完成的，所以效率很高。(使用的是最快失败策略)<br>
 <code>CAS</code>的原理很简单，这里使用一段<code>Java</code>代码来描述</p>
@@ -4537,526 +4405,86 @@ private static final int TIMED = 3; // for timed poll, tryTransfer<span aria-hid
 </li>
 </ul>
 
-                
-            </div>
-            <hr/>
-
-            
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">Alisa</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="https://hmxyl.github.io/20221101/3c508c34.html">https://hmxyl.github.io/20221101/3c508c34.html</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">Alisa</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
-
-
-
-            <div class="tag_share" style="display: block;">
-                <div class="post-meta__tag-list" style="display: inline-block;">
-                    
-                        <div class="article-tag">
-                            
-                                <a href="/tags/Java/">
-                                    <span class="chip bg-color">Java</span>
-                                </a>
-                            
-                        </div>
-                    
-                </div>
-                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-<div id="article-share">
-
-    
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
-    
-
-    
-
-</div>
-
-                </div>
-            </div>
-            
-        </div>
     </div>
 
     
-
+    
     
 
-    
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
 
-    
-
-    
-
-    
-
-    
-
-    
-
-<article id="prenext-posts" class="prev-next articles">
-    <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
-            <div class="card">
-                <a href="/20221102/574fe2f4.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Redis-持久化">
-                        
-                        <span class="card-title">Redis-持久化</span>
-                    </div>
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/20221101/8c062783.html" rel="prev" title="多线程设计模式">
+                  <i class="fa fa-chevron-left"></i> 多线程设计模式
                 </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Redis-持久化
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-11-02
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                    数据库
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Redis/">
-                        <span class="chip bg-color">Redis</span>
-                    </a>
-                    
-                </div>
-                
             </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/20221101/53471b9a.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="多线程基础">
-                        
-                        <span class="card-title">多线程基础</span>
-                    </div>
+            <div class="post-nav-item">
+                <a href="/20221101/53471b9a.html" rel="next" title="多线程基础">
+                  多线程基础 <i class="fa fa-chevron-right"></i>
                 </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            多线程基础
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-01
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
-                                    后端
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
-                    </a>
-                    
-                </div>
-                
             </div>
-        </div>
-        
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-apple"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Alisa</span>
+</div>
+
     </div>
-</article>
+  </footer>
 
-</div>
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
 
-
-
-<!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
-
-<!-- 代码语言 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
-
-
-<!-- 代码块复制 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
 
-<!-- 代码块收缩 -->
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-
-
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget card" style="background-color: white;">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
-</div>
-
-<!-- TOC 悬浮按钮. -->
-
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
-    </a>
-</div>
-
-
-<script src="/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('5'),
-            headingSelector: 'h1, h2, h3, h4'
-        });
-
-        // modify the toc link href to support Chinese.
-        let i = 0;
-        let tocHeading = 'toc-heading-';
-        $('#toc-content a').each(function () {
-            $(this).attr('href', '#' + tocHeading + (++i));
-        });
-
-        // modify the heading title id to support Chinese.
-        i = 0;
-        $('#articleContent').children('h1, h2, h3, h4').each(function () {
-            $(this).attr('id', tocHeading + (++i));
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
-</script>
-
-    
-
-</main>
-
-
-
-
-    <footer class="page-footer bg-color">
-    
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
-        <div class="col s12 m8 l8 copy-right">
-            Copyright&nbsp;&copy;
-            
-                <span id="year">2023-2024</span>
-            
-            <span id="year">2023</span>
-            <a href="/about" target="_blank">Alisa</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
-            <br>
-            
-            
-            
-            
-            
-            <br>
-            
-            <br>
-            
-        </div>
-        <div class="col s12 m4 l4 social-link ">
-
-
-    <a href="mailto:hmxyldh@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 
 
 
+  
 
 
 
 
-
-
-
-
-</div>
-    </div>
-</footer>
-
-<div class="progress-bar"></div>
-
-
-    <!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
-
-<script type="text/javascript">
-$(function () {
-    var searchFunc = function (path, search_id, content_id) {
-        'use strict';
-        $.ajax({
-            url: path,
-            dataType: "xml",
-            success: function (xmlResponse) {
-                // get the contents from search data
-                var datas = $("entry", xmlResponse).map(function () {
-                    return {
-                        title: $("title", this).text(),
-                        content: $("content", this).text(),
-                        url: $("url", this).text()
-                    };
-                }).get();
-                var $input = document.getElementById(search_id);
-                var $resultContent = document.getElementById(content_id);
-                $input.addEventListener('input', function () {
-                    var str = '<ul class=\"search-result-list\">';
-                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                    $resultContent.innerHTML = "";
-                    if (this.value.trim().length <= 0) {
-                        return;
-                    }
-                    // perform local searching
-                    datas.forEach(function (data) {
-                        var isMatch = true;
-                        var data_title = data.title.trim().toLowerCase();
-                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                        var data_url = data.url;
-                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
-                        var index_title = -1;
-                        var index_content = -1;
-                        var first_occur = -1;
-                        // only match artiles with not empty titles and contents
-                        if (data_title !== '' && data_content !== '') {
-                            keywords.forEach(function (keyword, i) {
-                                index_title = data_title.indexOf(keyword);
-                                index_content = data_content.indexOf(keyword);
-                                if (index_title < 0 && index_content < 0) {
-                                    isMatch = false;
-                                } else {
-                                    if (index_content < 0) {
-                                        index_content = 0;
-                                    }
-                                    if (i === 0) {
-                                        first_occur = index_content;
-                                    }
-                                }
-                            });
-                        }
-                        // show search results
-                        if (isMatch) {
-                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                            var content = data.content.trim().replace(/<[^>]+>/g, "");
-                            if (first_occur >= 0) {
-                                // cut out 100 characters
-                                var start = first_occur - 20;
-                                var end = first_occur + 80;
-                                if (start < 0) {
-                                    start = 0;
-                                }
-                                if (start === 0) {
-                                    end = 100;
-                                }
-                                if (end > content.length) {
-                                    end = content.length;
-                                }
-                                var match_content = content.substr(start, end);
-                                // highlight all keywords
-                                keywords.forEach(function (keyword) {
-                                    var regS = new RegExp(keyword, "gi");
-                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
-                                });
-
-                                str += "<p class=\"search-result\">" + match_content + "...</p>"
-                            }
-                            str += "</li>";
-                        }
-                    });
-                    str += "</ul>";
-                    $resultContent.innerHTML = str;
-                });
-            }
-        });
-    };
-
-    searchFunc('/search.xml', 'searchInput', 'searchResult');
-});
-</script>
-
-    <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
-
-
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
-
-    <!-- Baidu Analytics -->
-
-    <!-- Baidu Push -->
-
-    
-    
-
-    
-
-    
-
-	
-    
-
-    
-
-    
-
-    
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
 
 </body>
-
 </html>
