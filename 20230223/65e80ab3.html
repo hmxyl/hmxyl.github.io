@@ -28,10 +28,9 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230315103150697.png">
 <meta property="article:published_time" content="2023-02-23T11:52:44.000Z">
-<meta property="article:modified_time" content="2023-05-22T03:13:26.492Z">
+<meta property="article:modified_time" content="2024-09-29T11:19:28.704Z">
 <meta property="article:author" content="Alisa">
-<meta property="article:tag" content="点滴">
-<meta property="article:tag" content="Java">
+<meta property="article:tag" content="日常记录">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230315103150697.png">
 
@@ -146,7 +145,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">response.sendRedirect丢失请求地址的HTTPS协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">JUnit测试提示Java.lang.Exception: No runnable methods</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">jquery – 在SPAN元素上禁用设置属性不会阻止点击事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">3.0.1.</span> <span class="nav-text">解决方法</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">response.sendRedirect丢失请求地址的HTTPS协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">JUnit测试提示Java.lang.Exception: No runnable methods</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -159,18 +158,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">91</span>
+          <span class="site-state-item-count">92</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -233,7 +232,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-05-22 11:13:26" itemprop="dateModified" datetime="2023-05-22T11:13:26+08:00">2023-05-22</time>
+      <time title="修改时间：2024-09-29 19:19:28" itemprop="dateModified" datetime="2024-09-29T19:19:28+08:00">2024-09-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -241,7 +240,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+          <a href="/categories/%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">日常记录</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%95/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
         </span>
     </span>
 
@@ -288,14 +291,6 @@ response<span class="token punctuation">.</span><span class="token function">set
 <p>@Test导入的包错了，spring-test 需要的Junit是org.junit.Test，但是在@Test有两个包，另一个是org.junit.jupiter.api.Test，</p>
 </li>
 </ul>
-<h1>jquery – 在SPAN元素上禁用设置属性不会阻止点击事件</h1>
-<p>来源：<a target="_blank" rel="noopener" href="https://www.jb51.cc/jquery/182333.html">https://www.jb51.cc/jquery/182333.html</a></p>
-<p>一个SPAN元素，在点击事件上做某事。当我禁用它，使用jQuery：<code>$(“span”).attr(“disabled”，true)</code> 无效</p>
-<h3 id="解决方法">解决方法</h3>
-<p>尝试这个：</p>
-<pre class="line-numbers language-none"><code class="language-none">$("span").css("pointer-events","none");<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>你可以启用这些</p>
-<pre class="line-numbers language-none"><code class="language-none">$("span").css("pointer-events","auto");<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
     </div>
 
@@ -305,8 +300,7 @@ response<span class="token punctuation">.</span><span class="token function">set
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E7%82%B9%E6%BB%B4/" rel="tag"># 点滴</a>
-              <a href="/tags/Java/" rel="tag"># Java</a>
+              <a href="/tags/%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%95/" rel="tag"># 日常记录</a>
           </div>
 
         
