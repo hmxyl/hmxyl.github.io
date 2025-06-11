@@ -19,33 +19,20 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"hmxyl.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":"ture","preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Windows 查看端口占用   获取占用端口的进程ID  netstat -ano|findstr 10001   获取进程信息 tasklist|findstr 9352   关闭进程（强行关闭） taskkill &#x2F;PID 9140 &#x2F;T &#x2F;F   Windows 设置护眼颜色  豆沙绿 RGB（202，234，206），#CAEACE 淡黄色RGB（253，246，227），#FDF6E3">
+    <meta name="description" content="Windows 查看端口占用   获取占用端口的进程ID  netstat -ano|findstr 10001   获取进程信息 tasklist|findstr 9352   关闭进程（强行关闭） taskkill &#x2F;PID 9140 &#x2F;T &#x2F;F   Windows 删除服务   列出所有服务，确认要删除的服务名称：   sc query state&#x3D; all | find “SERVICE_">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Windows日常使用问题记录">
 <meta property="og:url" content="https://hmxyl.github.io/20230216/d9a8c0d4.html">
 <meta property="og:site_name" content="Alisa&#39;s Home">
-<meta property="og:description" content="Windows 查看端口占用   获取占用端口的进程ID  netstat -ano|findstr 10001   获取进程信息 tasklist|findstr 9352   关闭进程（强行关闭） taskkill &#x2F;PID 9140 &#x2F;T &#x2F;F   Windows 设置护眼颜色  豆沙绿 RGB（202，234，206），#CAEACE 淡黄色RGB（253，246，227），#FDF6E3">
+<meta property="og:description" content="Windows 查看端口占用   获取占用端口的进程ID  netstat -ano|findstr 10001   获取进程信息 tasklist|findstr 9352   关闭进程（强行关闭） taskkill &#x2F;PID 9140 &#x2F;T &#x2F;F   Windows 删除服务   列出所有服务，确认要删除的服务名称：   sc query state&#x3D; all | find “SERVICE_">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211124002345774-1678131778293-28.png">
 <meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211124002408921-1678131778293-30.png">
 <meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/1242201-20191226150203417-575070520.png">
-<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230216100057902.png">
-<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211124112102739-1678132121801-34.png">
-<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211124112849477-1678132121801-36.png">
-<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211124113626250-1678132121801-38.png">
-<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211124113803236-1678132121801-40.png">
-<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211124113911637-1678132121801-44.png">
-<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211124114010436-1678132121801-42.png">
-<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211124114015918-1678132121801-46.png">
-<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211124114021360-1678132121801-48.png">
-<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211124114030488-1678132121801-50.png">
-<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211124114034567-1678132121801-52.png">
-<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211124114043841-1678132121801-54.png">
-<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211124114050299-1678132121801-56.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20250604162326072.png">
 <meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/470d9697342be97e0646a2b0549a0dc2.png">
-<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/9b37439de951fc3fbd6fc3a246010250.png">
 <meta property="article:published_time" content="2023-02-16T02:39:23.000Z">
-<meta property="article:modified_time" content="2025-01-14T08:35:59.111Z">
+<meta property="article:modified_time" content="2025-06-04T08:53:15.140Z">
 <meta property="article:author" content="Alisa">
 <meta property="article:tag" content="日常记录">
 <meta property="article:tag" content="操作系统">
@@ -73,9 +60,9 @@
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
+<link rel="alternate" href="/atom.xml" title="Alisa's Home" type="application/atom+xml">
 
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Alisa's Home" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
@@ -163,7 +150,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Windows 查看端口占用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Windows 设置护眼颜色</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">Windows 命令行命令记录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">Windows将jar注册成windows服务</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDWindows-Service-Wrapper"><span class="nav-number">4.1.</span> <span class="nav-text">下载Windows Service Wrapper</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85windows%E6%9C%8D%E5%8A%A1"><span class="nav-number">4.2.</span> <span class="nav-text">安装windows服务</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">VPN连接报错</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">Windows 开放服务器端口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E9%9D%A2%E6%9D%BF"><span class="nav-number">6.1.</span> <span class="nav-text">控制面板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C"><span class="nav-number">6.2.</span> <span class="nav-text">命令行</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text">Windows快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#win-r-%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="nav-number">7.1.</span> <span class="nav-text">win+r 可执行的命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows%E7%B3%BB%E7%BB%9F%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AE%B0%E5%BD%95"><span class="nav-number">7.2.</span> <span class="nav-text">Windows系统快捷键记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%99%A8%E4%B8%AD%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">7.3.</span> <span class="nav-text">Windows资源管理器中的快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows%E5%BE%BD%E6%A0%87%E9%94%AE%E7%9B%B8%E5%85%B3%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">7.4.</span> <span class="nav-text">Windows徽标键相关的快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-%E7%89%B9%E6%AE%8A%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84"><span class="nav-number">7.5.</span> <span class="nav-text">Windows 特殊文件路径</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">8.</span> <span class="nav-text">windows下powershell执行脚本报错</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Windows 查看端口占用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Windows 删除服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">Windows网络配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E7%BD%AE%E7%BD%91%E7%BB%9C%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.1.</span> <span class="nav-text">重置网络设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEIP"><span class="nav-number">3.2.</span> <span class="nav-text">配置IP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEDNS"><span class="nav-number">3.3.</span> <span class="nav-text">配置DNS</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">Windows 设置护眼颜色</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">Windows 命令行命令记录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">Windows将 jar注册成windows服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text">VPN连接报错</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">8.</span> <span class="nav-text">Windows 开放端口（8080）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%AB%AF%E5%8F%A3"><span class="nav-number">8.1.</span> <span class="nav-text">查看端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%B7%BB%E5%8A%A0"><span class="nav-number">8.2.</span> <span class="nav-text">命令行添加</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E9%9D%A2%E6%9D%BF%E6%B7%BB%E5%8A%A0"><span class="nav-number">8.3.</span> <span class="nav-text">控制面板添加</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-%E7%89%B9%E6%AE%8A%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84"><span class="nav-number">8.4.</span> <span class="nav-text">Windows 特殊文件路径</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">9.</span> <span class="nav-text">PowerShell 执行脚本报错</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -176,18 +163,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">89</span>
+          <span class="site-state-item-count">90</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">44</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -250,7 +237,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-01-14 16:35:59" itemprop="dateModified" datetime="2025-01-14T16:35:59+08:00">2025-01-14</time>
+      <time title="修改时间：2025-06-04 16:53:15" itemprop="dateModified" datetime="2025-06-04T16:53:15+08:00">2025-06-04</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -288,6 +275,66 @@
 <p>关闭进程（强行关闭） <code>taskkill /PID 9140 /T /F</code></p>
 </li>
 </ol>
+<h1>Windows 删除服务</h1>
+<blockquote>
+<ol>
+<li>列出所有服务，确认要删除的服务名称：</li>
+</ol>
+<blockquote>
+<p>sc query state= all | find “SERVICE_NAME”</p>
+</blockquote>
+<ol start="2">
+<li>查看指定服务的详细信息：</li>
+</ol>
+<blockquote>
+<p>sc queryex &lt;服务名&gt;</p>
+</blockquote>
+<ol start="3">
+<li>停止服务</li>
+</ol>
+<blockquote>
+<p>net stop MySQL</p>
+</blockquote>
+<ol start="4">
+<li>删除服务</li>
+</ol>
+<blockquote>
+<p>sc delete MySQL</p>
+</blockquote>
+<ol start="5">
+<li>验证是否已删除</li>
+</ol>
+<blockquote>
+<p>sc query MySQL</p>
+</blockquote>
+</blockquote>
+<h1>Windows网络配置</h1>
+<h2 id="重置网络设置">重置网络设置</h2>
+<blockquote>
+<p>netsh winsock reset</p>
+</blockquote>
+<h2 id="配置IP">配置IP</h2>
+<blockquote>
+<ul>
+<li>查看接口名称：<br>
+netsh interface ip show interface<br>
+netsh interface ip show config</li>
+<li>配置接口地址：<br>
+netsh interface ipv4 set address name=“以太网” static 192.168.10.10 255.255.255.0 192.168.1.1</li>
+<li>配置dhcp自动获取ip<br>
+netsh interface ipv4 set address name=“以太网” source=dhcp</li>
+</ul>
+</blockquote>
+<h2 id="配置DNS">配置DNS</h2>
+<blockquote>
+<ul>
+<li>配置DNS服务器<br>
+netsh interface ipv4 set dnsserver name=“以太网” static 223.5.5.5 index=1<br>
+netsh interface ipv4 set dnsserver name=“以太网” static 223.6.6.6 index=2</li>
+<li>自动获取<br>
+netsh interface ipv4 set dnsserver name=“以太网” source=dhcp</li>
+</ul>
+</blockquote>
 <h1>Windows 设置护眼颜色</h1>
 <blockquote>
 <p>豆沙绿 <code>RGB（202，234，206），#CAEACE</code></p>
@@ -331,11 +378,14 @@
 </tr>
 </tbody>
 </table>
-<h1>Windows将jar注册成windows服务</h1>
-<h2 id="下载Windows-Service-Wrapper">下载Windows Service Wrapper</h2>
-<p>下载地址：<a target="_blank" rel="noopener" href="https://github.com/winsw/winsw/releases">https://github.com/winsw/winsw/releases</a></p>
+<h1>Windows将 jar注册成windows服务</h1>
+<ul>
+<li>下载Windows Service Wrapper ：<a target="_blank" rel="noopener" href="https://github.com/winsw/winsw/releases">https://github.com/winsw/winsw/releases</a></li>
+</ul>
 <p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/1242201-20191226150203417-575070520.png" alt="img"></p>
-<h2 id="安装windows服务">安装windows服务</h2>
+<ul>
+<li>安装windows服务</li>
+</ul>
 <ol>
 <li>
 <p>将java jar包和下载的WinSW.NET4.exe放在同一个文件夹目录下面</p>
@@ -354,25 +404,23 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>arguments</span><span class="token punctuation">&gt;</span></span>-jar C:\Users\tanhw119214\Desktop\MyApp\MyApp.jar<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>arguments</span><span class="token punctuation">&gt;</span></span>
 <span class="token comment">&lt;!-- 开机启动 --&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>startmode</span><span class="token punctuation">&gt;</span></span>Automatic<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>startmode</span><span class="token punctuation">&gt;</span></span>
+<span class="token comment">&lt;!-- 要注册服务的文件的父路径 --&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>logpath</span><span class="token punctuation">&gt;</span></span>C:\Users\tanhw119214\Desktop\MyApp\logs<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>logpath</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>log</span> <span class="token attr-name">mode</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>roll-by-time<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pattern</span><span class="token punctuation">&gt;</span></span>yyyyMMdd<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pattern</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>log</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>C:\Users\tanhw119214\Desktop\MyApp 为你要要注册服务的文件的父路径</p>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li>
 <p>进入根目录下面，执行以下cmd命令，注册服务。</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">MyApp.exe install <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>然后在服务里面就能找到这个实例了</p>
-<pre class="line-numbers language-none"><code class="language-none">启动命令
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#启动命令</span>
 net start MyApp
-
-停止命令
+<span class="token comment">#停止命令</span>
 net stop MyApp
-
-卸载命令
-sc delete MyApp<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">#卸载命令</span>
+sc delete MyApp<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ol>
 <h1>VPN连接报错</h1>
@@ -384,7 +432,7 @@ sc delete MyApp<span aria-hidden="true" class="line-numbers-rows"><span></span><
 <li>
 <p>问题排除</p>
 <p><code>event</code> 打开 <code>事件查看器</code>，获取VPN连接失败错误代码</p>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230216100057902.png" alt="image-20230216100057902"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20250604162326072.png" alt="image-20250604162326072"></p>
 </li>
 <li>
 <p>搜索对应的问题描述：<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/troubleshoot/windows-server/networking/troubleshoot-error-720-when-establishing-a-vpn-connection">尝试建立 VPN 连接时出现“失败后返回的错误代码为 720”</a></p>
@@ -393,205 +441,38 @@ sc delete MyApp<span aria-hidden="true" class="line-numbers-rows"><span></span><
 <p>最终解决方案：重新安装 WAN 微型端口 (IP) 接口驱动程序</p>
 </li>
 </ul>
-<h1>Windows 开放服务器端口</h1>
-<h2 id="控制面板">控制面板</h2>
-<p>win7下打开端口测试端口时 可用telnet 命令侦听端口：<code>C:\Documents and Settings\administrator&gt;netstat -na</code></p>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211124112102739-1678132121801-34.png" alt="image-20211124112102739"></p>
-<p>测试端口是否开放：<br>
-<code>C:\Documents and Settings\administrator&gt;telnet 127.0.0.1 8500</code><br>
-正在连接到127.0.0.1…不能打开到主机的连接， 在端口 8500: 连接失败</p>
-<p>下面开始打开端口（Win7）</p>
-<p>Win7的防火墙做了比较大升级 设置已经分为入站和出站。下面以开通Tomcat的远程访问8080作为例子。<strong>控制面板–所有控制面板项–Windows 防火墙</strong> 进入</p>
+<h1>Windows 开放端口（8080）</h1>
+<h2 id="查看端口">查看端口</h2>
+<blockquote>
+<p>查看端口： <code>&gt;netstat -nao|findstr :8080</code></p>
+<ul>
+<li><strong><code>netstat</code></strong>：网络统计工具（Network Statistics），用于监控网络连接和协议统计</li>
+<li><strong><code>-n</code></strong>：以数字形式显示地址和端口（不解析为主机名或服务名）</li>
+<li><strong><code>-a</code></strong>：显示所有活动的连接和监听的端口（包括 TCP 和 UDP）</li>
+<li>配合 <code>-p</code>（Linux）或 <code>-o</code>（Windows）查看进程 PID</li>
+</ul>
+</blockquote>
+<h2 id="命令行添加">命令行添加</h2>
+<pre class="line-numbers language-bat" data-language="bat"><code class="language-bat"># 管理员运行
+netsh advfirewall firewall add rule name="Tomcat Port 8080" dir=in action=allow protocol=TCP localport=8080
+netsh advfirewall firewall add rule name="Tomcat Port 8080" dir=out action=allow protocol=TCP localport=8080<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="控制面板添加">控制面板添加</h2>
+<p><strong>控制面板 -&gt; 所有控制面板项 -&gt; Windows 防火墙 -&gt; 高级设置</strong> 进入</p>
 <p>入站规则设置<br>
-第一步 选择 入站规则 然后 新建规则，选择 端口，然后下一步<br>
-第二步 选择TCP 选择特定端口 然后输入端口，如有多个端口需要用逗号隔开了 例如:88,8080<br>
-第三步，选择允许连接<br>
+第一步 选择 <strong>入站规则</strong> 然后 新建规则，选择 <strong>端口</strong>，然后下一步<br>
+第二步 选择<strong>TCP</strong> 选择<strong>特定端口</strong> 然后输入端口，如有多个端口需要用逗号隔开了 例如:88,8080<br>
+第三步 选择<strong>允许连接</strong><br>
 第四步 选择应用规则的范围<br>
 第五步 输入规则名称</p>
 <p>出站规则设置<br>
-第一步 选择 入站规则 然后 新建规则，选择 端口，然后下一步<br>
-第二步 选择TCP 选择特定端口 然后输入端口，如有多个端口需要用逗号隔开了 例如:88,8080<br>
-第三步，选择允许连接<br>
-第四步 选择应用规则的范围<br>
-第五步 输入规则名称<br>
-至此，防火墙规则设置完毕，启用即可！<br>
-另外win7的 IIS7，只需启用 入站规则：BranchCache 内容检索(HTTP-In)<br>
-出站规则： BranchCache 内容检索(HTTP-Out) 即可。</p>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211124112849477-1678132121801-36.png" alt="image-20211124112849477"><br>
-<img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211124113626250-1678132121801-38.png" alt="image-20211124113626250"><br>
-<img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211124113803236-1678132121801-40.png" alt="image-20211124113803236"><br>
-<img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211124113911637-1678132121801-44.png" alt="image-20211124113911637"></p>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211124114010436-1678132121801-42.png" alt="image-20211124114010436"></p>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211124114015918-1678132121801-46.png" alt="image-20211124114015918"></p>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211124114021360-1678132121801-48.png" alt="image-20211124114021360"></p>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211124114030488-1678132121801-50.png" alt="image-20211124114030488"></p>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211124114034567-1678132121801-52.png" alt="image-20211124114034567"></p>
-<p>输出规则也一样的设置 可以看到</p>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211124114043841-1678132121801-54.png" alt="image-20211124114043841"></p>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211124114050299-1678132121801-56.png" alt="image-20211124114050299"></p>
-<h2 id="命令行">命令行</h2>
-<pre class="line-numbers language-none"><code class="language-none">win10：netsh advfirewall firewall add rule name="ES Port 9300" dir=in action=allow protocol=TCP localport=9300<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h1>Windows快捷键</h1>
-<h2 id="win-r-可执行的命令">win+r 可执行的命令</h2>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>mstsc</td>
-<td>打开远程连接</td>
-</tr>
-<tr>
-<td>services.msc</td>
-<td>本地服务设置</td>
-</tr>
-<tr>
-<td>calc</td>
-<td>计算器</td>
-</tr>
-<tr>
-<td>dxdiag</td>
-<td>系统配置查看命令</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Windows系统快捷键记录">Windows系统快捷键记录</h2>
-<table>
-<thead>
-<tr>
-<th><strong>快捷键</strong></th>
-<th><strong>说明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Ctrl+Shift+Esc</td>
-<td>打开任务管理器</td>
-</tr>
-<tr>
-<td>Esc</td>
-<td>取消当前任务</td>
-</tr>
-<tr>
-<td>Shift+delete</td>
-<td>永久删除所选的项目（删除之后无法从回收站还原）</td>
-</tr>
-<tr>
-<td>Ctrl+shiff+tab</td>
-<td>在选项卡上向后移动</td>
-</tr>
-<tr>
-<td>Tab</td>
-<td>在选项上向后移动</td>
-</tr>
-<tr>
-<td>Shift+Tab</td>
-<td>在选项卡上向前移动</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Windows资源管理器中的快捷键">Windows资源管理器中的快捷键</h2>
-<table>
-<thead>
-<tr>
-<th><strong>快捷键</strong></th>
-<th><strong>说明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Alt+P</td>
-<td>显示预览窗格</td>
-</tr>
-<tr>
-<td>Alt+←</td>
-<td>切换到前一次打开的文件夹</td>
-</tr>
-<tr>
-<td>Alt+→</td>
-<td>切换到下一次后打开的文件夹</td>
-</tr>
-<tr>
-<td>Alt+↑</td>
-<td>打开上层文件夹</td>
-</tr>
-<tr>
-<td>Backspace</td>
-<td>打开上层文件夹</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Windows徽标键相关的快捷键">Windows徽标键相关的快捷键</h2>
-<table>
-<thead>
-<tr>
-<th><strong>快捷键</strong></th>
-<th><strong>说明</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Win</td>
-<td>打开或者关闭开始菜单</td>
-</tr>
-<tr>
-<td>Win+Pause</td>
-<td>显示系统属性对话框</td>
-</tr>
-<tr>
-<td>Win+d</td>
-<td>显示桌面</td>
-</tr>
-<tr>
-<td>Win+m</td>
-<td>最小化所有窗口</td>
-</tr>
-<tr>
-<td>Win+Shift+m</td>
-<td>还原最小化窗口到桌面上</td>
-</tr>
-<tr>
-<td>Win+E</td>
-<td>打开我的电脑</td>
-</tr>
-<tr>
-<td>Win+F</td>
-<td>搜索文件或文件夹</td>
-</tr>
-<tr>
-<td>Win+L</td>
-<td>锁定您的计算机或切换用户</td>
-</tr>
-<tr>
-<td>Win+R</td>
-<td>打开运行对话框</td>
-</tr>
-<tr>
-<td>Win+↓</td>
-<td>最小化窗口</td>
-</tr>
-<tr>
-<td>Win+↑</td>
-<td>最大化当前窗口</td>
-</tr>
-<tr>
-<td>Win+←</td>
-<td>最大化到窗口左侧的屏幕上</td>
-</tr>
-<tr>
-<td>Win+→</td>
-<td>最大化到窗口右侧的屏幕上</td>
-</tr>
-<tr>
-<td>Win+home</td>
-<td>最小化所有窗口，除了当前激活窗口</td>
-</tr>
-</tbody>
-</table>
+第一步 选择 <strong>出站规则</strong> 然后 <strong>新建规则</strong>，选择 端口，然后下一步<br>
+第二步 选择<strong>TCP</strong> 选择<strong>特定端口</strong> 然后输入端口，如有多个端口需要用逗号隔开了 例如:88,8080<br>
+第三步 选择<strong>允许连接</strong><br>
+第四步 选择<strong>应用规则</strong>的范围<br>
+第五步 输出规则名称</p>
+<blockquote>
+<p>另外win7的 IIS7，只需启用 入站规则：BranchCache 内容检索(HTTP-In)。出站规则： BranchCache 内容检索(HTTP-Out) 即可。</p>
+</blockquote>
 <h2 id="Windows-特殊文件路径">Windows 特殊文件路径</h2>
 <table>
 <thead>
@@ -623,28 +504,54 @@ sc delete MyApp<span aria-hidden="true" class="line-numbers-rows"><span></span><
 </tr>
 </tbody>
 </table>
-<h1>windows下powershell执行脚本报错</h1>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45228198/article/details/122677084">https://blog.csdn.net/weixin_45228198/article/details/122677084</a></p>
-<p>window power shell 禁止运行脚本</p>
+<h1>PowerShell 执行脚本报错</h1>
+<p>window power shell 错误提示：因为在此系统上禁止运行脚本</p>
 <img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/470d9697342be97e0646a2b0549a0dc2.png" alt="在这里插入图片描述" style="zoom:67%;"> 
-<p>vscode命令行 禁止运行脚本</p>
-<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/9b37439de951fc3fbd6fc3a246010250.png" alt="在这里插入图片描述"></p>
 <blockquote>
-<p>解决方案<br>
-windows系统中== PowerShell 执行策略==的问题。解决：</p>
-<p>电脑左下角搜索<code>windows powershell</code> , 以管理员身份运行。输入<code>get-ExecutionPolicy</code>， 回车</p>
+<p>电脑左下角搜索<code>windows powershell</code> , 以<strong>管理员身份</strong>运行。输入<code>get-ExecutionPolicy</code>， 回车</p>
 <p>显示<code>Restricted</code>，表示受限制的，执行脚本受限。输入<code>set-ExecutionPolicy</code>， 回车，然后输入：<code>RemoteSigned</code>， 即下载的脚本执行时才需要签名</p>
 <p>确认操作，输入Y</p>
-<p>搞定！！</p>
 </blockquote>
 <p>Windows给powershell设定一个叫“执行策略”的东西。为了避免一些恶意脚本直接运行，一般家用的windows系统默认将执行策略设置成了“Restricted”，即受限制的。</p>
 <p>所有的执行策略如下所示:</p>
-<p>AllSigned. 要求所有脚本和配置文件均需受信任的发布者签名，包括在本地计算机上编写的脚本。（安全但是本地编写的脚本也要签名，麻烦）<br>
-Bypass. 不会阻止你运行任何脚本，也没有提示和警告。（不安全）<br>
-Default. 默认的执行策略，普通桌面Windows默认Restricted，服务器windows默认RemoteSigned。<br>
-RemoteSigned. 要求从互联网上下载的所有脚本和配置文件均需要受信任的发布者签名，本地脚本则不需要签名。是Windows服务器的默认执行策略。（较为安全）<br>
-Restricted. 无法加载配置文件或运行脚本。桌面Windows的默认执行策略。(安全，但无法运行脚本)<br>
-Unrestricted 为允许所有的脚本运行</p>
+<table>
+<thead>
+<tr>
+<th>策略</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AllSigned</td>
+<td>要求所有脚本和配置文件均需受信任的发布者签名，包括在本地计算机上编写的脚本。（安全但是本地编写的脚本也要签名，麻烦）</td>
+</tr>
+<tr>
+<td>Bypass</td>
+<td>不会阻止你运行任何脚本，也没有提示和警告。（不安全）</td>
+</tr>
+<tr>
+<td>Default</td>
+<td>默认的执行策略，普通桌面Windows默认Restricted，服务器windows默认RemoteSigned</td>
+</tr>
+<tr>
+<td>RemoteSigned</td>
+<td>要求从互联网上下载的所有脚本和配置文件均需要受信任的发布者签名，本地脚本则不需要签名。是Windows服务器的默认执行策略。（较为安全）</td>
+</tr>
+<tr>
+<td>Restricted</td>
+<td>无法加载配置文件或运行脚本。桌面Windows的默认执行策略。(安全，但无法运行脚本)</td>
+</tr>
+<tr>
+<td>Unrestricted</td>
+<td>为允许所有的脚本运行</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
     </div>
 

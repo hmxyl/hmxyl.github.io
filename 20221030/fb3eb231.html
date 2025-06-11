@@ -27,7 +27,7 @@
 <meta property="og:description" content="Linux查看Tomcat服务  查看Tomcat的PID： ps aux|grep tomcat 查看线程 ： ps -T -p 需要查看的PID  提高打开文件限制量   解除 Linux 系统的最大进程数和最大文件打开数限制  vi &#x2F;etc&#x2F;security&#x2F;limits.conf  # 添加如下的行 # 说明：* 代表针对所有用户 noproc 是代表最大进程数 nofile 是代表最大">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-30T07:39:23.000Z">
-<meta property="article:modified_time" content="2024-09-30T03:33:55.991Z">
+<meta property="article:modified_time" content="2025-06-05T08:32:37.048Z">
 <meta property="article:author" content="Alisa">
 <meta property="article:tag" content="日常记录">
 <meta property="article:tag" content="操作系统">
@@ -54,9 +54,9 @@
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
+<link rel="alternate" href="/atom.xml" title="Alisa's Home" type="application/atom+xml">
 
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Alisa's Home" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
@@ -144,7 +144,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Linux查看Tomcat服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">提高打开文件限制量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">虚拟机之间，SSH免密连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">非root权限启用80端口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">Linux系统增加zysong字体</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Linux查看Tomcat服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">提高打开文件限制量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">虚拟机之间，SSH免密连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">非root权限启用80端口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">Linux系统增加zysong字体</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">生成密钥</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -157,18 +157,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">89</span>
+          <span class="site-state-item-count">90</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">44</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -231,7 +231,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-09-30 11:33:55" itemprop="dateModified" datetime="2024-09-30T11:33:55+08:00">2024-09-30</time>
+      <time title="修改时间：2025-06-05 16:32:37" itemprop="dateModified" datetime="2025-06-05T16:32:37+08:00">2025-06-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -341,6 +341,17 @@ java.net.BindException: Permission denied &lt;null&gt;:80<span aria-hidden="true
 <li>在<code>%JavaHome%/jre/lib</code>目录下,执行<code> cp fontconfig.RedHat.3.properties.src fontconfig.properties</code></li>
 <li>重新启动<code>tomcat</code>（resin等web容器）,现在再看看，中文显示正常了</li>
 </ol>
+<h1>生成密钥</h1>
+<blockquote>
+<p>至少 32 个字符（推荐 64 位）</p>
+<ul>
+<li>
+<pre><code>openssl rand -base64 32  # 生成 32 字节随机字符串
+</code></pre>
+</li>
+<li></li>
+</ul>
+</blockquote>
 
     </div>
 
@@ -358,13 +369,13 @@ java.net.BindException: Permission denied &lt;null&gt;:80<span aria-hidden="true
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/20221030/294d5c08.html" rel="prev" title="验证码图片无法显示">
-                  <i class="fa fa-chevron-left"></i> 验证码图片无法显示
+                <a href="/20221030/b9528813.html" rel="prev" title="Linux系统命令">
+                  <i class="fa fa-chevron-left"></i> Linux系统命令
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/20221030/673ec6c6.html" rel="next" title="给Tomcat配置外部资源路径">
-                  给Tomcat配置外部资源路径 <i class="fa fa-chevron-right"></i>
+                <a href="/20221030/e26546c7.html" rel="next" title="Linux防火墙">
+                  Linux防火墙 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
