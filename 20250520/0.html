@@ -1,385 +1,2289 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-
-<script class="next-config" data-name="main" type="application/json">{"hostname":"hmxyl.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":"ture","preload":false}}</script><script src="/js/config.js"></script>
-
-    <meta name="description" content="WSL Ubuntu 系统迁移到其他位置的完整指南 3. 修改 WSL 默认版本（WSL1 或 WSL2） wsl --set-default-version 2  # 设置新安装的发行版默认用 WSL2 wsl --set-version &lt;发行版名称&gt; 2  # 将现有发行版转换为 WSL2 方法一：使用 wsl --export 和 wsl --import (推荐) 1. 查看">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Alisa&#39;s Home">
-<meta property="og:url" content="https://hmxyl.github.io/20250520/0.html">
+  <meta charset="utf-8">
+  <title>Alisa&#39;s Home</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="Alisa&#39;s Home">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="Oops～，我崩溃了！找不到你想要的页面 :(">
+<meta property="og:type" content="website">
+<meta property="og:title" content="404">
+<meta property="og:url" content="https://hmxyl.github.io/404/index.html">
 <meta property="og:site_name" content="Alisa&#39;s Home">
-<meta property="og:description" content="WSL Ubuntu 系统迁移到其他位置的完整指南 3. 修改 WSL 默认版本（WSL1 或 WSL2） wsl --set-default-version 2  # 设置新安装的发行版默认用 WSL2 wsl --set-version &lt;发行版名称&gt; 2  # 将现有发行版转换为 WSL2 方法一：使用 wsl --export 和 wsl --import (推荐) 1. 查看">
+<meta property="og:description" content="Oops～，我崩溃了！找不到你想要的页面 :(">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-05-20T07:34:49.000Z">
-<meta property="article:modified_time" content="2025-06-11T07:04:05.625Z">
+<meta property="article:published_time" content="2023-03-16T09:39:22.000Z">
+<meta property="article:modified_time" content="2023-03-17T02:46:08.000Z">
 <meta property="article:author" content="Alisa">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://hmxyl.github.io/20250520/0.html">
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hmxyl.github.io/20250520/0.html","path":"20250520/0.html","title":""}</script>
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
 
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title> | Alisa's Home</title>
-  
+<script src="/js/iconfont.js?v=1.1.0" ></script>
 
-
-
-
-
-
-
-
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-
+<meta name="generator" content="Hexo 7.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Alisa's Home" type="application/atom+xml">
 </head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <div class="column">
-      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <p class="site-title">Alisa's Home</p>
-      <i class="logo-line"></i>
-    </a>
-      <p class="site-subtitle" itemprop="description">Alisa's Home</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="搜索" role="button">
-        <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
 </div>
 
 
 
-<nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
-      </li>
-  </ul>
-</nav>
-
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup"><div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" maxlength="80"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close" role="button">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div class="search-result-container no-result">
-  <div class="search-result-icon">
-    <i class="fa fa-spinner fa-pulse fa-5x"></i>
-  </div>
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>Alisa</span>
 </div>
 
-    </div>
-  </div>
-
-</header>
+<div class="icon">
+    
         
-  
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">WSL Ubuntu 系统迁移到其他位置的完整指南</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E4%BF%AE%E6%94%B9-WSL-%E9%BB%98%E8%AE%A4%E7%89%88%E6%9C%AC%EF%BC%88WSL1-%E6%88%96-WSL2%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">3. 修改 WSL 默认版本（WSL1 或 WSL2）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E4%BD%BF%E7%94%A8-wsl-export-%E5%92%8C-wsl-import-%E6%8E%A8%E8%8D%90"><span class="nav-number">1.2.</span> <span class="nav-text">方法一：使用 wsl --export 和 wsl --import (推荐)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E5%AE%89%E8%A3%85%E7%9A%84-WSL-%E5%8F%91%E8%A1%8C%E7%89%88"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 查看当前安装的 WSL 发行版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%AF%BC%E5%87%BA%E5%BD%93%E5%89%8D%E7%B3%BB%E7%BB%9F%E5%88%B0-tar-%E6%96%87%E4%BB%B6"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. 导出当前系统到 tar 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%B3%A8%E9%94%80%E5%8E%9F%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. 注销原系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%AF%BC%E5%85%A5%E5%88%B0%E6%96%B0%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.2.4.</span> <span class="nav-text">4. 导入到新位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E7%94%A8%E6%88%B7"><span class="nav-number">1.2.5.</span> <span class="nav-text">5. 设置默认用户</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E5%8F%91%E8%A1%8C%E7%89%88"><span class="nav-number">1.3.</span> <span class="nav-text">6. 修改默认发行版</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">在 WSL 中开放 22 端口 (SSH 服务) 的完整指南</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E5%9C%A8-WSL-%E5%86%85%E9%83%A8%E9%85%8D%E7%BD%AE-SSH-%E6%9C%8D%E5%8A%A1"><span class="nav-number">2.1.</span> <span class="nav-text">方法一：在 WSL 内部配置 SSH 服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85-SSH-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. 安装 SSH 服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E9%85%8D%E7%BD%AE-SSH-%E6%9C%8D%E5%8A%A1"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. 配置 SSH 服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%87%8D%E5%90%AF-SSH-%E6%9C%8D%E5%8A%A1"><span class="nav-number">2.1.3.</span> <span class="nav-text">3. 重启 SSH 服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%A3%80%E6%9F%A5%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81"><span class="nav-number">2.1.4.</span> <span class="nav-text">4. 检查服务状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%A1%AE%E4%BF%9D-RabbitMQ-%E7%AE%A1%E7%90%86%E6%8F%92%E4%BB%B6%E5%B7%B2%E5%90%AF%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">2. 确保 RabbitMQ 管理插件已启用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E5%85%A5%E5%AE%B9%E5%99%A8%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="nav-number">2.2.1.</span> <span class="nav-text">进入容器执行命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E5%AE%B9%E5%99%A8%E5%86%85%E5%90%AF%E7%94%A8%E7%AE%A1%E7%90%86%E6%8F%92%E4%BB%B6"><span class="nav-number">2.2.2.</span> <span class="nav-text">在容器内启用管理插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%80%E5%87%BA%E5%B9%B6%E9%87%8D%E5%90%AF%E5%AE%B9%E5%99%A8"><span class="nav-number">2.2.3.</span> <span class="nav-text">退出并重启容器</span></a></li></ol></li></ol></li></ol></div>
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Alisa</p>
-  <div class="site-description" itemprop="description">学习笔记、工作心得</div>
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="facebook"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-facebook"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+            <a title="instagram"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-instagram"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="reddit"
+               href="https://www.reddit.com/user/yelog/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-reddit"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="weibo"
+               href="http://weibo.com/u/2307534817"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="jianshu"
+               href="https://www.jianshu.com/u/ff56736de7cf"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/jaytp/activities"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:jaytp@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
 </div>
-<div class="site-state-wrap animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">89</span>
-          <span class="site-state-item-name">日志</span>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(89)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="后端">
+            <i class="fold iconfont icon-right"></i>
+            后端
+            <small>(17)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="后端&lt;---&gt;编程规范">
+            
+            编程规范
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="后端&lt;---&gt;Java">
+            
+            Java
+            <small>(12)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="后端&lt;---&gt;Python">
+            
+            Python
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="数据库">
+            <i class="fold iconfont icon-right"></i>
+            数据库
+            <small>(17)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="数据库&lt;---&gt;ElasticSearch">
+            
+            ElasticSearch
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="数据库&lt;---&gt;MongoDB">
+            
+            MongoDB
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="数据库&lt;---&gt;MySQL">
+            
+            MySQL
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="数据库&lt;---&gt;Redis">
+            
+            Redis
+            <small>(9)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="博客搭建">
+            <i class="fold iconfont icon-right"></i>
+            博客搭建
+            <small>(3)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="博客搭建&lt;---&gt;Hexo">
+            
+            Hexo
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="博客搭建&lt;---&gt;Markdown语法">
+            
+            Markdown语法
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="博客搭建&lt;---&gt;UML类图">
+            
+            UML类图
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="工具|部署">
+            <i class="fold iconfont icon-right"></i>
+            工具|部署
+            <small>(12)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="工具|部署&lt;---&gt;压测">
+            
+            压测
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="工具|部署&lt;---&gt;Git">
+            
+            Git
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="工具|部署&lt;---&gt;IDEA">
+            
+            IDEA
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="工具|部署&lt;---&gt;Ubuntu">
+            
+            Ubuntu
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="工具|部署&lt;---&gt;Windows">
+            
+            Windows
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="框架|中间件">
+            <i class="fold iconfont icon-right"></i>
+            框架|中间件
+            <small>(15)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="框架|中间件&lt;---&gt;Junit">
+            
+            Junit
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="框架|中间件&lt;---&gt;Log4j">
+            
+            Log4j
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="框架|中间件&lt;---&gt;Logback">
+            
+            Logback
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="框架|中间件&lt;---&gt;Lombox">
+            
+            Lombox
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="框架|中间件&lt;---&gt;Maven">
+            
+            Maven
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="框架|中间件&lt;---&gt;Nacos">
+            
+            Nacos
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="框架|中间件&lt;---&gt;Tomcat">
+            
+            Tomcat
+            <small>(6)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="前端">
+            <i class="fold iconfont icon-right"></i>
+            前端
+            <small>(6)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;Vue3">
+            
+            Vue3
+            <small>(6)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="日常记录">
+            <i class="fold iconfont icon-right"></i>
+            日常记录
+            <small>(2)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="日常记录&lt;---&gt;后端">
+            
+            后端
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="日常记录&lt;---&gt;前端">
+            
+            前端
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="网络安全">
+            
+            网络安全
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="应用推荐">
+            
+            应用推荐
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Docker">
+            
+            Docker
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="IDEA">
+            <i class="fold iconfont icon-right"></i>
+            IDEA
+            <small>(1)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="IDEA&lt;---&gt;快捷键">
+            
+            快捷键
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Linux">
+            <i class="fold iconfont icon-right"></i>
+            Linux
+            <small>(5)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="Linux&lt;---&gt;基础命令">
+            
+            基础命令
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Linux&lt;---&gt;日常使用">
+            
+            日常使用
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Linux&lt;---&gt;Linux防火墙">
+            
+            Linux防火墙
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Spring">
+            <i class="fold iconfont icon-right"></i>
+            Spring
+            <small>(5)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="Spring&lt;---&gt;Spring Cache">
+            
+            Spring Cache
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Spring&lt;---&gt;Spring Framework">
+            
+            Spring Framework
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Spring&lt;---&gt;SpringBoot">
+            
+            SpringBoot
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Windows系统">
+            <i class="fold iconfont icon-right"></i>
+            Windows系统
+            <small>(1)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="Windows系统&lt;---&gt;快捷键">
+            
+            快捷键
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="89">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>编程规范</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>操作系统</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>测试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>快捷键</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>日常记录</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>网络安全</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Docker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ElasticSearch</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Git</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>IDEA</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Java</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Junit</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Log4j</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Logback</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Lombox</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Maven</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Mongodb</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MongoDB</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Nacos</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Office</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Redis</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Spring Cache</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Spring Framework</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>SpringBoot</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Tomcat</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Vue3</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Linux 基础命令 "
+           href="/20250616/44c28660.html"
+           data-tag="Linux"
+           data-author="" >
+            <span class="post-title" title="Linux系统文件操作命令">Linux系统文件操作命令</span>
+            <span class="post-date" title="2025-06-16 17:48:34">2025/06/16</span>
         </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-          <a href="/categories/">
-        <span class="site-state-item-count">46</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-          <a href="/tags/">
-        <span class="site-state-item-count">29</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
+        
+        
+        <a  class="全部文章 Linux 基础命令 "
+           href="/20250616/b2009fa9.html"
+           data-tag="Linux"
+           data-author="" >
+            <span class="post-title" title="Linux查看系统信息命令">Linux查看系统信息命令</span>
+            <span class="post-date" title="2025-06-16 17:46:02">2025/06/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux 日常使用 "
+           href="/20250614/fb3eb231.html"
+           data-tag="Linux"
+           data-author="" >
+            <span class="post-title" title="Linux日常使用">Linux日常使用</span>
+            <span class="post-date" title="2025-06-14 16:48:16">2025/06/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux 基础命令 "
+           href="/20250611/f0a9e559.html"
+           data-tag="Linux"
+           data-author="" >
+            <span class="post-title" title="Linux系统命令行工具">Linux系统命令行工具</span>
+            <span class="post-date" title="2025-06-11 22:48:07">2025/06/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 应用推荐 "
+           href="/20250610/b78998f1.html"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Cherry书签管理器">Cherry书签管理器</span>
+            <span class="post-date" title="2025-06-10 14:17:04">2025/06/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 应用推荐 "
+           href="/20250605/7f395aef.html"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="LinkAce书签管理器">LinkAce书签管理器</span>
+            <span class="post-date" title="2025-06-05 18:32:01">2025/06/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Windows系统 快捷键 "
+           href="/20250604/459f9e41.html"
+           data-tag="快捷键"
+           data-author="" >
+            <span class="post-title" title="Windows快捷键">Windows快捷键</span>
+            <span class="post-date" title="2025-06-04 16:03:38">2025/06/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/20250520/0.html"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2025-05-20 15:34:49">2025/05/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 日常记录 前端 "
+           href="/20240929/33f402b5.html"
+           data-tag="日常记录"
+           data-author="" >
+            <span class="post-title" title="前端日常问题记录">前端日常问题记录</span>
+            <span class="post-date" title="2024-09-29 19:16:39">2024/09/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 Vue3 "
+           href="/20231224/7d2d5550.html"
+           data-tag="Vue3"
+           data-author="" >
+            <span class="post-title" title="Vue3基础">Vue3基础</span>
+            <span class="post-date" title="2023-12-24 10:49:23">2023/12/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 Vue3 "
+           href="/20231224/1954b1ff.html"
+           data-tag="Vue3"
+           data-author="" >
+            <span class="post-title" title="侦听器（watch）">侦听器（watch）</span>
+            <span class="post-date" title="2023-12-24 10:49:23">2023/12/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 Vue3 "
+           href="/20231224/4446b2a4.html"
+           data-tag="Vue3"
+           data-author="" >
+            <span class="post-title" title="事件处理">事件处理</span>
+            <span class="post-date" title="2023-12-24 10:49:23">2023/12/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 Vue3 "
+           href="/20231224/9ee367a5.html"
+           data-tag="Vue3"
+           data-author="" >
+            <span class="post-title" title="表单输入绑定（v-model）">表单输入绑定（v-model）</span>
+            <span class="post-date" title="2023-12-24 10:49:23">2023/12/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 Vue3 "
+           href="/20231224/6e23c48.html"
+           data-tag="Vue3"
+           data-author="" >
+            <span class="post-title" title="其他">其他</span>
+            <span class="post-date" title="2023-12-24 10:49:23">2023/12/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 Vue3 "
+           href="/20231224/34778b46.html"
+           data-tag="Vue3"
+           data-author="" >
+            <span class="post-title" title="组件">组件</span>
+            <span class="post-date" title="2023-12-24 10:49:23">2023/12/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Python "
+           href="/20231108/c8f562d1.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="Python函数">Python函数</span>
+            <span class="post-date" title="2023-11-08 10:49:23">2023/11/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Python "
+           href="/20231106/d59aed63.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="Python内置函数">Python内置函数</span>
+            <span class="post-date" title="2023-11-06 10:49:23">2023/11/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Python "
+           href="/20231106/99832f47.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="Python基础">Python基础</span>
+            <span class="post-date" title="2023-11-06 10:49:23">2023/11/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 ElasticSearch "
+           href="/20230618/872a239c.html"
+           data-tag="ElasticSearch"
+           data-author="" >
+            <span class="post-title" title="ElasticSearch安装">ElasticSearch安装</span>
+            <span class="post-date" title="2023-06-18 17:33:20">2023/06/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux Linux防火墙 "
+           href="/20230511/e26546c7.html"
+           data-tag="操作系统"
+           data-author="" >
+            <span class="post-title" title="Linux防火墙">Linux防火墙</span>
+            <span class="post-date" title="2023-05-11 14:32:10">2023/05/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Log4j "
+           href="/20230511/14631848.html"
+           data-tag="Log4j"
+           data-author="" >
+            <span class="post-title" title="Log4j日常使用记录">Log4j日常使用记录</span>
+            <span class="post-date" title="2023-05-11 14:32:10">2023/05/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spring Spring Framework "
+           href="/20230319/28678f43.html"
+           data-tag="Spring Framework"
+           data-author="" >
+            <span class="post-title" title="Spring基础-AOP">Spring基础-AOP</span>
+            <span class="post-date" title="2023-03-19 17:44:41">2023/03/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spring Spring Framework "
+           href="/20230319/d607e27b.html"
+           data-tag="Spring Framework"
+           data-author="" >
+            <span class="post-title" title="Spring基础">Spring基础</span>
+            <span class="post-date" title="2023-03-19 17:44:41">2023/03/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 编程规范 "
+           href="/20230317/1761bce2.html"
+           data-tag="编程规范"
+           data-author="" >
+            <span class="post-title" title="Java命名规范">Java命名规范</span>
+            <span class="post-date" title="2023-03-17 17:44:04">2023/03/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Spring Redis SpringBoot "
+           href="/20230302/f677ab49.html"
+           data-tag="SpringBoot,Mongodb"
+           data-author="" >
+            <span class="post-title" title="SpringBoot集成Redis">SpringBoot集成Redis</span>
+            <span class="post-date" title="2023-03-02 19:10:19">2023/03/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Nacos "
+           href="/20230301/d8cb1733.html"
+           data-tag="Nacos"
+           data-author="" >
+            <span class="post-title" title="Nacos 使用示例">Nacos 使用示例</span>
+            <span class="post-date" title="2023-03-01 10:19:20">2023/03/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Nacos "
+           href="/20230301/c383a3c4.html"
+           data-tag="Nacos"
+           data-author="" >
+            <span class="post-title" title="Nacos">Nacos</span>
+            <span class="post-date" title="2023-03-01 10:19:20">2023/03/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 日常记录 后端 "
+           href="/20230223/65e80ab3.html"
+           data-tag="日常记录"
+           data-author="" >
+            <span class="post-title" title="2023年问题记录">2023年问题记录</span>
+            <span class="post-date" title="2023-02-23 19:52:44">2023/02/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 Windows "
+           href="/20230216/d9a8c0d4.html"
+           data-tag="日常记录,操作系统"
+           data-author="" >
+            <span class="post-title" title="Windows日常使用问题记录">Windows日常使用问题记录</span>
+            <span class="post-date" title="2023-02-16 10:39:23">2023/02/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Redis "
+           href="/20230210/4be8fe93.html"
+           data-tag="Redis"
+           data-author="" >
+            <span class="post-title" title="Redis-ACL">Redis-ACL</span>
+            <span class="post-date" title="2023-02-10 15:14:01">2023/02/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Redis "
+           href="/20230208/6b8605c4.html"
+           data-tag="Redis"
+           data-author="" >
+            <span class="post-title" title="Redis-配置文件">Redis-配置文件</span>
+            <span class="post-date" title="2023-02-08 18:19:01">2023/02/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Redis "
+           href="/20230103/72ab10c8.html"
+           data-tag="Redis"
+           data-author="" >
+            <span class="post-title" title="Redis-数据类型（基础）">Redis-数据类型（基础）</span>
+            <span class="post-date" title="2023-01-03 20:22:19">2023/01/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Redis "
+           href="/20221103/709af9d4.html"
+           data-tag="Redis"
+           data-author="" >
+            <span class="post-title" title="Redis-命令记录">Redis-命令记录</span>
+            <span class="post-date" title="2022-11-03 19:19:19">2022/11/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Redis "
+           href="/20221102/c9f6f059.html"
+           data-tag="Redis"
+           data-author="" >
+            <span class="post-title" title="Redis安装">Redis安装</span>
+            <span class="post-date" title="2022-11-02 19:10:19">2022/11/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Redis "
+           href="/20221102/4cdb4706.html"
+           data-tag="Redis"
+           data-author="" >
+            <span class="post-title" title="Redis-发布订阅">Redis-发布订阅</span>
+            <span class="post-date" title="2022-11-02 19:10:19">2022/11/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Redis "
+           href="/20221102/574fe2f4.html"
+           data-tag="Redis"
+           data-author="" >
+            <span class="post-title" title="Redis-持久化">Redis-持久化</span>
+            <span class="post-date" title="2022-11-02 19:10:19">2022/11/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Spring Redis Spring Cache "
+           href="/20221102/3fb18050.html"
+           data-tag="Redis,Spring Cache"
+           data-author="" >
+            <span class="post-title" title="配置 序列化成JSON字符串.md">配置 序列化成JSON字符串.md</span>
+            <span class="post-date" title="2022-11-02 19:10:19">2022/11/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221101/53471b9a.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="多线程基础">多线程基础</span>
+            <span class="post-date" title="2022-11-01 06:52:00">2022/11/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221101/3c508c34.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Java并发包">Java并发包</span>
+            <span class="post-date" title="2022-11-01 06:52:00">2022/11/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221101/8c062783.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="多线程设计模式">多线程设计模式</span>
+            <span class="post-date" title="2022-11-01 06:52:00">2022/11/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 MongoDB "
+           href="/20221031/c5d54bc1.html"
+           data-tag="MongoDB"
+           data-author="" >
+            <span class="post-title" title="MongoDB安装">MongoDB安装</span>
+            <span class="post-date" title="2022-10-31 16:19:20">2022/10/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 MySQL "
+           href="/20221031/4c28b48e.html"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL安装、版本差异、JDBC连接配置">MySQL安装、版本差异、JDBC连接配置</span>
+            <span class="post-date" title="2022-10-31 16:19:20">2022/10/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 MySQL "
+           href="/20221031/bce68613.html"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL基础">MySQL基础</span>
+            <span class="post-date" title="2022-10-31 16:19:20">2022/10/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 MySQL "
+           href="/20221031/25158cd7.html"
+           data-tag="日常记录,MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL日常使用记录">MySQL日常使用记录</span>
+            <span class="post-date" title="2022-10-31 16:19:20">2022/10/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 MySQL "
+           href="/20221031/ec788ee4.html"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL查询优化策略">MySQL查询优化策略</span>
+            <span class="post-date" title="2022-10-31 16:19:20">2022/10/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 MySQL "
+           href="/20221031/ad072d5f.html"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL用户管理">MySQL用户管理</span>
+            <span class="post-date" title="2022-10-31 16:19:20">2022/10/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Spring MongoDB SpringBoot "
+           href="/20221031/eb573b79.html"
+           data-tag="SpringBoot,Mongodb"
+           data-author="" >
+            <span class="post-title" title="SpringBoot集成MongoDB">SpringBoot集成MongoDB</span>
+            <span class="post-date" title="2022-10-31 16:19:20">2022/10/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 Ubuntu "
+           href="/20221030/d288da69.html"
+           data-tag="操作系统,Docker"
+           data-author="" >
+            <span class="post-title" title="Ubuntu 安装Docker">Ubuntu 安装Docker</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 Docker "
+           href="/20221030/8c5d6123.html"
+           data-tag="Docker"
+           data-author="" >
+            <span class="post-title" title="配置Docker环境">配置Docker环境</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 Docker "
+           href="/20221030/868b0954.html"
+           data-tag="Docker"
+           data-author="" >
+            <span class="post-title" title="Docker日常使用记录">Docker日常使用记录</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 Ubuntu "
+           href="/20221030/6124f545.html"
+           data-tag="操作系统"
+           data-author="" >
+            <span class="post-title" title="Ubuntu虚拟机搭建">Ubuntu虚拟机搭建</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 压测 "
+           href="/20221030/e291c7ca.html"
+           data-tag="测试"
+           data-author="" >
+            <span class="post-title" title="压测工具概述">压测工具概述</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 Ubuntu "
+           href="/20221030/d81e4de4.html"
+           data-tag="操作系统"
+           data-author="" >
+            <span class="post-title" title="Ubuntu 查看系统信息">Ubuntu 查看系统信息</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 Ubuntu "
+           href="/20221030/f075b7f2.html"
+           data-tag="操作系统"
+           data-author="" >
+            <span class="post-title" title="Ubuntu卸载图形界面">Ubuntu卸载图形界面</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 Windows "
+           href="/20221030/8bc474d9.html"
+           data-tag="Office"
+           data-author="" >
+            <span class="post-title" title="WORD使用记录">WORD使用记录</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 Ubuntu "
+           href="/20221030/b8b8d517.html"
+           data-tag="操作系统"
+           data-author="" >
+            <span class="post-title" title="Ubuntu 防火墙">Ubuntu 防火墙</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Junit "
+           href="/20221030/99356519.html"
+           data-tag="Junit"
+           data-author="" >
+            <span class="post-title" title="Junit日常使用记录">Junit日常使用记录</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Tomcat "
+           href="/20221030/932ec968.html"
+           data-tag="日常记录,Tomcat"
+           data-author="" >
+            <span class="post-title" title="Tomcat异常排查记录">Tomcat异常排查记录</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Tomcat "
+           href="/20221030/d035d83e.html"
+           data-tag="日常记录,Tomcat"
+           data-author="" >
+            <span class="post-title" title="在请求目标中找到无效字符">在请求目标中找到无效字符</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Tomcat "
+           href="/20221030/673ec6c6.html"
+           data-tag="日常记录,Tomcat"
+           data-author="" >
+            <span class="post-title" title="给Tomcat配置外部资源路径">给Tomcat配置外部资源路径</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Lombox "
+           href="/20221030/f1c78c8.html"
+           data-tag="Lombox"
+           data-author="" >
+            <span class="post-title" title="Lombox日常使用记录">Lombox日常使用记录</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Tomcat "
+           href="/20221030/294d5c08.html"
+           data-tag="日常记录,Tomcat"
+           data-author="" >
+            <span class="post-title" title="验证码图片无法显示">验证码图片无法显示</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Logback "
+           href="/20221030/4b5ef04d.html"
+           data-tag="Logback"
+           data-author="" >
+            <span class="post-title" title="Logback日常使用记录">Logback日常使用记录</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Maven "
+           href="/20221030/4a3536f5.html"
+           data-tag="Maven"
+           data-author="" >
+            <span class="post-title" title="Maven使用场景记录">Maven使用场景记录</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Maven "
+           href="/20221030/195cf5d1.html"
+           data-tag="Maven"
+           data-author="" >
+            <span class="post-title" title="Maven基础">Maven基础</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Maven "
+           href="/20221030/9926a393.html"
+           data-tag="Maven"
+           data-author="" >
+            <span class="post-title" title="POM.XML文件说明">POM.XML文件说明</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Tomcat "
+           href="/20221030/530cfffd.html"
+           data-tag="Tomcat"
+           data-author="" >
+            <span class="post-title" title="Tomcat基础">Tomcat基础</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Tomcat "
+           href="/20221030/6f43f742.html"
+           data-tag="Tomcat"
+           data-author="" >
+            <span class="post-title" title="安装Tomcat服务">安装Tomcat服务</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221027/6cd20d81.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="JVM基础回顾">JVM基础回顾</span>
+            <span class="post-date" title="2022-10-27 19:52:44">2022/10/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221027/cc1c3bcb.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="JVM性能调优工具">JVM性能调优工具</span>
+            <span class="post-date" title="2022-10-27 19:52:44">2022/10/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221027/c3539d05.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Java中printf的用法总结">Java中printf的用法总结</span>
+            <span class="post-date" title="2022-10-27 19:52:44">2022/10/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221027/5296b9c2.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Java枚举类型7种常见的用法">Java枚举类型7种常见的用法</span>
+            <span class="post-date" title="2022-10-27 19:52:44">2022/10/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221027/7039576b.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Java注解">Java注解</span>
+            <span class="post-date" title="2022-10-27 19:52:44">2022/10/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221027/f7c553a3.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="abstract class和interface的区别">abstract class和interface的区别</span>
+            <span class="post-date" title="2022-10-27 19:52:44">2022/10/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221027/79cf73a2.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="对象之间相同属性的赋值">对象之间相同属性的赋值</span>
+            <span class="post-date" title="2022-10-27 19:52:44">2022/10/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221027/80d3479f.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="系统方法：System.getProperty">系统方法：System.getProperty</span>
+            <span class="post-date" title="2022-10-27 19:52:44">2022/10/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 IDEA 快捷键 "
+           href="/20221026/610bdf07.html"
+           data-tag="快捷键"
+           data-author="" >
+            <span class="post-title" title="IDEA快捷键">IDEA快捷键</span>
+            <span class="post-date" title="2022-10-26 21:32:25">2022/10/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 Git "
+           href="/20221026/69c3279c.html"
+           data-tag="Git"
+           data-author="" >
+            <span class="post-title" title="Git">Git</span>
+            <span class="post-date" title="2022-10-26 21:32:25">2022/10/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 IDEA "
+           href="/20221026/2241d802.html"
+           data-tag="IDEA"
+           data-author="" >
+            <span class="post-title" title="IDEA 使用技巧">IDEA 使用技巧</span>
+            <span class="post-date" title="2022-10-26 21:32:25">2022/10/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 IDEA "
+           href="/20221026/ee604b16.html"
+           data-tag="IDEA"
+           data-author="" >
+            <span class="post-title" title="IDEA插件">IDEA插件</span>
+            <span class="post-date" title="2022-10-26 21:32:25">2022/10/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 IDEA "
+           href="/20221026/1a8c2722.html"
+           data-tag="IDEA"
+           data-author="" >
+            <span class="post-title" title="IDEA配置">IDEA配置</span>
+            <span class="post-date" title="2022-10-26 21:32:25">2022/10/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 博客搭建 UML类图 "
+           href="/20221025/c9ac90bb.html"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="UML类图与接口图的表示">UML类图与接口图的表示</span>
+            <span class="post-date" title="2022-10-25 19:52:44">2022/10/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 博客搭建 Markdown语法 "
+           href="/20221025/ea43daec.html"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Markdown使用语法记录">Markdown使用语法记录</span>
+            <span class="post-date" title="2022-10-25 19:52:44">2022/10/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 博客搭建 Hexo "
+           href="/20221025/b6159bfb.html"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Hexo 搭建博客">Hexo 搭建博客</span>
+            <span class="post-date" title="2022-10-25 19:52:44">2022/10/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 网络安全 "
+           href="/20221025/96960bec.html"
+           data-tag="网络安全"
+           data-author="" >
+            <span class="post-title" title="CSRF漏洞处理">CSRF漏洞处理</span>
+            <span class="post-date" title="2022-10-25 19:52:44">2022/10/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 网络安全 "
+           href="/20221025/d188606.html"
+           data-tag="网络安全"
+           data-author="" >
+            <span class="post-title" title="SSL漏洞处理">SSL漏洞处理</span>
+            <span class="post-date" title="2022-10-25 19:52:44">2022/10/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 网络安全 "
+           href="/20221025/409b5317.html"
+           data-tag="网络安全"
+           data-author="" >
+            <span class="post-title" title="XSS漏洞处理">XSS漏洞处理</span>
+            <span class="post-date" title="2022-10-25 19:52:44">2022/10/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 编程规范 "
+           href="/20221025/ba2334ee.html"
+           data-tag="编程规范"
+           data-author="" >
+            <span class="post-title" title="Java开发手册【阿里巴巴】">Java开发手册【阿里巴巴】</span>
+            <span class="post-date" title="2022-10-25 19:52:44">2022/10/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221022/725f0c76.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Java 8 in Action【汪文君】">Java 8 in Action【汪文君】</span>
+            <span class="post-date" title="2022-10-22 19:52:44">2022/10/22</span>
+        </a>
+        
+        <div id="no-item-tips">
 
         </div>
-      </div>
+    </nav>
+    <div id="outline-list">
     </div>
-
-    
-  </aside>
-
-
-    </div>
-
-    <div class="main-inner post posts-expand">
-
-
-  
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/20250520/0.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Alisa">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Alisa's Home">
-      <meta itemprop="description" content="学习笔记、工作心得">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | Alisa's Home">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2025-05-20 15:34:49" itemprop="dateCreated datePublished" datetime="2025-05-20T15:34:49+08:00">2025-05-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-06-11 15:04:05" itemprop="dateModified" datetime="2025-06-11T15:04:05+08:00">2025-06-11</time>
-    </span>
-
-  
 </div>
 
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
         </div>
-      </header>
-
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-操作系统/Windows/03. WSL2 " class="article article-type-post" itemscope itemprop="blogPost">
     
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2025-06-11 15:04:05'>2025-05-20 15:34</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
     
+    <div class="toc-ref">
     
-    <div class="post-body" itemprop="articleBody">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">WSL Ubuntu 系统迁移到其他位置的完整指南</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BF%AE%E6%94%B9-WSL-%E9%BB%98%E8%AE%A4%E7%89%88%E6%9C%AC%EF%BC%88WSL1-%E6%88%96-WSL2%EF%BC%89"><span class="toc-text">3. 修改 WSL 默认版本（WSL1 或 WSL2）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E4%BD%BF%E7%94%A8-wsl-export-%E5%92%8C-wsl-import-%E6%8E%A8%E8%8D%90"><span class="toc-text">方法一：使用 wsl --export 和 wsl --import (推荐)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E5%AE%89%E8%A3%85%E7%9A%84-WSL-%E5%8F%91%E8%A1%8C%E7%89%88"><span class="toc-text">1. 查看当前安装的 WSL 发行版</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AF%BC%E5%87%BA%E5%BD%93%E5%89%8D%E7%B3%BB%E7%BB%9F%E5%88%B0-tar-%E6%96%87%E4%BB%B6"><span class="toc-text">2. 导出当前系统到 tar 文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%B3%A8%E9%94%80%E5%8E%9F%E7%B3%BB%E7%BB%9F"><span class="toc-text">3. 注销原系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%AF%BC%E5%85%A5%E5%88%B0%E6%96%B0%E4%BD%8D%E7%BD%AE"><span class="toc-text">4. 导入到新位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E7%94%A8%E6%88%B7"><span class="toc-text">5. 设置默认用户</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E5%8F%91%E8%A1%8C%E7%89%88"><span class="toc-text">6. 修改默认发行版</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">在 WSL 中开放 22 端口 (SSH 服务) 的完整指南</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E5%9C%A8-WSL-%E5%86%85%E9%83%A8%E9%85%8D%E7%BD%AE-SSH-%E6%9C%8D%E5%8A%A1"><span class="toc-text">方法一：在 WSL 内部配置 SSH 服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85-SSH-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">1. 安装 SSH 服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AE-SSH-%E6%9C%8D%E5%8A%A1"><span class="toc-text">2. 配置 SSH 服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%87%8D%E5%90%AF-SSH-%E6%9C%8D%E5%8A%A1"><span class="toc-text">3. 重启 SSH 服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%A3%80%E6%9F%A5%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81"><span class="toc-text">4. 检查服务状态</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%A1%AE%E4%BF%9D-RabbitMQ-%E7%AE%A1%E7%90%86%E6%8F%92%E4%BB%B6%E5%B7%B2%E5%90%AF%E7%94%A8"><span class="toc-text">2. 确保 RabbitMQ 管理插件已启用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5%E5%AE%B9%E5%99%A8%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">进入容器执行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E5%AE%B9%E5%99%A8%E5%86%85%E5%90%AF%E7%94%A8%E7%AE%A1%E7%90%86%E6%8F%92%E4%BB%B6"><span class="toc-text">在容器内启用管理插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%80%E5%87%BA%E5%B9%B6%E9%87%8D%E5%90%AF%E5%AE%B9%E5%99%A8"><span class="toc-text">退出并重启容器</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
         <h1>WSL Ubuntu 系统迁移到其他位置的完整指南</h1>
 <h2 id="3-修改-WSL-默认版本（WSL1-或-WSL2）"><strong>3. 修改 WSL 默认版本（WSL1 或 WSL2）</strong></h2>
-<pre class="line-numbers language-none"><code class="language-none">wsl --set-default-version 2  # 设置新安装的发行版默认用 WSL2
-wsl --set-version &lt;发行版名称&gt; 2  # 将现有发行版转换为 WSL2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wsl --set-default-version 2  # 设置新安装的发行版默认用 WSL2</span><br><span class="line">wsl --set-version &lt;发行版名称&gt; 2  # 将现有发行版转换为 WSL2</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="方法一：使用-wsl-export-和-wsl-import-推荐">方法一：使用 <code>wsl --export</code> 和 <code>wsl --import</code> (推荐)</h2>
 <h3 id="1-查看当前安装的-WSL-发行版">1. 查看当前安装的 WSL 发行版</h3>
-<pre class="line-numbers language-none"><code class="language-none">wsl --list --verbose<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --list --verbose</span><br></pre></td></tr></tbody></table></figure>
 <p>记录要迁移的 Ubuntu 发行版名称（如 <code>Ubuntu-24.04</code>）</p>
 <h3 id="2-导出当前系统到-tar-文件">2. 导出当前系统到 tar 文件</h3>
-<pre class="line-numbers language-none"><code class="language-none">wsl --export Ubuntu-24.04 D:\wsl_backup\ubuntu24.04.tar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --export Ubuntu-24.04 D:\wsl_backup\ubuntu24.04.tar</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="3-注销原系统">3. 注销原系统</h3>
-<pre class="line-numbers language-none"><code class="language-none">wsl --unregister Ubuntu-24.04<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --unregister Ubuntu-24.04</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="4-导入到新位置">4. 导入到新位置</h3>
-<pre class="line-numbers language-none"><code class="language-none">wsl --import Ubuntu-24.04 D:\wsl_system\ubuntu24.04 D:\wsl_backup\ubuntu24.04.tar --version 2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --import Ubuntu-24.04 D:\wsl_system\ubuntu24.04 D:\wsl_backup\ubuntu24.04.tar --version 2</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="5-设置默认用户">5. 设置默认用户</h3>
-<pre class="line-numbers language-none"><code class="language-none"># 进入 root 环境
-wsl -d Ubuntu-24.04 -u root
-
-# 设置默认用户（替换 yourusername 为你的用户名）
-echo -e "[user]\ndefault=yourusername" &gt;&gt; /etc/wsl.conf
-
-# 退出
-exit<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 进入 root 环境</span><br><span class="line">wsl -d Ubuntu-24.04 -u root</span><br><span class="line"></span><br><span class="line"># 设置默认用户（替换 yourusername 为你的用户名）</span><br><span class="line">echo -e "[user]\ndefault=yourusername" &gt;&gt; /etc/wsl.conf</span><br><span class="line"></span><br><span class="line"># 退出</span><br><span class="line">exit</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="6-修改默认发行版"><strong>6. 修改默认发行版</strong></h2>
-<pre class="line-numbers language-none"><code class="language-none">wsl --list --verbose  # 查看所有发行版
-wsl --set-default &lt;发行版名称&gt;  # 设置默认启动的发行版<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wsl --list --verbose  # 查看所有发行版</span><br><span class="line">wsl --set-default &lt;发行版名称&gt;  # 设置默认启动的发行版</span><br></pre></td></tr></tbody></table></figure>
 <h1>在 WSL 中开放 22 端口 (SSH 服务) 的完整指南</h1>
 <h2 id="方法一：在-WSL-内部配置-SSH-服务">方法一：在 WSL 内部配置 SSH 服务</h2>
 <h3 id="1-安装-SSH-服务器">1. 安装 SSH 服务器</h3>
-<pre class="line-numbers language-none"><code class="language-none">sudo apt update &amp;&amp; sudo apt install openssh-server -y<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt install openssh-server -y</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="2-配置-SSH-服务">2. 配置 SSH 服务</h3>
-<pre class="line-numbers language-none"><code class="language-none">sudo nano /etc/ssh/sshd_config<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/ssh/sshd_config</span><br></pre></td></tr></tbody></table></figure>
 <p>修改以下关键参数：</p>
-<pre class="line-numbers language-none"><code class="language-none">Port 22
-ListenAddress 0.0.0.0
-PermitRootLogin yes           # 允许root登录
-PasswordAuthentication yes    # 允许密码认证<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Port 22</span><br><span class="line">ListenAddress 0.0.0.0</span><br><span class="line">PermitRootLogin yes           # 允许root登录</span><br><span class="line">PasswordAuthentication yes    # 允许密码认证</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="3-重启-SSH-服务">3. 重启 SSH 服务</h3>
-<pre class="line-numbers language-none"><code class="language-none">sudo service ssh restart
-# 或使用 systemctl (如果启用了 systemd)
-sudo systemctl restart ssh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo service ssh restart</span><br><span class="line"># 或使用 systemctl (如果启用了 systemd)</span><br><span class="line">sudo systemctl restart ssh</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="4-检查服务状态">4. 检查服务状态</h3>
-<pre class="line-numbers language-none"><code class="language-none">sudo service ssh status
-# 或
-sudo netstat -tulnp | grep 22<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo service ssh status</span><br><span class="line"># 或</span><br><span class="line">sudo netstat -tulnp | grep 22</span><br></pre></td></tr></tbody></table></figure>
 <p>测试端口</p>
-<pre class="line-numbers language-none"><code class="language-none"># 安装 nc（Alpine）
-apt-get install netcat-openbsd
-
-# 测试端口
-nc -zv mysql 3306<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 安装 nc（Alpine）</span><br><span class="line">apt-get install netcat-openbsd</span><br><span class="line"></span><br><span class="line"># 测试端口</span><br><span class="line">nc -zv mysql 3306</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="2-确保-RabbitMQ-管理插件已启用"><strong>2. 确保 RabbitMQ 管理插件已启用</strong></h2>
 <p>RabbitMQ 默认不启用 Web 管理界面，需手动启用：</p>
 <h3 id="进入容器执行命令"><strong>进入容器执行命令</strong></h3>
-<pre class="line-numbers language-none"><code class="language-none">docker exec -it &lt;container_name&gt; bash<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it &lt;container_name&gt; bash</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="在容器内启用管理插件"><strong>在容器内启用管理插件</strong></h3>
-<pre class="line-numbers language-none"><code class="language-none">rabbitmq-plugins enable rabbitmq_management<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmq-plugins enable rabbitmq_management</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="退出并重启容器"><strong>退出并重启容器</strong></h3>
-<pre class="line-numbers language-none"><code class="language-none">exit
-docker restart &lt;container_name&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br><span class="line">docker restart &lt;container_name&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
 
     </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/20240929/33f402b5.html" rel="prev" title="前端日常问题记录">
-                  <i class="fa fa-chevron-left"></i> 前端日常问题记录
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/20250604/459f9e41.html" rel="next" title="Windows快捷键">
-                  Windows快捷键 <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
-    </footer>
-  </article>
-</div>
-
-
-
-
-
-
-</div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-
-
-<div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2025</span>
-  <span class="with-love">
-    <i class="fa fa-apple"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Alisa</span>
-</div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 Yelog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-  </footer>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
 
-  
-  <div class="back-to-top" role="button" aria-label="返回顶部">
-    <i class="fa fa-arrow-up fa-lg"></i>
-    <span>0%</span>
-  </div>
+    </div>
+</div>
 
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
-<script src="/js/third-party/search/local-search.js"></script>
-
-
-
-
-
-  
-
-
-
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
 
 
 </body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
 </html>

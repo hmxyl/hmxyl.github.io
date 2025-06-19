@@ -1,0 +1,2536 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Linux系统文件操作命令 | Alisa&#39;s Home</title>
+  <meta name="keywords" content=" Linux ">
+  <meta name="description" content="Linux系统文件操作命令 | Alisa&#39;s Home">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="Oops～，我崩溃了！找不到你想要的页面 :(">
+<meta property="og:type" content="website">
+<meta property="og:title" content="404">
+<meta property="og:url" content="https://hmxyl.github.io/404/index.html">
+<meta property="og:site_name" content="Alisa&#39;s Home">
+<meta property="og:description" content="Oops～，我崩溃了！找不到你想要的页面 :(">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-16T09:39:22.000Z">
+<meta property="article:modified_time" content="2023-03-17T02:46:08.000Z">
+<meta property="article:author" content="Alisa">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Alisa's Home" type="application/atom+xml">
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>Alisa</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="facebook"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-facebook"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+            <a title="instagram"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-instagram"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="reddit"
+               href="https://www.reddit.com/user/yelog/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-reddit"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="weibo"
+               href="http://weibo.com/u/2307534817"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="jianshu"
+               href="https://www.jianshu.com/u/ff56736de7cf"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/jaytp/activities"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:jaytp@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(89)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="后端">
+            <i class="fold iconfont icon-right"></i>
+            后端
+            <small>(17)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="后端&lt;---&gt;编程规范">
+            
+            编程规范
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="后端&lt;---&gt;Java">
+            
+            Java
+            <small>(12)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="后端&lt;---&gt;Python">
+            
+            Python
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="数据库">
+            <i class="fold iconfont icon-right"></i>
+            数据库
+            <small>(17)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="数据库&lt;---&gt;ElasticSearch">
+            
+            ElasticSearch
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="数据库&lt;---&gt;MongoDB">
+            
+            MongoDB
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="数据库&lt;---&gt;MySQL">
+            
+            MySQL
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="数据库&lt;---&gt;Redis">
+            
+            Redis
+            <small>(9)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="博客搭建">
+            <i class="fold iconfont icon-right"></i>
+            博客搭建
+            <small>(3)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="博客搭建&lt;---&gt;Hexo">
+            
+            Hexo
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="博客搭建&lt;---&gt;Markdown语法">
+            
+            Markdown语法
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="博客搭建&lt;---&gt;UML类图">
+            
+            UML类图
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="工具|部署">
+            <i class="fold iconfont icon-right"></i>
+            工具|部署
+            <small>(12)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="工具|部署&lt;---&gt;压测">
+            
+            压测
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="工具|部署&lt;---&gt;Git">
+            
+            Git
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="工具|部署&lt;---&gt;IDEA">
+            
+            IDEA
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="工具|部署&lt;---&gt;Ubuntu">
+            
+            Ubuntu
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="工具|部署&lt;---&gt;Windows">
+            
+            Windows
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="框架|中间件">
+            <i class="fold iconfont icon-right"></i>
+            框架|中间件
+            <small>(15)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="框架|中间件&lt;---&gt;Junit">
+            
+            Junit
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="框架|中间件&lt;---&gt;Log4j">
+            
+            Log4j
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="框架|中间件&lt;---&gt;Logback">
+            
+            Logback
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="框架|中间件&lt;---&gt;Lombox">
+            
+            Lombox
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="框架|中间件&lt;---&gt;Maven">
+            
+            Maven
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="框架|中间件&lt;---&gt;Nacos">
+            
+            Nacos
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="框架|中间件&lt;---&gt;Tomcat">
+            
+            Tomcat
+            <small>(6)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="前端">
+            <i class="fold iconfont icon-right"></i>
+            前端
+            <small>(6)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;Vue3">
+            
+            Vue3
+            <small>(6)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="日常记录">
+            <i class="fold iconfont icon-right"></i>
+            日常记录
+            <small>(2)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="日常记录&lt;---&gt;后端">
+            
+            后端
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="日常记录&lt;---&gt;前端">
+            
+            前端
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="网络安全">
+            
+            网络安全
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="应用推荐">
+            
+            应用推荐
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Docker">
+            
+            Docker
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="IDEA">
+            <i class="fold iconfont icon-right"></i>
+            IDEA
+            <small>(1)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="IDEA&lt;---&gt;快捷键">
+            
+            快捷键
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Linux">
+            <i class="fold iconfont icon-right"></i>
+            Linux
+            <small>(5)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="Linux&lt;---&gt;基础命令">
+            
+            基础命令
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Linux&lt;---&gt;日常使用">
+            
+            日常使用
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Linux&lt;---&gt;Linux防火墙">
+            
+            Linux防火墙
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Spring">
+            <i class="fold iconfont icon-right"></i>
+            Spring
+            <small>(5)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="Spring&lt;---&gt;Spring Cache">
+            
+            Spring Cache
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Spring&lt;---&gt;Spring Framework">
+            
+            Spring Framework
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Spring&lt;---&gt;SpringBoot">
+            
+            SpringBoot
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Windows系统">
+            <i class="fold iconfont icon-right"></i>
+            Windows系统
+            <small>(1)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="Windows系统&lt;---&gt;快捷键">
+            
+            快捷键
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="89">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>编程规范</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>操作系统</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>测试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>快捷键</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>日常记录</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>网络安全</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Docker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ElasticSearch</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Git</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>IDEA</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Java</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Junit</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Log4j</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Logback</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Lombox</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Maven</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Mongodb</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MongoDB</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Nacos</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Office</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Redis</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Spring Cache</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Spring Framework</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>SpringBoot</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Tomcat</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Vue3</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Linux 基础命令 "
+           href="/20250616/44c28660.html"
+           data-tag="Linux"
+           data-author="" >
+            <span class="post-title" title="Linux系统文件操作命令">Linux系统文件操作命令</span>
+            <span class="post-date" title="2025-06-16 17:48:34">2025/06/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux 基础命令 "
+           href="/20250616/b2009fa9.html"
+           data-tag="Linux"
+           data-author="" >
+            <span class="post-title" title="Linux查看系统信息命令">Linux查看系统信息命令</span>
+            <span class="post-date" title="2025-06-16 17:46:02">2025/06/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux 日常使用 "
+           href="/20250614/fb3eb231.html"
+           data-tag="Linux"
+           data-author="" >
+            <span class="post-title" title="Linux日常使用">Linux日常使用</span>
+            <span class="post-date" title="2025-06-14 16:48:16">2025/06/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux 基础命令 "
+           href="/20250611/f0a9e559.html"
+           data-tag="Linux"
+           data-author="" >
+            <span class="post-title" title="Linux系统命令行工具">Linux系统命令行工具</span>
+            <span class="post-date" title="2025-06-11 22:48:07">2025/06/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 应用推荐 "
+           href="/20250610/b78998f1.html"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Cherry书签管理器">Cherry书签管理器</span>
+            <span class="post-date" title="2025-06-10 14:17:04">2025/06/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 应用推荐 "
+           href="/20250605/7f395aef.html"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="LinkAce书签管理器">LinkAce书签管理器</span>
+            <span class="post-date" title="2025-06-05 18:32:01">2025/06/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Windows系统 快捷键 "
+           href="/20250604/459f9e41.html"
+           data-tag="快捷键"
+           data-author="" >
+            <span class="post-title" title="Windows快捷键">Windows快捷键</span>
+            <span class="post-date" title="2025-06-04 16:03:38">2025/06/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/20250520/0.html"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2025-05-20 15:34:49">2025/05/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 日常记录 前端 "
+           href="/20240929/33f402b5.html"
+           data-tag="日常记录"
+           data-author="" >
+            <span class="post-title" title="前端日常问题记录">前端日常问题记录</span>
+            <span class="post-date" title="2024-09-29 19:16:39">2024/09/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 Vue3 "
+           href="/20231224/7d2d5550.html"
+           data-tag="Vue3"
+           data-author="" >
+            <span class="post-title" title="Vue3基础">Vue3基础</span>
+            <span class="post-date" title="2023-12-24 10:49:23">2023/12/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 Vue3 "
+           href="/20231224/1954b1ff.html"
+           data-tag="Vue3"
+           data-author="" >
+            <span class="post-title" title="侦听器（watch）">侦听器（watch）</span>
+            <span class="post-date" title="2023-12-24 10:49:23">2023/12/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 Vue3 "
+           href="/20231224/4446b2a4.html"
+           data-tag="Vue3"
+           data-author="" >
+            <span class="post-title" title="事件处理">事件处理</span>
+            <span class="post-date" title="2023-12-24 10:49:23">2023/12/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 Vue3 "
+           href="/20231224/9ee367a5.html"
+           data-tag="Vue3"
+           data-author="" >
+            <span class="post-title" title="表单输入绑定（v-model）">表单输入绑定（v-model）</span>
+            <span class="post-date" title="2023-12-24 10:49:23">2023/12/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 Vue3 "
+           href="/20231224/6e23c48.html"
+           data-tag="Vue3"
+           data-author="" >
+            <span class="post-title" title="其他">其他</span>
+            <span class="post-date" title="2023-12-24 10:49:23">2023/12/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 Vue3 "
+           href="/20231224/34778b46.html"
+           data-tag="Vue3"
+           data-author="" >
+            <span class="post-title" title="组件">组件</span>
+            <span class="post-date" title="2023-12-24 10:49:23">2023/12/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Python "
+           href="/20231108/c8f562d1.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="Python函数">Python函数</span>
+            <span class="post-date" title="2023-11-08 10:49:23">2023/11/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Python "
+           href="/20231106/d59aed63.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="Python内置函数">Python内置函数</span>
+            <span class="post-date" title="2023-11-06 10:49:23">2023/11/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Python "
+           href="/20231106/99832f47.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="Python基础">Python基础</span>
+            <span class="post-date" title="2023-11-06 10:49:23">2023/11/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 ElasticSearch "
+           href="/20230618/872a239c.html"
+           data-tag="ElasticSearch"
+           data-author="" >
+            <span class="post-title" title="ElasticSearch安装">ElasticSearch安装</span>
+            <span class="post-date" title="2023-06-18 17:33:20">2023/06/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux Linux防火墙 "
+           href="/20230511/e26546c7.html"
+           data-tag="操作系统"
+           data-author="" >
+            <span class="post-title" title="Linux防火墙">Linux防火墙</span>
+            <span class="post-date" title="2023-05-11 14:32:10">2023/05/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Log4j "
+           href="/20230511/14631848.html"
+           data-tag="Log4j"
+           data-author="" >
+            <span class="post-title" title="Log4j日常使用记录">Log4j日常使用记录</span>
+            <span class="post-date" title="2023-05-11 14:32:10">2023/05/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spring Spring Framework "
+           href="/20230319/28678f43.html"
+           data-tag="Spring Framework"
+           data-author="" >
+            <span class="post-title" title="Spring基础-AOP">Spring基础-AOP</span>
+            <span class="post-date" title="2023-03-19 17:44:41">2023/03/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spring Spring Framework "
+           href="/20230319/d607e27b.html"
+           data-tag="Spring Framework"
+           data-author="" >
+            <span class="post-title" title="Spring基础">Spring基础</span>
+            <span class="post-date" title="2023-03-19 17:44:41">2023/03/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 编程规范 "
+           href="/20230317/1761bce2.html"
+           data-tag="编程规范"
+           data-author="" >
+            <span class="post-title" title="Java命名规范">Java命名规范</span>
+            <span class="post-date" title="2023-03-17 17:44:04">2023/03/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Spring Redis SpringBoot "
+           href="/20230302/f677ab49.html"
+           data-tag="SpringBoot,Mongodb"
+           data-author="" >
+            <span class="post-title" title="SpringBoot集成Redis">SpringBoot集成Redis</span>
+            <span class="post-date" title="2023-03-02 19:10:19">2023/03/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Nacos "
+           href="/20230301/d8cb1733.html"
+           data-tag="Nacos"
+           data-author="" >
+            <span class="post-title" title="Nacos 使用示例">Nacos 使用示例</span>
+            <span class="post-date" title="2023-03-01 10:19:20">2023/03/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Nacos "
+           href="/20230301/c383a3c4.html"
+           data-tag="Nacos"
+           data-author="" >
+            <span class="post-title" title="Nacos">Nacos</span>
+            <span class="post-date" title="2023-03-01 10:19:20">2023/03/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 日常记录 后端 "
+           href="/20230223/65e80ab3.html"
+           data-tag="日常记录"
+           data-author="" >
+            <span class="post-title" title="2023年问题记录">2023年问题记录</span>
+            <span class="post-date" title="2023-02-23 19:52:44">2023/02/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 Windows "
+           href="/20230216/d9a8c0d4.html"
+           data-tag="日常记录,操作系统"
+           data-author="" >
+            <span class="post-title" title="Windows日常使用问题记录">Windows日常使用问题记录</span>
+            <span class="post-date" title="2023-02-16 10:39:23">2023/02/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Redis "
+           href="/20230210/4be8fe93.html"
+           data-tag="Redis"
+           data-author="" >
+            <span class="post-title" title="Redis-ACL">Redis-ACL</span>
+            <span class="post-date" title="2023-02-10 15:14:01">2023/02/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Redis "
+           href="/20230208/6b8605c4.html"
+           data-tag="Redis"
+           data-author="" >
+            <span class="post-title" title="Redis-配置文件">Redis-配置文件</span>
+            <span class="post-date" title="2023-02-08 18:19:01">2023/02/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Redis "
+           href="/20230103/72ab10c8.html"
+           data-tag="Redis"
+           data-author="" >
+            <span class="post-title" title="Redis-数据类型（基础）">Redis-数据类型（基础）</span>
+            <span class="post-date" title="2023-01-03 20:22:19">2023/01/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Redis "
+           href="/20221103/709af9d4.html"
+           data-tag="Redis"
+           data-author="" >
+            <span class="post-title" title="Redis-命令记录">Redis-命令记录</span>
+            <span class="post-date" title="2022-11-03 19:19:19">2022/11/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Redis "
+           href="/20221102/c9f6f059.html"
+           data-tag="Redis"
+           data-author="" >
+            <span class="post-title" title="Redis安装">Redis安装</span>
+            <span class="post-date" title="2022-11-02 19:10:19">2022/11/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Redis "
+           href="/20221102/4cdb4706.html"
+           data-tag="Redis"
+           data-author="" >
+            <span class="post-title" title="Redis-发布订阅">Redis-发布订阅</span>
+            <span class="post-date" title="2022-11-02 19:10:19">2022/11/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Redis "
+           href="/20221102/574fe2f4.html"
+           data-tag="Redis"
+           data-author="" >
+            <span class="post-title" title="Redis-持久化">Redis-持久化</span>
+            <span class="post-date" title="2022-11-02 19:10:19">2022/11/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Spring Redis Spring Cache "
+           href="/20221102/3fb18050.html"
+           data-tag="Redis,Spring Cache"
+           data-author="" >
+            <span class="post-title" title="配置 序列化成JSON字符串.md">配置 序列化成JSON字符串.md</span>
+            <span class="post-date" title="2022-11-02 19:10:19">2022/11/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221101/53471b9a.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="多线程基础">多线程基础</span>
+            <span class="post-date" title="2022-11-01 06:52:00">2022/11/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221101/3c508c34.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Java并发包">Java并发包</span>
+            <span class="post-date" title="2022-11-01 06:52:00">2022/11/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221101/8c062783.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="多线程设计模式">多线程设计模式</span>
+            <span class="post-date" title="2022-11-01 06:52:00">2022/11/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 MongoDB "
+           href="/20221031/c5d54bc1.html"
+           data-tag="MongoDB"
+           data-author="" >
+            <span class="post-title" title="MongoDB安装">MongoDB安装</span>
+            <span class="post-date" title="2022-10-31 16:19:20">2022/10/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 MySQL "
+           href="/20221031/4c28b48e.html"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL安装、版本差异、JDBC连接配置">MySQL安装、版本差异、JDBC连接配置</span>
+            <span class="post-date" title="2022-10-31 16:19:20">2022/10/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 MySQL "
+           href="/20221031/bce68613.html"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL基础">MySQL基础</span>
+            <span class="post-date" title="2022-10-31 16:19:20">2022/10/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 MySQL "
+           href="/20221031/25158cd7.html"
+           data-tag="日常记录,MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL日常使用记录">MySQL日常使用记录</span>
+            <span class="post-date" title="2022-10-31 16:19:20">2022/10/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 MySQL "
+           href="/20221031/ec788ee4.html"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL查询优化策略">MySQL查询优化策略</span>
+            <span class="post-date" title="2022-10-31 16:19:20">2022/10/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 MySQL "
+           href="/20221031/ad072d5f.html"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL用户管理">MySQL用户管理</span>
+            <span class="post-date" title="2022-10-31 16:19:20">2022/10/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Spring MongoDB SpringBoot "
+           href="/20221031/eb573b79.html"
+           data-tag="SpringBoot,Mongodb"
+           data-author="" >
+            <span class="post-title" title="SpringBoot集成MongoDB">SpringBoot集成MongoDB</span>
+            <span class="post-date" title="2022-10-31 16:19:20">2022/10/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 Ubuntu "
+           href="/20221030/d288da69.html"
+           data-tag="操作系统,Docker"
+           data-author="" >
+            <span class="post-title" title="Ubuntu 安装Docker">Ubuntu 安装Docker</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 Docker "
+           href="/20221030/8c5d6123.html"
+           data-tag="Docker"
+           data-author="" >
+            <span class="post-title" title="配置Docker环境">配置Docker环境</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 Docker "
+           href="/20221030/868b0954.html"
+           data-tag="Docker"
+           data-author="" >
+            <span class="post-title" title="Docker日常使用记录">Docker日常使用记录</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 Ubuntu "
+           href="/20221030/6124f545.html"
+           data-tag="操作系统"
+           data-author="" >
+            <span class="post-title" title="Ubuntu虚拟机搭建">Ubuntu虚拟机搭建</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 压测 "
+           href="/20221030/e291c7ca.html"
+           data-tag="测试"
+           data-author="" >
+            <span class="post-title" title="压测工具概述">压测工具概述</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 Ubuntu "
+           href="/20221030/d81e4de4.html"
+           data-tag="操作系统"
+           data-author="" >
+            <span class="post-title" title="Ubuntu 查看系统信息">Ubuntu 查看系统信息</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 Ubuntu "
+           href="/20221030/f075b7f2.html"
+           data-tag="操作系统"
+           data-author="" >
+            <span class="post-title" title="Ubuntu卸载图形界面">Ubuntu卸载图形界面</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 Windows "
+           href="/20221030/8bc474d9.html"
+           data-tag="Office"
+           data-author="" >
+            <span class="post-title" title="WORD使用记录">WORD使用记录</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 Ubuntu "
+           href="/20221030/b8b8d517.html"
+           data-tag="操作系统"
+           data-author="" >
+            <span class="post-title" title="Ubuntu 防火墙">Ubuntu 防火墙</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Junit "
+           href="/20221030/99356519.html"
+           data-tag="Junit"
+           data-author="" >
+            <span class="post-title" title="Junit日常使用记录">Junit日常使用记录</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Tomcat "
+           href="/20221030/932ec968.html"
+           data-tag="日常记录,Tomcat"
+           data-author="" >
+            <span class="post-title" title="Tomcat异常排查记录">Tomcat异常排查记录</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Tomcat "
+           href="/20221030/d035d83e.html"
+           data-tag="日常记录,Tomcat"
+           data-author="" >
+            <span class="post-title" title="在请求目标中找到无效字符">在请求目标中找到无效字符</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Tomcat "
+           href="/20221030/673ec6c6.html"
+           data-tag="日常记录,Tomcat"
+           data-author="" >
+            <span class="post-title" title="给Tomcat配置外部资源路径">给Tomcat配置外部资源路径</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Lombox "
+           href="/20221030/f1c78c8.html"
+           data-tag="Lombox"
+           data-author="" >
+            <span class="post-title" title="Lombox日常使用记录">Lombox日常使用记录</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Tomcat "
+           href="/20221030/294d5c08.html"
+           data-tag="日常记录,Tomcat"
+           data-author="" >
+            <span class="post-title" title="验证码图片无法显示">验证码图片无法显示</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Logback "
+           href="/20221030/4b5ef04d.html"
+           data-tag="Logback"
+           data-author="" >
+            <span class="post-title" title="Logback日常使用记录">Logback日常使用记录</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Maven "
+           href="/20221030/4a3536f5.html"
+           data-tag="Maven"
+           data-author="" >
+            <span class="post-title" title="Maven使用场景记录">Maven使用场景记录</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Maven "
+           href="/20221030/195cf5d1.html"
+           data-tag="Maven"
+           data-author="" >
+            <span class="post-title" title="Maven基础">Maven基础</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Maven "
+           href="/20221030/9926a393.html"
+           data-tag="Maven"
+           data-author="" >
+            <span class="post-title" title="POM.XML文件说明">POM.XML文件说明</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Tomcat "
+           href="/20221030/530cfffd.html"
+           data-tag="Tomcat"
+           data-author="" >
+            <span class="post-title" title="Tomcat基础">Tomcat基础</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Tomcat "
+           href="/20221030/6f43f742.html"
+           data-tag="Tomcat"
+           data-author="" >
+            <span class="post-title" title="安装Tomcat服务">安装Tomcat服务</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221027/6cd20d81.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="JVM基础回顾">JVM基础回顾</span>
+            <span class="post-date" title="2022-10-27 19:52:44">2022/10/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221027/cc1c3bcb.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="JVM性能调优工具">JVM性能调优工具</span>
+            <span class="post-date" title="2022-10-27 19:52:44">2022/10/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221027/c3539d05.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Java中printf的用法总结">Java中printf的用法总结</span>
+            <span class="post-date" title="2022-10-27 19:52:44">2022/10/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221027/5296b9c2.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Java枚举类型7种常见的用法">Java枚举类型7种常见的用法</span>
+            <span class="post-date" title="2022-10-27 19:52:44">2022/10/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221027/7039576b.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Java注解">Java注解</span>
+            <span class="post-date" title="2022-10-27 19:52:44">2022/10/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221027/f7c553a3.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="abstract class和interface的区别">abstract class和interface的区别</span>
+            <span class="post-date" title="2022-10-27 19:52:44">2022/10/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221027/79cf73a2.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="对象之间相同属性的赋值">对象之间相同属性的赋值</span>
+            <span class="post-date" title="2022-10-27 19:52:44">2022/10/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221027/80d3479f.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="系统方法：System.getProperty">系统方法：System.getProperty</span>
+            <span class="post-date" title="2022-10-27 19:52:44">2022/10/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 IDEA 快捷键 "
+           href="/20221026/610bdf07.html"
+           data-tag="快捷键"
+           data-author="" >
+            <span class="post-title" title="IDEA快捷键">IDEA快捷键</span>
+            <span class="post-date" title="2022-10-26 21:32:25">2022/10/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 Git "
+           href="/20221026/69c3279c.html"
+           data-tag="Git"
+           data-author="" >
+            <span class="post-title" title="Git">Git</span>
+            <span class="post-date" title="2022-10-26 21:32:25">2022/10/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 IDEA "
+           href="/20221026/2241d802.html"
+           data-tag="IDEA"
+           data-author="" >
+            <span class="post-title" title="IDEA 使用技巧">IDEA 使用技巧</span>
+            <span class="post-date" title="2022-10-26 21:32:25">2022/10/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 IDEA "
+           href="/20221026/ee604b16.html"
+           data-tag="IDEA"
+           data-author="" >
+            <span class="post-title" title="IDEA插件">IDEA插件</span>
+            <span class="post-date" title="2022-10-26 21:32:25">2022/10/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 IDEA "
+           href="/20221026/1a8c2722.html"
+           data-tag="IDEA"
+           data-author="" >
+            <span class="post-title" title="IDEA配置">IDEA配置</span>
+            <span class="post-date" title="2022-10-26 21:32:25">2022/10/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 博客搭建 UML类图 "
+           href="/20221025/c9ac90bb.html"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="UML类图与接口图的表示">UML类图与接口图的表示</span>
+            <span class="post-date" title="2022-10-25 19:52:44">2022/10/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 博客搭建 Markdown语法 "
+           href="/20221025/ea43daec.html"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Markdown使用语法记录">Markdown使用语法记录</span>
+            <span class="post-date" title="2022-10-25 19:52:44">2022/10/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 博客搭建 Hexo "
+           href="/20221025/b6159bfb.html"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Hexo 搭建博客">Hexo 搭建博客</span>
+            <span class="post-date" title="2022-10-25 19:52:44">2022/10/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 网络安全 "
+           href="/20221025/96960bec.html"
+           data-tag="网络安全"
+           data-author="" >
+            <span class="post-title" title="CSRF漏洞处理">CSRF漏洞处理</span>
+            <span class="post-date" title="2022-10-25 19:52:44">2022/10/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 网络安全 "
+           href="/20221025/d188606.html"
+           data-tag="网络安全"
+           data-author="" >
+            <span class="post-title" title="SSL漏洞处理">SSL漏洞处理</span>
+            <span class="post-date" title="2022-10-25 19:52:44">2022/10/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 网络安全 "
+           href="/20221025/409b5317.html"
+           data-tag="网络安全"
+           data-author="" >
+            <span class="post-title" title="XSS漏洞处理">XSS漏洞处理</span>
+            <span class="post-date" title="2022-10-25 19:52:44">2022/10/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 编程规范 "
+           href="/20221025/ba2334ee.html"
+           data-tag="编程规范"
+           data-author="" >
+            <span class="post-title" title="Java开发手册【阿里巴巴】">Java开发手册【阿里巴巴】</span>
+            <span class="post-date" title="2022-10-25 19:52:44">2022/10/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221022/725f0c76.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Java 8 in Action【汪文君】">Java 8 in Action【汪文君】</span>
+            <span class="post-date" title="2022-10-22 19:52:44">2022/10/22</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-操作系统/Linux/基础命令/Linux系统文件操作命令" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Linux系统文件操作命令</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Linux">Linux</a> > 
+            
+            <a  data-rel="Linux&lt;---&gt;基础命令">基础命令</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">Linux</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2025-06-19 14:29:23'>2025-06-16 17:48</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">chown ：更改文件或目录所有者和所属组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">chmod：更改文件或目录权限</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">truncate：清空文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">tree：树形结构查看文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">du：查看占用的磁盘空间</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">find ：查找文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">grep： 搜索文件内字符串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">wc：统计指定文件中的字节数、字数、行数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">cp：拷贝文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">mv：移动文件（文件改名）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">rm：删除文件及目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">tail：条件查看文件内容</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">cat： 查看文件（文件拼接）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">more：文件查看</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">less：文件查看</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">touch：新建文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">mkdir：创建目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">ln：创建软链接</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">chown ：更改文件或目录所有者和所属组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">chmod：更改文件或目录权限</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">truncate：清空文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">tree：树形结构查看文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">du：查看占用的磁盘空间</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">find ：查找文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">grep： 搜索文件内字符串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">wc：统计指定文件中的字节数、字数、行数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">cp：拷贝文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">mv：移动文件（文件改名）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">rm：删除文件及目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">tail：条件查看文件内容</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">cat： 查看文件（文件拼接）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">more：文件查看</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">less：文件查看</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">touch：新建文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">mkdir：创建目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">ln：创建软链接</span></a></li></ol></div></p>
+<h1>chown ：更改文件或目录所有者和所属组</h1>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 格式</span></span><br><span class="line"><span class="built_in">chown</span> [选项] [新所有者][:新组] 文件或目录...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 选项</span></span><br><span class="line">-R	递归处理，更改目录及其下所有内容的所有权</span><br><span class="line">-v	显示详细的处理信息</span><br><span class="line">-c	类似 -v，但仅在发生更改时报告</span><br><span class="line">-f	不显示错误信息</span><br><span class="line">--reference=参考文件（使用参考文件的所有者和组，而不是显式指定）</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 更改文件所有者</span></span><br><span class="line"><span class="built_in">chown</span> username filename</span><br><span class="line"><span class="comment"># 同时更改所有者和组</span></span><br><span class="line"><span class="built_in">chown</span> username:groupname filename</span><br><span class="line"><span class="comment"># 只更改文件所属组（两种等效方式）：</span></span><br><span class="line"><span class="built_in">chown</span> :groupname filename</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line"><span class="built_in">chgrp</span> groupname filename</span><br><span class="line"><span class="comment">#递归更改目录及其内容的所有权：</span></span><br><span class="line"><span class="built_in">chown</span> -R username:groupname directory/</span><br><span class="line"><span class="comment"># 使用用户ID和组ID（数字形式）</span></span><br><span class="line"><span class="built_in">chown</span> 1000:1000 filename</span><br><span class="line"><span class="comment"># 复制其他文件的所有权设置：</span></span><br><span class="line"><span class="built_in">chown</span> --reference=source_file target_file</span><br></pre></td></tr></tbody></table></figure>
+<h1>chmod：更改文件或目录权限</h1>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 格式</span></span><br><span class="line"><span class="built_in">chmod</span> [选项] 模式 文件或目录...</span><br><span class="line"><span class="comment"># 常用选项</span></span><br><span class="line">-R	递归处理，更改目录及其下所有内容的权限</span><br><span class="line">-v	显示详细的处理信息</span><br><span class="line">-c	类似 -v，但仅在发生更改时报告</span><br><span class="line">-f	不显示错误信息</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>
+<p>权限表示方法：字母表示法（u/g/o/a +/-/= r/w/x）</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">符号	含义</span><br><span class="line">u	文件所有者(user)</span><br><span class="line">g	文件所属组(group)</span><br><span class="line">o	其他用户(others)</span><br><span class="line">a	所有用户(all)</span><br><span class="line">+	添加权限</span><br><span class="line">-	移除权限</span><br><span class="line">=	设置权限</span><br></pre></td></tr></tbody></table></figure>
+<p>范例</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 给所有者添加执行权限</span></span><br><span class="line"><span class="built_in">chmod</span> u+x filename</span><br><span class="line"><span class="comment"># 给组和其他用户移除写权限</span></span><br><span class="line"><span class="built_in">chmod</span> go-w filename</span><br><span class="line"><span class="comment"># 设置所有用户只有读权限</span></span><br><span class="line"><span class="built_in">chmod</span> a=r filename</span><br><span class="line"><span class="comment"># 给所有者读写执行，组读执行，其他用户无权限</span></span><br><span class="line"><span class="built_in">chmod</span> u=rwx,g=rx,o= filename</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>权限表示方法：数字表示法（八进制数）。三位数字分别表示：所有者、组、其他用户的权限</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">数字	权限</span><br><span class="line">4	读(r)</span><br><span class="line">2	写(w)</span><br><span class="line">1	执行(x)</span><br><span class="line">0	无权限(-)</span><br></pre></td></tr></tbody></table></figure>
+<p>范例</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置权限为 rwxr-xr-- (754)：所有者读写执行(4+2+1 = rwx)，组读执行(4+1 = r-x)，其他用户读(4 = r--)</span></span><br><span class="line"><span class="built_in">chmod</span> 754 filename</span><br><span class="line"></span><br><span class="line"><span class="comment"># 常用权限设置</span></span><br><span class="line"><span class="comment"># 所有者读写，组和其他用户只读</span></span><br><span class="line"><span class="built_in">chmod</span> 644 filename  </span><br><span class="line"><span class="comment"># 所有者完全控制，组和其他用户读执行</span></span><br><span class="line"><span class="built_in">chmod</span> -R 755 directory </span><br><span class="line"><span class="comment"># 仅所有者可读写（保护敏感文件）</span></span><br><span class="line"><span class="built_in">chmod</span> 600 private_file </span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ul>
+<h1>truncate：清空文件</h1>
+<blockquote>
+<p>清空正在使用的 catalina.out文件：<code>truncate -s 0 catalina.out</code></p>
+</blockquote>
+<ul>
+<li>
+<p>使用 truncate 命令清空文件</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -s 参数是设置文件的大小，清空文件的话，就设定为0</span></span><br><span class="line"><span class="built_in">truncate</span> -s 0 catalina.out</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>使用 echo 命令清空文件</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -n <span class="string">" "</span> &gt; catalina.out  </span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ul>
+<h1>tree：树形结构查看文件</h1>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt install tree</span><br><span class="line">或者</span><br><span class="line">yum install tree</span><br></pre></td></tr></tbody></table></figure>
+<h1>du：查看占用的磁盘空间</h1>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">格式：<span class="built_in">du</span> [选项] [文件]</span><br><span class="line">参数:</span><br><span class="line">    -a或-all 显示目录中个别文件的大小</span><br><span class="line">    -b或-bytes 显示目录或文件大小时，以byte为单位</span><br><span class="line">    -c或--total 除了显示个别目录或文件的大小外，同时也显示所有目录或文件的总和</span><br><span class="line">    -k或--kilobytes 以KB(1024bytes)为单位输出</span><br><span class="line">    -m或--megabytes 以MB为单位输出</span><br><span class="line">    -s或--summarize 仅显示总计，只列出最后加总的值</span><br><span class="line">    -h或--human-readable 以K，M，G为单位，提高信息的可读性</span><br><span class="line">    -x或--one-file-xystem 以一开始处理时的文件系统为准，若遇上其它不同的文件系统目录则略过</span><br><span class="line">    -L&lt;符号链接&gt;或--dereference&lt;符号链接&gt; 显示选项中所指定符号链接的源文件大小</span><br><span class="line">    -S或--separate-dirs 显示个别目录的大小时，并不含其子目录的大小</span><br><span class="line">    -X&lt;文件&gt;或--exclude-from=&lt;文件&gt; 在&lt;文件&gt;指定目录或文件</span><br><span class="line">    --exclude=&lt;目录或文件&gt; 略过指定的目录或文件</span><br><span class="line">    -D或--dereference-args 显示指定符号链接的源文件大小</span><br><span class="line">    -H或--si 与-h参数相同，但是K，M，G是以1000为换算单位</span><br><span class="line">    -l或--count-links 重复计算硬件链接的文件。</span><br><span class="line">范例：<span class="built_in">du</span> -hm 目录名称</span><br></pre></td></tr></tbody></table></figure>
+<h1>find ：查找文件</h1>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">格式 : find [path...] [expression]</span><br><span class="line">说明 : 将符合 expression 的文件列出来。                    </span><br></pre></td></tr></tbody></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>全称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code> -atime n</code></td>
+<td>access minute</td>
+<td>在过去 <strong>n 天</strong>被读取过的文件</td>
+</tr>
+<tr>
+<td><code> -ctime n</code></td>
+<td>change time</td>
+<td>在过去 <strong>n 天</strong>文件状态（权限变更、所有者变更、链接数变更等元数据修改）被修改的文件</td>
+</tr>
+<tr>
+<td><code>-mtime n</code></td>
+<td>modify time</td>
+<td>在过去 <strong>n 天</strong>文件内容被修改的文件<br><code>-mtime n</code>：精确匹配 <strong>n 天前</strong>修改的文件<br><code>-mtime +n</code>：查找修改时间<strong>超过 n 天</strong>的文件<br><code>-mtime -n</code>：查找修改时间在 <strong>n 天内</strong>的文件</td>
+</tr>
+<tr>
+<td><code> -amin n</code></td>
+<td>access minute</td>
+<td>在过去 <strong>n 分钟</strong>内被读取过的文件</td>
+</tr>
+<tr>
+<td><code> -cmin n</code></td>
+<td>change time</td>
+<td>在过去 <strong>n 分钟</strong>文件状态（权限变更、所有者变更、链接数变更等元数据修改）被修改的文件</td>
+</tr>
+<tr>
+<td><code>-mmin n</code></td>
+<td>modify minute</td>
+<td>在过去 <strong>n 分钟</strong>文件内容被修改的文件</td>
+</tr>
+<tr>
+<td><code> -anewer file</code></td>
+<td></td>
+<td>比文件 file 更晚被读取过的文件</td>
+</tr>
+<tr>
+<td><code> -cnewer file</code></td>
+<td></td>
+<td>比文件 file 更新的文件</td>
+</tr>
+<tr>
+<td><code> -name filename</code><br><code>-iname filename</code></td>
+<td></td>
+<td>符合 filename 的文件。iname 会忽略大小写</td>
+</tr>
+<tr>
+<td><code> -size n</code></td>
+<td></td>
+<td>文件大小 是 n 单位，b 代表 512 位元组的区块，c 表示字元数，k表示 kilo bytes，w 是二个位元组。</td>
+</tr>
+<tr>
+<td><code> -type c</code></td>
+<td></td>
+<td>文件类型是 c 的档案。</td>
+</tr>
+</tbody>
+</table>
+<p>范例:</p>
+<ol>
+<li>
+<p>将当前目录及其子目录下所有扩展名是 c 的文件列出来：<code>find . -name "*.c"</code></p>
+</li>
+<li>
+<p>将当前目录及其子目录下所有最近 20 分钟内更新过的文件列出：<code>find . -cmin -20</code></p>
+</li>
+<li>
+<p>查找包含字符串的文件：<code>find /opt/Tomcat7  -name "system.properties"|xargs grep -ri "BASCI_UPDATE"</code></p>
+</li>
+<li>
+<p>将/usr/local/backups目录下10天前修改过的，名称包含localhost的文件删除：<code>find /usr/local/backups -mtime +10 -name "*localhost*.*" |xargs rm -rf</code></p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">find /usr/local/backups -mtime +10 -name <span class="string">"*.*"</span> |xargs <span class="built_in">rm</span> -rf</span><br><span class="line">或者</span><br><span class="line">find /usr/local/backups -mtime +10 -name <span class="string">"*.*"</span> -<span class="built_in">exec</span> <span class="built_in">rm</span> -rf {} \;</span><br><span class="line"></span><br><span class="line">说明： 　　</span><br><span class="line">find：linux的查找命令，用户查找指定条件的文件 　　</span><br><span class="line">/usr/local/backups：想要进行清理的任意目录 　　</span><br><span class="line">-mtime：标准语句写法 　　</span><br><span class="line">＋10：查找10天前的文件，这里用数字代表天数，＋30表示查找30天前的文件</span><br><span class="line"><span class="string">"*.*"</span>：希望查找的数据类型，<span class="string">"*.jpg"</span>表示查找扩展名为jpg的所有文件，<span class="string">"*"</span>表示查找所有文件，这个可以灵活运用，举一反三 　　</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-<span class="built_in">exec</span> <span class="built_in">rm</span> -rf {} \; ：find发现的结果一次性传给<span class="built_in">exec</span>选项，删除</span><br><span class="line">|xargs <span class="built_in">rm</span> -rf : 分批次的处理删除（推荐）</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<h1>grep： 搜索文件内字符串</h1>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">格式：grep [-no] pattern files</span><br><span class="line">参数：</span><br><span class="line">     -n 显示行号</span><br><span class="line">     -o 只显示匹配的串</span><br></pre></td></tr></tbody></table></figure>
+<p>范例：</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">grep  <span class="built_in">printf</span> *</span><br><span class="line">    file1.c:   <span class="built_in">printf</span>(<span class="string">"\nHello\n"</span>);</span><br><span class="line">    file2.c:   <span class="built_in">printf</span>(<span class="string">"\nSample\n"</span>);</span><br><span class="line"></span><br><span class="line">grep -n  <span class="built_in">printf</span> *</span><br><span class="line">    file1.c:4   <span class="built_in">printf</span>(<span class="string">"\nHello\n"</span>);</span><br><span class="line">    file2.c:9   <span class="built_in">printf</span>(<span class="string">"\nSample\n"</span>);</span><br><span class="line"></span><br><span class="line">grep -o  <span class="built_in">printf</span> *</span><br><span class="line">   file1.c:   <span class="built_in">printf</span></span><br><span class="line">   file2.c:   <span class="built_in">printf</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果搜索的串中有空格，则用引号括起来</span></span><br><span class="line">grep <span class="string">"asd abc"</span> *</span><br></pre></td></tr></tbody></table></figure>
+<h1>wc：统计指定文件中的字节数、字数、行数</h1>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">格式：<span class="built_in">wc</span> [选项] 文件名称</span><br><span class="line">选项 ：</span><br><span class="line">   -c 统计字节数。</span><br><span class="line">   -l 统计行数。</span><br><span class="line">   -m 统计字符数。这个标志不能与 -c 标志一起使用。</span><br><span class="line">   -w 统计字数。一个字被定义为由空白、跳格或换行字符分隔的字符串。</span><br><span class="line">   -L 打印最长行的长度。</span><br><span class="line">   -<span class="built_in">help</span> 显示帮助信息</span><br><span class="line">   --version 显示版本信息</span><br></pre></td></tr></tbody></table></figure>
+<h1>cp：拷贝文件</h1>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">格式：<span class="built_in">cp</span> [-arf] <span class="built_in">source</span> dest</span><br><span class="line">参数:</span><br><span class="line">   -a  将文件状态、权限等信息都照原状予以复制。</span><br><span class="line">   -r  若 <span class="built_in">source</span> 中含有目录名，则将目录下的文件顺序拷贝至目的地。</span><br><span class="line">   -f  若目的地已经有相同的文件名存在，则在复制前先予以删除再行复制。</span><br></pre></td></tr></tbody></table></figure>
+<p>范例：</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 将文件 aaa 复制一份名字为 bbb 的文件:         </span></span><br><span class="line"><span class="built_in">cp</span> aaa bbb   </span><br><span class="line"><span class="comment"># 2. 将当前目录下的所有C程序拷贝到当前目录下的Finished 子目录中：</span></span><br><span class="line"><span class="built_in">cp</span> *.c Finished</span><br><span class="line"><span class="comment"># 3. 将souce目录拷贝到当前目录下</span></span><br><span class="line"><span class="built_in">cp</span> -arf <span class="built_in">source</span> .</span><br></pre></td></tr></tbody></table></figure>
+<h1>mv：移动文件（文件改名）</h1>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">格式：<span class="built_in">mv</span> [-i] <span class="built_in">source</span> dest</span><br><span class="line">参数：-i 若目的地已有同名文件，则先询问是否覆盖旧文件</span><br></pre></td></tr></tbody></table></figure>
+<p>范例：</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 将文件 aaa 改名为 bbb :</span></span><br><span class="line"><span class="built_in">mv</span> aaa bbb</span><br><span class="line"><span class="comment"># 2. 将所有的C程序移至当前目录下的 target 子目录中：</span></span><br><span class="line"><span class="built_in">mv</span> -i *.c  target</span><br></pre></td></tr></tbody></table></figure>
+<h1>rm：删除文件及目录</h1>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">格式：<span class="built_in">rm</span> [-ifr] name...</span><br><span class="line">参数：</span><br><span class="line">   -i  删除前逐一询问确认。</span><br><span class="line">   -f  即使原文件属性设为只读，也直接删除，无需逐一确认。</span><br><span class="line">   -r  将目录及以下之文件逐一删除。</span><br></pre></td></tr></tbody></table></figure>
+<p>范例</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.  删除所有C程序文件并删除前逐一询问确认 :</span></span><br><span class="line"><span class="built_in">rm</span> -i *.c</span><br><span class="line"><span class="comment"># 2. 将 Finished 子目录及子目录中所有文件删除 :</span></span><br><span class="line"><span class="built_in">rm</span> -r Finished</span><br></pre></td></tr></tbody></table></figure>
+<h1>tail：条件查看文件内容</h1>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">格式：<span class="built_in">tail</span> [ -f ] [ -c Number | -n Number | -m Number | -b Number | -k Number ]  文件名称</span><br><span class="line">参数：</span><br><span class="line">-f：（follow）该参数用于监视File文件增长。</span><br><span class="line">-n  Number：从 Number 行位置读取指定文件。</span><br><span class="line">-c  Number：从 Number 字节位置读取指定文件</span><br><span class="line">-m  Number：从 Number 多字节字符位置读取指定文件，比方你的文件假设包括中文字，假设指定-c参数，可能导致截断，但使用-m则会避免该问题。</span><br><span class="line">-b  Number：从 Number 表示的512字节块位置读取指定文件。</span><br><span class="line">-k  Number：从 Number 表示的1KB块位置读取指定文件。</span><br><span class="line"></span><br><span class="line">上述命令中，都涉及到number，假设不指定，默认显示10行。</span><br><span class="line">Number前面可使用正负号，表示该偏移从顶部还是从尾部開始计算。</span><br><span class="line"><span class="built_in">tail</span>可运行文件一般在/usr/bin/以下。</span><br></pre></td></tr></tbody></table></figure>
+<p>示例</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1、监视filename文件的尾部内容（默认10行，相当于增加参数 -n 10），刷新显示在屏幕上。退出，按下CTRL+C。 </span></span><br><span class="line"><span class="built_in">tail</span> -f filename </span><br><span class="line"><span class="comment"># 2、显示filename最后20行</span></span><br><span class="line"><span class="built_in">tail</span> -n 20 filename </span><br><span class="line"><span class="comment"># 3、实时查看 Nginx 日志中出现的 40</span></span><br><span class="line"><span class="built_in">tail</span> -f /var/log/nginx/access.log | grep <span class="string">"404"</span></span><br></pre></td></tr></tbody></table></figure>
+<h1>cat： 查看文件（文件拼接）</h1>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">格式：<span class="built_in">cat</span> [-AbeEnstTuv] [--<span class="built_in">help</span>] [--version] fileName</span><br><span class="line">说明：把文件串连接后输出到荧幕或加 &gt; fileName 到另一个档案</span><br><span class="line">参数：</span><br><span class="line">    -A 等价于 -vET</span><br><span class="line">    -n或 --number 由 1 开始对所有输出的行数编号</span><br><span class="line">    -b或 --number-nonblank和 -n 相似，只不过对于空白行不编号</span><br><span class="line">    -e 等价于 –vE</span><br><span class="line">    -E 每行末尾显示一个$符号</span><br><span class="line">    -s或 --squeeze-blank 当遇到有连续两行以上的空白行，就代换为一行的空白行</span><br><span class="line">    -t 等价于 –vT</span><br><span class="line">    -T 显示制表符为 ^I</span><br><span class="line">    -v或 --show-nonprinting,  dos格式的回车换行显示为^M</span><br></pre></td></tr></tbody></table></figure>
+<p>范例：<code>&gt; 为重定向操作符</code>（文件存在，覆盖内容）， <code>&gt;&gt;为重定向追加操作符</code>（文件存在，追加）</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.把 textfile1 的文件内容加上行号后输入到textfile2 文件里：</span></span><br><span class="line"><span class="built_in">cat</span> -n textfile1 &gt; textfile2</span><br><span class="line"><span class="comment"># 2.把 textfile1 和 textfile2 的文件内容加上行号（空白行不加）之后将内容附加到 textfile3 </span></span><br><span class="line"><span class="built_in">cat</span> -b textfile1 textfile2 &gt;&gt; textfile3</span><br></pre></td></tr></tbody></table></figure>
+<h1>more：文件查看</h1>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">格式：more  [-num] [+linenum] [fileNames..]</span><br><span class="line">说明：类似 <span class="built_in">cat</span> ，不过是以一页一页的方式显示。而最基本的指令就是按空白键（space）就往下一页显示，按 b 键就会往回（back）一页显示。</span><br><span class="line">参数：</span><br><span class="line">    -num 一次显示的行数</span><br><span class="line">    +linenum 从第 num 行开始显示</span><br><span class="line">    fileNames 欲显示内容的文件，可为多个文件</span><br></pre></td></tr></tbody></table></figure>
+<p>范例：</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#从第 20 行开始，每页10行显示 testfile 文件内容</span></span><br><span class="line">more -10 +20 testfile</span><br></pre></td></tr></tbody></table></figure>
+<h1>less：文件查看</h1>
+<p><code>less</code> 是 Linux 系统中一个功能强大的文件查看工具，比传统的 <code>more</code> 命令更加强大和灵活。它允许用户向前或向后浏览文件内容，支持搜索、标记等多种功能</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">格式： less [选项] filename</span><br><span class="line">说明： less 的作用与 more 十分相似，都可以用来浏览文本文件的内容，不同的是 less 允许使用者往回卷动（PageUp PageDown）以浏览已经看过的部份，同时因为 less 并未在一开始就读入整个文件，因此在遇上大型文件的开启时，会比一般的文本编辑器(如vi)来的快速。</span><br><span class="line"></span><br><span class="line">常用选项：</span><br><span class="line">-N	显示行号</span><br><span class="line">-i	忽略搜索时的大小写</span><br><span class="line">-I	强制忽略大小写</span><br><span class="line">-F	如果文件内容少于一屏，自动退出</span><br><span class="line">-X	退出时不清理屏幕</span><br><span class="line">-S	截断长行而不是换行显示</span><br><span class="line">-r	显示控制字符</span><br><span class="line">-M	显示更详细的提示信息</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>常见操作命令</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>操作分类</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>浏览操作</td>
+<td><code>空格键</code> 或 <code>f</code>：向下翻一页<br><code>b</code>：向上翻一页<br><code>回车键</code> 或 <code>e</code>：向下翻一行<br><code>y</code> 或 <code>k</code>：向上翻一行<br><code>d</code>：向下翻半页<br><code>u</code>：向上翻半页<br><code>g</code>：跳到文件开头<br><code>G</code>：跳到文件末尾<br><code>50%</code>：跳到文件50%的位置<br><code>Ctrl+F</code>：向前滚动一屏<br><code>Ctrl+B</code>：向后滚动一屏</td>
+</tr>
+<tr>
+<td>搜索功能</td>
+<td><code>/</code>：向前搜索（输入模式）<br><code>?</code>：向后搜索（输入模式）<br><code>n</code>：重复上一次搜索（同方向）<br><code>N</code>：重复上一次搜索（反方向）</td>
+</tr>
+<tr>
+<td>标记位置</td>
+<td><code>m + 字母</code>：用字母标记当前位置<br><code>' + 字母</code>：跳转到标记位置</td>
+</tr>
+<tr>
+<td>文件操作</td>
+<td><code>:e 文件名</code>：打开新文件<br><code>:n</code>：查看下一个文件（多文件打开时）<br><code>:p</code>：查看上一个文件（多文件打开时）</td>
+</tr>
+<tr>
+<td>其他功能</td>
+<td><code>v</code>：使用默认编辑器编辑当前文件<br><code>h</code>：显示帮助信息<br><code>q</code>：退出 less</td>
+</tr>
+</tbody>
+</table>
+<h1>touch：新建文件</h1>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> 文件名</span><br></pre></td></tr></tbody></table></figure>
+<h1>mkdir：创建目录</h1>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> 目录名</span><br><span class="line"></span><br><span class="line">常用选项：</span><br><span class="line">-p	递归创建目录，如果父目录不存在则一并创建 <span class="built_in">mkdir</span> -p project/src/main/java</span><br><span class="line">-m	设置目录权限，如 <span class="built_in">mkdir</span> -m 755 <span class="built_in">dirname</span></span><br><span class="line">-v	显示创建目录的详细信息 </span><br></pre></td></tr></tbody></table></figure>
+<p>范例：</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 批量创建多个目录结构：</span></span><br><span class="line"><span class="built_in">mkdir</span> -p project/{src,<span class="built_in">test</span>}/{main,<span class="built_in">test</span>}/{java,resources}</span><br><span class="line"><span class="comment"># 创建带空格的目录</span></span><br><span class="line"><span class="built_in">mkdir</span> <span class="string">"my folder"</span></span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>注意事项：</p>
+<ol>
+<li>如果目录已存在，<code>mkdir</code> 会报错，使用 <code>-p</code> 选项可以避免这个错误</li>
+<li>需要有父目录的写权限才能创建子目录</li>
+<li>目录名区分大小写</li>
+<li>目录名可以包含空格，但需要用引号括起来： <code>mkdir "my folder"</code></li>
+</ol>
+</blockquote>
+<h1>ln：创建软链接</h1>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s [源文件或目录] [链接名称]</span><br><span class="line">或者</span><br><span class="line"><span class="built_in">ln</span> -sf [源文件或目录] [链接名称]</span><br><span class="line"></span><br><span class="line">说明：使用 -f 选项可以强制覆盖已存在的链接</span><br></pre></td></tr></tbody></table></figure>
+<p>范例：</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在当前目录创建软连接： </span></span><br><span class="line"><span class="built_in">ln</span> -s /etc/passwd mypasswd</span><br><span class="line"><span class="comment"># 创建文件软连接：</span></span><br><span class="line"><span class="built_in">ln</span> -s /path/to/original/file /path/to/link</span><br><span class="line"><span class="comment"># 创建目录软连接</span></span><br><span class="line"><span class="built_in">ln</span> -s /path/to/original/directory /path/to/link</span><br><span class="line"><span class="comment"># 创建相对路径的软连接（推荐）：</span></span><br><span class="line"><span class="built_in">ln</span> -s ../original/file link_name</span><br><span class="line"></span><br><span class="line"><span class="comment"># 版本切换（通过切换软连接指向）使用 -f 选项可以强制覆盖已存在的链接</span></span><br><span class="line"><span class="built_in">ln</span> -sf /opt/software/v2.0 /opt/software/current</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看软链接的实际地址</span></span><br><span class="line"><span class="built_in">realpath</span> /path/to/link</span><br><span class="line"><span class="comment"># 查看软连接：输出中箭头 -&gt; 指向源文件</span></span><br><span class="line"><span class="built_in">ls</span> -l /path/to/link</span><br><span class="line"><span class="comment"># 查看软链接</span></span><br><span class="line">file /path/to/link</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除软链接（不要加 / 在末尾，否则会删除源文件内容）</span></span><br><span class="line"><span class="built_in">rm</span> /path/to/link</span><br></pre></td></tr></tbody></table></figure>
+<p>软链接验证</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">root@hots-Lenovo:/data# apt install tree</span><br><span class="line">root@hots-Lenovo:/data# tree</span><br><span class="line">.</span><br><span class="line">├── link-real</span><br><span class="line">│   ├── a-real</span><br><span class="line">│   └── b-real</span><br><span class="line">│       └── test.txt</span><br><span class="line">└── link-soft</span><br><span class="line"></span><br><span class="line">4 directories, 1 file</span><br><span class="line">root@hots-Lenovo:/data# <span class="built_in">ln</span> -s /data/link-real/a-real  /data/link-soft/a-soft</span><br><span class="line">root@hots-Lenovo:/data# </span><br><span class="line">root@hots-Lenovo:/data# <span class="built_in">ln</span> -s /data/link-real/b-real  /data/link-soft/b-soft</span><br><span class="line">root@hots-Lenovo:/data# tree</span><br><span class="line">.</span><br><span class="line">├── link-real</span><br><span class="line">│   ├── a-real</span><br><span class="line">│   └── b-real</span><br><span class="line">│       └── test.txt</span><br><span class="line">└── link-soft</span><br><span class="line">    ├── a-soft -&gt; /data/link-real/a-real</span><br><span class="line">    └── b-soft -&gt; /data/link-real/b-real</span><br><span class="line"></span><br><span class="line">6 directories, 1 file</span><br><span class="line">root@hots-Lenovo:/data# <span class="built_in">realpath</span> /data/link-soft/a-soft</span><br><span class="line">/data/link-real/a-real</span><br><span class="line">root@hots-Lenovo:/data# <span class="built_in">realpath</span> /data/link-soft/b-soft</span><br><span class="line">/data/link-real/b-real</span><br><span class="line">root@hots-Lenovo:/data/link-soft/b-soft# <span class="built_in">ls</span> /data/link-soft/b-soft</span><br><span class="line">test.txt</span><br><span class="line">root@hots-Lenovo:/data# file /data/link-soft/a-soft</span><br><span class="line">/data/link-soft/a-soft: symbolic <span class="built_in">link</span> to /data/link-real/a-real</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>
+<p>注意事项</p>
+<blockquote>
+<ol>
+<li>创建软连接时最好使用绝对路径，避免移动后失效</li>
+<li>不要创建循环链接（A指向B，B指向A）</li>
+<li>删除软连接时不要加 <code>/</code> 后缀</li>
+<li>软连接的权限不影响源文件的权限</li>
+<li>使用 <code>-f</code> 选项可以强制覆盖已存在的链接</li>
+</ol>
+</blockquote>
+</li>
+<li>
+<p>软连接 vs 硬链接</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">特性</th>
+<th style="text-align:left">软连接</th>
+<th style="text-align:left">硬链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">创建命令</td>
+<td style="text-align:left"><code>ln -s</code></td>
+<td style="text-align:left"><code>ln</code></td>
+</tr>
+<tr>
+<td style="text-align:left">跨文件系统</td>
+<td style="text-align:left">支持</td>
+<td style="text-align:left">不支持</td>
+</tr>
+<tr>
+<td style="text-align:left">链接目录</td>
+<td style="text-align:left">支持</td>
+<td style="text-align:left">不支持</td>
+</tr>
+<tr>
+<td style="text-align:left">原始文件删除</td>
+<td style="text-align:left">链接失效</td>
+<td style="text-align:left">仍然有效</td>
+</tr>
+<tr>
+<td style="text-align:left">inode</td>
+<td style="text-align:left">与源文件不同</td>
+<td style="text-align:left">与源文件相同</td>
+</tr>
+<tr>
+<td style="text-align:left">文件类型</td>
+<td style="text-align:left">特殊文件（l）</td>
+<td style="text-align:left">普通文件</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 Yelog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

@@ -1,262 +1,2082 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-
-<script class="next-config" data-name="main" type="application/json">{"hostname":"hmxyl.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.14.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":"ture","preload":false}}</script><script src="/js/config.js"></script>
-
-    <meta name="description" content="MyBaties调用MySQL数据库查询无结果,查询语句正确  DEBUG 进去源码，排查最终提交的SQL语句中文乱码 检查数据库编码是否为UTF-8 修改MySQL的连接配置：jdbc:mysql:&#x2F;&#x2F;127.0.0.1:3306&#x2F;qhswdxssplog?useUnicode&#x3D;true&amp;characterEncoding&#x3D;UTF-8  将多行查询结果合并到一行 GROUP_CONCAT">
-<meta property="og:type" content="article">
-<meta property="og:title" content="MySQL日常使用记录">
-<meta property="og:url" content="https://hmxyl.github.io/20221031/25158cd7.html">
+  <meta charset="utf-8">
+  <title>MySQL日常使用记录 | Alisa&#39;s Home</title>
+  <meta name="keywords" content=" 日常记录 , MySQL ">
+  <meta name="description" content="MySQL日常使用记录 | Alisa&#39;s Home">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="Oops～，我崩溃了！找不到你想要的页面 :(">
+<meta property="og:type" content="website">
+<meta property="og:title" content="404">
+<meta property="og:url" content="https://hmxyl.github.io/404/index.html">
 <meta property="og:site_name" content="Alisa&#39;s Home">
-<meta property="og:description" content="MyBaties调用MySQL数据库查询无结果,查询语句正确  DEBUG 进去源码，排查最终提交的SQL语句中文乱码 检查数据库编码是否为UTF-8 修改MySQL的连接配置：jdbc:mysql:&#x2F;&#x2F;127.0.0.1:3306&#x2F;qhswdxssplog?useUnicode&#x3D;true&amp;characterEncoding&#x3D;UTF-8  将多行查询结果合并到一行 GROUP_CONCAT">
+<meta property="og:description" content="Oops～，我崩溃了！找不到你想要的页面 :(">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-10-31T08:19:20.000Z">
-<meta property="article:modified_time" content="2024-09-29T11:28:56.839Z">
+<meta property="article:published_time" content="2023-03-16T09:39:22.000Z">
+<meta property="article:modified_time" content="2023-03-17T02:46:08.000Z">
 <meta property="article:author" content="Alisa">
-<meta property="article:tag" content="日常记录">
-<meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://hmxyl.github.io/20221031/25158cd7.html">
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hmxyl.github.io/20221031/25158cd7.html","path":"20221031/25158cd7.html","title":"MySQL日常使用记录"}</script>
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
 
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>MySQL日常使用记录 | Alisa's Home</title>
-  
+<script src="/js/iconfont.js?v=1.1.0" ></script>
 
-
-
-
-
-
-
-
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-
+<meta name="generator" content="Hexo 7.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Alisa's Home" type="application/atom+xml">
 </head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <div class="column">
-      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <p class="site-title">Alisa's Home</p>
-      <i class="logo-line"></i>
-    </a>
-      <p class="site-subtitle" itemprop="description">Alisa's Home</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="搜索" role="button">
-        <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
 </div>
 
 
 
-<nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
-      </li>
-  </ul>
-</nav>
-
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup"><div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" maxlength="80"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close" role="button">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div class="search-result-container no-result">
-  <div class="search-result-icon">
-    <i class="fa fa-spinner fa-pulse fa-5x"></i>
-  </div>
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>Alisa</span>
 </div>
 
-    </div>
-  </div>
-
-</header>
+<div class="icon">
+    
         
-  
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">MyBaties调用MySQL数据库查询无结果,查询语句正确</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">将多行查询结果合并到一行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">数据库更新操作关于不同数据库的update set from where操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">获取建表命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">将表1内容全部复制到表2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">修改表&#x2F;字段的注释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text">数据表切换数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">8.</span> <span class="nav-text">MySQL自增主键列重新排列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">9.</span> <span class="nav-text">自动修改更改时间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">10.</span> <span class="nav-text">linux下mysql-5.6忘记root密码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">11.</span> <span class="nav-text">MySQL5.7.X版本only_full_group_by问题解决</span></a></li></ol></div>
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Alisa</p>
-  <div class="site-description" itemprop="description">学习笔记、工作心得</div>
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="facebook"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-facebook"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+            <a title="instagram"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-instagram"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="reddit"
+               href="https://www.reddit.com/user/yelog/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-reddit"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="weibo"
+               href="http://weibo.com/u/2307534817"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="jianshu"
+               href="https://www.jianshu.com/u/ff56736de7cf"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/jaytp/activities"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:jaytp@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
 </div>
-<div class="site-state-wrap animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">89</span>
-          <span class="site-state-item-name">日志</span>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(89)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="后端">
+            <i class="fold iconfont icon-right"></i>
+            后端
+            <small>(17)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="后端&lt;---&gt;编程规范">
+            
+            编程规范
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="后端&lt;---&gt;Java">
+            
+            Java
+            <small>(12)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="后端&lt;---&gt;Python">
+            
+            Python
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="数据库">
+            <i class="fold iconfont icon-right"></i>
+            数据库
+            <small>(17)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="数据库&lt;---&gt;ElasticSearch">
+            
+            ElasticSearch
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="数据库&lt;---&gt;MongoDB">
+            
+            MongoDB
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="数据库&lt;---&gt;MySQL">
+            
+            MySQL
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="数据库&lt;---&gt;Redis">
+            
+            Redis
+            <small>(9)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="博客搭建">
+            <i class="fold iconfont icon-right"></i>
+            博客搭建
+            <small>(3)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="博客搭建&lt;---&gt;Hexo">
+            
+            Hexo
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="博客搭建&lt;---&gt;Markdown语法">
+            
+            Markdown语法
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="博客搭建&lt;---&gt;UML类图">
+            
+            UML类图
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="工具|部署">
+            <i class="fold iconfont icon-right"></i>
+            工具|部署
+            <small>(12)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="工具|部署&lt;---&gt;压测">
+            
+            压测
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="工具|部署&lt;---&gt;Git">
+            
+            Git
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="工具|部署&lt;---&gt;IDEA">
+            
+            IDEA
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="工具|部署&lt;---&gt;Ubuntu">
+            
+            Ubuntu
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="工具|部署&lt;---&gt;Windows">
+            
+            Windows
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="框架|中间件">
+            <i class="fold iconfont icon-right"></i>
+            框架|中间件
+            <small>(15)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="框架|中间件&lt;---&gt;Junit">
+            
+            Junit
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="框架|中间件&lt;---&gt;Log4j">
+            
+            Log4j
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="框架|中间件&lt;---&gt;Logback">
+            
+            Logback
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="框架|中间件&lt;---&gt;Lombox">
+            
+            Lombox
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="框架|中间件&lt;---&gt;Maven">
+            
+            Maven
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="框架|中间件&lt;---&gt;Nacos">
+            
+            Nacos
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="框架|中间件&lt;---&gt;Tomcat">
+            
+            Tomcat
+            <small>(6)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="前端">
+            <i class="fold iconfont icon-right"></i>
+            前端
+            <small>(6)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="前端&lt;---&gt;Vue3">
+            
+            Vue3
+            <small>(6)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="日常记录">
+            <i class="fold iconfont icon-right"></i>
+            日常记录
+            <small>(2)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="日常记录&lt;---&gt;后端">
+            
+            后端
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="日常记录&lt;---&gt;前端">
+            
+            前端
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="网络安全">
+            
+            网络安全
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="应用推荐">
+            
+            应用推荐
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Docker">
+            
+            Docker
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="IDEA">
+            <i class="fold iconfont icon-right"></i>
+            IDEA
+            <small>(1)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="IDEA&lt;---&gt;快捷键">
+            
+            快捷键
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Linux">
+            <i class="fold iconfont icon-right"></i>
+            Linux
+            <small>(5)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="Linux&lt;---&gt;基础命令">
+            
+            基础命令
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Linux&lt;---&gt;日常使用">
+            
+            日常使用
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Linux&lt;---&gt;Linux防火墙">
+            
+            Linux防火墙
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Spring">
+            <i class="fold iconfont icon-right"></i>
+            Spring
+            <small>(5)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="Spring&lt;---&gt;Spring Cache">
+            
+            Spring Cache
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Spring&lt;---&gt;Spring Framework">
+            
+            Spring Framework
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="Spring&lt;---&gt;SpringBoot">
+            
+            SpringBoot
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Windows系统">
+            <i class="fold iconfont icon-right"></i>
+            Windows系统
+            <small>(1)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="Windows系统&lt;---&gt;快捷键">
+            
+            快捷键
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="89">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>编程规范</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>操作系统</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>测试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>快捷键</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>日常记录</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>网络安全</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Docker</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ElasticSearch</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Git</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>IDEA</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Java</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Junit</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Linux</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Log4j</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Logback</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Lombox</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Maven</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Mongodb</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MongoDB</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Nacos</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Office</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Redis</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Spring Cache</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Spring Framework</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>SpringBoot</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Tomcat</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Vue3</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Linux 基础命令 "
+           href="/20250616/44c28660.html"
+           data-tag="Linux"
+           data-author="" >
+            <span class="post-title" title="Linux系统文件操作命令">Linux系统文件操作命令</span>
+            <span class="post-date" title="2025-06-16 17:48:34">2025/06/16</span>
         </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-          <a href="/categories/">
-        <span class="site-state-item-count">46</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-          <a href="/tags/">
-        <span class="site-state-item-count">29</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
+        
+        
+        <a  class="全部文章 Linux 基础命令 "
+           href="/20250616/b2009fa9.html"
+           data-tag="Linux"
+           data-author="" >
+            <span class="post-title" title="Linux查看系统信息命令">Linux查看系统信息命令</span>
+            <span class="post-date" title="2025-06-16 17:46:02">2025/06/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux 日常使用 "
+           href="/20250614/fb3eb231.html"
+           data-tag="Linux"
+           data-author="" >
+            <span class="post-title" title="Linux日常使用">Linux日常使用</span>
+            <span class="post-date" title="2025-06-14 16:48:16">2025/06/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux 基础命令 "
+           href="/20250611/f0a9e559.html"
+           data-tag="Linux"
+           data-author="" >
+            <span class="post-title" title="Linux系统命令行工具">Linux系统命令行工具</span>
+            <span class="post-date" title="2025-06-11 22:48:07">2025/06/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 应用推荐 "
+           href="/20250610/b78998f1.html"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Cherry书签管理器">Cherry书签管理器</span>
+            <span class="post-date" title="2025-06-10 14:17:04">2025/06/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 应用推荐 "
+           href="/20250605/7f395aef.html"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="LinkAce书签管理器">LinkAce书签管理器</span>
+            <span class="post-date" title="2025-06-05 18:32:01">2025/06/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Windows系统 快捷键 "
+           href="/20250604/459f9e41.html"
+           data-tag="快捷键"
+           data-author="" >
+            <span class="post-title" title="Windows快捷键">Windows快捷键</span>
+            <span class="post-date" title="2025-06-04 16:03:38">2025/06/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/20250520/0.html"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2025-05-20 15:34:49">2025/05/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 日常记录 前端 "
+           href="/20240929/33f402b5.html"
+           data-tag="日常记录"
+           data-author="" >
+            <span class="post-title" title="前端日常问题记录">前端日常问题记录</span>
+            <span class="post-date" title="2024-09-29 19:16:39">2024/09/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 Vue3 "
+           href="/20231224/7d2d5550.html"
+           data-tag="Vue3"
+           data-author="" >
+            <span class="post-title" title="Vue3基础">Vue3基础</span>
+            <span class="post-date" title="2023-12-24 10:49:23">2023/12/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 Vue3 "
+           href="/20231224/1954b1ff.html"
+           data-tag="Vue3"
+           data-author="" >
+            <span class="post-title" title="侦听器（watch）">侦听器（watch）</span>
+            <span class="post-date" title="2023-12-24 10:49:23">2023/12/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 Vue3 "
+           href="/20231224/4446b2a4.html"
+           data-tag="Vue3"
+           data-author="" >
+            <span class="post-title" title="事件处理">事件处理</span>
+            <span class="post-date" title="2023-12-24 10:49:23">2023/12/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 Vue3 "
+           href="/20231224/9ee367a5.html"
+           data-tag="Vue3"
+           data-author="" >
+            <span class="post-title" title="表单输入绑定（v-model）">表单输入绑定（v-model）</span>
+            <span class="post-date" title="2023-12-24 10:49:23">2023/12/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 Vue3 "
+           href="/20231224/6e23c48.html"
+           data-tag="Vue3"
+           data-author="" >
+            <span class="post-title" title="其他">其他</span>
+            <span class="post-date" title="2023-12-24 10:49:23">2023/12/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 前端 Vue3 "
+           href="/20231224/34778b46.html"
+           data-tag="Vue3"
+           data-author="" >
+            <span class="post-title" title="组件">组件</span>
+            <span class="post-date" title="2023-12-24 10:49:23">2023/12/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Python "
+           href="/20231108/c8f562d1.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="Python函数">Python函数</span>
+            <span class="post-date" title="2023-11-08 10:49:23">2023/11/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Python "
+           href="/20231106/d59aed63.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="Python内置函数">Python内置函数</span>
+            <span class="post-date" title="2023-11-06 10:49:23">2023/11/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Python "
+           href="/20231106/99832f47.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="Python基础">Python基础</span>
+            <span class="post-date" title="2023-11-06 10:49:23">2023/11/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 ElasticSearch "
+           href="/20230618/872a239c.html"
+           data-tag="ElasticSearch"
+           data-author="" >
+            <span class="post-title" title="ElasticSearch安装">ElasticSearch安装</span>
+            <span class="post-date" title="2023-06-18 17:33:20">2023/06/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 Linux Linux防火墙 "
+           href="/20230511/e26546c7.html"
+           data-tag="操作系统"
+           data-author="" >
+            <span class="post-title" title="Linux防火墙">Linux防火墙</span>
+            <span class="post-date" title="2023-05-11 14:32:10">2023/05/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Log4j "
+           href="/20230511/14631848.html"
+           data-tag="Log4j"
+           data-author="" >
+            <span class="post-title" title="Log4j日常使用记录">Log4j日常使用记录</span>
+            <span class="post-date" title="2023-05-11 14:32:10">2023/05/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spring Spring Framework "
+           href="/20230319/28678f43.html"
+           data-tag="Spring Framework"
+           data-author="" >
+            <span class="post-title" title="Spring基础-AOP">Spring基础-AOP</span>
+            <span class="post-date" title="2023-03-19 17:44:41">2023/03/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Spring Spring Framework "
+           href="/20230319/d607e27b.html"
+           data-tag="Spring Framework"
+           data-author="" >
+            <span class="post-title" title="Spring基础">Spring基础</span>
+            <span class="post-date" title="2023-03-19 17:44:41">2023/03/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 编程规范 "
+           href="/20230317/1761bce2.html"
+           data-tag="编程规范"
+           data-author="" >
+            <span class="post-title" title="Java命名规范">Java命名规范</span>
+            <span class="post-date" title="2023-03-17 17:44:04">2023/03/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Spring Redis SpringBoot "
+           href="/20230302/f677ab49.html"
+           data-tag="SpringBoot,Mongodb"
+           data-author="" >
+            <span class="post-title" title="SpringBoot集成Redis">SpringBoot集成Redis</span>
+            <span class="post-date" title="2023-03-02 19:10:19">2023/03/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Nacos "
+           href="/20230301/d8cb1733.html"
+           data-tag="Nacos"
+           data-author="" >
+            <span class="post-title" title="Nacos 使用示例">Nacos 使用示例</span>
+            <span class="post-date" title="2023-03-01 10:19:20">2023/03/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Nacos "
+           href="/20230301/c383a3c4.html"
+           data-tag="Nacos"
+           data-author="" >
+            <span class="post-title" title="Nacos">Nacos</span>
+            <span class="post-date" title="2023-03-01 10:19:20">2023/03/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 日常记录 后端 "
+           href="/20230223/65e80ab3.html"
+           data-tag="日常记录"
+           data-author="" >
+            <span class="post-title" title="2023年问题记录">2023年问题记录</span>
+            <span class="post-date" title="2023-02-23 19:52:44">2023/02/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 Windows "
+           href="/20230216/d9a8c0d4.html"
+           data-tag="日常记录,操作系统"
+           data-author="" >
+            <span class="post-title" title="Windows日常使用问题记录">Windows日常使用问题记录</span>
+            <span class="post-date" title="2023-02-16 10:39:23">2023/02/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Redis "
+           href="/20230210/4be8fe93.html"
+           data-tag="Redis"
+           data-author="" >
+            <span class="post-title" title="Redis-ACL">Redis-ACL</span>
+            <span class="post-date" title="2023-02-10 15:14:01">2023/02/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Redis "
+           href="/20230208/6b8605c4.html"
+           data-tag="Redis"
+           data-author="" >
+            <span class="post-title" title="Redis-配置文件">Redis-配置文件</span>
+            <span class="post-date" title="2023-02-08 18:19:01">2023/02/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Redis "
+           href="/20230103/72ab10c8.html"
+           data-tag="Redis"
+           data-author="" >
+            <span class="post-title" title="Redis-数据类型（基础）">Redis-数据类型（基础）</span>
+            <span class="post-date" title="2023-01-03 20:22:19">2023/01/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Redis "
+           href="/20221103/709af9d4.html"
+           data-tag="Redis"
+           data-author="" >
+            <span class="post-title" title="Redis-命令记录">Redis-命令记录</span>
+            <span class="post-date" title="2022-11-03 19:19:19">2022/11/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Redis "
+           href="/20221102/c9f6f059.html"
+           data-tag="Redis"
+           data-author="" >
+            <span class="post-title" title="Redis安装">Redis安装</span>
+            <span class="post-date" title="2022-11-02 19:10:19">2022/11/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Redis "
+           href="/20221102/4cdb4706.html"
+           data-tag="Redis"
+           data-author="" >
+            <span class="post-title" title="Redis-发布订阅">Redis-发布订阅</span>
+            <span class="post-date" title="2022-11-02 19:10:19">2022/11/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Redis "
+           href="/20221102/574fe2f4.html"
+           data-tag="Redis"
+           data-author="" >
+            <span class="post-title" title="Redis-持久化">Redis-持久化</span>
+            <span class="post-date" title="2022-11-02 19:10:19">2022/11/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Spring Redis Spring Cache "
+           href="/20221102/3fb18050.html"
+           data-tag="Redis,Spring Cache"
+           data-author="" >
+            <span class="post-title" title="配置 序列化成JSON字符串.md">配置 序列化成JSON字符串.md</span>
+            <span class="post-date" title="2022-11-02 19:10:19">2022/11/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221101/53471b9a.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="多线程基础">多线程基础</span>
+            <span class="post-date" title="2022-11-01 06:52:00">2022/11/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221101/3c508c34.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Java并发包">Java并发包</span>
+            <span class="post-date" title="2022-11-01 06:52:00">2022/11/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221101/8c062783.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="多线程设计模式">多线程设计模式</span>
+            <span class="post-date" title="2022-11-01 06:52:00">2022/11/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 MongoDB "
+           href="/20221031/c5d54bc1.html"
+           data-tag="MongoDB"
+           data-author="" >
+            <span class="post-title" title="MongoDB安装">MongoDB安装</span>
+            <span class="post-date" title="2022-10-31 16:19:20">2022/10/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 MySQL "
+           href="/20221031/4c28b48e.html"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL安装、版本差异、JDBC连接配置">MySQL安装、版本差异、JDBC连接配置</span>
+            <span class="post-date" title="2022-10-31 16:19:20">2022/10/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 MySQL "
+           href="/20221031/bce68613.html"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL基础">MySQL基础</span>
+            <span class="post-date" title="2022-10-31 16:19:20">2022/10/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 MySQL "
+           href="/20221031/25158cd7.html"
+           data-tag="日常记录,MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL日常使用记录">MySQL日常使用记录</span>
+            <span class="post-date" title="2022-10-31 16:19:20">2022/10/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 MySQL "
+           href="/20221031/ec788ee4.html"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL查询优化策略">MySQL查询优化策略</span>
+            <span class="post-date" title="2022-10-31 16:19:20">2022/10/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 MySQL "
+           href="/20221031/ad072d5f.html"
+           data-tag="MySQL"
+           data-author="" >
+            <span class="post-title" title="MySQL用户管理">MySQL用户管理</span>
+            <span class="post-date" title="2022-10-31 16:19:20">2022/10/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据库 Spring MongoDB SpringBoot "
+           href="/20221031/eb573b79.html"
+           data-tag="SpringBoot,Mongodb"
+           data-author="" >
+            <span class="post-title" title="SpringBoot集成MongoDB">SpringBoot集成MongoDB</span>
+            <span class="post-date" title="2022-10-31 16:19:20">2022/10/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 Ubuntu "
+           href="/20221030/d288da69.html"
+           data-tag="操作系统,Docker"
+           data-author="" >
+            <span class="post-title" title="Ubuntu 安装Docker">Ubuntu 安装Docker</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 Docker "
+           href="/20221030/8c5d6123.html"
+           data-tag="Docker"
+           data-author="" >
+            <span class="post-title" title="配置Docker环境">配置Docker环境</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 Docker "
+           href="/20221030/868b0954.html"
+           data-tag="Docker"
+           data-author="" >
+            <span class="post-title" title="Docker日常使用记录">Docker日常使用记录</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 Ubuntu "
+           href="/20221030/6124f545.html"
+           data-tag="操作系统"
+           data-author="" >
+            <span class="post-title" title="Ubuntu虚拟机搭建">Ubuntu虚拟机搭建</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 压测 "
+           href="/20221030/e291c7ca.html"
+           data-tag="测试"
+           data-author="" >
+            <span class="post-title" title="压测工具概述">压测工具概述</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 Ubuntu "
+           href="/20221030/d81e4de4.html"
+           data-tag="操作系统"
+           data-author="" >
+            <span class="post-title" title="Ubuntu 查看系统信息">Ubuntu 查看系统信息</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 Ubuntu "
+           href="/20221030/f075b7f2.html"
+           data-tag="操作系统"
+           data-author="" >
+            <span class="post-title" title="Ubuntu卸载图形界面">Ubuntu卸载图形界面</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 Windows "
+           href="/20221030/8bc474d9.html"
+           data-tag="Office"
+           data-author="" >
+            <span class="post-title" title="WORD使用记录">WORD使用记录</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 Ubuntu "
+           href="/20221030/b8b8d517.html"
+           data-tag="操作系统"
+           data-author="" >
+            <span class="post-title" title="Ubuntu 防火墙">Ubuntu 防火墙</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Junit "
+           href="/20221030/99356519.html"
+           data-tag="Junit"
+           data-author="" >
+            <span class="post-title" title="Junit日常使用记录">Junit日常使用记录</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Tomcat "
+           href="/20221030/932ec968.html"
+           data-tag="日常记录,Tomcat"
+           data-author="" >
+            <span class="post-title" title="Tomcat异常排查记录">Tomcat异常排查记录</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Tomcat "
+           href="/20221030/d035d83e.html"
+           data-tag="日常记录,Tomcat"
+           data-author="" >
+            <span class="post-title" title="在请求目标中找到无效字符">在请求目标中找到无效字符</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Tomcat "
+           href="/20221030/673ec6c6.html"
+           data-tag="日常记录,Tomcat"
+           data-author="" >
+            <span class="post-title" title="给Tomcat配置外部资源路径">给Tomcat配置外部资源路径</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Lombox "
+           href="/20221030/f1c78c8.html"
+           data-tag="Lombox"
+           data-author="" >
+            <span class="post-title" title="Lombox日常使用记录">Lombox日常使用记录</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Tomcat "
+           href="/20221030/294d5c08.html"
+           data-tag="日常记录,Tomcat"
+           data-author="" >
+            <span class="post-title" title="验证码图片无法显示">验证码图片无法显示</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Logback "
+           href="/20221030/4b5ef04d.html"
+           data-tag="Logback"
+           data-author="" >
+            <span class="post-title" title="Logback日常使用记录">Logback日常使用记录</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Maven "
+           href="/20221030/4a3536f5.html"
+           data-tag="Maven"
+           data-author="" >
+            <span class="post-title" title="Maven使用场景记录">Maven使用场景记录</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Maven "
+           href="/20221030/195cf5d1.html"
+           data-tag="Maven"
+           data-author="" >
+            <span class="post-title" title="Maven基础">Maven基础</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Maven "
+           href="/20221030/9926a393.html"
+           data-tag="Maven"
+           data-author="" >
+            <span class="post-title" title="POM.XML文件说明">POM.XML文件说明</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Tomcat "
+           href="/20221030/530cfffd.html"
+           data-tag="Tomcat"
+           data-author="" >
+            <span class="post-title" title="Tomcat基础">Tomcat基础</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架|中间件 Tomcat "
+           href="/20221030/6f43f742.html"
+           data-tag="Tomcat"
+           data-author="" >
+            <span class="post-title" title="安装Tomcat服务">安装Tomcat服务</span>
+            <span class="post-date" title="2022-10-30 15:39:23">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221027/6cd20d81.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="JVM基础回顾">JVM基础回顾</span>
+            <span class="post-date" title="2022-10-27 19:52:44">2022/10/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221027/cc1c3bcb.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="JVM性能调优工具">JVM性能调优工具</span>
+            <span class="post-date" title="2022-10-27 19:52:44">2022/10/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221027/c3539d05.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Java中printf的用法总结">Java中printf的用法总结</span>
+            <span class="post-date" title="2022-10-27 19:52:44">2022/10/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221027/5296b9c2.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Java枚举类型7种常见的用法">Java枚举类型7种常见的用法</span>
+            <span class="post-date" title="2022-10-27 19:52:44">2022/10/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221027/7039576b.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Java注解">Java注解</span>
+            <span class="post-date" title="2022-10-27 19:52:44">2022/10/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221027/f7c553a3.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="abstract class和interface的区别">abstract class和interface的区别</span>
+            <span class="post-date" title="2022-10-27 19:52:44">2022/10/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221027/79cf73a2.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="对象之间相同属性的赋值">对象之间相同属性的赋值</span>
+            <span class="post-date" title="2022-10-27 19:52:44">2022/10/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221027/80d3479f.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="系统方法：System.getProperty">系统方法：System.getProperty</span>
+            <span class="post-date" title="2022-10-27 19:52:44">2022/10/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 IDEA 快捷键 "
+           href="/20221026/610bdf07.html"
+           data-tag="快捷键"
+           data-author="" >
+            <span class="post-title" title="IDEA快捷键">IDEA快捷键</span>
+            <span class="post-date" title="2022-10-26 21:32:25">2022/10/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 Git "
+           href="/20221026/69c3279c.html"
+           data-tag="Git"
+           data-author="" >
+            <span class="post-title" title="Git">Git</span>
+            <span class="post-date" title="2022-10-26 21:32:25">2022/10/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 IDEA "
+           href="/20221026/2241d802.html"
+           data-tag="IDEA"
+           data-author="" >
+            <span class="post-title" title="IDEA 使用技巧">IDEA 使用技巧</span>
+            <span class="post-date" title="2022-10-26 21:32:25">2022/10/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 IDEA "
+           href="/20221026/ee604b16.html"
+           data-tag="IDEA"
+           data-author="" >
+            <span class="post-title" title="IDEA插件">IDEA插件</span>
+            <span class="post-date" title="2022-10-26 21:32:25">2022/10/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具|部署 IDEA "
+           href="/20221026/1a8c2722.html"
+           data-tag="IDEA"
+           data-author="" >
+            <span class="post-title" title="IDEA配置">IDEA配置</span>
+            <span class="post-date" title="2022-10-26 21:32:25">2022/10/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 博客搭建 UML类图 "
+           href="/20221025/c9ac90bb.html"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="UML类图与接口图的表示">UML类图与接口图的表示</span>
+            <span class="post-date" title="2022-10-25 19:52:44">2022/10/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 博客搭建 Markdown语法 "
+           href="/20221025/ea43daec.html"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Markdown使用语法记录">Markdown使用语法记录</span>
+            <span class="post-date" title="2022-10-25 19:52:44">2022/10/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 博客搭建 Hexo "
+           href="/20221025/b6159bfb.html"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Hexo 搭建博客">Hexo 搭建博客</span>
+            <span class="post-date" title="2022-10-25 19:52:44">2022/10/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 网络安全 "
+           href="/20221025/96960bec.html"
+           data-tag="网络安全"
+           data-author="" >
+            <span class="post-title" title="CSRF漏洞处理">CSRF漏洞处理</span>
+            <span class="post-date" title="2022-10-25 19:52:44">2022/10/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 网络安全 "
+           href="/20221025/d188606.html"
+           data-tag="网络安全"
+           data-author="" >
+            <span class="post-title" title="SSL漏洞处理">SSL漏洞处理</span>
+            <span class="post-date" title="2022-10-25 19:52:44">2022/10/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 网络安全 "
+           href="/20221025/409b5317.html"
+           data-tag="网络安全"
+           data-author="" >
+            <span class="post-title" title="XSS漏洞处理">XSS漏洞处理</span>
+            <span class="post-date" title="2022-10-25 19:52:44">2022/10/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 编程规范 "
+           href="/20221025/ba2334ee.html"
+           data-tag="编程规范"
+           data-author="" >
+            <span class="post-title" title="Java开发手册【阿里巴巴】">Java开发手册【阿里巴巴】</span>
+            <span class="post-date" title="2022-10-25 19:52:44">2022/10/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 后端 Java "
+           href="/20221022/725f0c76.html"
+           data-tag="Java"
+           data-author="" >
+            <span class="post-title" title="Java 8 in Action【汪文君】">Java 8 in Action【汪文君】</span>
+            <span class="post-date" title="2022-10-22 19:52:44">2022/10/22</span>
+        </a>
+        
+        <div id="no-item-tips">
 
         </div>
-      </div>
+    </nav>
+    <div id="outline-list">
     </div>
-
-    
-  </aside>
-
-
-    </div>
-
-    <div class="main-inner post posts-expand">
-
-
-  
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/20221031/25158cd7.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Alisa">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Alisa's Home">
-      <meta itemprop="description" content="学习笔记、工作心得">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="MySQL日常使用记录 | Alisa's Home">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          MySQL日常使用记录
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-10-31 16:19:20" itemprop="dateCreated datePublished" datetime="2022-10-31T16:19:20+08:00">2022-10-31</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-09-29 19:28:56" itemprop="dateModified" datetime="2024-09-29T19:28:56+08:00">2024-09-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
-        </span>
-    </span>
-
-  
 </div>
 
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
         </div>
-      </header>
-
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-数据库/MySQL/MySQL日常使用记录" class="article article-type-post" itemscope itemprop="blogPost">
     
+        <h1 class="article-title">MySQL日常使用记录</h1>
     
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="数据库">数据库</a> > 
+            
+            <a  data-rel="数据库&lt;---&gt;MySQL">MySQL</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">日常记录</a>
+            
+            <a class="color1">MySQL</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-09-29 19:28:56'>2022-10-31 16:19</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
     
-    <div class="post-body" itemprop="articleBody">
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">MyBaties调用MySQL数据库查询无结果,查询语句正确</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">将多行查询结果合并到一行</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">数据库更新操作关于不同数据库的update set from where操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">获取建表命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">将表1内容全部复制到表2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">修改表&#x2F;字段的注释</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">数据表切换数据库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">MySQL自增主键列重新排列</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">自动修改更改时间</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">linux下mysql-5.6忘记root密码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">MySQL5.7.X版本only_full_group_by问题解决</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
         <h1>MyBaties调用MySQL数据库查询无结果,查询语句正确</h1>
 <ol>
 <li>DEBUG 进去源码，排查最终提交的SQL语句中文乱码</li>
@@ -264,60 +2084,28 @@
 <li>修改MySQL的连接配置：<code>jdbc:mysql://127.0.0.1:3306/qhswdxssplog?useUnicode=true&amp;characterEncoding=UTF-8</code></li>
 </ol>
 <h1>将多行查询结果合并到一行</h1>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">GROUP_CONCAT：默认连接符号是逗号
-
-<span class="token keyword">SELECT</span> GROUP_CONCAT<span class="token punctuation">(</span>A_TABLE_ID<span class="token punctuation">)</span> FRON A_TABLE
-
-<span class="token comment">#查询某分类的所有子分类并用分号连接子分类ID</span>
-<span class="token keyword">SELECT</span> GROUP_CONCAT<span class="token punctuation">(</span>A_TABLE_ID SEPARATOR <span class="token string">';'</span><span class="token punctuation">)</span> FRON A_TABLE
-
-<span class="token comment">#查询某分类的所有子分类，根据p_order ASC, cat_id DESC排序后再连接</span>
-<span class="token keyword">SELECT</span> GROUP_CONCAT<span class="token punctuation">(</span>cat_id <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> p_order <span class="token keyword">ASC</span><span class="token punctuation">,</span> cat_id <span class="token keyword">DESC</span><span class="token punctuation">)</span> <span class="token keyword">FROM</span> goods_cat <span class="token keyword">WHERE</span> pid <span class="token operator">=</span> <span class="token number">25</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">GROUP_CONCAT：默认连接符号是逗号</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> GROUP_CONCAT(A_TABLE_ID) FRON A_TABLE</span><br><span class="line"></span><br><span class="line">#查询某分类的所有子分类并用分号连接子分类ID</span><br><span class="line"><span class="keyword">SELECT</span> GROUP_CONCAT(A_TABLE_ID SEPARATOR <span class="string">';'</span>) FRON A_TABLE</span><br><span class="line"></span><br><span class="line">#查询某分类的所有子分类，根据p_order <span class="keyword">ASC</span>, cat_id <span class="keyword">DESC</span>排序后再连接</span><br><span class="line"><span class="keyword">SELECT</span> GROUP_CONCAT(cat_id <span class="keyword">ORDER</span> <span class="keyword">BY</span> p_order <span class="keyword">ASC</span>, cat_id <span class="keyword">DESC</span>) <span class="keyword">FROM</span> goods_cat <span class="keyword">WHERE</span> pid <span class="operator">=</span> <span class="number">25</span></span><br></pre></td></tr></tbody></table></figure>
 <h1>数据库更新操作关于不同数据库的update set from where操作</h1>
 <p>用来同步两个表的数据</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token punctuation">(</span>Mysql<span class="token punctuation">)</span>语句：
-    <span class="token keyword">UPDATE</span> A<span class="token punctuation">,</span> B <span class="token keyword">SET</span> A_1 <span class="token operator">=</span> B_1<span class="token punctuation">,</span> A_2 <span class="token operator">=</span> B_2<span class="token punctuation">,</span> A_3 <span class="token operator">=</span> B_3 <span class="token keyword">WHERE</span> A<span class="token punctuation">.</span>ID <span class="token operator">=</span> B<span class="token punctuation">.</span>ID
-<span class="token punctuation">(</span>Oralce<span class="token punctuation">)</span>语句：
-    <span class="token keyword">UPDATE</span> A <span class="token keyword">SET</span> <span class="token punctuation">(</span>A1<span class="token punctuation">,</span> A2<span class="token punctuation">,</span> A3<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">SELECT</span> B1<span class="token punctuation">,</span> B2<span class="token punctuation">,</span> B3 <span class="token keyword">FROM</span> B <span class="token keyword">WHERE</span> A<span class="token punctuation">.</span>ID <span class="token operator">=</span> B<span class="token punctuation">.</span>ID<span class="token punctuation">)</span>
-    <span class="token keyword">WHERE</span> ID <span class="token operator">IN</span> <span class="token punctuation">(</span><span class="token keyword">SELECT</span> B<span class="token punctuation">.</span>ID <span class="token keyword">FROM</span> B <span class="token keyword">WHERE</span> A<span class="token punctuation">.</span>ID <span class="token operator">=</span> B<span class="token punctuation">.</span>ID<span class="token punctuation">)</span>
-<span class="token punctuation">(</span>MS <span class="token keyword">SQL</span> Server<span class="token punctuation">)</span>语句：
-    <span class="token keyword">UPDATE</span> A <span class="token keyword">SET</span> A1 <span class="token operator">=</span> B1<span class="token punctuation">,</span> A2 <span class="token operator">=</span> B2<span class="token punctuation">,</span> A3 <span class="token operator">=</span> B3 <span class="token keyword">FROM</span> A<span class="token punctuation">,</span> B <span class="token keyword">WHERE</span> A<span class="token punctuation">.</span>ID <span class="token operator">=</span> B<span class="token punctuation">.</span>ID<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(Mysql)语句：</span><br><span class="line">    <span class="keyword">UPDATE</span> A, B <span class="keyword">SET</span> A_1 <span class="operator">=</span> B_1, A_2 <span class="operator">=</span> B_2, A_3 <span class="operator">=</span> B_3 <span class="keyword">WHERE</span> A.ID <span class="operator">=</span> B.ID</span><br><span class="line">(Oralce)语句：</span><br><span class="line">    <span class="keyword">UPDATE</span> A <span class="keyword">SET</span> (A1, A2, A3) <span class="operator">=</span> (<span class="keyword">SELECT</span> B1, B2, B3 <span class="keyword">FROM</span> B <span class="keyword">WHERE</span> A.ID <span class="operator">=</span> B.ID)</span><br><span class="line">    <span class="keyword">WHERE</span> ID <span class="keyword">IN</span> (<span class="keyword">SELECT</span> B.ID <span class="keyword">FROM</span> B <span class="keyword">WHERE</span> A.ID <span class="operator">=</span> B.ID)</span><br><span class="line">(MS <span class="keyword">SQL</span> Server)语句：</span><br><span class="line">    <span class="keyword">UPDATE</span> A <span class="keyword">SET</span> A1 <span class="operator">=</span> B1, A2 <span class="operator">=</span> B2, A3 <span class="operator">=</span> B3 <span class="keyword">FROM</span> A, B <span class="keyword">WHERE</span> A.ID <span class="operator">=</span> B.ID</span><br></pre></td></tr></tbody></table></figure>
 <p>update set from 语句格式</p>
 <p>​		当where和set都需要关联一个表进行查询时，整个 update执行时，就需要对被关联的表进行两次扫描，显然效率比较低。对于这种情况，Sybase和SQL SERVER的解决办法是使用UPDATE…SET…FROM…WHERE…的语法，实际上就是从源表获取更新数据。<br>
 ​		在 SQL 中，表连接（left join、right join、inner join 等）常常用于 select 语句，其实在 SQL 语法中，这些连接也是可以用于update 和 delete 语句的，在这些语句中使用 join 还常常得到事半功倍的效果。</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">Update</span> T_OrderForm 
-<span class="token keyword">SET</span> T_OrderForm<span class="token punctuation">.</span>SellerID <span class="token operator">=</span>B<span class="token punctuation">.</span>L_TUserID
-<span class="token keyword">FROM</span> T_OrderForm A <span class="token keyword">LEFT</span> <span class="token keyword">JOIN</span> T_ProductInfo B <span class="token keyword">ON</span> B<span class="token punctuation">.</span>L_ID<span class="token operator">=</span>A<span class="token punctuation">.</span>ProductID<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Update</span> T_OrderForm </span><br><span class="line"><span class="keyword">SET</span> T_OrderForm.SellerID <span class="operator">=</span>B.L_TUserID</span><br><span class="line"><span class="keyword">FROM</span> T_OrderForm A <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> T_ProductInfo B <span class="keyword">ON</span> B.L_ID<span class="operator">=</span>A.ProductID</span><br></pre></td></tr></tbody></table></figure>
 <p>​</p>
 <h1>获取建表命令</h1>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">show</span> <span class="token keyword">create</span> <span class="token keyword">table</span> 旧表<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">create table</span> 旧表;</span><br></pre></td></tr></tbody></table></figure>
 <p>这样会将旧表的创建命令列出。我们只需要将该命令拷贝出来，更改table的名字，就可以建立一个完全一样的表</p>
 <h1>将表1内容全部复制到表2</h1>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">复制旧表的数据到新表<span class="token punctuation">(</span>假设两个表结构一样<span class="token punctuation">)</span>
-   <span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">INTO</span> 表<span class="token number">2</span> <span class="token keyword">FROM</span> 表<span class="token number">1</span><span class="token punctuation">;</span>
-   
-复制旧表的数据到新表<span class="token punctuation">(</span>假设两个表结构不一样<span class="token punctuation">)</span>
-   <span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> 新表<span class="token punctuation">(</span>字段<span class="token number">1</span><span class="token punctuation">,</span>字段<span class="token number">2</span><span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> 
-   <span class="token keyword">SELECT</span> 字段<span class="token number">1</span><span class="token punctuation">,</span>字段<span class="token number">2</span><span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token keyword">FROM</span> 旧表<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">复制旧表的数据到新表(假设两个表结构一样)</span><br><span class="line">   <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">INTO</span> 表<span class="number">2</span> <span class="keyword">FROM</span> 表<span class="number">1</span>;</span><br><span class="line">   </span><br><span class="line">复制旧表的数据到新表(假设两个表结构不一样)</span><br><span class="line">   <span class="keyword">INSERT INTO</span> 新表(字段<span class="number">1</span>,字段<span class="number">2</span>,.......) </span><br><span class="line">   <span class="keyword">SELECT</span> 字段<span class="number">1</span>,字段<span class="number">2</span>,...... <span class="keyword">FROM</span> 旧表</span><br></pre></td></tr></tbody></table></figure>
 <h1>修改表/字段的注释</h1>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">创建表的时候写注释
-   <span class="token keyword">create</span> <span class="token keyword">table</span> test1<span class="token punctuation">(</span>field_name <span class="token keyword">int</span> <span class="token keyword">comment</span> <span class="token string">'字段的注释'</span><span class="token punctuation">)</span> <span class="token keyword">comment</span><span class="token operator">=</span><span class="token string">'表的注释'</span><span class="token punctuation">;</span>
-   
-修改表的注释
-   <span class="token keyword">alter</span> <span class="token keyword">table</span> test1 <span class="token keyword">comment</span> <span class="token string">'修改后的表的注释'</span><span class="token punctuation">;</span>
-
-修改字段的注释<span class="token comment">--注意：字段名和字段类型照写就行</span>
-   <span class="token keyword">alter</span> <span class="token keyword">table</span> test1 <span class="token keyword">modify</span> <span class="token keyword">column</span> field_name <span class="token keyword">int</span> <span class="token keyword">comment</span> <span class="token string">'修改后的字段注释'</span><span class="token punctuation">;</span>
-   <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">创建表的时候写注释</span><br><span class="line">   <span class="keyword">create table</span> test1(field_name <span class="type">int</span> comment <span class="string">'字段的注释'</span>) comment<span class="operator">=</span><span class="string">'表的注释'</span>;</span><br><span class="line">   </span><br><span class="line">修改表的注释</span><br><span class="line">   <span class="keyword">alter table</span> test1 comment <span class="string">'修改后的表的注释'</span>;</span><br><span class="line"></span><br><span class="line">修改字段的注释<span class="comment">--注意：字段名和字段类型照写就行</span></span><br><span class="line">   <span class="keyword">alter table</span> test1 modify <span class="keyword">column</span> field_name <span class="type">int</span> comment <span class="string">'修改后的字段注释'</span>;</span><br><span class="line">   </span><br></pre></td></tr></tbody></table></figure>
 <h1>数据表切换数据库</h1>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">RENAME</span> <span class="token keyword">TABLE</span> db_A<span class="token punctuation">.</span>table_1 <span class="token keyword">TO</span> db_B<span class="token punctuation">.</span>table_2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RENAME <span class="keyword">TABLE</span> db_A.table_1 <span class="keyword">TO</span> db_B.table_2</span><br></pre></td></tr></tbody></table></figure>
 <h1>MySQL自增主键列重新排列</h1>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 <span class="token keyword">DROP</span> 列名<span class="token punctuation">;</span>
-<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 <span class="token keyword">ADD</span> 列名 <span class="token keyword">MEDIUMINT</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">FIRST</span><span class="token punctuation">;</span>
-<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> 表名 <span class="token keyword">MODIFY</span> <span class="token keyword">COLUMN</span> 列名 <span class="token keyword">MEDIUMINT</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">AUTO_INCREMENT</span><span class="token punctuation">,</span><span class="token keyword">ADD</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span><span class="token punctuation">(</span>列名<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER TABLE</span> 表名 <span class="keyword">DROP</span> 列名;</span><br><span class="line"><span class="keyword">ALTER TABLE</span> 表名 <span class="keyword">ADD</span> 列名 MEDIUMINT(<span class="number">8</span>) <span class="keyword">NOT NULL</span> <span class="keyword">FIRST</span>;</span><br><span class="line"><span class="keyword">ALTER TABLE</span> 表名 MODIFY <span class="keyword">COLUMN</span> 列名 MEDIUMINT(<span class="number">8</span>) <span class="keyword">NOT NULL</span> AUTO_INCREMENT,<span class="keyword">ADD</span> <span class="keyword">PRIMARY KEY</span>(列名);</span><br></pre></td></tr></tbody></table></figure>
 <h1>自动修改更改时间</h1>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> ware_resource_info <span class="token keyword">MODIFY</span> res_create_time <span class="token keyword">TIMESTAMP</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CURRENT_TIMESTAMP</span><span class="token punctuation">;</span>
-<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> ware_resource_info <span class="token keyword">MODIFY</span> modify_time <span class="token keyword">TIMESTAMP</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CURRENT_TIMESTAMP</span> <span class="token keyword">ON</span> <span class="token keyword">UPDATE</span> <span class="token keyword">CURRENT_TIMESTAMP</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER TABLE</span> ware_resource_info MODIFY res_create_time <span class="type">TIMESTAMP</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span>;</span><br><span class="line"><span class="keyword">ALTER TABLE</span> ware_resource_info MODIFY modify_time <span class="type">TIMESTAMP</span> <span class="keyword">DEFAULT</span> <span class="built_in">CURRENT_TIMESTAMP</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="built_in">CURRENT_TIMESTAMP</span>;</span><br></pre></td></tr></tbody></table></figure>
 <h1>linux下mysql-5.6忘记root密码</h1>
 <p>在linux平台下使用mysql过程中忘记了root密码，对于运维和DBA来讲都是一件头疼的事情，下面来讲解下怎么进行重置mysql数据库root 密码：</p>
 <ol>
@@ -329,70 +2117,24 @@
 </li>
 <li>
 <p>找到 [mysqld]这个模块：在最后面添加一段代码，可忽略mysql权限问题，直接登录</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">skip<span class="token operator">-</span><span class="token keyword">grant</span><span class="token operator">-</span><span class="token keyword">tables</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">skip</span><span class="operator">-</span><span class="keyword">grant</span><span class="operator">-</span>tables</span><br></pre></td></tr></tbody></table></figure>
 </li>
 </ol>
 <p>​		然后保存 :wq!退出</p>
 <p>​		启动mysql服务</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">service</span> mysqld start<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysqld start</span><br></pre></td></tr></tbody></table></figure>
 <p>直接进入mysql数据库：</p>
- <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Starting MySQL. SUCCESS<span class="token operator">!</span>
-<span class="token punctuation">[</span>root@web1 ~<span class="token punctuation">]</span><span class="token comment"># mysql</span>
-Welcome to the MySQL monitor. Commands end with <span class="token punctuation">;</span> or <span class="token punctuation">\</span>g.
-Your MySQL connection <span class="token function">id</span> is <span class="token number">1</span>
-Server version: <span class="token number">5.6</span>.34 Source distribution
-
-Copyright <span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token number">2000</span>, <span class="token number">2016</span>, Oracle and/or its affiliates. All rights reserved.
-
-Oracle is a registered trademark of Oracle Corporation and/or its
-affiliates. Other names may be trademarks of their respective
-owners.
-Type <span class="token string">'help;'</span> or <span class="token string">'\h'</span> <span class="token keyword">for</span> help. Type <span class="token string">'\c'</span> to <span class="token function">clear</span> the current input statement.
-mysql<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+ <figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Starting MySQL. SUCCESS!</span><br><span class="line">[root@web1 ~]# mysql</span><br><span class="line">Welcome to the MySQL monitor. Commands end with ; or \g.</span><br><span class="line">Your MySQL connection <span class="built_in">id</span> is 1</span><br><span class="line">Server version: 5.6.34 Source distribution</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line">Type <span class="string">'help;'</span> or <span class="string">'\h'</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">'\c'</span> to clear the current input statement.</span><br><span class="line">mysql&gt;</span><br></pre></td></tr></tbody></table></figure>
 <p>使用mysql表，然后进行修改mysql的root密码：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mysql<span class="token operator">&gt;</span> use mysql<span class="token punctuation">;</span> <span class="token comment">#使用mysql数据库</span>
-Reading table information <span class="token keyword">for</span> completion of table and <span class="token function">column</span> names
-You can turn off this feature to get a quicker startup with <span class="token parameter variable">-A</span>
-
-Database changed
-mysql<span class="token operator">&gt;</span> update user <span class="token builtin class-name">set</span> <span class="token assign-left variable">password</span><span class="token operator">=</span>password<span class="token punctuation">(</span><span class="token string">"123456"</span><span class="token punctuation">)</span> where <span class="token assign-left variable">user</span><span class="token operator">=</span><span class="token string">"root"</span><span class="token punctuation">;</span><span class="token comment">#更新密码</span>
-Query OK, <span class="token number">4</span> rows affected <span class="token punctuation">(</span><span class="token number">0.00</span> sec<span class="token punctuation">)</span>
-Rows matched: <span class="token number">4</span> Changed: <span class="token number">4</span> Warnings: <span class="token number">0</span>
-
-mysql<span class="token operator">&gt;</span> flush privileges<span class="token punctuation">;</span><span class="token comment">#刷新权限</span>
-Query OK, <span class="token number">0</span> rows affected <span class="token punctuation">(</span><span class="token number">0.00</span> sec<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use mysql; <span class="comment">#使用mysql数据库</span></span><br><span class="line">Reading table information <span class="keyword">for</span> completion of table and column names</span><br><span class="line">You can turn off this feature to get a quicker startup with -A</span><br><span class="line"></span><br><span class="line">Database changed</span><br><span class="line">mysql&gt; update user <span class="built_in">set</span> password=password(<span class="string">"123456"</span>) <span class="built_in">where</span> user=<span class="string">"root"</span>;#更新密码</span><br><span class="line">Query OK, 4 rows affected (0.00 sec)</span><br><span class="line">Rows matched: 4 Changed: 4 Warnings: 0</span><br><span class="line"></span><br><span class="line">mysql&gt; flush privileges;#刷新权限</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></tbody></table></figure>
 <p>补充说明：5.7的更新语句</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">update</span> mysql<span class="token punctuation">.</span><span class="token keyword">user</span> <span class="token keyword">set</span> authentication_string<span class="token operator">=</span>password<span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span> <span class="token keyword">where</span> <span class="token keyword">user</span><span class="token operator">=</span><span class="token string">'root'</span> <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@web1 ~<span class="token punctuation">]</span><span class="token comment"># ps -ef |grep mysql #显示mysql现有的进程</span>
-root <span class="token number">56407</span> <span class="token number">1</span> <span class="token number">0</span> <span class="token number">17</span>:50 pts/0 00:00:00 /bin/sh /usr/local/mysql/bin/mysqld_safe <span class="token parameter variable">--datadir</span><span class="token operator">=</span>/data/mysql --pid-file<span class="token operator">=</span>/data/mysql/web1.pid
-mysql <span class="token number">56533</span> <span class="token number">56407</span> <span class="token number">0</span> <span class="token number">17</span>:50 pts/0 00:00:00 /usr/local/mysql/bin/mysqld <span class="token parameter variable">--basedir</span><span class="token operator">=</span>/usr/local/mysql <span class="token parameter variable">--datadir</span><span class="token operator">=</span>/data/mysql --plugin-dir<span class="token operator">=</span>/usr/local/mysql/lib/plugin <span class="token parameter variable">--user</span><span class="token operator">=</span>mysql --log-error<span class="token operator">=</span>/data/mysql/web1.err --pid-file<span class="token operator">=</span>/data/mysql/web1.pid
-root <span class="token number">56560</span> <span class="token number">1737</span> <span class="token number">0</span> <span class="token number">17</span>:55 pts/0 00:00:00 <span class="token function">grep</span> mysql
-<span class="token punctuation">[</span>root@web1 ~<span class="token punctuation">]</span><span class="token comment"># killall mysqld #删除mysql现有进程</span>
-<span class="token punctuation">[</span>root@web1 ~<span class="token punctuation">]</span><span class="token comment"># ps -ef |grep mysql</span>
-root <span class="token number">56566</span> <span class="token number">1737</span> <span class="token number">0</span> <span class="token number">17</span>:56 pts/0 00:00:00 <span class="token function">grep</span> mysql
-<span class="token punctuation">[</span>root@web1 ~<span class="token punctuation">]</span><span class="token comment"># service mysqld start #重新启动mysql服务</span>
-Starting MySQL. SUCCESS<span class="token operator">!</span>
-<span class="token punctuation">[</span>root@web1 ~<span class="token punctuation">]</span><span class="token comment"># mysql -uroot -p #使用新密码登录</span>
-Enter password:
-Welcome to the MySQL monitor. Commands end with <span class="token punctuation">;</span> or <span class="token punctuation">\</span>g.
-Your MySQL connection <span class="token function">id</span> is <span class="token number">1</span>
-Server version: <span class="token number">5.6</span>.34 Source distribution
-
-Copyright <span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token number">2000</span>, <span class="token number">2016</span>, Oracle and/or its affiliates. All rights reserved.
-
-Oracle is a registered trademark of Oracle Corporation and/or its
-affiliates. Other names may be trademarks of their respective
-owners.
-
-Type <span class="token string">'help;'</span> or <span class="token string">'\h'</span> <span class="token keyword">for</span> help. Type <span class="token string">'\c'</span> to <span class="token function">clear</span> the current input statement.
-
-mysql<span class="token operator">&gt;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> mysql.user <span class="keyword">set</span> authentication_string<span class="operator">=</span>password(<span class="string">'root'</span>) <span class="keyword">where</span> <span class="keyword">user</span><span class="operator">=</span><span class="string">'root'</span> ;</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[root@web1 ~]# ps -ef |grep mysql <span class="comment">#显示mysql现有的进程</span></span><br><span class="line">root 56407 1 0 17:50 pts/0 00:00:00 /bin/sh /usr/local/mysql/bin/mysqld_safe --datadir=/data/mysql --pid-file=/data/mysql/web1.pid</span><br><span class="line">mysql 56533 56407 0 17:50 pts/0 00:00:00 /usr/local/mysql/bin/mysqld --basedir=/usr/local/mysql --datadir=/data/mysql --plugin-dir=/usr/local/mysql/lib/plugin --user=mysql --log-error=/data/mysql/web1.err --pid-file=/data/mysql/web1.pid</span><br><span class="line">root 56560 1737 0 17:55 pts/0 00:00:00 grep mysql</span><br><span class="line">[root@web1 ~]# killall mysqld <span class="comment">#删除mysql现有进程</span></span><br><span class="line">[root@web1 ~]# ps -ef |grep mysql</span><br><span class="line">root 56566 1737 0 17:56 pts/0 00:00:00 grep mysql</span><br><span class="line">[root@web1 ~]# service mysqld start <span class="comment">#重新启动mysql服务</span></span><br><span class="line">Starting MySQL. SUCCESS!</span><br><span class="line">[root@web1 ~]# mysql -uroot -p <span class="comment">#使用新密码登录</span></span><br><span class="line">Enter password:</span><br><span class="line">Welcome to the MySQL monitor. Commands end with ; or \g.</span><br><span class="line">Your MySQL connection <span class="built_in">id</span> is 1</span><br><span class="line">Server version: 5.6.34 Source distribution</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line"></span><br><span class="line">Type <span class="string">'help;'</span> or <span class="string">'\h'</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">'\c'</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 <h1>MySQL5.7.X版本only_full_group_by问题解决</h1>
 <ol>
 <li>
 <p>报错信息</p>
-<pre class="line-numbers language-none"><code class="language-none">[Err] 1055 - Expression #1 of ORDER BY clause is not in GROUP BY clause and contains nonaggregated column 'information_schema.PROFILING.SEQ' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Err] 1055 - Expression #1 of ORDER BY clause is not in GROUP BY clause and contains nonaggregated column 'information_schema.PROFILING.SEQ' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by</span><br></pre></td></tr></tbody></table></figure>
 <p>可以看出是因为sql_mode中设置了only_full_group_by模式引起的。</p>
 </li>
 <li>
@@ -451,9 +2193,7 @@ mysql<span class="token operator">&gt;</span>
 </li>
 <li>
 <p>查询当前的sql_mode配置</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">1.</span> 可以使用<span class="token keyword">select</span> @<span class="token variable">@global.sql_mode</span><span class="token punctuation">;</span> <span class="token comment">//全局配置 查询，</span>
-
-<span class="token number">2.</span> 也可以通过<span class="token keyword">select</span> @<span class="token variable">@sql_mode</span><span class="token punctuation">;</span><span class="token comment">//已存在数据库配置查询</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 可以使用<span class="keyword">select</span> @<span class="variable">@global</span>.sql_mode; <span class="operator">/</span><span class="operator">/</span>全局配置 查询，</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> 也可以通过<span class="keyword">select</span> @<span class="variable">@sql_mode</span>;<span class="operator">/</span><span class="operator">/</span>已存在数据库配置查询</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li>
 <p>解决方法</p>
@@ -463,106 +2203,204 @@ mysql<span class="token operator">&gt;</span>
 </li>
 <li>
 <p>暂时性关闭（可以通过select @@sql_mode查出sql_mode以后去掉ONLY_FULL_GROUP_BY后复制过来），但是在重启服务以后失效</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">set</span> sql_mode<span class="token operator">=</span><span class="token string">' '</span> <span class="token comment">//改变已经存在的数据库sql_mode </span>
-<span class="token keyword">set</span> @<span class="token variable">@global.sql_mode</span><span class="token operator">=</span><span class="token string">' '</span> <span class="token comment">//改变全局配置sql_mode</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> sql_mode<span class="operator">=</span><span class="string">' '</span> <span class="operator">/</span><span class="operator">/</span>改变已经存在的数据库sql_mode </span><br><span class="line"><span class="keyword">set</span> @<span class="variable">@global</span>.sql_mode<span class="operator">=</span><span class="string">' '</span> <span class="operator">/</span><span class="operator">/</span>改变全局配置sql_mode</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li>
 <p>更改配置文件（推荐使用）</p>
-<pre class="line-numbers language-none"><code class="language-none">可以通过select @@sql_mode查出sql_mode以后去掉ONLY_FULL_GROUP_BY后复制配置参数
-
-linux系统
-更改/etc/my.cnf文件
-使用vi命令打开，如果有sql_mode=...的注释就把注释打开，如果没有就加上sql_mode=...
-
-Windows系统
-修改安装目录下的my.ini文件，其余同上
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">可以通过select @@sql_mode查出sql_mode以后去掉ONLY_FULL_GROUP_BY后复制配置参数</span><br><span class="line"></span><br><span class="line">linux系统</span><br><span class="line">更改/etc/my.cnf文件</span><br><span class="line">使用vi命令打开，如果有sql_mode=...的注释就把注释打开，如果没有就加上sql_mode=...</span><br><span class="line"></span><br><span class="line">Windows系统</span><br><span class="line">修改安装目录下的my.ini文件，其余同上</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 </li>
 </ul>
 </li>
 </ol>
 
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
     </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
 
     
-    
-    
-
-    <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%95/" rel="tag"># 日常记录</a>
-              <a href="/tags/MySQL/" rel="tag"># MySQL</a>
-          </div>
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/20221031/ad072d5f.html" rel="prev" title="MySQL用户管理">
-                  <i class="fa fa-chevron-left"></i> MySQL用户管理
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/20221031/4c28b48e.html" rel="next" title="MySQL安装、版本差异、JDBC连接配置">
-                  MySQL安装、版本差异、JDBC连接配置 <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
-    </footer>
-  </article>
-</div>
 
 
 
-
-
-
-</div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-
-
-<div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2025</span>
-  <span class="with-love">
-    <i class="fa fa-apple"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Alisa</span>
-</div>
 
     </div>
-  </footer>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 Yelog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
-  
-  <div class="back-to-top" role="button" aria-label="返回顶部">
-    <i class="fa fa-arrow-up fa-lg"></i>
-    <span>0%</span>
-  </div>
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
 
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
+    </div>
+</div>
 
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
-<script src="/js/third-party/search/local-search.js"></script>
-
-
-
-
-
-  
-
-
-
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
 
 
 </body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
 </html>
