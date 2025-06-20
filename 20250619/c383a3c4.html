@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hmxyl.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.23.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Nacos 是一个更易于帮助构建云原生应用的动态服务发现、配置和服务管理平台">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nacos">
+<meta property="og:url" content="https://hmxyl.github.io/20250619/c383a3c4.html">
+<meta property="og:site_name" content="Alisa&#39;s Home">
+<meta property="og:description" content="Nacos 是一个更易于帮助构建云原生应用的动态服务发现、配置和服务管理平台">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/1022563360-0.png">
+<meta property="article:published_time" content="2025-06-19T08:57:01.371Z">
+<meta property="article:modified_time" content="2025-06-20T12:44:15.865Z">
+<meta property="article:author" content="Alisa">
+<meta property="article:tag" content="Nacos">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/1022563360-0.png">
+
+
+<link rel="canonical" href="https://hmxyl.github.io/20250619/c383a3c4.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hmxyl.github.io/20250619/c383a3c4.html","path":"20250619/c383a3c4.html","title":"Nacos"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Nacos | Alisa's Home</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Alisa's Home</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Alisa's Home</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Nacos 的特性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0"><span class="nav-number">1.1.</span> <span class="nav-text">服务发现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8B"><span class="nav-number">1.2.</span> <span class="nav-text">服务健康监测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.3.</span> <span class="nav-text">动态配置服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81-DNS-%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.4.</span> <span class="nav-text">动态 DNS 服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%8F%8A%E5%85%B6%E5%85%83%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86"><span class="nav-number">1.5.</span> <span class="nav-text">服务及其元数据管理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Nacos 两大组件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">Nacos 服务注册中心</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">默认端口说明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Common-property-configuration"><span class="nav-number">4.1.</span> <span class="nav-text">Common property configuration</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Alisa</p>
+  <div class="site-description" itemprop="description">学习笔记、工作心得</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/20250619/c383a3c4.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Alisa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alisa's Home">
+      <meta itemprop="description" content="学习笔记、工作心得">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Nacos | Alisa's Home">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Nacos
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-06-19 16:57:01" itemprop="dateCreated datePublished" datetime="2025-06-19T16:57:01+08:00">2025-06-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-06-20 20:44:15" itemprop="dateModified" datetime="2025-06-20T20:44:15+08:00">2025-06-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%A1%86%E6%9E%B6-%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">框架|中间件</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%A1%86%E6%9E%B6-%E4%B8%AD%E9%97%B4%E4%BB%B6/Nacos/" itemprop="url" rel="index"><span itemprop="name">Nacos</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>Nacos 是一个更易于帮助构建云原生应用的动态服务发现、配置和服务管理平台（参考自 <a target="_blank" rel="noopener" href="https://nacos.io/zh-cn/index.html">Nacos 官网</a>）。</p>
+<p>英文全称为 Dynamic Naming and Configuration Service，是一个由阿里巴巴团队使用 Java 语言开发的开源项目。Nacos 的命名是由 3 部分组成：</p>
+<table>
+<thead>
+<tr>
+<th>组成部分</th>
+<th>全称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Na</td>
+<td>naming/nameServer</td>
+<td>即服务注册中心，与 Spring Cloud Eureka 的功能类似。</td>
+</tr>
+<tr>
+<td>co</td>
+<td>configuration</td>
+<td>即配置中心，与 Spring Cloud Config+Spring Cloud Bus 的功能类似。</td>
+</tr>
+<tr>
+<td>s</td>
+<td>service</td>
+<td>即服务，表示 Nacos 实现的服务注册中心和配置中心都是以服务为核心的。</td>
+</tr>
+</tbody>
+</table>
+<p>我们可以将 Nacos 理解成服务注册中心和配置中心的组合体。</p>
+<ul>
+<li>它可以替换 <a target="_blank" rel="noopener" href="http://c.biancheng.net/springcloud/eureka.html">Eureka</a> 作为服务注册中心，实现服务的注册与发现；</li>
+<li>可以替换 <a target="_blank" rel="noopener" href="http://c.biancheng.net/springcloud/config.html">Spring Cloud Config</a> 作为配置中心，实现配置的动态刷新。</li>
+</ul>
+<p>Nacos 支持几乎所有主流类型“服务”的发现、配置和管理：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/services-networking/service/">Kubernetes Service</a></li>
+<li><a target="_blank" rel="noopener" href="https://grpc.io/docs/what-is-grpc/core-concepts#service-definition">gRPC </a>&amp; <a target="_blank" rel="noopener" href="https://dubbo.apache.org/zh/">Dubbo RPC Service</a></li>
+<li>Spring Cloud RESTful Service</li>
+</ul>
+<h1>Nacos 的特性</h1>
+<p>Nacos 提供了一系列简单易用的特性，能够帮助我们快速地实现动态服务发现、服务配置等功能。</p>
+<h2 id="服务发现">服务发现</h2>
+<p>Nacos 支持基于 DNS 和 RPC 的服务发现。</p>
+<p>当服务提供者使用原生 SDK、OpenAPI 或一个独立的 Agent TODO 向 Nacos 注册服务后，服务消费者可以在 Nacos 上通过 DNS TODO 或 HTTP&amp;API 查找、发现服务。</p>
+<h2 id="服务健康监测">服务健康监测</h2>
+<p>Nacos 提供对服务的实时健康检查，能够阻止请求发送到不健康主机或服务实例上。Nacos 还提供了一个健康检查仪表盘，能够帮助我们根据健康状态管理服务的可用性及流量。</p>
+<h2 id="动态配置服务">动态配置服务</h2>
+<p>动态配置服务可以让我们以中心化、外部化和动态化的方式，管理所有环境的应用配置和服务配置。</p>
+<p>动态配置消除了配置变更时重新部署应用和服务的需要，让配置管理变得更加高效、敏捷。</p>
+<p>配置中心化管理让实现无状态服务变得更简单，让服务按需弹性扩展变得更容易。</p>
+<p>Nacos 提供了一个简洁易用的 UI 帮助我们管理所有服务和应用的配置。Nacos 还提供包括配置版本跟踪、金丝雀发布、一键回滚配置以及客户端配置更新状态跟踪在内的一系列开箱即用的配置管理特性，帮助我们更安全地在生产环境中管理配置变更和降低配置变更带来的风险。</p>
+<h2 id="动态-DNS-服务">动态 DNS 服务</h2>
+<p>Nacos 提供了动态 DNS 服务，能够让我们更容易地实现负载均衡、流量控制以及数据中心内网的简单 DNS 解析服务。</p>
+<p>Nacos 提供了一些简单的 DNS APIs TODO，可以帮助我们管理服务的关联域名和可用的 IP:PORT 列表。</p>
+<h2 id="服务及其元数据管理">服务及其元数据管理</h2>
+<p>Nacos 能让我们从微服务平台建设的视角管理数据中心的所有服务及元数据，包括管理服务的描述、生命周期、服务的静态依赖分析、服务的健康状态、服务的流量管理、路由及安全策略、服务的 SLA 以及 metrics 统计数据。</p>
+<h1>Nacos 两大组件</h1>
+<p>与 Eureka 类似，Nacos 也采用 CS（Client/Server，客户端/服务器）架构，它包含两大组件，如下表。</p>
+<ol>
+<li>
+<p>Nacos Server</p>
+<p>描述：</p>
+<ul>
+<li>Nacos 服务端，与 Eureka Server 不同，Nacos Server 由阿里巴巴团队使用 Java 语言编写并将 Nacos Server 的下载地址给用户，用户只需要直接下载并运行即可。</li>
+</ul>
+<p>功能：</p>
+<ul>
+<li>Nacos Server 可以作为服务注册中心，帮助 Nacos Client 实现服务的注册与发现。</li>
+<li>Nacos Server 可以作为配置中心，帮助 Nacos Client 在不重启的情况下，实现配置的动态刷新。</li>
+</ul>
+</li>
+<li>
+<p>Nacos Client</p>
+<p>描述：</p>
+<ul>
+<li>Nacos 客户端，通常指的是微服务架构中的各个服务，由用户自己搭建，可以使用多种语言编写。</li>
+</ul>
+<p>功能：</p>
+<ul>
+<li>
+<p>Nacos Client 通过添加依赖 spring-cloud-starter-alibaba-nacos-discovery，在服务注册中心（Nacos Server）中实现服务的注册与发现</p>
+</li>
+<li>
+<p>Nacos Client 通过添加依赖 spring-cloud-starter-alibaba-nacos-config，在配置中心（Nacos Server）中实现配置的动态刷新。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h1>Nacos 服务注册中心</h1>
+<p>Nacos 作为服务注册中心可以实现服务的注册与发现，流程如下图。</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/1022563360-0.png" alt="Nacos 服务注册与发现"></p>
+<p>在图 1 中共涉及到以下 3 个角色：</p>
+<ul>
+<li>服务注册中心（Register Service）：它是一个 Nacos Server，可以为服务提供者和服务消费者提供服务注册和发现功能。</li>
+<li>服务提供者（Provider Service）：它是一个 Nacos Client，用于对外服务。它将自己提供的服务注册到服务注册中心，以供服务消费者发现和调用。</li>
+<li>服务消费者（Consumer Service）：它是一个 Nacos Client，用于消费服务。它可以从服务注册中心获取服务列表，调用所需的服务。</li>
+</ul>
+<p>Nacos 实现服务注册与发现的流程如下：</p>
+<ol>
+<li>从 Nacos 官方提供的下载页面中，下载 Nacos Server 并运行。</li>
+<li>服务提供者 Nacos Client 启动时，会把服务以服务名（<a target="_blank" rel="noopener" href="http://spring.application.name">spring.application.name</a>）的方式注册到服务注册中心（Nacos Server）；</li>
+<li>服务消费者 Nacos Client 启动时，也会将自己的服务注册到服务注册中心；</li>
+<li>服务消费者在注册服务的同时，它还会从服务注册中心获取一份服务注册列表信息，该列表中包含了所有注册到服务注册中心上的服务的信息（包括服务提供者和自身的信息）；</li>
+<li>在获取了服务提供者的信息后，服务消费者通过 HTTP 或消息中间件远程调用服务提供者提供的服务。</li>
+</ol>
+<h1>默认端口说明</h1>
+<table>
+<thead>
+<tr>
+<th>端口</th>
+<th>与主端口的偏移量</th>
+<th>描述</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8848</td>
+<td>0</td>
+<td>主端口</td>
+<td></td>
+</tr>
+<tr>
+<td>9848</td>
+<td>1000</td>
+<td>客户端gRPC请求服务端端口，用于客户端向服务端发起连接和请求</td>
+<td></td>
+</tr>
+<tr>
+<td>9849</td>
+<td>1001</td>
+<td>服务端gRPC请求服务端端口，用于服务间同步等</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Common-property-configuration">Common property configuration</h2>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>description</th>
+<th>option</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MODE</td>
+<td>cluster/standalone</td>
+<td>cluster/standalone default <strong>cluster</strong></td>
+</tr>
+<tr>
+<td>NACOS_SERVERS</td>
+<td>nacos cluster address</td>
+<td>eg. ip1:port1 ip2:port2 ip3:port3</td>
+</tr>
+<tr>
+<td>PREFER_HOST_MODE</td>
+<td>Whether hostname are supported</td>
+<td>hostname/ip default <strong>ip</strong></td>
+</tr>
+<tr>
+<td>NACOS_APPLICATION_PORT</td>
+<td>nacos server port</td>
+<td>default <strong>8848</strong></td>
+</tr>
+<tr>
+<td>NACOS_SERVER_IP</td>
+<td>custom nacos server ip when network was mutil-network</td>
+<td></td>
+</tr>
+<tr>
+<td>SPRING_DATASOURCE_PLATFORM</td>
+<td>standalone support mysql</td>
+<td>mysql / empty default empty</td>
+</tr>
+<tr>
+<td>MYSQL_SERVICE_HOST</td>
+<td>mysql host</td>
+<td></td>
+</tr>
+<tr>
+<td>MYSQL_SERVICE_PORT</td>
+<td>mysql database port</td>
+<td>default : <strong>3306</strong></td>
+</tr>
+<tr>
+<td>MYSQL_SERVICE_DB_NAME</td>
+<td>mysql database name</td>
+<td></td>
+</tr>
+<tr>
+<td>MYSQL_SERVICE_USER</td>
+<td>username of database</td>
+<td></td>
+</tr>
+<tr>
+<td>MYSQL_SERVICE_PASSWORD</td>
+<td>password of database</td>
+<td></td>
+</tr>
+<tr>
+<td>MYSQL_DATABASE_NUM</td>
+<td>It indicates the number of database</td>
+<td>default :<strong>1</strong></td>
+</tr>
+<tr>
+<td>MYSQL_SERVICE_DB_PARAM</td>
+<td>Database url parameter</td>
+<td>default : <strong>characterEncoding=utf8&amp;connectTimeout=1000&amp;socketTimeout=3000&amp;autoReconnect=true&amp;useSSL=false</strong></td>
+</tr>
+<tr>
+<td>JVM_XMS</td>
+<td>-Xms</td>
+<td>default :1g</td>
+</tr>
+<tr>
+<td>JVM_XMX</td>
+<td>-Xmx</td>
+<td>default :1g</td>
+</tr>
+<tr>
+<td>JVM_XMN</td>
+<td>-Xmn</td>
+<td>default :512m</td>
+</tr>
+<tr>
+<td>JVM_MS</td>
+<td>-XX:MetaspaceSize</td>
+<td>default :128m</td>
+</tr>
+<tr>
+<td>JVM_MMS</td>
+<td>-XX:MaxMetaspaceSize</td>
+<td>default :320m</td>
+</tr>
+<tr>
+<td>NACOS_DEBUG</td>
+<td>enable remote debug</td>
+<td>y/n default :n</td>
+</tr>
+<tr>
+<td>TOMCAT_ACCESSLOG_ENABLED</td>
+<td>server.tomcat.accesslog.enabled</td>
+<td>default :false</td>
+</tr>
+<tr>
+<td>NACOS_AUTH_SYSTEM_TYPE</td>
+<td>The auth system to use, currently only ‘nacos’ is supported</td>
+<td>default :nacos</td>
+</tr>
+<tr>
+<td>NACOS_AUTH_ENABLE</td>
+<td>If turn on auth system</td>
+<td>default :false</td>
+</tr>
+<tr>
+<td>NACOS_AUTH_TOKEN_EXPIRE_SECONDS</td>
+<td>The token expiration in seconds</td>
+<td>default :18000</td>
+</tr>
+<tr>
+<td>NACOS_AUTH_TOKEN</td>
+<td>The default token</td>
+<td>default :SecretKey012345678901234567890123456789012345678901234567890123456789</td>
+</tr>
+<tr>
+<td>NACOS_AUTH_CACHE_ENABLE</td>
+<td>Turn on/off caching of auth information. By turning on this switch, the update of auth information would have a 15 seconds delay.</td>
+<td>default : false</td>
+</tr>
+<tr>
+<td>MEMBER_LIST</td>
+<td>Set the cluster list with a configuration file or command-line argument</td>
+<td>eg:192.168.16.101:8847?raft_port=8807,192.168.16.101?raft_port=8808,192.168.16.101:8849?raft_port=8809</td>
+</tr>
+<tr>
+<td>EMBEDDED_STORAGE</td>
+<td>Use embedded storage in cluster mode without mysql</td>
+<td><code>embedded</code> default : none</td>
+</tr>
+<tr>
+<td>NACOS_AUTH_CACHE_ENABLE</td>
+<td>nacos.core.auth.caching.enabled</td>
+<td>default : false</td>
+</tr>
+<tr>
+<td>NACOS_AUTH_USER_AGENT_AUTH_WHITE_ENABLE</td>
+<td>nacos.core.auth.enable.userAgentAuthWhite</td>
+<td>default : false</td>
+</tr>
+<tr>
+<td>NACOS_AUTH_IDENTITY_KEY</td>
+<td>nacos.core.auth.server.identity.key</td>
+<td>default : serverIdentity</td>
+</tr>
+<tr>
+<td>NACOS_AUTH_IDENTITY_VALUE</td>
+<td>nacos.core.auth.server.identity.value</td>
+<td>default : security</td>
+</tr>
+<tr>
+<td>NACOS_SECURITY_IGNORE_URLS</td>
+<td>nacos.security.ignore.urls</td>
+<td>default : <code>/,/error,/**/*.css,/**/*.js,/**/*.html,/**/*.map,/**/*.svg,/**/*.png,/**/*.ico,/console-fe/public/**,/v1/auth/**,/v1/console/health/**,/actuator/**,/v1/console/server/**</code></td>
+</tr>
+</tbody>
+</table>
+<p>参考</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://c.biancheng.net/springcloud/nacos.html">http://c.biancheng.net/springcloud/nacos.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jb51.net/article/235057.htm">https://www.jb51.net/article/235057.htm</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Nacos/" rel="tag"># Nacos</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/20250619/60f15e7e.html" rel="prev" title="Nacos 使用示例">
+                  <i class="fa fa-angle-left"></i> Nacos 使用示例
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/20250619/a2ff3ade.html" rel="next" title="SpringBoot集成MongoDB">
+                  SpringBoot集成MongoDB <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Alisa</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

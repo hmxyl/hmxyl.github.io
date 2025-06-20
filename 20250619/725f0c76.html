@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hmxyl.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.23.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Java 8 in Action">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 8 in Action【汪文君】">
+<meta property="og:url" content="https://hmxyl.github.io/20250619/725f0c76.html">
+<meta property="og:site_name" content="Alisa&#39;s Home">
+<meta property="og:description" content="Java 8 in Action">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/Java8-In-Action-16376831319681.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20220502170433104.png">
+<meta property="article:published_time" content="2025-06-19T08:57:01.216Z">
+<meta property="article:modified_time" content="2025-06-20T12:48:44.643Z">
+<meta property="article:author" content="Alisa">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/Java8-In-Action-16376831319681.png">
+
+
+<link rel="canonical" href="https://hmxyl.github.io/20250619/725f0c76.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hmxyl.github.io/20250619/725f0c76.html","path":"20250619/725f0c76.html","title":"Java 8 in Action【汪文君】"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java 8 in Action【汪文君】 | Alisa's Home</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Alisa's Home</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Alisa's Home</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">全书脑图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">梳理脉络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">行为参数化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">匿名函数lambda</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3"><span class="nav-number">4.1.</span> <span class="nav-text">1. 函数式接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%87%BD%E6%95%B0%E6%8F%8F%E8%BF%B0%E7%AC%A6"><span class="nav-number">4.2.</span> <span class="nav-text">2. 函数描述符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%AE%9E%E7%8E%B0%E7%BB%86%E8%8A%82"><span class="nav-number">4.3.</span> <span class="nav-text">3. 实现细节</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%9F%A5"><span class="nav-number">4.3.1.</span> <span class="nav-text">类型检查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E6%8E%A8%E6%96%AD"><span class="nav-number">4.3.2.</span> <span class="nav-text">类型推断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="nav-number">4.3.3.</span> <span class="nav-text">使用局部变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E5%BC%95%E7%94%A8%EF%BC%88method-reference%EF%BC%89"><span class="nav-number">4.3.4.</span> <span class="nav-text">方法引用（method reference）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E5%90%88Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E5%9B%A0%E4%B8%BA%E5%BC%95%E5%85%A5%E4%BA%86%E9%BB%98%E8%AE%A4%E6%96%B9%E6%B3%95"><span class="nav-number">4.3.5.</span> <span class="nav-text">复合Lambda表达式 (因为引入了默认方法)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%AF%94%E8%BE%83%E5%99%A8%E5%A4%8D%E5%90%88"><span class="nav-number">4.3.5.1.</span> <span class="nav-text">1. 比较器复合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%B0%93%E8%AF%8D%E5%A4%8D%E5%90%88-negate%E3%80%81and%E5%92%8Cor"><span class="nav-number">4.3.5.2.</span> <span class="nav-text">2. 谓词复合 negate、and和or</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%87%BD%E6%95%B0%E5%A4%8D%E5%90%88"><span class="nav-number">4.3.5.3.</span> <span class="nav-text">3. 函数复合</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">Stream定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">Stream操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">6.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="nav-number">6.2.</span> <span class="nav-text">常用函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text">用stream收集数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E6%94%B6%E9%9B%86%E5%99%A8"><span class="nav-number">7.1.</span> <span class="nav-text">常用的收集器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Collectors-reducing%EF%BC%9A%E5%B9%BF%E4%B9%89%E7%9A%84%E5%BD%92%E7%BA%A6%E6%B1%87%E6%80%BB"><span class="nav-number">7.1.1.</span> <span class="nav-text">Collectors.reducing：广义的归约汇总</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Collectors-groupingBy-%EF%BC%9A%E5%88%86%E7%BB%84"><span class="nav-number">7.1.2.</span> <span class="nav-text">Collectors.groupingBy ：分组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Collectors-counting"><span class="nav-number">7.1.3.</span> <span class="nav-text">Collectors.counting()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Collectors-maxBy"><span class="nav-number">7.1.4.</span> <span class="nav-text">Collectors.maxBy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Collectors-minBy"><span class="nav-number">7.1.5.</span> <span class="nav-text">Collectors.minBy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Collectors-summingInt%EF%BC%8CCollectors-summingLong%EF%BC%8CCollectors-summingDouble"><span class="nav-number">7.1.6.</span> <span class="nav-text">Collectors.summingInt，Collectors.summingLong，Collectors.summingDouble</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Collectors-averagingInt%EF%BC%8CCollectors-averagingLong%EF%BC%8CCollectors-averagingDouble"><span class="nav-number">7.1.7.</span> <span class="nav-text">Collectors.averagingInt，Collectors.averagingLong，Collectors.averagingDouble</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Collectors-summarizingInt"><span class="nav-number">7.1.8.</span> <span class="nav-text">Collectors.summarizingInt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Collectors-joining"><span class="nav-number">7.1.9.</span> <span class="nav-text">Collectors.joining</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Collectors-partitioningBy-%E5%88%86%E5%8C%BA"><span class="nav-number">7.1.10.</span> <span class="nav-text">Collectors.partitioningBy 分区</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collector-%E6%8E%A5%E5%8F%A3"><span class="nav-number">7.2.</span> <span class="nav-text">Collector 接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%AE%9A%E4%B9%89%EF%BC%9A"><span class="nav-number">7.2.1.</span> <span class="nav-text">基本定义：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%94%B6%E9%9B%86%E5%99%A8"><span class="nav-number">7.3.</span> <span class="nav-text">自定义收集器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">8.</span> <span class="nav-text">并行数据处理与性能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%B9%B6%E8%A1%8C%E6%B5%81%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE"><span class="nav-number">8.1.</span> <span class="nav-text">1. 并行流处理数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B6%E8%A1%8C%E6%B5%81%E4%B8%8E%E9%A1%BA%E5%BA%8F%E6%B5%81%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">8.1.1.</span> <span class="nav-text">并行流与顺序流的转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%B9%B6%E8%A1%8C%E6%B5%81%E4%BD%BF%E7%94%A8%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-number">8.1.2.</span> <span class="nav-text">配置并行流使用的线程池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E4%BD%BF%E7%94%A8%EF%BC%9A"><span class="nav-number">8.1.3.</span> <span class="nav-text">如何高效使用：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%88%86%E6%94%AF-%E5%90%88%E5%B9%B6%E6%A1%86%E6%9E%B6-The-fork-join-framework"><span class="nav-number">8.2.</span> <span class="nav-text">2. 分支&#x2F;合并框架(The fork&#x2F;join framework)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%AE%E7%9A%84"><span class="nav-number">8.2.1.</span> <span class="nav-text">目的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">8.2.2.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">8.2.3.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A5%BD%E7%9A%84%E5%81%9A%E6%B3%95"><span class="nav-number">8.2.4.</span> <span class="nav-text">好的做法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E8%80%83"><span class="nav-number">8.2.5.</span> <span class="nav-text">思考</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Spliterator%E5%88%86%E5%89%B2%E6%B5%81"><span class="nav-number">8.3.</span> <span class="nav-text">3. Spliterator分割流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3"><span class="nav-number">8.3.1.</span> <span class="nav-text">简单了解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%86%E5%88%86%E8%BF%87%E7%A8%8B"><span class="nav-number">8.3.2.</span> <span class="nav-text">拆分过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spliterator-%E7%9A%84%E7%89%B9%E6%80%A7"><span class="nav-number">8.3.3.</span> <span class="nav-text">Spliterator 的特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%84%E4%B8%AA%E5%87%BD%E6%95%B0%E5%8F%8A%E4%BD%9C%E7%94%A8"><span class="nav-number">8.3.4.</span> <span class="nav-text">各个函数及作用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">9.</span> <span class="nav-text">默认方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E6%9D%A5%E6%BA%90%E7%BB%A7%E6%89%BF%E8%B0%83%E7%94%A8%E9%BB%98%E8%AE%A4%E6%96%B9%E6%B3%95%E5%8E%9F%E5%88%99"><span class="nav-number">9.1.</span> <span class="nav-text">多来源继承调用默认方法原则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">10.</span> <span class="nav-text">用Optional取代null</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-Optional-%E5%AF%B9%E8%B1%A1"><span class="nav-number">10.1.</span> <span class="nav-text">创建 Optional 对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-map-%E4%BB%8E-Optional-%E5%AF%B9%E8%B1%A1%E4%B8%AD%E6%8F%90%E5%8F%96%E5%92%8C%E8%BD%AC%E6%8D%A2%E5%80%BC"><span class="nav-number">10.2.</span> <span class="nav-text">使用 map 从 Optional 对象中提取和转换值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-flatMap-%E9%93%BE%E6%8E%A5-Optional-%E5%AF%B9%E8%B1%A1"><span class="nav-number">10.3.</span> <span class="nav-text">使用 flatMap 链接 Optional 对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E5%9B%A0"><span class="nav-number">10.3.1.</span> <span class="nav-text">原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%84%E7%90%86"><span class="nav-number">10.3.2.</span> <span class="nav-text">处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Optional%E7%B1%BB%E5%B9%B6%E6%9C%AA%E5%AE%9E%E7%8E%B0-Serializable%E6%8E%A5%E5%8F%A3"><span class="nav-number">10.4.</span> <span class="nav-text">Optional类并未实现 Serializable接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E8%A1%8C%E4%B8%BA%E5%8F%8A%E8%A7%A3%E5%BC%95%E7%94%A8-Optional-%E5%AF%B9%E8%B1%A1"><span class="nav-number">10.5.</span> <span class="nav-text">默认行为及解引用 Optional 对象</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">11.</span> <span class="nav-text">CompletableFuture 组合式异步编程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Future-%E6%8E%A5%E5%8F%A3%E5%BC%82%E6%AD%A5"><span class="nav-number">11.1.</span> <span class="nav-text">Future 接口异步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F1"><span class="nav-number">11.1.1.</span> <span class="nav-text">模拟1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F2"><span class="nav-number">11.1.2.</span> <span class="nav-text">模拟2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F3"><span class="nav-number">11.1.3.</span> <span class="nav-text">模拟3</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CompletableFuture-%E6%9E%84%E5%BB%BA%E5%BC%82%E6%AD%A5%E5%BA%94%E7%94%A8"><span class="nav-number">11.2.</span> <span class="nav-text">CompletableFuture 构建异步应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F%E5%BC%82%E6%AD%A5%E6%93%8D%E4%BD%9C%E5%86%85%E5%AE%B9"><span class="nav-number">11.2.1.</span> <span class="nav-text">模拟异步操作内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F1-2"><span class="nav-number">11.2.2.</span> <span class="nav-text">模拟1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F2-2"><span class="nav-number">11.2.3.</span> <span class="nav-text">模拟2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F3-2"><span class="nav-number">11.2.4.</span> <span class="nav-text">模拟3</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CompletableFuture%E5%B8%B8%E7%94%A8API"><span class="nav-number">11.3.</span> <span class="nav-text">CompletableFuture常用API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#supplyAsyn"><span class="nav-number">11.3.1.</span> <span class="nav-text">supplyAsyn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#thenApply"><span class="nav-number">11.3.2.</span> <span class="nav-text">thenApply</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#handle"><span class="nav-number">11.3.3.</span> <span class="nav-text">handle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#thenRun"><span class="nav-number">11.3.4.</span> <span class="nav-text">thenRun</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#thenAccept"><span class="nav-number">11.3.5.</span> <span class="nav-text">thenAccept</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#thenCompose"><span class="nav-number">11.3.6.</span> <span class="nav-text">thenCompose</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#thenCombine"><span class="nav-number">11.3.7.</span> <span class="nav-text">thenCombine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#thenAcceptBoth"><span class="nav-number">11.3.8.</span> <span class="nav-text">thenAcceptBoth</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#runAfterBoth"><span class="nav-number">11.3.9.</span> <span class="nav-text">runAfterBoth</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#applyToEither"><span class="nav-number">11.3.10.</span> <span class="nav-text">applyToEither</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#acceptEither"><span class="nav-number">11.3.11.</span> <span class="nav-text">acceptEither</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#runAfterEither"><span class="nav-number">11.3.12.</span> <span class="nav-text">runAfterEither</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#allOf"><span class="nav-number">11.3.13.</span> <span class="nav-text">allOf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#anyOf"><span class="nav-number">11.3.14.</span> <span class="nav-text">anyOf</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">12.</span> <span class="nav-text">新的日期和时间API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E6%96%B0%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%9B%A0"><span class="nav-number">12.1.</span> <span class="nav-text">重新设计原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java-time-LocalDate-%E6%AD%A4%E7%B1%BB%E6%98%AF%E4%B8%8D%E5%8F%AF%E5%90%A7%E5%8F%98%E6%9B%B4%E4%B8%94%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E3%80%82%E5%B9%B6%E4%B8%94%E5%92%8C%E6%97%B6%E9%97%B4%E6%A6%82%E5%BF%B5%E5%8C%BA%E5%88%86%E5%BC%80%E3%80%82"><span class="nav-number">12.2.</span> <span class="nav-text">java.time.LocalDate  此类是不可吧变更且线程安全的。并且和时间概念区分开。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java-time-LocalTime"><span class="nav-number">12.3.</span> <span class="nav-text">java.time.LocalTime</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java-time-LocalDateTime"><span class="nav-number">12.4.</span> <span class="nav-text">java.time.LocalDateTime</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java-time-Instant-%E6%9C%BA%E5%99%A8%E6%97%B6%E9%97%B4"><span class="nav-number">12.5.</span> <span class="nav-text">java.time.Instant 机器时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java-time-Duration"><span class="nav-number">12.6.</span> <span class="nav-text">java.time.Duration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java-time-Period"><span class="nav-number">12.7.</span> <span class="nav-text">java.time.Period</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java-time-temporal-TemporalAdjusters-%E6%97%B6%E9%97%B4%E8%B0%83%E8%8A%82%E5%99%A8"><span class="nav-number">12.8.</span> <span class="nav-text">java.time.temporal.TemporalAdjusters 时间调节器</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Alisa</p>
+  <div class="site-description" itemprop="description">学习笔记、工作心得</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/20250619/725f0c76.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Alisa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alisa's Home">
+      <meta itemprop="description" content="学习笔记、工作心得">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java 8 in Action【汪文君】 | Alisa's Home">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java 8 in Action【汪文君】
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-06-19 16:57:01" itemprop="dateCreated datePublished" datetime="2025-06-19T16:57:01+08:00">2025-06-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-06-20 20:48:44" itemprop="dateModified" datetime="2025-06-20T20:48:44+08:00">2025-06-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%90%8E%E7%AB%AF/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>源码： <a target="_blank" rel="noopener" href="https://github.com/java8/Java8InAction">Java8 In Action</a><br>
+笔记来源：<a target="_blank" rel="noopener" href="https://waltyou.github.io">https://waltyou.github.io</a></p>
+<h1>全书脑图</h1>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/Java8-In-Action-16376831319681.png" alt=" Java 8 in Action"></p>
+<!--more-->
+<h1>梳理脉络</h1>
+<p>通过脑图可以看出，全书分为四个部分：</p>
+<ol>
+<li>
+<p>基础知识，重点是为何关心java8，行为参数化和lambda</p>
+</li>
+<li>
+<p>函数式编程，重点是全面系统的介绍Stream</p>
+</li>
+<li>
+<p>Java8的其他改善点</p>
+<ul>
+<li>重构/测试/调试</li>
+<li>默认方法（Default Function）</li>
+<li>Optional替代null</li>
+<li>CompletableFuture 组合式异步编程</li>
+<li>日期时间API</li>
+</ul>
+</li>
+<li>
+<p>Java8之上：对函数式编程的思考，函数编程的技巧，与Scala的比较</p>
+</li>
+</ol>
+<h1>行为参数化</h1>
+<ol>
+<li>Why<br>
+应对不断变化的需求，避免啰嗦，而且不打破DRY（Don’t Repeat Yourself）规则。</li>
+<li>What<br>
+简单讲：把方法（你的代码）作为参数传递给另一个方法。<br>
+复杂讲： 让方法接受多种行为（或战略）作为参数，并在内部使用，来完成不同的行为。</li>
+<li>How<br>
+Example：用一个Comparator排序Apple，使用Java 8中List默认的sort方法。</li>
+</ol>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// java.util.Comparator</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Comparator</span>&lt;T&gt; {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(T o1, T o2)</span>;</span><br><span class="line">}</span><br><span class="line"><span class="comment">// 匿名类写法</span></span><br><span class="line">inventory.sort(<span class="keyword">new</span> <span class="title class_">Comparator</span>&lt;Apple&gt;() {</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(Apple a1, Apple a2)</span>{</span><br><span class="line">        <span class="keyword">return</span> a1.getWeight().compareTo(a2.getWeight());</span><br><span class="line">    }</span><br><span class="line">});</span><br><span class="line"><span class="comment">// lambda写法</span></span><br><span class="line">inventory.sort(</span><br><span class="line">    (Apple a1, Apple a2) -&gt;</span><br><span class="line">    a1.getWeight().compareTo(a2.getWeight()));</span><br></pre></td></tr></tbody></table></figure>
+<h1>匿名函数lambda</h1>
+<p>使用lambda之前，需要了解两个概念：<strong>函数式接口 <strong>和</strong>函数描述符</strong></p>
+<h2 id="1-函数式接口">1. 函数式接口</h2>
+<p>定义：只定义一个抽象方法的接口<br>
+<code>@FunctionalInterface</code>：标注用于表示该接口会设计成一个函数式接口。<br>
+Java 8 提供了一些新的函数式接口， 位置：java.util.function</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20220502170433104.png" alt="image-20220502170433104"></p>
+<h2 id="2-函数描述符">2. 函数描述符</h2>
+<p>函数式接口的抽象方法的签名基本上就是Lambda表达式的签名。如下：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">() -&gt; <span class="keyword">void</span></span><br><span class="line">(Apple) -&gt; <span class="type">int</span></span><br><span class="line">(Apple, Apple) -&gt; <span class="type">boolean</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="3-实现细节">3. 实现细节</h2>
+<h3 id="类型检查">类型检查</h3>
+<p>上下文中Lambda表达式需要的类型称为目标类型</p>
+<ol>
+<li>同样的Lambda，不同的函数式接口</li>
+<li>特殊的void兼容规则：如果一个Lambda的主体是一个语句表达式 它就和一个返回void的函数描述符兼容。</li>
+</ol>
+<h3 id="类型推断">类型推断</h3>
+<p>编译器可以了解Lambda表达式的参数类型，这样就可以在Lambda语法中省去标注参数类型。</p>
+<h3 id="使用局部变量">使用局部变量</h3>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">portNumber</span> <span class="operator">=</span> <span class="number">1337</span>; </span><br><span class="line"><span class="type">Runnable</span> <span class="variable">r</span> <span class="operator">=</span> () -&gt; System.out.println(portNumber); </span><br></pre></td></tr></tbody></table></figure>
+<p>注意： Lambda可以没有限制地捕获（也就是在其主体中引用）实例变量和静态变量。但局部变量必须显式声明为final，或事实上是final。</p>
+<p>原因：<br>
+1）局部变量保存在栈上，并且隐式表示它们仅限于其所在线程，如果允许捕获可改变的局部变量，就会引发造成线程不安全新的可能性；<br>
+2）不鼓励你使用改变外部变量的典型命令式编程模式</p>
+<h3 id="方法引用（method-reference）">方法引用（method reference）</h3>
+<p>目标引用放在分隔符<code>::</code>前, 方法的名称放在后面。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inventory.sort(comparing(Apple::getWeight));</span><br></pre></td></tr></tbody></table></figure>
+<p>方法引用主要有三类:</p>
+<ul>
+<li>指向静态方法的方法引用: Integer::parseInt</li>
+<li>指向任意类型实例方法的方法引用: String::length</li>
+<li>指向现有对象的实例方法的方法引用: expensiveTransaction::getValue</li>
+</ul>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//改写</span></span><br><span class="line">Function&lt;String, Integer&gt; stringToInteger = (String s) -&gt; Integer.parseInt(s);</span><br><span class="line">Function&lt;String, Integer&gt; stringToInteger = Integer::parseInt;</span><br><span class="line"></span><br><span class="line">BiPredicate&lt;List&lt;String&gt;, String&gt; contains = (list, element) -&gt; list.contains(element);</span><br><span class="line">BiPredicate&lt;List&lt;String&gt;, String&gt; contains = List::contains;</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="复合Lambda表达式-因为引入了默认方法">复合Lambda表达式 (因为引入了默认方法)</h3>
+<h4 id="1-比较器复合">1. 比较器复合</h4>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Comparator&lt;Apple&gt; c = Comparator.comparing(Apple::getWeight);</span><br><span class="line"><span class="comment">// 逆序</span></span><br><span class="line">inventory.sort(comparing(Apple::getWeight).reversed());</span><br><span class="line"><span class="comment">// 比较器链</span></span><br><span class="line">inventory.sort(comparing(Apple::getWeight)</span><br><span class="line">    .reversed()</span><br><span class="line">    .thenComparing(Apple::getCountry))</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="2-谓词复合-negate、and和or">2. 谓词复合 <code>negate</code>、<code>and</code>和<code>or</code></h4>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//取非</span></span><br><span class="line">Predicate&lt;Apple&gt; notRedApple = redApple.negate();</span><br><span class="line"><span class="comment">//and操作</span></span><br><span class="line">Predicate&lt;Apple&gt; redAndHeavyApple = redApple.and(a -&gt; a.getWeight() &gt; <span class="number">150</span>);</span><br><span class="line"><span class="comment">//and + or操作</span></span><br><span class="line">Predicate&lt;Apple&gt; redAndHeavyAppleOrGreen = redApple.and(a -&gt; a.getWeight() &gt; <span class="number">150</span>).or(a -&gt; <span class="string">"green"</span>.equals(a.getColor()));</span><br></pre></td></tr></tbody></table></figure>
+<p>从左向右确定优先级.</p>
+<h4 id="3-函数复合">3. 函数复合</h4>
+<p>Function提供了<code>andThen()</code>, <code>compose()</code></p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Function&lt;Integer, Integer&gt; f = x -&gt; x + <span class="number">1</span>; </span><br><span class="line">Function&lt;Integer, Integer&gt; g = x -&gt; x * <span class="number">2</span>; </span><br><span class="line"><span class="comment">// expect: (2 + 1) * 2 = 4</span></span><br><span class="line"><span class="comment">// f(g(x))</span></span><br><span class="line">System.out.println(f.andThen(g).apply(<span class="number">1</span>));</span><br><span class="line"><span class="comment">// expect: 1 * 2 + 1 = 3</span></span><br><span class="line"><span class="comment">// g(f(x))</span></span><br><span class="line">System.out.println(f.compose(g).apply(<span class="number">1</span>));</span><br></pre></td></tr></tbody></table></figure>
+<p>复合Lambda表达式可以用来创建各种转型流水线。</p>
+<h1>Stream定义</h1>
+<p>从（支持数据处理操作的源）生成的（元素序列）</p>
+<p>元素序列：流提供了一个接口,可以访问特定元素类型的一组有序值。<br>
+源：集合、数组或输入/输出资源<br>
+数据处理操作：filter 、 map 、 reduce 、 find 、 match 、 sort等，可顺序，可并行。<br>
+两个重要特点：</p>
+<ul>
+<li>流水线：多个操作可以链接起来</li>
+<li>内部迭代：流的迭代操作是在背后进行的，优点：透明地并行处理;优化处理顺序<br>
+注意：链中的方法调用都在排队等待,直到调用 collect 。</li>
+</ul>
+<h1>Stream操作</h1>
+<h2 id="概念">概念</h2>
+<p>两大类操作<br>
+1. 中间操作：会返回另一个流，map，filter等<br>
+2. 终端操作：从流的流水线生成结果，collect，foreach， count等<br>
+使用三要素<br>
++ 一个数据源(如集合)来执行一个查询;<br>
++ 一个中间操作链,形成一条流的流水线;<br>
++ 一个终端操作,执行流水线,并能生成结果。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dishes.stream()</span><br><span class="line">    .filter(d -&gt; d.getCalories() &lt; <span class="number">400</span>)</span><br><span class="line">    .sorted(comparing(Dish::getCalories))</span><br><span class="line">    .map(Dish::getName)</span><br><span class="line">    .collect(toList());</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="常用函数">常用函数</h2>
+<ol>
+<li>
+<p>筛选和切片 Filtering and slicing<br>
+<code>filter()</code>，<code>distinct()</code>，<code>limit(n)</code>, <code>skip(n)</code></p>
+</li>
+<li>
+<p>映射 Mapping</p>
+<ul>
+<li>map: 对流中每一个元素应用函数</li>
+<li>flatmap: 把一个流中的每个值都换成另一个流,然后把所有的流连接起来成为一个流。</li>
+</ul>
+</li>
+<li>
+<p>查找和匹配 Finding and matching</p>
+<ul>
+<li>anyMatch: 流中是否有一个元素能匹配给定的谓词, 方法返回一个 boolean</li>
+<li>allMatch: 流中的元素是否都能匹配给定的谓词, 方法返回一个 boolean</li>
+<li>noneMatch: 流中没有任何元素与给定的谓词匹配</li>
+<li>findAny: 返回当前流中的任意元素(Optional)</li>
+<li>findFirst: 找到第一个元素</li>
+</ul>
+</li>
+<li>
+<p>归约 Reducing<br>
+将流中所有元素反复结合起来。</p>
+<ul>
+<li>元素求和</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> numbers.stream().reduce(<span class="number">0</span>, Integer::sum);</span><br><span class="line">Optional&lt;Integer&gt; sum = numbers.stream().reduce(Integer::sum);</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>最大值，最小值</li>
+</ul>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Integer&gt; max = numbers.stream().reduce(Integer::max);</span><br><span class="line">Optional&lt;Integer&gt; min = numbers.stream().reduce(Integer::min);</span><br></pre></td></tr></tbody></table></figure>
+<ol start="5">
+<li>数值流 Numeric Streams<br>
+为了避免装箱带来的复杂性</li>
+</ol>
+<ul>
+<li>映射到数值流: mapToInt、mapToDouble 和 mapToLong</li>
+<li>转换回对象流</li>
+</ul>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">IntStream</span> <span class="variable">intStream</span> <span class="operator">=</span> menu.stream().mapToInt(Dish::getCalories);</span><br><span class="line">Stream&lt;Integer&gt; stream = intStream.boxed();</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>默认值 OptionalInt 、 OptionalDouble 和 OptionalLong</li>
+<li>数值范围 IntStream.rangeClosed(1, 100)</li>
+</ul>
+<ol start="6">
+<li>
+<p>构建流 Building streams</p>
+<ol>
+<li>由值创建流：</li>
+</ol>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;String&gt; stream = Stream.of(<span class="string">"Java 8 "</span>, <span class="string">"Lambdas "</span>, <span class="string">"In "</span>, <span class="string">"Action"</span>;</span><br><span class="line">stream.map(String::toUpperCase).forEach(System.out::println);</span><br><span class="line"><span class="comment">//空流</span></span><br><span class="line">Stream&lt;String&gt; emptyStream = Stream.empty();</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>2. 由数组创建流
+</code></pre>
+  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] numbers = {<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">13</span>};</span><br><span class="line"><span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> Arrays.stream(numbers).sum();</span><br></pre></td></tr></tbody></table></figure>
+<pre><code>3. 由文件生成流
+</code></pre>
+  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span> <span class="variable">uniqueWords</span> <span class="operator">=</span> Files.lines(Paths.get(<span class="string">"data.txt"</span>), Charset.defaultCharset())</span><br><span class="line">.flatMap(line -&gt; Arrays.stream(line.split(<span class="string">" "</span>)))</span><br><span class="line">.distinct().count();</span><br></pre></td></tr></tbody></table></figure>
+<ol start="4">
+<li>由函数生成流:创建无限流</li>
+</ol>
+  <figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// iterate</span></span><br><span class="line">Stream.iterate(<span class="number">0</span>, n -&gt; n + <span class="number">2</span>)</span><br><span class="line">.limit(<span class="number">10</span>)</span><br><span class="line">.forEach(System.out::println);</span><br><span class="line"><span class="comment">// generate</span></span><br><span class="line">Stream.generate(Math::random)</span><br><span class="line">.limit(<span class="number">5</span>)</span><br><span class="line">.forEach(System.out::println);</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<h1>用stream收集数据</h1>
+<h2 id="常用的收集器">常用的收集器</h2>
+<h3 id="Collectors-reducing：广义的归约汇总">Collectors.reducing：广义的归约汇总</h3>
+<p>需要三个参数：</p>
+<ul>
+<li>归约操作的起始值</li>
+<li>获取或操作对象的属性数值(转换函数)</li>
+<li>BinaryOperator，如加法</li>
+</ul>
+<p>举例：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">totalCalories</span> <span class="operator">=</span> menu.stream().collect(reducing(</span><br><span class="line">    <span class="number">0</span>,                      <span class="comment">// 归约操作的起始值</span></span><br><span class="line">    Dish::getCalories,      <span class="comment">// 获取或操作对象的属性数值(转换函数)</span></span><br><span class="line">    (i, j) -&gt; i + j));      <span class="comment">// BinaryOperator，如加法</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Collectors-groupingBy-：分组">Collectors.groupingBy ：分组</h3>
+<ul>
+<li>一级分组</li>
+</ul>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Dish.Type, List&lt;Dish&gt;&gt; dishesByType = menu.stream().collect(groupingBy(Dish::getType));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 自定义分组</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">CaloricLevel</span> { DIET, NORMAL, FAT }</span><br><span class="line">Map&lt;CaloricLevel, List&lt;Dish&gt;&gt; dishesByCaloricLevel = menu.stream()</span><br><span class="line">                .collect(groupingBy(dish -&gt; {</span><br><span class="line">                    <span class="keyword">if</span> (dish.getCalories() &lt;= <span class="number">400</span>)</span><br><span class="line">                        <span class="keyword">return</span> CaloricLevel.DIET;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (dish.getCalories() &lt;= <span class="number">700</span>)</span><br><span class="line">                        <span class="keyword">return</span> CaloricLevel.NORMAL;</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                        <span class="keyword">return</span> CaloricLevel.FAT;</span><br><span class="line">                }));</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>多级分组</li>
+</ul>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">menu.stream().collect(groupingBy(Dish::getType,</span><br><span class="line">            groupingBy((Dish dish) -&gt; {</span><br><span class="line">                <span class="keyword">if</span> (dish.getCalories() &lt;= <span class="number">400</span>) </span><br><span class="line">                    <span class="keyword">return</span> CaloricLevel.DIET;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (dish.getCalories() &lt;= <span class="number">700</span>) </span><br><span class="line">                    <span class="keyword">return</span> CaloricLevel.NORMAL;</span><br><span class="line">                <span class="keyword">else</span> </span><br><span class="line">                    <span class="keyword">return</span> CaloricLevel.FAT;</span><br><span class="line">            } )</span><br><span class="line">        );</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>与 groupingBy 联合使用的其他收集器<br>
+有时候在groupBy的时候，我们还想做一下其他操作，比如设定返回类型，或者只取对象中的某个属性。</li>
+</ul>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// summingInt</span></span><br><span class="line">Map&lt;Dish.Type, Integer&gt; totalCaloriesByType = menu.stream()</span><br><span class="line">.collect(groupingBy(Dish::getType, summingInt(Dish::getCalories)));</span><br><span class="line"></span><br><span class="line"><span class="comment">// mapping</span></span><br><span class="line">menu.stream().collect(groupingBy(Dish::getType, mapping(dish -&gt; {</span><br><span class="line">        <span class="keyword">if</span> (dish.getCalories() &lt;= <span class="number">400</span>)</span><br><span class="line">            <span class="keyword">return</span> CaloricLevel.DIET;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (dish.getCalories() &lt;= <span class="number">700</span>)</span><br><span class="line">            <span class="keyword">return</span> CaloricLevel.NORMAL;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> CaloricLevel.FAT;</span><br><span class="line">    }, toSet())));</span><br><span class="line"></span><br><span class="line"><span class="comment">//按子组收集数据</span></span><br><span class="line">Map&lt;Dish.Type, Long&gt; typesCount = menu.stream().collect(</span><br><span class="line">    groupingBy(Dish::getType, counting()));</span><br><span class="line"></span><br><span class="line"><span class="comment">//Collectors.collectingAndThen： 把收集器返回的结果转换为另一种类型</span></span><br><span class="line">Map&lt;Dish.Type, Dish&gt; mostCaloricByType = menu.stream()</span><br><span class="line">.collect(groupingBy(Dish::getType, </span><br><span class="line">    collectingAndThen(maxBy(comparingInt(Dish::getCalories)), Optional::get)));</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Collectors-counting">Collectors.counting()</h3>
+<h3 id="Collectors-maxBy">Collectors.maxBy</h3>
+<h3 id="Collectors-minBy">Collectors.minBy</h3>
+<h3 id="Collectors-summingInt，Collectors-summingLong，Collectors-summingDouble">Collectors.summingInt，Collectors.summingLong，Collectors.summingDouble</h3>
+<h3 id="Collectors-averagingInt，Collectors-averagingLong，Collectors-averagingDouble">Collectors.averagingInt，Collectors.averagingLong，Collectors.averagingDouble</h3>
+<h3 id="Collectors-summarizingInt">Collectors.summarizingInt</h3>
+<h3 id="Collectors-joining">Collectors.joining</h3>
+<h3 id="Collectors-partitioningBy-分区">Collectors.partitioningBy 分区</h3>
+<p>好处：保留了分区函数返回 true 或 false 的两套流元素列表。<br>
+与groupby的区别：需要一个谓词（返回一个布尔值的函数）</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Boolean, List&lt;Dish&gt;&gt; partitionedMenu = menu.stream().collect(partitioningBy(Dish::isVegetarian));</span><br><span class="line"><span class="comment">//二级分区</span></span><br><span class="line">menu.stream().collect(partitioningBy(Dish::isVegetarian, partitioningBy (d -&gt; d.getCalories() &gt; <span class="number">500</span>)));</span><br><span class="line"><span class="comment">//联合其他收集器</span></span><br><span class="line">menu.stream().collect(partitioningBy(Dish::isVegetarian, counting()));</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="Collector-接口">Collector 接口</h2>
+<h3 id="基本定义：">基本定义：</h3>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Collector</span>&lt;T, A, R&gt; {</span><br><span class="line">    Supplier&lt;A&gt; <span class="title function_">supplier</span><span class="params">()</span>;</span><br><span class="line">    BiConsumer&lt;A, T&gt; <span class="title function_">accumulator</span><span class="params">()</span>;</span><br><span class="line">    Function&lt;A, R&gt; <span class="title function_">finisher</span><span class="params">()</span>;</span><br><span class="line">    BinaryOperator&lt;A&gt; <span class="title function_">combiner</span><span class="params">()</span>;</span><br><span class="line">    Set&lt;Characteristics&gt; <span class="title function_">characteristics</span><span class="params">()</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>T 是流中要收集的项目的泛型</li>
+<li>A 是累加器的类型,累加器是在收集过程中用于累积部分结果的对象。</li>
+<li>R 是收集操作得到的对象(通常但并不一定是集合)的类型。</li>
+</ul>
+<p>方法分析：</p>
+<ul>
+<li>建立新的结果容器: supplier 方法</li>
+<li>将元素添加到结果容器: accumulator 方法</li>
+<li>对结果容器应用最终转换: finisher 方法</li>
+<li>合并两个结果容器: combiner 方法（并行归约）</li>
+<li>characteristics 方法：返回一个不可变的 Characteristics 集合
+<ol>
+<li>UNORDERED：归约结果不受流中项目的遍历和累积顺序的影响</li>
+<li>CONCURRENT：accumulator函数可以从多个线程同时调用,且该收集器可以并行归约流。如果收集器没有标为UNORDERED,那它仅在用于无序数据源时才可以并行归约</li>
+<li>IDENTITY_FINISH：表明完成器方法返回的函数是一个恒等函数</li>
+</ol>
+</li>
+</ul>
+<h2 id="自定义收集器">自定义收集器</h2>
+<p>必要时，可以根据自己需求实现收集器， 来避免一些不必要的操作（如装箱拆箱），这样子可以获取更好的性能。</p>
+<p>测试用例如下：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testOwnCollector</span><span class="params">()</span> {</span><br><span class="line"></span><br><span class="line">       <span class="keyword">class</span> <span class="title class_">ToListCollector</span>&lt;T&gt; <span class="keyword">implements</span> <span class="title class_">Collector</span>&lt;T, List&lt;T&gt;, List&lt;T&gt;&gt; {</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="keyword">public</span> Supplier&lt;List&lt;T&gt;&gt; <span class="title function_">supplier</span><span class="params">()</span> {</span><br><span class="line">               log(<span class="string">"supplier"</span>);</span><br><span class="line">               <span class="keyword">return</span> ArrayList::<span class="keyword">new</span>;</span><br><span class="line">           }</span><br><span class="line"></span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="keyword">public</span> BiConsumer&lt;List&lt;T&gt;, T&gt; <span class="title function_">accumulator</span><span class="params">()</span> {</span><br><span class="line">               log(<span class="string">"accumulator"</span>);</span><br><span class="line">               <span class="keyword">return</span> List::add;</span><br><span class="line">           }</span><br><span class="line"></span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="keyword">public</span> BinaryOperator&lt;List&lt;T&gt;&gt; <span class="title function_">combiner</span><span class="params">()</span> {</span><br><span class="line">               log(<span class="string">"combiner"</span>);</span><br><span class="line">               <span class="keyword">return</span> (l1, l2) -&gt; {</span><br><span class="line">                   l1.addAll(l2);</span><br><span class="line">                   <span class="keyword">return</span> l1;</span><br><span class="line">               };</span><br><span class="line">           }</span><br><span class="line"></span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="keyword">public</span> Function&lt;List&lt;T&gt;, List&lt;T&gt;&gt; <span class="title function_">finisher</span><span class="params">()</span> {</span><br><span class="line">               <span class="keyword">return</span> Function.identity();</span><br><span class="line">           }</span><br><span class="line"></span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="keyword">public</span> Set&lt;Characteristics&gt; <span class="title function_">characteristics</span><span class="params">()</span> {</span><br><span class="line">               log(<span class="string">"characteristics"</span>);</span><br><span class="line">               <span class="keyword">return</span> Collections.unmodifiableSet(EnumSet.of(Characteristics.IDENTITY_FINISH, Characteristics.CONCURRENT));</span><br><span class="line">           }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">           <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">log</span><span class="params">(<span class="keyword">final</span> String log)</span> {</span><br><span class="line">               System.out.println(Thread.currentThread().getName() + <span class="string">"-"</span> + log);</span><br><span class="line">           }</span><br><span class="line">       }</span><br><span class="line"></span><br><span class="line">       Collector&lt;String, List&lt;String&gt;, List&lt;String&gt;&gt; collector = <span class="keyword">new</span> <span class="title class_">ToListCollector</span>&lt;&gt;();</span><br><span class="line">       String[] arr = <span class="keyword">new</span> <span class="title class_">String</span>[]{<span class="string">"e1"</span>, <span class="string">"2r"</span>, <span class="string">"c"</span>, <span class="string">"s"</span>};</span><br><span class="line">       Optional.of(Arrays.stream(arr).filter(e -&gt; e.matches(<span class="string">"[a-z]"</span>)).collect(collector))</span><br><span class="line">               .ifPresent(e -&gt; {</span><br><span class="line">                   System.out.println(e.getClass());</span><br><span class="line">                   System.out.println(JSONObject.toJSONString(e));</span><br><span class="line">               });</span><br><span class="line">   }</span><br></pre></td></tr></tbody></table></figure>
+<h1>并行数据处理与性能</h1>
+<h2 id="1-并行流处理数据">1. 并行流处理数据</h2>
+<p>java 8 中提供了现成的并行处理流，即<code>parallelStream</code>。</p>
+<h3 id="并行流与顺序流的转换">并行流与顺序流的转换</h3>
+<p>对顺序流调用parallel方法，对并行流调用sequential方法。在合适的时候顺序流与并行流相互转换，可以提高效率。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">stream.parallel()</span><br><span class="line">    .filter(...)</span><br><span class="line">    .sequential()</span><br><span class="line">    .map(...)</span><br><span class="line">    .parallel()</span><br><span class="line">    .reduce();</span><br></pre></td></tr></tbody></table></figure>
+<p>注意点：</p>
+<ul>
+<li>保证在内核中并行执行工作的时间比在内核之间传输数据的时间长。</li>
+<li>避免改变了某些共享状态</li>
+</ul>
+<h3 id="配置并行流使用的线程池">配置并行流使用的线程池</h3>
+<p>并行流内部使用了默认的 ForkJoinPool， 它默认的线程数量就是你的处理器数量, 这个值是由<code>Runtime.getRuntime().availableProcessors()</code> 得到的。</p>
+<p>可以通过系统属性java.util.concurrent.ForkJoinPool.common.parallelism 来改变线程池大小：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.setProperty(<span class="string">"java.util.concurrent.ForkJoinPool.common.parallelism"</span>,<span class="string">"12"</span>);</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="如何高效使用：">如何高效使用：</h3>
+<ul>
+<li>测量</li>
+<li>留意装箱</li>
+<li>依赖于元素顺序的操作，本身在并行流上的性能就比顺序流差</li>
+<li>流的操作流水线的总计算成本</li>
+<li>数据少</li>
+<li>数据结构是否易于分解</li>
+<li>流自身的特点，以及流水线中的中间操作修改流的方式，都可能会改变分解过程的性能</li>
+<li>终端操作中合并步骤的代价是大是小</li>
+</ul>
+<h2 id="2-分支-合并框架-The-fork-join-framework">2. 分支/合并框架(The fork/join framework)</h2>
+<h3 id="目的">目的</h3>
+<p>以递归方式将可以并行的任务拆分成更小的任务，然后将每个子任务的结果合并起来生成整体结果。（先拆，并行处理，合并结果）</p>
+<h3 id="定义">定义</h3>
+<p><code>RecursiveTask</code>是ExecutorService接口的一个实现，它把子任务分配给线程池（称为ForkJoinPool）中的工作线程。</p>
+<h3 id="使用">使用</h3>
+<p>实现<code>compute()</code>方法，提交至ForkJoinPool.invoke<br>
+实际例子：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.ForkJoinPool;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.ForkJoinTask;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.RecursiveTask;</span><br><span class="line"><span class="keyword">import</span> java.util.stream.LongStream;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ForkJoinSumCalculator</span> <span class="keyword">extends</span> <span class="title class_">RecursiveTask</span>&lt;Long&gt; {</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 拆分任务的标准大小</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">THRESHOLD</span> <span class="operator">=</span> <span class="number">10_000</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">long</span>[] numbers;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">int</span> start;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">int</span> end;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ForkJoinSumCalculator</span><span class="params">(<span class="type">long</span>[] numbers)</span> {</span><br><span class="line">        <span class="built_in">this</span>(numbers, <span class="number">0</span>, numbers.length);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">ForkJoinSumCalculator</span><span class="params">(<span class="type">long</span>[] numbers, <span class="type">int</span> start, <span class="type">int</span> end)</span> {</span><br><span class="line">        <span class="built_in">this</span>.numbers = numbers;</span><br><span class="line">        <span class="built_in">this</span>.start = start;</span><br><span class="line">        <span class="built_in">this</span>.end = end;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 实现compute方法</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> Long <span class="title function_">compute</span><span class="params">()</span> {</span><br><span class="line">        <span class="type">int</span> <span class="variable">length</span> <span class="operator">=</span> end - start; <span class="comment">// 获取当前剩余任务的大小</span></span><br><span class="line">        <span class="keyword">if</span> (length &lt;= THRESHOLD) {</span><br><span class="line">            <span class="keyword">return</span> computeSequentially();</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">// 创建另外一个子任务 leftTask</span></span><br><span class="line">        <span class="type">ForkJoinSumCalculator</span> <span class="variable">leftTask</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ForkJoinSumCalculator</span>(numbers, start, start + length/<span class="number">2</span>);</span><br><span class="line">        <span class="comment">// 异步执行 leftTask</span></span><br><span class="line">        leftTask.fork();</span><br><span class="line">        <span class="comment">// 创建剩余一半任务的子任务 rightTask</span></span><br><span class="line">        <span class="type">ForkJoinSumCalculator</span> <span class="variable">rightTask</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ForkJoinSumCalculator</span>(numbers, start + length/<span class="number">2</span>, end);</span><br><span class="line">        <span class="comment">// 递归调用获取结果</span></span><br><span class="line">        <span class="type">Long</span> <span class="variable">rightResult</span> <span class="operator">=</span> rightTask.compute();</span><br><span class="line">        <span class="comment">// 获取 leftTask 结果</span></span><br><span class="line">        <span class="type">Long</span> <span class="variable">leftResult</span> <span class="operator">=</span> leftTask.join();</span><br><span class="line">        <span class="keyword">return</span> leftResult + rightResult;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">long</span> <span class="title function_">computeSequentially</span><span class="params">()</span> {</span><br><span class="line">        <span class="type">long</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> start; i &lt; end; i++) {</span><br><span class="line">            sum += numbers[i];</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如何调用fork/join框架</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">long</span> <span class="title function_">forkJoinSum</span><span class="params">(<span class="type">long</span> n)</span> {</span><br><span class="line">        <span class="type">long</span>[] numbers = LongStream.rangeClosed(<span class="number">1</span>, n).toArray();</span><br><span class="line">        ForkJoinTask&lt;Long&gt; task = <span class="keyword">new</span> <span class="title class_">ForkJoinSumCalculator</span>(numbers);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ForkJoinPool</span>().invoke(task);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="好的做法">好的做法</h3>
+<ul>
+<li>join方法会阻塞，所以先确保两个子任务全部启动，再调用join</li>
+<li><code>RecursiveTask</code>内部不应该调用ForkJoinPool.invoke，应该直接调用compute、fork，只有顺序代码才应该用 invoke 来启动并行计算</li>
+<li>一边子任务fork，一边子任务compute，避免在线程池中多分配一个任务造成的开销</li>
+<li>调试使用分支/合并框架的并行计算可能有点棘手, 调用compute的线程并不是概念上的调用方(即调用fork的那个).</li>
+<li>不应理所当然地认为在多核处理器上使用分支/合并框架就比顺序计算快。</li>
+</ul>
+<p><strong>工作窃取（work stealing）</strong><br>
+目的：为解决因为每个子任务所花的时间可能天差地别而造成的效率低下。 过程：线程把任务保存到一个双向链式队列，当一个线程的队列空了，它就随机从其他线程的队列尾部“偷”一个任务执行</p>
+<h3 id="思考">思考</h3>
+<p>问：都是拆分任务，并行执行，为什么不使用线程池，如ThreadPoolExecutor呢？</p>
+<p>答：Thread pool 默认期望它们所有执行的任务都是不相关的，可以尽可能的并行执行。<br>
+而fork join框架解决的问题，是一个全局问题，所有子任务拆分运行后的结果，是要合并起来的。另外，<code>fork-join pool</code>另一个特点<code>work stealing</code>，如果用ThreadPoolExecutor实现是比较麻烦的</p>
+<h2 id="3-Spliterator分割流">3. Spliterator分割流</h2>
+<h3 id="简单了解">简单了解</h3>
+<p>描述：一种自动机制来拆分流。新的接口“可分迭代器”（splitable iterator）</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Spliterator</span>&lt;T&gt; {</span><br><span class="line">    <span class="type">boolean</span> <span class="title function_">tryAdvance</span><span class="params">(Consumer&lt;? <span class="built_in">super</span> T&gt; action)</span>;</span><br><span class="line">    Spliterator&lt;T&gt; <span class="title function_">trySplit</span><span class="params">()</span>;</span><br><span class="line">    <span class="type">long</span> <span class="title function_">estimateSize</span><span class="params">()</span>;</span><br><span class="line">    <span class="type">int</span> <span class="title function_">characteristics</span><span class="params">()</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="拆分过程">拆分过程</h3>
+<p>递归过程。框架不断对Spliterator调用trySplit直到它返回null,表明它处理的数据结构不能再分割。</p>
+<h3 id="Spliterator-的特性">Spliterator 的特性</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>特性</strong></th>
+<th style="text-align:center"><strong>含义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ORDERED</td>
+<td style="text-align:center">元素有既定的顺序(例如 List ),因此 Spliterator 在遍历和划分时也会遵循这一顺序</td>
+</tr>
+<tr>
+<td style="text-align:center">DISTINCT</td>
+<td style="text-align:center">对于任意一对遍历过的元素 x 和 y , x.equals(y) 返回 false</td>
+</tr>
+<tr>
+<td style="text-align:center">SORTED</td>
+<td style="text-align:center">遍历的元素按照一个预定义的顺序排序</td>
+</tr>
+<tr>
+<td style="text-align:center">SIZED</td>
+<td style="text-align:center">该 Spliterator 由一个已知大小的源建立(例如 Set ),因此 estimatedSize() 返回的是准确值</td>
+</tr>
+<tr>
+<td style="text-align:center">NONNULL</td>
+<td style="text-align:center">保证遍历的元素不会为 null</td>
+</tr>
+<tr>
+<td style="text-align:center">IMMUTABL</td>
+<td style="text-align:center">Spliterator 的数据源不能修改。这意味着在遍历时不能添加、删除或修改任何元素E</td>
+</tr>
+<tr>
+<td style="text-align:center">CONCURRENT</td>
+<td style="text-align:center">该 Spliterator 的数据源可以被其他线程同时修改而无需同步</td>
+</tr>
+<tr>
+<td style="text-align:center">SUBSIZED</td>
+<td style="text-align:center">该 Spliterator 和所有从它拆分出来的 Spliterator 都是 SIZED</td>
+</tr>
+</tbody>
+</table>
+<h3 id="各个函数及作用">各个函数及作用</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数名</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">tryAdvance</td>
+<td style="text-align:center">执行一个操作给传入的元素，并且返回一个boolean，来表示是否有剩余元素需要处理</td>
+</tr>
+<tr>
+<td style="text-align:center">trySplit</td>
+<td style="text-align:center">最重要的函数，如果数据可以继续分割，返回一个Spliterator，否则返回null</td>
+</tr>
+<tr>
+<td style="text-align:center">estimateSize</td>
+<td style="text-align:center">返回一个对剩余元素数量的估值</td>
+</tr>
+<tr>
+<td style="text-align:center">characteristics</td>
+<td style="text-align:center">设置Spliterator的某些特性，参考上表。</td>
+</tr>
+</tbody>
+</table>
+<h1>默认方法</h1>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Sized</span> {</span><br><span class="line">    <span class="type">int</span> <span class="title function_">size</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">default</span> <span class="type">boolean</span> <span class="title function_">isEmpty</span><span class="params">()</span> {</span><br><span class="line">        <span class="keyword">return</span> size() == <span class="number">0</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>这样任何一个实现了Sized接口的类都会自动继承isEmpty的实现。因此，向提供了默认实 现的接口添加方法就不是源码兼容的。</p>
+<p>☀️ 关于继承的一些错误观点</p>
+<p>继承不应该成为你一谈到代码复用就试图倚靠的万精油。比如，从一个拥有100个方法及 字段的类进行<br>
+继承就不是个好主意，因为这其实会引入不必要的复杂性。你完全可以使用代理 有效地规避这种窘境，即创建一个方法通过该类的成员变量直接调用该类的方法。这就是为什 么有的时候我们发现有些类被刻意地声明为final类型：<strong>声明为final的类不能被其他的类继 承</strong>，避免发生这样的反模式，防止核心代码的功能被污染。注意，有的时候声明为final的类 都会有其不同的原因，比如，String类被声明为final，因为我们不希望有人对这样的核心 功能产生干扰。</p>
+<p>这种思想同样也适用于使用默认方法的接口。通过精简的接口，你能获得最有效的组合， 因为你可以只选择你需要的实现。</p>
+<h2 id="多来源继承调用默认方法原则">多来源继承调用默认方法原则</h2>
+<p>(1) 类中的方法优先级最高。类或父类中声明的方法的优先级高于任何声明为默认方法的优 先级。<br>
+(2) 如果无法依据第一条进行判断，那么子接口的优先级更高：函数签名相同时，优先选择 拥有最具体实现的默认方法的接口，即如果B继承了A，那么B就比A更加具体。<br>
+(3) 最后，如果还是无法判断，继承了多个接口的类必须通过显式覆盖和调用期望的方法，显式地选择使用哪一个默认方法的实现。</p>
+<h1>用Optional取代null</h1>
+<h2 id="创建-Optional-对象">创建 Optional 对象</h2>
+<ol>
+<li>声明一个空的Optional</li>
+</ol>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Car&gt; optCar = Optional.empty();</span><br></pre></td></tr></tbody></table></figure>
+<ol start="2">
+<li>依据一个非空值创建Optional</li>
+</ol>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Car&gt; optCar = Optional.of(car);</span><br></pre></td></tr></tbody></table></figure>
+<ol start="3">
+<li>可接受null的Optional<br>
+最后，使用静态工厂方法Optional.ofNullable，你可以创建一个允许null值的Optional 对象：</li>
+</ol>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Car&gt; optCar = Optional.ofNullable(car);</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="使用-map-从-Optional-对象中提取和转换值">使用 map 从 Optional 对象中提取和转换值</h2>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Insurance&gt; optInsurance = Optional.ofNullable(insurance);</span><br><span class="line">Optional&lt;String&gt; name = optInsurance.map(Insurance::getName);</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="使用-flatMap-链接-Optional-对象">使用 flatMap 链接 Optional 对象</h2>
+<h3 id="原因">原因</h3>
+<p>使用 map 从 Optional 对象中提取和转换值，遭遇嵌套式的Optional结构</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Person&gt; optPerson = Optional.of(person); </span><br><span class="line">Optional&lt;String&gt; name = optPerson.map(Person::getCar) .map(Car::getInsurance) .map(Insurance::getName);</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="处理">处理</h3>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String <span class="title function_">getCarInsuranceName</span><span class="params">(Optional&lt;Person&gt; person)</span> { </span><br><span class="line">	<span class="keyword">return</span> person.flatMap(Person::getCar)</span><br><span class="line">                          .flatMap(Car::getInsurance)</span><br><span class="line">                          .map(Insurance::getName)</span><br><span class="line">                          .orElse(<span class="string">"Unknown"</span>); </span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="Optional类并未实现-Serializable接口">Optional类并未实现 Serializable接口</h2>
+<h2 id="默认行为及解引用-Optional-对象">默认行为及解引用 Optional 对象</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">empty</td>
+<td style="text-align:center">返回一个空的 Optional 实例</td>
+</tr>
+<tr>
+<td style="text-align:center">filter</td>
+<td style="text-align:center">如果值存在并且满足提供的谓词，就返回包含该值的 Optional 对象；否则返回一个空的 Optional 对象</td>
+</tr>
+<tr>
+<td style="text-align:center">flatMap</td>
+<td style="text-align:center">如果值存在，就对该值执行提供的 mapping 函数调用，返回一个 Optional 类型的值，否则就返 回一个空的 Optional对象</td>
+</tr>
+<tr>
+<td style="text-align:center">get</td>
+<td style="text-align:center">如果该值存在，将该值用 Optional 封装返回，否则抛出一个 NoSuchElementException 异常</td>
+</tr>
+<tr>
+<td style="text-align:center">ifPresent</td>
+<td style="text-align:center">如果值存在，就执行使用该值的方法调用，否则什么也不做</td>
+</tr>
+<tr>
+<td style="text-align:center">isPresent</td>
+<td style="text-align:center">如果值存在就返回 true，否则返回 false</td>
+</tr>
+<tr>
+<td style="text-align:center">map</td>
+<td style="text-align:center">如果值存在，就对该值执行提供的 mapping 函数调用</td>
+</tr>
+<tr>
+<td style="text-align:center">of</td>
+<td style="text-align:center">将指定值用 Optional 封装之后返回，如果该值为 null，则抛出一个 NullPointerException 异常</td>
+</tr>
+<tr>
+<td style="text-align:center">ofNullable</td>
+<td style="text-align:center">将指定值用 Optional 封装之后返回，如果该值为 null，则返回一个空的 Optional 对象</td>
+</tr>
+<tr>
+<td style="text-align:center">orElse</td>
+<td style="text-align:center">如果有值则将其返回，否则返回一个默认值</td>
+</tr>
+<tr>
+<td style="text-align:center">orElseGet</td>
+<td style="text-align:center">如果有值则将其返回，否则返回一个由指定的 Supplier 接口生成的值</td>
+</tr>
+<tr>
+<td style="text-align:center">orElseThrow</td>
+<td style="text-align:center">如果有值则将其返回，否则抛出一个由指定的 Supplier 接口生成的异常</td>
+</tr>
+</tbody>
+</table>
+<h1>CompletableFuture 组合式异步编程</h1>
+<h2 id="Future-接口异步">Future 接口异步</h2>
+<p>Future接口在Java 5中被引入，设计初衷是对将来某个时刻会发生的结果进行建模。它建模 了一种异步计算，返回一个执行运算结果的引用，当运算结束后，这个引用被返回给调用方。</p>
+<h3 id="模拟1">模拟1</h3>
+<ul>
+<li>使用Future以异步的方式执行一个耗时的操作</li>
+</ul>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.atomic.AtomicBoolean;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.atomic.AtomicReference;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FutureInAction</span> {</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">interface</span> <span class="title class_">Future</span>&lt;T&gt; {</span><br><span class="line"></span><br><span class="line">        T <span class="title function_">get</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">boolean</span> <span class="title function_">isDone</span><span class="params">()</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">interface</span> <span class="title class_">Callable</span>&lt;T&gt; {</span><br><span class="line">        T <span class="title function_">action</span><span class="params">()</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> &lt;T&gt; Future&lt;T&gt; <span class="title function_">invoke</span><span class="params">(Callable&lt;T&gt; callable)</span> {</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 异步返回值</span></span><br><span class="line">        AtomicReference&lt;T&gt; result = <span class="keyword">new</span> <span class="title class_">AtomicReference</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 异步处理完成</span></span><br><span class="line">        <span class="type">AtomicBoolean</span> <span class="variable">finished</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AtomicBoolean</span>(<span class="literal">false</span>);</span><br><span class="line">        <span class="type">Thread</span> <span class="variable">thread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(() -&gt; {</span><br><span class="line">            result.set(callable.action());</span><br><span class="line">            finished.set(<span class="literal">true</span>);</span><br><span class="line">        });</span><br><span class="line">        thread.start();</span><br><span class="line">        Future&lt;T&gt; future = <span class="keyword">new</span> <span class="title class_">Future</span>&lt;T&gt;() {</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> T <span class="title function_">get</span><span class="params">()</span> {</span><br><span class="line">                <span class="keyword">return</span> result.get();</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isDone</span><span class="params">()</span> {</span><br><span class="line">                <span class="keyword">return</span> finished.get();</span><br><span class="line">            }</span><br><span class="line">        };</span><br><span class="line">        <span class="keyword">return</span> future;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testFuture</span><span class="params">()</span> {</span><br><span class="line">        Future&lt;String&gt; result = invoke(() -&gt; {</span><br><span class="line">            <span class="keyword">try</span> {</span><br><span class="line">                Thread.sleep(<span class="number">10</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"I am finished."</span>;</span><br><span class="line">            } <span class="keyword">catch</span> (InterruptedException e) {</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"Error"</span>;</span><br><span class="line">            }</span><br><span class="line">        });</span><br><span class="line"></span><br><span class="line">        System.out.println(result.get());</span><br><span class="line">        <span class="keyword">while</span> (!result.isDone()) {</span><br><span class="line">            <span class="keyword">try</span> {</span><br><span class="line">                Thread.sleep(<span class="number">1</span>);</span><br><span class="line">                System.out.println(<span class="string">"waitting..."</span>);</span><br><span class="line">            } <span class="keyword">catch</span> (InterruptedException e) {</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        System.out.println(result.get());</span><br><span class="line">        System.out.println(result.isDone());</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>输出</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">null</span><br><span class="line">waitting...</span><br><span class="line">waitting...</span><br><span class="line">waitting...</span><br><span class="line">waitting...</span><br><span class="line">waitting...</span><br><span class="line">waitting...</span><br><span class="line">I am finished.</span><br><span class="line">true</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="模拟2">模拟2</h3>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.*;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.atomic.LongAccumulator;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FutureInAction2</span> {</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testExecutorService</span><span class="params">()</span> {</span><br><span class="line">        <span class="type">ExecutorService</span> <span class="variable">executorService</span> <span class="operator">=</span> Executors.newSingleThreadExecutor();</span><br><span class="line">        <span class="type">LongAccumulator</span> <span class="variable">longAccumulator</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">LongAccumulator</span>(Long::sum, <span class="number">0</span>);</span><br><span class="line">        Future&lt;String&gt; result = executorService.submit(() -&gt; {</span><br><span class="line">            System.out.println(Thread.currentThread().getName());</span><br><span class="line">            <span class="type">int</span> <span class="variable">begin</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (begin &lt; <span class="number">10</span>) {</span><br><span class="line">                System.out.println(<span class="string">"+"</span>);</span><br><span class="line">                Thread.sleep(<span class="number">1</span>);</span><br><span class="line">                longAccumulator.accumulate(begin++);</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"I am finished."</span>;</span><br><span class="line">        });</span><br><span class="line"></span><br><span class="line"><span class="comment">//        // 阻塞等待执行结果</span></span><br><span class="line"><span class="comment">//        result.get();</span></span><br><span class="line"><span class="comment">//        System.out.println("result..." + longAccumulator.get());</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//        //最多等待10秒, 超时未执行完成，报错</span></span><br><span class="line"><span class="comment">//        try {</span></span><br><span class="line"><span class="comment">//            result.get(10, TimeUnit.SECONDS);</span></span><br><span class="line"><span class="comment">//            System.out.println("result..." + longAccumulator.get());</span></span><br><span class="line"><span class="comment">//        } catch (Exception e) {</span></span><br><span class="line"><span class="comment">//            // java.util.concurrent.TimeoutException</span></span><br><span class="line"><span class="comment">//            e.printStackTrace();</span></span><br><span class="line"><span class="comment">//        }</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 阻塞等待执行结果</span></span><br><span class="line">        <span class="keyword">if</span> (!result.isDone()) {</span><br><span class="line">            System.out.print(<span class="string">"running"</span>);</span><br><span class="line">            <span class="keyword">while</span> (!result.isDone()) {</span><br><span class="line">                System.out.print(<span class="string">"."</span>);</span><br><span class="line">            }</span><br><span class="line">            System.out.println();</span><br><span class="line">            System.out.println(<span class="string">"result..."</span> + longAccumulator.get());</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        executorService.shutdown();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>输出</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">running.................................................................................................pool-1-thread-1</span><br><span class="line">...................................................+</span><br><span class="line">...................................................................................................+</span><br><span class="line">................................................................................................................................................................................................................................................+</span><br><span class="line">..................................................................................................................................................................+</span><br><span class="line">.........................................................................................................+</span><br><span class="line">..............................................................................................................................................................................................................+</span><br><span class="line">..........................................................................................................................................................+</span><br><span class="line">.......................................................................................................................................................+</span><br><span class="line">...............................+</span><br><span class="line">....................................................................................................................................................................................................</span><br><span class="line">result...45</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="模拟3">模拟3</h3>
+<p>将阻塞等待完成后调用程序</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.atomic.AtomicBoolean;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.atomic.AtomicReference;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FutureInAction3</span> {</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">interface</span> <span class="title class_">Callable</span>&lt;T&gt; {</span><br><span class="line">        T <span class="title function_">action</span><span class="params">()</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">interface</span> <span class="title class_">Completable</span>&lt;T&gt; {</span><br><span class="line"></span><br><span class="line">        <span class="keyword">void</span> <span class="title function_">complete</span><span class="params">(T t)</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">void</span> <span class="title function_">exception</span><span class="params">(Throwable throwable)</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">interface</span> <span class="title class_">Future</span>&lt;T&gt; {</span><br><span class="line"></span><br><span class="line">        T <span class="title function_">get</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">boolean</span> <span class="title function_">isDone</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">void</span> <span class="title function_">setCompletable</span><span class="params">(Completable&lt;T&gt; completable)</span>;</span><br><span class="line"></span><br><span class="line">        Completable&lt;T&gt; <span class="title function_">getCompletable</span><span class="params">()</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; Future&lt;T&gt; <span class="title function_">invoke</span><span class="params">(Callable&lt;T&gt; callable)</span> {</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        AtomicReference&lt;T&gt; atomicReference = <span class="keyword">new</span> <span class="title class_">AtomicReference</span>&lt;&gt;();</span><br><span class="line">        <span class="type">AtomicBoolean</span> <span class="variable">atomicBoolean</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AtomicBoolean</span>(<span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Future&lt;T&gt; future = <span class="keyword">new</span> <span class="title class_">Future</span>&lt;T&gt;() {</span><br><span class="line">            <span class="keyword">private</span> Completable&lt;T&gt; completable;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> T <span class="title function_">get</span><span class="params">()</span> {</span><br><span class="line">                <span class="keyword">return</span> atomicReference.get();</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isDone</span><span class="params">()</span> {</span><br><span class="line">                <span class="keyword">return</span> atomicBoolean.get();</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setCompletable</span><span class="params">(Completable&lt;T&gt; completable)</span> {</span><br><span class="line">                <span class="built_in">this</span>.completable = completable;</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> Completable&lt;T&gt; <span class="title function_">getCompletable</span><span class="params">()</span> {</span><br><span class="line">                <span class="keyword">return</span> completable;</span><br><span class="line">            }</span><br><span class="line">        };</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="type">Thread</span> <span class="variable">thread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(() -&gt; {</span><br><span class="line">            <span class="keyword">try</span> {</span><br><span class="line">                <span class="type">T</span> <span class="variable">t</span> <span class="operator">=</span> callable.action();</span><br><span class="line">                atomicReference.set(t);</span><br><span class="line">                atomicBoolean.set(<span class="literal">true</span>);</span><br><span class="line">                <span class="keyword">if</span> (future.getCompletable() != <span class="literal">null</span>) {</span><br><span class="line">                    future.getCompletable().complete(t);</span><br><span class="line">                }</span><br><span class="line">            } <span class="keyword">catch</span> (Throwable e) {</span><br><span class="line">                <span class="keyword">if</span> (future.getCompletable() != <span class="literal">null</span>) {</span><br><span class="line">                    future.getCompletable().exception(e);</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        });</span><br><span class="line">        thread.start();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> future;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        Future&lt;String&gt; result = invoke(() -&gt; {</span><br><span class="line">            <span class="keyword">try</span> {</span><br><span class="line">                Thread.sleep(<span class="number">10000</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"I am finished."</span>;</span><br><span class="line">            } <span class="keyword">catch</span> (InterruptedException e) {</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">                <span class="keyword">return</span> <span class="string">"Error."</span>;</span><br><span class="line">            }</span><br><span class="line">        });</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        result.setCompletable(<span class="keyword">new</span> <span class="title class_">Completable</span>&lt;String&gt;() {</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">complete</span><span class="params">(String s)</span> {</span><br><span class="line">                System.out.println(<span class="string">"complete..."</span> + s);</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">exception</span><span class="params">(Throwable cause)</span> {</span><br><span class="line">                System.out.println(<span class="string">"exception error"</span>);</span><br><span class="line">                cause.printStackTrace();</span><br><span class="line">            }</span><br><span class="line">        });</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"end...."</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>输出</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">end....</span><br><span class="line">complete...I am finished.</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="CompletableFuture-构建异步应用">CompletableFuture 构建异步应用</h2>
+<h3 id="模拟异步操作内容">模拟异步操作内容</h3>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CompletableFutureSupport</span> {</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Random</span> <span class="variable">random</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>(System.currentTimeMillis());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="type">double</span> <span class="title function_">getActionBody</span><span class="params">()</span> {</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">"：get（begin）"</span>);</span><br><span class="line">            Thread.sleep(<span class="number">10000L</span>);</span><br><span class="line">            <span class="type">double</span> <span class="variable">v</span> <span class="operator">=</span> random.nextDouble();</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">"：get（done）："</span> + v);</span><br><span class="line">            <span class="keyword">return</span> v;</span><br><span class="line">        } <span class="keyword">catch</span> (InterruptedException e) {</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="模拟1-2">模拟1</h3>
+<p>CompletableFuture阻塞等待</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Optional;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.CompletableFuture;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CompletableFutureInAction1</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        CompletableFuture&lt;Double&gt; completableFuture = <span class="keyword">new</span> <span class="title class_">CompletableFuture</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Thread</span>(() -&gt; {</span><br><span class="line">            System.out.println(<span class="string">"action:-&gt;"</span> + Thread.currentThread().getName());</span><br><span class="line">            <span class="type">double</span> <span class="variable">v</span> <span class="operator">=</span> CompletableFutureSupport.getActionBody();</span><br><span class="line">            completableFuture.complete(v);</span><br><span class="line">        }).start();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"main.....1"</span>);</span><br><span class="line"></span><br><span class="line">        completableFuture.whenComplete((v, t) -&gt; {</span><br><span class="line">            System.out.println(<span class="string">"complete.....2"</span>);</span><br><span class="line">            Optional.ofNullable(v).ifPresent(System.out::println);</span><br><span class="line">            Optional.ofNullable(t).ifPresent(tt -&gt; tt.printStackTrace());</span><br><span class="line">        });</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>输出</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">main.....1</span><br><span class="line">action:-&gt;Thread-0</span><br><span class="line">Thread-0：get（begin）</span><br><span class="line">Thread-0：get（done）：0.30457757812323727</span><br><span class="line">complete.....2</span><br><span class="line">0.30457757812323727</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="模拟2-2">模拟2</h3>
+<p>CompletableFuture.supplyAsync 异步请求</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * main 线程不会等待whenComplete。</span></span><br><span class="line"><span class="comment">     * main结束的时候，completableFuture的Supplier 未执行完成，线程也会随main的结束而结束</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> ExecutionException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> InterruptedException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        CompletableFuture&lt;Double&gt; completableFuture = CompletableFuture.supplyAsync(CompletableFutureSupport::getActionBody);</span><br><span class="line"></span><br><span class="line">        System.out.println(Thread.currentThread().getName() + <span class="string">"..........................1"</span>);</span><br><span class="line"></span><br><span class="line">        completableFuture.whenComplete((v, t) -&gt; {</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">"：complete_action（begin）"</span>);</span><br><span class="line">            Optional.ofNullable(v).ifPresent(System.out::println);</span><br><span class="line">            Optional.ofNullable(t).ifPresent(tt -&gt; tt.printStackTrace());</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">"：complete_action（end）"</span>);</span><br><span class="line">        });</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
+<p>输出</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">main.........................<span class="number">.1</span></span><br><span class="line">ForkJoinPool.commonPool-worker-<span class="number">9</span>：get（begin）</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="模拟3-2">模拟3</h3>
+<p>改写模拟2，不使用阻塞的方式</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        <span class="type">ExecutorService</span> <span class="variable">executorService</span> <span class="operator">=</span> Executors.newFixedThreadPool(<span class="number">2</span>, (r) -&gt; {</span><br><span class="line">            <span class="type">Thread</span> <span class="variable">thread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(r);</span><br><span class="line">            <span class="comment">// 不以守护进程的方式运行</span></span><br><span class="line">            thread.setDaemon(<span class="literal">false</span>);</span><br><span class="line">            <span class="keyword">return</span> thread;</span><br><span class="line">        });</span><br><span class="line">        CompletableFuture&lt;Double&gt; completableFuture = CompletableFuture.supplyAsync(CompletableFutureSupport::getActionBody, executorService);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// main</span></span><br><span class="line">        System.out.println(Thread.currentThread().getName() + <span class="string">"..........................1"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        completableFuture.whenComplete((v, t) -&gt; {</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">"：complete_action（begin）"</span>);</span><br><span class="line">            Optional.ofNullable(v).ifPresent(System.out::println);</span><br><span class="line">            Optional.ofNullable(t).ifPresent(tt -&gt; tt.printStackTrace());</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">"：complete_action（end）"</span>);</span><br><span class="line">        });</span><br><span class="line"></span><br><span class="line">        <span class="comment">// main</span></span><br><span class="line">        System.out.println(Thread.currentThread().getName() + <span class="string">"..........................2"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 需要显示关闭线程</span></span><br><span class="line">        <span class="comment">// 执行先前提交的任务后，启动有序关闭。如果已经关闭，调用没有额外的影响</span></span><br><span class="line">        executorService.shutdown();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// main</span></span><br><span class="line">        System.out.println(Thread.currentThread().getName() + <span class="string">"..........................3"</span>);</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
+<p>输出</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">main..........................1</span><br><span class="line">Thread-0：get（begin）</span><br><span class="line">main..........................2</span><br><span class="line">main..........................3</span><br><span class="line">Thread-0：get（done）：0.9293436815770424</span><br><span class="line">Thread-0：complete_action（begin）</span><br><span class="line">0.9293436815770424</span><br><span class="line">Thread-0：complete_action（end）</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="CompletableFuture常用API">CompletableFuture常用API</h2>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>supplyAsyn</td>
+<td>CompletableFuture<u>supplyAsync(Supplier<u>supplier);<br>CompletableFuture<u>supplyAsync(Supplier<u>supplier,Executorexecutor);</u></u></u></u></td>
+</tr>
+<tr>
+<td>then<strong>Apply</strong></td>
+<td>CompletableFuture<u>thenApply(<strong>Function</strong>&lt;?superT,?extendsU&gt;fn);</u></td>
+</tr>
+<tr>
+<td><strong>handle</strong></td>
+<td>CompletableFuture<u>handle(<strong>BiFunction</strong>&lt;?superT,Throwable,?extendsU&gt;fn)</u></td>
+</tr>
+<tr>
+<td>then<strong>Run</strong></td>
+<td>CompletableFuture<void>thenRun(<strong>Runnable</strong>action)</void></td>
+</tr>
+<tr>
+<td>then<strong>Accept</strong></td>
+<td>CompletableFuture<void>thenAccept(<strong>Consumer</strong>&lt;?superT&gt;action)</void></td>
+</tr>
+<tr>
+<td>thenCompose</td>
+<td>CompletableFuture<u>thenCompose(Function&lt;?superT,?extendsCompletionStage<u>&gt;fn)<br>继续执行下一个CompletableFuture</u></u></td>
+</tr>
+<tr>
+<td>then<strong>Combine</strong></td>
+<td>CompletableFuture<v>thenCombine(CompletionStage&lt;?extendsU&gt;other,<strong>BiFunction</strong>&lt;?superT,?superU,?extendsV&gt;fn)<br>两个CompletableFuture的返回结果经过<strong>BiFunction</strong>处理，进入后续操作。</v></td>
+</tr>
+<tr>
+<td>then<strong>Accept</strong>Both</td>
+<td>CompletionStage<void>thenAcceptBoth(CompletionStage&lt;?extendsU&gt;other,BiConsumer&lt;?superT,?superU&gt;action)<br>两个CompletableFuture的返回结果经过<strong>BiConsumer</strong>处理，进入后续操作。</void></td>
+</tr>
+<tr>
+<td><strong>run</strong>AfterBoth</td>
+<td>CompletableFuture<void>runAfterBoth(CompletionStage&lt;?&gt;other,<strong>Runnable</strong>action)<br>两个CompletableFuture的返回结果经过<strong>Runnable</strong>处理，进入后续操作。</void></td>
+</tr>
+<tr>
+<td><strong>apply</strong>ToEither</td>
+<td>CompletionStage<u>applyToEither(CompletionStage&lt;?extendsT&gt;other,<strong>Function</strong>&lt;?superT,U&gt;fn)<br>两个CompletionStage任意一个执行完成即可执行其<strong>Function</strong>。</u></td>
+</tr>
+<tr>
+<td><strong>accept</strong>Either</td>
+<td>CompletableFuture<void>acceptEither(CompletionStage&lt;?extendsT&gt;other,<strong>Consumer</strong>&lt;?superT&gt;action)<br>两个CompletionStage任意一个执行完成即可执行其<strong>Consumer</strong></void></td>
+</tr>
+<tr>
+<td><strong>run</strong>AfterEither</td>
+<td>CompletableFuture<void>runAfterEither(CompletionStage&lt;?&gt;other,Runnableaction)<br>两个CompletableFuture任意一个执行完成即可执行其<strong>Runnable</strong></void></td>
+</tr>
+<tr>
+<td><strong>allOf</strong></td>
+<td>public<strong>static</strong>CompletableFuture<void>allOf(CompletableFuture&lt;?&gt;…cfs)<br>等待所有CompletableFuture执行完成之后，执行后续操作。</void></td>
+</tr>
+<tr>
+<td><strong>anyOf</strong></td>
+<td>publicstaticCompletableFuture<object>anyOf(CompletableFuture&lt;?&gt;…cfs)<br>等待任意一个CompletableFuture执行完成之后，执行后续操作</object></td>
+</tr>
+</tbody>
+</table>
+<h3 id="supplyAsyn">supplyAsyn</h3>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">API：</span><br><span class="line">CompletableFuture&lt;U&gt; <span class="title function_">supplyAsync</span><span class="params">(Supplier&lt;U&gt; supplier)</span>;</span><br><span class="line">举例：</span><br><span class="line">CompletableFuture.supplyAsync(() -&gt; <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">API：</span><br><span class="line">CompletableFuture&lt;U&gt; <span class="title function_">supplyAsync</span><span class="params">(Supplier&lt;U&gt; supplier,  Executor executor)</span>;</span><br><span class="line">举例：</span><br><span class="line"><span class="type">ExecutorService</span> <span class="variable">executor</span> <span class="operator">=</span> Executors.newFixedThreadPool(<span class="number">2</span>, (r) -&gt; {</span><br><span class="line">	<span class="type">Thread</span> <span class="variable">thread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(r); </span><br><span class="line">	thread.setDaemon(<span class="literal">false</span>);</span><br><span class="line">	<span class="keyword">return</span> thread;</span><br><span class="line">});</span><br><span class="line">CompletableFuture.supplyAsync(() -&gt; <span class="number">1</span>, executor);</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="thenApply">thenApply</h3>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">API:</span><br><span class="line">CompletableFuture&lt;U&gt; <span class="title function_">thenApply</span><span class="params">(Function&lt;? <span class="built_in">super</span> T,? extends U&gt; fn)</span>;</span><br><span class="line"></span><br><span class="line">举例：</span><br><span class="line">CompletableFuture.supplyAsync(() -&gt; <span class="number">1</span>)</span><br><span class="line">        .thenApply(v -&gt; Integer.sum(v, <span class="number">10</span>))</span><br><span class="line">        .whenComplete((v, t) -&gt; System.out.println(v));</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="handle">handle</h3>
+<p>可以对抛出的异常进行处理</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">API:</span><br><span class="line">CompletableFuture&lt;U&gt; <span class="title function_">handle</span><span class="params">(BiFunction&lt;? <span class="built_in">super</span> T, Throwable, ? extends U&gt; fn)</span></span><br><span class="line"></span><br><span class="line">举例：</span><br><span class="line">CompletableFuture.supplyAsync(() -&gt; <span class="number">1</span>)</span><br><span class="line">        .handle((v, t) -&gt; Integer.sum(v, <span class="number">10</span>))</span><br><span class="line">        .whenComplete((v, t) -&gt; System.out.println(v));</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="thenRun">thenRun</h3>
+<p>执行完成之后的其他操作。无入参。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">API:</span><br><span class="line">CompletableFuture&lt;Void&gt; <span class="title function_">thenRun</span><span class="params">(Runnable action)</span></span><br><span class="line"></span><br><span class="line">举例：</span><br><span class="line">CompletableFuture.supplyAsync(() -&gt; <span class="number">1</span>)</span><br><span class="line">        .whenComplete((v, t) -&gt; System.out.println(v))</span><br><span class="line">        .thenRun(() -&gt; System.out.println());</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="thenAccept">thenAccept</h3>
+<p>返回结果V的后续消费</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">API:</span><br><span class="line">CompletableFuture&lt;Void&gt; <span class="title function_">thenAccept</span><span class="params">(Consumer&lt;? <span class="built_in">super</span> T&gt; action)</span></span><br><span class="line"></span><br><span class="line">举例：</span><br><span class="line">CompletableFuture.supplyAsync(() -&gt; <span class="number">1</span>)</span><br><span class="line">        .whenComplete((v, t) -&gt; System.out.println(v))</span><br><span class="line">        .thenAccept((v) -&gt; System.out.println(v));</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="thenCompose">thenCompose</h3>
+<p>继续执行下一个CompletableFuture</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">API:</span><br><span class="line">CompletableFuture&lt;U&gt; <span class="title function_">thenCompose</span><span class="params">(Function&lt;? <span class="built_in">super</span> T, ? extends CompletionStage&lt;U&gt;&gt; fn)</span></span><br><span class="line"></span><br><span class="line">其中：Function&lt;? <span class="built_in">super</span> T, ? <span class="keyword">extends</span> <span class="title class_">CompletionStage</span>&lt;U&gt;&gt; fn是另外一个CompletableFuture。</span><br><span class="line"></span><br><span class="line">举例：</span><br><span class="line">CompletableFuture.supplyAsync(() -&gt; <span class="number">1</span>)</span><br><span class="line">        .thenCompose(v -&gt; CompletableFuture.supplyAsync(() -&gt; v + <span class="number">10</span>))</span><br><span class="line">        .whenComplete((v, t) -&gt; System.out.println(v));</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="thenCombine">thenCombine</h3>
+<p>两个CompletableFuture的返回结果经过BiFunction处理，进入后续操作。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">API:</span><br><span class="line">CompletableFuture&lt;V&gt; <span class="title function_">thenCombine</span><span class="params">(CompletionStage&lt;? extends U&gt; other,</span></span><br><span class="line"><span class="params">        BiFunction&lt;? <span class="built_in">super</span> T,? <span class="built_in">super</span> U,? extends V&gt; fn)</span> </span><br><span class="line"></span><br><span class="line">举例：</span><br><span class="line">CompletableFuture.supplyAsync(() -&gt; <span class="number">1</span>)</span><br><span class="line">        .thenCombine(CompletableFuture.supplyAsync(() -&gt; <span class="number">2</span>), (v1, v2) -&gt; v1 + v2)</span><br><span class="line">        .whenComplete((v, t) -&gt; System.out.println(v));</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="thenAcceptBoth">thenAcceptBoth</h3>
+<p>两个CompletableFuture的返回结果经过BiConsumer处理，进入后续消费。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">API:</span><br><span class="line">CompletionStage&lt;Void&gt; <span class="title function_">thenAcceptBoth</span><span class="params">(CompletionStage&lt;? extends U&gt; other,</span></span><br><span class="line"><span class="params">        BiConsumer&lt;? <span class="built_in">super</span> T, ? <span class="built_in">super</span> U&gt; action)</span> </span><br><span class="line"></span><br><span class="line">举例：</span><br><span class="line">CompletableFuture.supplyAsync(() -&gt; <span class="number">1</span>)</span><br><span class="line">        .thenAcceptBoth(CompletableFuture.supplyAsync(() -&gt; <span class="number">2</span>), (v1, v2) -&gt; {</span><br><span class="line">            System.out.println(v1);</span><br><span class="line">            System.out.println(v2);</span><br><span class="line">        }).whenComplete((v, t) -&gt; System.out.println(v));</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="literal">null</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="runAfterBoth">runAfterBoth</h3>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">API:</span><br><span class="line">CompletableFuture&lt;Void&gt; <span class="title function_">runAfterBoth</span><span class="params">(CompletionStage&lt;?&gt; other, Runnable action)</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="applyToEither">applyToEither</h3>
+<p>两个CompletionStage 任意一个执行完成即可执行其Function。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">API:</span><br><span class="line">CompletionStage&lt;U&gt; <span class="title function_">applyToEither</span><span class="params">(CompletionStage&lt;? extends T&gt; other,</span></span><br><span class="line"><span class="params">         Function&lt;? <span class="built_in">super</span> T, U&gt; fn)</span></span><br><span class="line"></span><br><span class="line">举例：</span><br><span class="line">CompletableFuture.supplyAsync(() -&gt; <span class="number">1</span>)</span><br><span class="line">        .applyToEither(CompletableFuture.supplyAsync(() -&gt; <span class="number">2</span>), v -&gt; v + <span class="number">10</span>)</span><br><span class="line">        .whenComplete((v, t) -&gt; System.out.println(v));</span><br><span class="line">输出：</span><br><span class="line"><span class="number">11</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="acceptEither">acceptEither</h3>
+<p>两个CompletionStage 任意一个执行完成即可执行其Consumer</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">API:</span><br><span class="line">CompletableFuture&lt;Void&gt; <span class="title function_">acceptEither</span><span class="params">(</span></span><br><span class="line"><span class="params">        CompletionStage&lt;? extends T&gt; other, Consumer&lt;? <span class="built_in">super</span> T&gt; action)</span></span><br><span class="line"></span><br><span class="line">举例：</span><br><span class="line">CompletableFuture.supplyAsync(() -&gt; <span class="number">1</span>)</span><br><span class="line">        .acceptEither(CompletableFuture.supplyAsync(() -&gt; <span class="number">2</span>), v -&gt; System.out.println(v))</span><br><span class="line">        .whenComplete((v, t) -&gt; System.out.println(v));</span><br><span class="line">输出：</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="literal">null</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="runAfterEither">runAfterEither</h3>
+<p>两个CompletionStage 任意一个执行完成即可执行其Runnable。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CompletableFuture&lt;Void&gt; <span class="title function_">runAfterEither</span><span class="params">(CompletionStage&lt;?&gt; other,</span></span><br><span class="line"><span class="params">                                                  Runnable action)</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="allOf">allOf</h3>
+<p>等待所有CompletableFuture执行完成之后，执行后续的操作</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">API:</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> CompletableFuture&lt;Void&gt; <span class="title function_">allOf</span><span class="params">(CompletableFuture&lt;?&gt;... cfs)</span></span><br><span class="line"></span><br><span class="line">举例：</span><br><span class="line">List&lt;CompletableFuture&lt;Double&gt;&gt; collect = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">    .stream()</span><br><span class="line">    .map(i -&gt; CompletableFuture.supplyAsync(() -&gt; <span class="number">1</span>)</span><br><span class="line">    .collect(toList());</span><br><span class="line"></span><br><span class="line">CompletableFuture.allOf(collect.toArray(<span class="keyword">new</span> <span class="title class_">CompletableFuture</span>[collect.size()]))</span><br><span class="line">    .thenRun(() -&gt; System.out.println(<span class="string">"done"</span>));</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="anyOf">anyOf</h3>
+<p>等待任意一个CompletableFuture执行完成之后，执行后续的操作</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">API：</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> CompletableFuture&lt;Object&gt; <span class="title function_">anyOf</span><span class="params">(CompletableFuture&lt;?&gt;... cfs)</span></span><br><span class="line"></span><br><span class="line">举例：</span><br><span class="line">List&lt;CompletableFuture&lt;Double&gt;&gt; collect = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">    .stream()</span><br><span class="line">    .map(i -&gt; CompletableFuture.supplyAsync(() -&gt; <span class="number">1</span>)</span><br><span class="line">    .collect(toList());</span><br><span class="line"></span><br><span class="line">CompletableFuture.anyOf(collect.toArray(<span class="keyword">new</span> <span class="title class_">CompletableFuture</span>[collect.size()]))</span><br><span class="line">    .thenRun(() -&gt; System.out.println(<span class="string">"done"</span>));</span><br></pre></td></tr></tbody></table></figure>
+<h1>新的日期和时间API</h1>
+<h2 id="重新设计原因">重新设计原因</h2>
+<ol>
+<li>java.util.Date 不够直观。<br>
+Date date = new Date(114, 2, 18);<br>
+它的打印输出效果为： Tue Mar 18 00:00:00 CET 2014</li>
+<li>线程不安全</li>
+</ol>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ParseException, InterruptedException {</span><br><span class="line">        <span class="type">SimpleDateFormat</span> <span class="variable">sdf</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">"yyyyMMdd"</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">30</span>; i++) {</span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">Thread</span>(() -&gt; {</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> <span class="number">0</span>; x &lt; <span class="number">100</span>; x++) {</span><br><span class="line">                    <span class="type">Date</span> <span class="variable">parseDate</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">                    <span class="keyword">try</span> {</span><br><span class="line">                        parseDate = sdf.parse(<span class="string">"20160505"</span>);</span><br><span class="line">                    } <span class="keyword">catch</span> (ParseException e) {</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    }</span><br><span class="line">                    System.out.println(parseDate);</span><br><span class="line">                }</span><br><span class="line">            }).start();</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">输出</span><br><span class="line">Thu May <span class="number">05</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> CST <span class="number">2016</span></span><br><span class="line">Thu May <span class="number">05</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> CST <span class="number">2016</span></span><br><span class="line">...</span><br><span class="line">Exception in thread <span class="string">"Thread-19"</span> java.lang.NumberFormatException: For input string: <span class="string">""</span></span><br><span class="line">	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:<span class="number">65</span>)</span><br><span class="line">	at java.base/java.lang.Long.parseLong(Long.java:<span class="number">702</span>)</span><br><span class="line">	at java.base/java.lang.Long.parseLong(Long.java:<span class="number">817</span>)</span><br><span class="line">	at java.base/java.text.DigitList.getLong(DigitList.java:<span class="number">195</span>)</span><br><span class="line">	at java.base/java.text.DecimalFormat.parse(DecimalFormat.java:<span class="number">2093</span>)</span><br><span class="line">	at java.base/java.text.SimpleDateFormat.subParse(SimpleDateFormat.java:<span class="number">1913</span>)</span><br><span class="line">	at java.base/java.text.SimpleDateFormat.parse(SimpleDateFormat.java:<span class="number">1529</span>)</span><br><span class="line">	at java.base/java.text.DateFormat.parse(DateFormat.java:<span class="number">386</span>)</span><br><span class="line">	at com.hots.TimeTest.lambda$main$<span class="number">0</span>(TimeTest.java:<span class="number">15</span>)</span><br><span class="line">	at java.base/java.lang.Thread.run(Thread.java:<span class="number">844</span>)</span><br><span class="line">Exception in thread <span class="string">"Thread-17"</span> java.lang.NumberFormatException: For input string: <span class="string">""</span></span><br><span class="line">	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:<span class="number">65</span>)</span><br><span class="line">	at java.base/java.lang.Long.parseLong(Long.java:<span class="number">702</span>)</span><br><span class="line">	at java.base/java.lang.Long.parseLong(Long.java:<span class="number">817</span>)</span><br><span class="line">	at java.base/java.text.DigitList.getLong(DigitList.java:<span class="number">195</span>)</span><br><span class="line">	at java.base/java.text.DecimalFormat.parse(DecimalFormat.java:<span class="number">2093</span>)</span><br><span class="line">	at java.base/java.text.SimpleDateFormat.subParse(SimpleDateFormat.java:<span class="number">1913</span>)</span><br><span class="line">	at java.base/java.text.SimpleDateFormat.parse(SimpleDateFormat.java:<span class="number">1529</span>)</span><br><span class="line">	at java.base/java.text.DateFormat.parse(DateFormat.java:<span class="number">386</span>)</span><br><span class="line">	at com.hots.TimeTest.lambda$main$<span class="number">0</span>(TimeTest.java:<span class="number">15</span>)</span><br><span class="line">	at java.base/java.lang.Thread.run(Thread.java:<span class="number">844</span>)</span><br><span class="line">Thu May <span class="number">05</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> CST <span class="number">2016</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="java-time-LocalDate-此类是不可吧变更且线程安全的。并且和时间概念区分开。">java.time.LocalDate  此类是不可吧变更且线程安全的。并且和时间概念区分开。</h2>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">LocalDate</span> <span class="variable">localDate</span> <span class="operator">=</span> LocalDate.of(<span class="number">2019</span>,<span class="number">1</span>,<span class="number">7</span>);</span><br><span class="line">System.out.println(localDate.getMonth());</span><br><span class="line">System.out.println(localDate.getMonthValue());</span><br><span class="line">System.out.println(localDate.lengthOfMonth());</span><br></pre></td></tr></tbody></table></figure>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LocalDate.now()</td>
+<td>获取当前日期</td>
+</tr>
+<tr>
+<td>LocalDate.of(intyear,intmonth,intdayOfMonth)</td>
+<td>根据参数设置日期，参数分别为年，月，日</td>
+</tr>
+<tr>
+<td>localDate.getDayOfMonth()</td>
+<td>获取当前日期是所在月的第几天</td>
+</tr>
+<tr>
+<td>localDate.getDayOfWeek()</td>
+<td>获取当前日期是星期几（星期的英文全称）</td>
+</tr>
+<tr>
+<td>localDate.getDayOfYear()</td>
+<td>获取当前日期是所在年的第几天</td>
+</tr>
+<tr>
+<td>localDate.getMonth()</td>
+<td>获取当前日期所在月份（月份的英文全称）</td>
+</tr>
+<tr>
+<td>localDate.getMonthValue()</td>
+<td>获取当前日期所在月份的数值</td>
+</tr>
+<tr>
+<td>localDate.lengthOfMonth()</td>
+<td>获取当前日期所在月份有多少天</td>
+</tr>
+<tr>
+<td>localDate.lengthOfYear()</td>
+<td>获取当前日期所在年有多少天</td>
+</tr>
+<tr>
+<td>localDate.<strong>isLeapYear</strong>()</td>
+<td>获取当前日期所在年是否是闰年</td>
+</tr>
+<tr>
+<td>localDate.<strong>with</strong>DayOfMonth(intdayOfMonth)</td>
+<td>将参数中的"日"替换localDate中的"日"</td>
+</tr>
+<tr>
+<td>localDate.<strong>with</strong>DayOfYear(intdayOfYear)</td>
+<td>将参数中的天数替换localDate中的天数</td>
+</tr>
+<tr>
+<td>localDate.<strong>with</strong>Month(intmonth)</td>
+<td>将参数中的"月"替换localDate中的"月"</td>
+</tr>
+<tr>
+<td>localDate.<strong>with</strong>Year(intyear)</td>
+<td>将参数中的"年"替换localDate中的"年"</td>
+</tr>
+<tr>
+<td>localDate.minusDays(longdays)</td>
+<td>将当前日期减一天</td>
+</tr>
+<tr>
+<td>localDate.minusWeeks(longweeks)</td>
+<td>将当前日期减一周</td>
+</tr>
+<tr>
+<td>localDate.minusMonths(longmonths)</td>
+<td>将当前日期减一月</td>
+</tr>
+<tr>
+<td>localDate.minusYears(longyears)</td>
+<td>将当前日期减一年</td>
+</tr>
+<tr>
+<td>localDate.plusDays(longdays)</td>
+<td>将当前日期加一天</td>
+</tr>
+</tbody>
+</table>
+<h2 id="java-time-LocalTime">java.time.LocalTime</h2>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LocalTime.now()</td>
+<td>获取当前时间</td>
+</tr>
+<tr>
+<td>LocalTime.of(inthour,intminute)</td>
+<td>根据参数设置时间，参数分别为时，分</td>
+</tr>
+<tr>
+<td>LocalTime.of(inthour,intminute,intsecond)</td>
+<td>根据参数设置时间，参数分别为时，分，秒</td>
+</tr>
+<tr>
+<td>localTime.getHour()</td>
+<td>获取当前时间的小时数</td>
+</tr>
+<tr>
+<td>localTime.getMinute()</td>
+<td>获取当前时间的分钟数</td>
+</tr>
+<tr>
+<td>localTime.getSecond()</td>
+<td>获取当前时间的秒数</td>
+</tr>
+<tr>
+<td>localTime.withHour(inthour)</td>
+<td>将参数中的"小时"替换localTime中的"小时"</td>
+</tr>
+<tr>
+<td>localTime.withMinute(intminute)</td>
+<td>将参数中的"分钟"替换localTime中的"分钟"</td>
+</tr>
+<tr>
+<td>localTime.withSecond(intsecond)</td>
+<td>将参数中的"秒"替换localTime中的"秒"</td>
+</tr>
+<tr>
+<td>localTime.minusHours(longhours)</td>
+<td>将当前时间减一小时</td>
+</tr>
+<tr>
+<td>localTime.minusMinutes(longminutes)</td>
+<td>将当前时间减一分钟</td>
+</tr>
+<tr>
+<td>localTime.minusSeconds(longseconds)</td>
+<td>将当前时间减一秒</td>
+</tr>
+<tr>
+<td>localTime.plusHours(longhours)</td>
+<td>将当前时间加一小时</td>
+</tr>
+<tr>
+<td>localTime.plusMinutes(longminutes)</td>
+<td>将当前时间加一分钟</td>
+</tr>
+<tr>
+<td>localTime.plusSeconds(longseconds)</td>
+<td>将当前时间加一秒</td>
+</tr>
+</tbody>
+</table>
+<h2 id="java-time-LocalDateTime">java.time.LocalDateTime</h2>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">LocalDate</span> <span class="variable">localDate</span> <span class="operator">=</span> LocalDate.now();</span><br><span class="line"><span class="type">LocalTime</span> <span class="variable">time</span> <span class="operator">=</span> LocalTime.now();</span><br><span class="line"></span><br><span class="line"><span class="type">LocalDateTime</span> <span class="variable">localDateTime</span> <span class="operator">=</span> LocalDateTime.of(localDate, time);</span><br><span class="line">System.out.println(localDateTime.toString());</span><br><span class="line"><span class="type">LocalDateTime</span> <span class="variable">now</span> <span class="operator">=</span> LocalDateTime.now();</span><br><span class="line">System.out.println(now);</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="java-time-Instant-机器时间">java.time.Instant 机器时间</h2>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Instant</span> <span class="variable">start</span> <span class="operator">=</span> Instant.now();</span><br><span class="line">Thread.sleep(<span class="number">1000L</span>);</span><br><span class="line"><span class="type">Instant</span> <span class="variable">end</span> <span class="operator">=</span> Instant.now();</span><br><span class="line"><span class="type">Duration</span> <span class="variable">duration</span> <span class="operator">=</span> Duration.between(start, end);</span><br><span class="line">System.out.println(duration.toMillis());</span><br><span class="line">System.out.println(duration.toNanos());</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="java-time-Duration">java.time.Duration</h2>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">LocalTime</span> <span class="variable">time</span> <span class="operator">=</span> LocalTime.now();</span><br><span class="line"><span class="type">LocalTime</span> <span class="variable">beforeTime</span> <span class="operator">=</span> time.minusHours(<span class="number">1</span>);</span><br><span class="line"><span class="type">Duration</span> <span class="variable">duration</span> <span class="operator">=</span> Duration.between(time, beforeTime);</span><br><span class="line">System.out.println(duration.toHours());</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="java-time-Period">java.time.Period</h2>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Period</span> <span class="variable">period</span> <span class="operator">=</span> Period.between(LocalDate.of(<span class="number">2014</span>, <span class="number">1</span>, <span class="number">10</span>), LocalDate.of(<span class="number">2016</span>, <span class="number">1</span>, <span class="number">10</span>));</span><br><span class="line">System.out.println(period.getMonths());</span><br><span class="line">System.out.println(period.getDays());</span><br><span class="line">System.out.println(period.getYears());</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="java-time-temporal-TemporalAdjusters-时间调节器">java.time.temporal.TemporalAdjusters 时间调节器</h2>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">LocalDateTime</span> <span class="variable">now</span> <span class="operator">=</span> LocalDateTime.now();</span><br><span class="line"><span class="comment">//获取当月第一天</span></span><br><span class="line">System.out.println(<span class="string">"当月第一天："</span>+now.with(TemporalAdjusters.firstDayOfMonth()));</span><br><span class="line"><span class="comment">//获取下月第一天</span></span><br><span class="line">System.out.println(<span class="string">"下月第一天："</span>+now.with(TemporalAdjusters.firstDayOfNextMonth()));</span><br><span class="line"><span class="comment">//获取明年第一天</span></span><br><span class="line">System.out.println(<span class="string">"明年第一天："</span>+now.with(TemporalAdjusters.firstDayOfNextYear()));</span><br><span class="line"><span class="comment">//获取本年第一天</span></span><br><span class="line">System.out.println(<span class="string">"本年第一天："</span>+now.with(TemporalAdjusters.firstDayOfYear()));</span><br><span class="line"><span class="comment">//获取当月最后一天</span></span><br><span class="line">System.out.println(<span class="string">"当月最后一天："</span>+now.with(TemporalAdjusters.lastDayOfMonth()));</span><br><span class="line"><span class="comment">//获取本年最后一天</span></span><br><span class="line">System.out.println(<span class="string">"本年最后一天："</span>+now.with(TemporalAdjusters.lastDayOfYear()));</span><br><span class="line"><span class="comment">//获取当月第三周星期五</span></span><br><span class="line">System.out.println(<span class="string">"当月第三周星期五："</span>+now.with(TemporalAdjusters.dayOfWeekInMonth(<span class="number">3</span>, DayOfWeek.FRIDAY)));</span><br><span class="line"><span class="comment">//获取上周一</span></span><br><span class="line">System.out.println(<span class="string">"上周一："</span>+now.with(TemporalAdjusters.previous(DayOfWeek.MONDAY)));</span><br><span class="line"><span class="comment">//获取下周日</span></span><br><span class="line">System.out.println(<span class="string">"下周日："</span>+now.with(TemporalAdjusters.next(DayOfWeek.SUNDAY)));</span><br></pre></td></tr></tbody></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/20250619/f7c553a3.html" rel="next" title="abstract class和interface的区别">
+                  abstract class和interface的区别 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Alisa</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
