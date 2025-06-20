@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hmxyl.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.23.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="MySQL基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL基础">
+<meta property="og:url" content="https://hmxyl.github.io/20221031/bce68613.html">
+<meta property="og:site_name" content="Alisa&#39;s Home">
+<meta property="og:description" content="MySQL基础">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230418140341120.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230418140852053.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230418142243995.png">
+<meta property="article:published_time" content="2022-10-31T08:19:20.000Z">
+<meta property="article:modified_time" content="2025-06-20T12:30:03.610Z">
+<meta property="article:author" content="Alisa">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230418140341120.png">
+
+
+<link rel="canonical" href="https://hmxyl.github.io/20221031/bce68613.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hmxyl.github.io/20221031/bce68613.html","path":"20221031/bce68613.html","title":"MySQL基础"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>MySQL基础 | Alisa's Home</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Alisa's Home</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Alisa's Home</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">字段加密&#x2F;解密</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">CONCAT函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">IP地址&#x2F;Long数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">日期函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#date-format%E5%8F%82%E6%95%B0"><span class="nav-number">4.1.</span> <span class="nav-text">date_format参数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">MySQL外键设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">查看&#x2F;修改系统参数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="nav-number">6.1.</span> <span class="nav-text">版本号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%90%E8%A1%8C%E4%B8%AD%E7%9A%84%E8%BF%9B%E7%A8%8B"><span class="nav-number">6.2.</span> <span class="nav-text">查看数据库运行中的进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E8%BF%90%E8%A1%8C%E7%8A%B6%E6%80%81"><span class="nav-number">6.3.</span> <span class="nav-text">查看系统运行状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE"><span class="nav-number">6.4.</span> <span class="nav-text">系统参数配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E8%BF%9E%E6%8E%A5%E6%95%B0"><span class="nav-number">6.5.</span> <span class="nav-text">最大连接数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-sql-mode"><span class="nav-number">6.6.</span> <span class="nav-text">配置 sql_mode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E5%8F%82%E6%95%B0%E6%80%BB%E8%A1%A8%E5%8F%82%E8%80%83"><span class="nav-number">6.7.</span> <span class="nav-text">系统参数总表参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%89%A7%E8%A1%8C%E8%AF%AD%E5%8F%A5%E9%95%BF%E5%BA%A6%E9%99%90%E5%88%B6"><span class="nav-number">6.8.</span> <span class="nav-text">配置执行语句长度限制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text">批量执行insert语句，进入了阻塞状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">8.</span> <span class="nav-text">表联合查询</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E4%B8%AA%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E5%85%B3%E8%81%94"><span class="nav-number">8.1.</span> <span class="nav-text">两个数据表的关联</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GROUP-BY-%E2%80%A6-WITH-ROLLUP"><span class="nav-number">8.2.</span> <span class="nav-text">GROUP BY … WITH ROLLUP</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Alisa</p>
+  <div class="site-description" itemprop="description">学习笔记、工作心得</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">89</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/20221031/bce68613.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Alisa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alisa's Home">
+      <meta itemprop="description" content="学习笔记、工作心得">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="MySQL基础 | Alisa's Home">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MySQL基础
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-10-31 16:19:20" itemprop="dateCreated datePublished" datetime="2022-10-31T16:19:20+08:00">2022-10-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-06-20 20:30:03" itemprop="dateModified" datetime="2025-06-20T20:30:03+08:00">2025-06-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1>字段加密/解密</h1>
+<ol>
+<li>
+<p>PASSWORD(明文)：</p>
+<p>创建一个经过加密的密码字符串，适合于插入到MySQL的安全系统。该加密过程不可逆，和unix密码加密过程使用不同的算法。主要用于MySQL的认证系统。</p>
+</li>
+<li>
+<p>AES_ENCRYPT(明文，加密串)  AES_DECRYPT( 密文, 加密串 )</p>
+<p>使用UNIX crypt()系统加密字符串，AES_ENCRYPT()函数接收要加密的字符串和（可选的）用于加密过程的salt（一个可以唯一确定口令的字符串，就像钥匙一样）。加密程度比ENCODE较强。</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">举例：</span><br><span class="line"></span><br><span class="line">加密</span><br><span class="line">  <span class="keyword">SELECT</span> HEX(AES_ENCRYPT(<span class="string">'测试'</span>, <span class="string">'29a70b6c'</span>)) <span class="keyword">FROM</span> DUAL; </span><br><span class="line">  输出：AFA3016D4EE259FE76D0D625F9BDF889</span><br><span class="line">  </span><br><span class="line">解密</span><br><span class="line">  <span class="keyword">SELECT</span> <span class="keyword">CONVERT</span>(AES_DECRYPT(UNHEX(<span class="string">'AFA3016D4EE259FE76D0D625F9BDF889'</span>), <span class="string">'29a70b6c'</span>) <span class="keyword">USING</span> utf8) <span class="keyword">FROM</span> DUAL;</span><br><span class="line">  输出：测试 （<span class="keyword">CONVERT</span>，字符集转换）</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>ENCODE(明文, 加密串)  DECODE(密文, 加密串)<br>
+加密解密字符串。该函数有两个参数：被加密或解密的字符串和作为加密或解密基础的密钥。Encode结果是一个二进制字符串，以BLOB类型存储。加密成度相对比较弱。</p>
+</li>
+<li>
+<p>MD5()：计算字符串的MD5校验和（128位），</p>
+</li>
+<li>
+<p>SHA5()：计算字符串的SHA5校验和（160位）</p>
+<p>MD5()、SHA5() 这两个函数返回的校验和是16进制的，适合与认证系统中使用的口令。</p>
+</li>
+</ol>
+<h1>CONCAT函数</h1>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">注意：和<span class="keyword">NULL</span>连接的结果为<span class="keyword">NULL</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> CONCAT(<span class="string">'test'</span>, <span class="string">'-'</span>, <span class="string">'1'</span>) <span class="keyword">FROM</span> DUAL; 返回：test<span class="number">-1</span></span><br><span class="line"><span class="keyword">SELECT</span> CONCAT(<span class="string">'test'</span>, <span class="string">'-'</span>, <span class="keyword">NULL</span>) <span class="keyword">FROM</span> DUAL; 返回：<span class="keyword">NULL</span></span><br></pre></td></tr></tbody></table></figure>
+<h1>IP地址/Long数据</h1>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> INET_ATON(<span class="string">'112.253.20.48'</span>);<span class="operator">-</span><span class="operator">&gt;</span><span class="number">1895633968</span></span><br><span class="line"><span class="keyword">SELECT</span> INET_NTOA(<span class="string">'1895633968'</span>)<span class="operator">-</span><span class="operator">&gt;</span><span class="number">112.253</span><span class="number">.20</span><span class="number">.48</span></span><br></pre></td></tr></tbody></table></figure>
+<h1>日期函数</h1>
+<h2 id="date-format参数">date_format参数</h2>
+<table>
+<thead>
+<tr>
+<th>参数（年）</th>
+<th></th>
+<th>参数（月）</th>
+<th></th>
+<th>参数（日）</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%Y</td>
+<td>年，4 位</td>
+<td>%b</td>
+<td>缩写月名</td>
+<td>%D</td>
+<td>带有英文前缀的月中的天</td>
+</tr>
+<tr>
+<td>%y</td>
+<td>年，2 位</td>
+<td>%c</td>
+<td>月份的数值（1-12）</td>
+<td>%d</td>
+<td>月的天，数值(00-31)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>%M</td>
+<td>月名</td>
+<td>%e</td>
+<td>月的天，数值(0-31)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>%m</td>
+<td>月，数值(01-12)</td>
+<td>%j</td>
+<td>年的天 (001-366)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>参数（时间）</th>
+<th></th>
+<th>参数（时）</th>
+<th></th>
+<th>参数（分）</th>
+<th></th>
+<th>参数（秒）</th>
+<th></th>
+<th>参数（微秒）</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%T</td>
+<td>时间，24-小时 (hh:mm:ss)</td>
+<td>%H</td>
+<td>小时 (00-23)</td>
+<td>%i</td>
+<td>分钟，数值(00-59)</td>
+<td>%S</td>
+<td>或者 %s 秒(00-59)</td>
+<td>%f</td>
+<td>微秒</td>
+</tr>
+<tr>
+<td>%r</td>
+<td>时间，12-小时（hh:mm:ss AM 或 PM）</td>
+<td>%h</td>
+<td>小时 (01-12)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>%p</td>
+<td>AM 或 PM</td>
+<td>%I</td>
+<td>小时 (01-12)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>%k</td>
+<td>小时 (0-23)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>参数（年天）</th>
+<th></th>
+<th>参数（周天）</th>
+<th></th>
+<th>参数（星期）</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%X</td>
+<td>年，其中的星期日是周的第一天，4 位，与 %V 使用</td>
+<td>%U</td>
+<td>年周 (00-53) 星期日是一周的第一天</td>
+<td>%a</td>
+<td>缩写星期名</td>
+</tr>
+<tr>
+<td>%x</td>
+<td>年，其中的星期一是周的第一天，4 位，与 %v 使用</td>
+<td>%u</td>
+<td>年周 (00-53) 星期一是一周的第一天</td>
+<td>%W</td>
+<td>星期名</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>%V</td>
+<td>年周 (01-53) 星期日是一周的第一天，与 %X 使用</td>
+<td>%w</td>
+<td>周的天 （0=星期日, 6=星期六）</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>%v</td>
+<td>年周 (01-53) 星期一是一周的第一天，与 %x 使用</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>举例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CURDATE()  <br>CURRENT_DATE()</td>
+<td>SELECT CURDATE()<br> 2021-11-30</td>
+<td>返回当前的日期（%Y-%m-%d）</td>
+</tr>
+<tr>
+<td>CURTIME()  <br>CURRENT_TIME()</td>
+<td>SELECT CURTIME();<br>18:34:12</td>
+<td>返回当前的时间（%T或者%H:%i:%s）</td>
+</tr>
+<tr>
+<td><strong>DATE_ADD(date,INTERVAL expr unit)</strong></td>
+<td>SELECT DATE_ADD(CURRENT_DATE,INTERVAL 6 MONTH);<br>2022-05-30</td>
+<td>返回日期date加上间隔时间int的结果<br>(int必须按照关键字进行格式化)</td>
+</tr>
+<tr>
+<td><strong>DATE_SUB(date,INTERVAL int keyword)</strong></td>
+<td>SELECT DATE_SUB( CURRENT_DATE, INTERVAL 6 MONTH );<br>2021-05-30</td>
+<td>返回日期date加上间隔时间int的结果<br>(int必须按照关键字进行格式化)</td>
+</tr>
+<tr>
+<td><strong>PERIOD_DIFF(P1, P2)</strong></td>
+<td># 月份差值<br>SELECT PERIOD_DIFF(date_format(‘2021-09-30’, ‘%Y%m’), date_format(‘2021-06-20’, ‘%Y%m’))<br><br>#天数差值<br>SELECT PERIOD_DIFF(date_format(‘2021-09-30’, ‘%Y%m%d’), date_format(‘2021-06-20’, ‘%Y%m%d’))<br><br># 上一个月<br> SELECT * FROM 表名 WHERE PERIOD_DIFF(date_format(now(),‘%Y%m’),date_format(时间字段名,‘%Y%m’) =1</td>
+<td>计算两个日期之间的差值</td>
+</tr>
+<tr>
+<td>TO_DAYS(date)</td>
+<td># 今天<br>SELECT * FROM 表名 WHERE TO_DAYS(时间字段名) =TO_DAYS(NOW());<br><br> # 昨天<br>SELECT * FROM 表名 WHERE TO_DAYS(NOW()) - TO_DAYS( 时间字段名) &lt;= 1</td>
+<td>日期转天数</td>
+</tr>
+<tr>
+<td>YEARWEEK</td>
+<td>SELECT YEARWEEK(now()) <br>返回：202148<br><br># 本周<br>SELECT * FROM 表名 WHERE YEARWEEK( date_format( 时间字段名,‘%Y-%m-%d’ ) ) = YEARWEEK( now() ) ;</td>
+<td></td>
+</tr>
+<tr>
+<td>WEEK</td>
+<td></td>
+<td>返回日期date为一年中第几周(0~53)</td>
+</tr>
+<tr>
+<td>DAYOFWEEK</td>
+<td></td>
+<td>返回date所代表的一星期中的第几天(1~7)</td>
+</tr>
+<tr>
+<td>DAYOFMONTH</td>
+<td></td>
+<td>返回date是一个月的第几天(1~31)</td>
+</tr>
+<tr>
+<td>DAYOFYEAR(date)</td>
+<td></td>
+<td>返回date是一年的第几天(1~366)</td>
+</tr>
+<tr>
+<td>DAYNAME</td>
+<td>SELECT DAYNAME(CURRENT_DATE);<br>返回：Tuesday</td>
+<td>返回date的星期名</td>
+</tr>
+<tr>
+<td>FROM_UNIXTIME(ts,fmt)</td>
+<td></td>
+<td>根据指定的fmt格式，格式化UNIX时间戳ts</td>
+</tr>
+<tr>
+<td>YEAR</td>
+<td># 本年<br> SELECT * FROM 表名 WHERE YEAR( 时间字段名 ) = YEAR( NOW( ) )</td>
+<td></td>
+</tr>
+<tr>
+<td>MONTH</td>
+<td></td>
+<td>返回date的月份(1~12)</td>
+</tr>
+<tr>
+<td>MONTHNAME</td>
+<td></td>
+<td>返回date的月份名</td>
+</tr>
+<tr>
+<td>HOUR</td>
+<td></td>
+<td>返回time的小时值(0~23)</td>
+</tr>
+<tr>
+<td>MINUTE</td>
+<td></td>
+<td>返回time的分钟值(0~59)</td>
+</tr>
+<tr>
+<td>QUARTER</td>
+<td>SELECT QUARTER(CURRENT_DATE);<br>返回：4</td>
+<td>返回date在一年中的季度(1~4)</td>
+</tr>
+</tbody>
+</table>
+<h1>MySQL外键设置</h1>
+<p>MySQL外键设置: Cascade、NO ACTION、Restrict、SET NULL</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cascade</td>
+<td>在父表上update/delete记录时，同步update/delete掉子表的匹配记录</td>
+</tr>
+<tr>
+<td>set null</td>
+<td>在父表上update/delete记录时，将子表上匹配记录的列设为null，要注意子表的外键列不能为not null</td>
+</tr>
+<tr>
+<td>No action</td>
+<td>如果子表中有匹配的记录,则不允许对父表对应候选键进行update/delete操作</td>
+</tr>
+<tr>
+<td>Restrict</td>
+<td>同no action, 都是立即检查外键约束</td>
+</tr>
+<tr>
+<td>Set default</td>
+<td>父表有变更时,子表将外键列设置成一个默认的值 但Innodb不能识别</td>
+</tr>
+</tbody>
+</table>
+<h1>查看/修改系统参数</h1>
+<h2 id="版本号">版本号</h2>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> version();<span class="operator">/</span><span class="operator">/</span> 查看的是innodb_version</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="查看数据库运行中的进程">查看数据库运行中的进程</h2>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">full</span> processlist  或</span><br><span class="line">selec <span class="operator">*</span> <span class="keyword">from</span> processlist</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="查看系统运行状态">查看系统运行状态</h2>
+<p>性能优化的时候可参考</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> status</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="系统参数配置">系统参数配置</h2>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> variables</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="最大连接数">最大连接数</h2>
+<p>查看</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> @<span class="variable">@global</span>.max_connections</span><br></pre></td></tr></tbody></table></figure>
+<p>修改</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set global max_connections=1024;</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="配置-sql-mode">配置 sql_mode</h2>
+<p>查看</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 全局配置</span><br><span class="line"><span class="keyword">select</span> @<span class="variable">@global</span>.sql_mode; </span><br><span class="line"># 已经存在的数据库sql_mode</span><br><span class="line"><span class="keyword">select</span> @<span class="variable">@sql_mode</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p>修改（建议先查后改）</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 改变已经存在的数据库sql_mode </span><br><span class="line"><span class="keyword">set</span> sql_mode<span class="operator">=</span><span class="string">' '</span> </span><br><span class="line"></span><br><span class="line"># 改变全局配置sql_mode</span><br><span class="line"><span class="keyword">set</span> @<span class="variable">@global</span>.sql_mode<span class="operator">=</span><span class="string">' '</span> </span><br></pre></td></tr></tbody></table></figure>
+<h2 id="系统参数总表参考">系统参数总表参考</h2>
+<p>查询</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> VARIABLES;</span><br><span class="line"><span class="keyword">SHOW</span> VARIABLES <span class="keyword">LIKE</span> <span class="string">'autocommit'</span>;</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="配置执行语句长度限制">配置执行语句长度限制</h2>
+<p>配置不够，执行错误提示</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERROR:The size <span class="keyword">of</span> <span class="type">BLOB</span><span class="operator">/</span>TEXT data inserted <span class="keyword">in</span> <span class="keyword">one</span> transaction <span class="keyword">is</span> greater than  <span class="number">10</span><span class="operator">%</span> <span class="keyword">of</span> redo log size. Increase the redo log size <span class="keyword">using</span> innodb_log_file_size.</span><br></pre></td></tr></tbody></table></figure>
+<p>查看配置</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> @<span class="variable">@global</span>.max_allowed_packet</span><br></pre></td></tr></tbody></table></figure>
+<p>修改配置（临时）</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> max_allowed_packet  <span class="operator">=</span> <span class="number">1024</span><span class="operator">*</span><span class="number">1024</span><span class="operator">*</span><span class="number">1024</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p>修改配置（永久）</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在mysqld下面添加配置max_allowed_packed=1024M  </span><br></pre></td></tr></tbody></table></figure>
+<h1>批量执行insert语句，进入了阻塞状态</h1>
+<p>原因一：磁盤空間已滿</p>
+<p>原因二：<code>innodb_flush_log_at_trx_commit</code>是配置MySql日志何时写入硬盘的参数：</p>
+<ul>
+<li>参数值说明</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>log buffer将每秒一次地写入log file中，并且log  file的flush(刷到磁盘)操作同时进行。该模式下在事务提交的时候，不会主动触发写入磁盘的操作。<br>当设置为0，该模式速度最快，但不太安全，mysqld进程的崩溃会导致上一秒钟所有事务数据的丢失</td>
+</tr>
+<tr>
+<td>1</td>
+<td>每次事务提交时MySQL都会把log buffer的数据写入log  file，并且flush(刷到磁盘)中去，该模式为系统默认。<br><br>当设置为1，该模式是最安全的，但也是最慢的一种方式。在mysqld 服务崩溃或者服务器主机crash的情况下，binary log 只有可能丢失最多一个语句或者一个事务</td>
+</tr>
+<tr>
+<td>2</td>
+<td>每次事务提交时mysql都会把log buffer的数据写入log  file，但是flush(刷到磁盘)操作并不会同时进行。<br>该模式下，MySQL会每秒执行一次 flush(刷到磁盘)操作<br><br>当设置为2，该模式速度较快，也比0安全，只有在操作系统崩溃或者系统断电的情况下，上一秒钟所有事务数据才可能丢失</td>
+</tr>
+</tbody>
+</table>
+<p>解决</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">innodb_flush_log_at_trx_commit<span class="operator">=</span><span class="number">2</span>，sync_binlog<span class="operator">=</span><span class="number">500</span> 或<span class="number">1000</span> </span><br></pre></td></tr></tbody></table></figure>
+<p>​		查找资料时候看到其他文章说innodb_flush_log_at_trx_commit和sync_binlog 两个参数是控制MySQL 磁盘写入策略以及数据安全性的关键参数，当两个参数都设置为1的时候写入性能最差。</p>
+<p>​		推荐做法是innodb_flush_log_at_trx_commit=2，sync_binlog=500 或1000</p>
+<h1>表联合查询</h1>
+<h2 id="两个数据表的关联">两个数据表的关联</h2>
+<p><strong>USING(userid, unit_id)</strong></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 使用 <span class="keyword">USING</span>：关联字段一致</span><br><span class="line"><span class="keyword">SELECT</span> claim.userid, person.real_name</span><br><span class="line"><span class="keyword">FROM</span> ware_resouce_info_claim  claim</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> personal_userinfo person <span class="keyword">USING</span>(userid, unit_id) ;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 使用字段组合</span><br><span class="line"><span class="keyword">SELECT</span> claim.userid, person.real_name</span><br><span class="line"><span class="keyword">FROM</span> ware_resouce_info_claim claim</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> personal_userinfo person <span class="keyword">ON</span> person.userid <span class="operator">=</span> claim.userid;</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="GROUP-BY-…-WITH-ROLLUP">GROUP BY … WITH ROLLUP</h2>
+<p>加上<code>WITH ROLLUP</code>关键字的效果是MySQL将在查询结果的最后一-行将自动增加一条总数统计记录，这条记录的ID字段取值或者说这条记录的名字永远是NULL.</p>
+<ol>
+<li>
+<p>如下所示：</p>
+ <figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> document_type_id, <span class="built_in">COUNT</span>(<span class="operator">*</span>) </span><br><span class="line"><span class="keyword">FROM</span> resource_info</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> document_type_id <span class="keyword">WITH</span> <span class="keyword">ROLLUP</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230418140341120.png" alt="image-20230418140341120"></p>
+</li>
+<li>
+<p>GROUP BY 结果中有NULL 的聚类项</p>
+ <figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> document_type_id, <span class="built_in">COUNT</span>(<span class="operator">*</span>) </span><br><span class="line"><span class="keyword">FROM</span> resource_info </span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> document_type_id <span class="keyword">WITH</span> <span class="keyword">ROLLUP</span></span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230418140852053.png" alt="image-20230418140852053"></p>
+</li>
+<li>
+<p>多个聚类项目：按照每个聚类项统计（小计和总计的概念）</p>
+ <figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> document_type_id, department_id, <span class="built_in">COUNT</span>(<span class="operator">*</span>) </span><br><span class="line"><span class="keyword">FROM</span> resource_info </span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> document_type_id, department_id</span><br><span class="line"><span class="keyword">WITH</span> <span class="keyword">ROLLUP</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230418142243995.png" alt="image-20230418142243995"></p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/20221031/4c28b48e.html" rel="prev" title="MySQL安装、版本差异、JDBC连接配置">
+                  <i class="fa fa-angle-left"></i> MySQL安装、版本差异、JDBC连接配置
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/20221031/c5d54bc1.html" rel="next" title="MongoDB安装">
+                  MongoDB安装 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Alisa</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

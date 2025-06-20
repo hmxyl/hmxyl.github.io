@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hmxyl.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.23.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Redis安装">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis安装">
+<meta property="og:url" content="https://hmxyl.github.io/20221102/c9f6f059.html">
+<meta property="og:site_name" content="Alisa&#39;s Home">
+<meta property="og:description" content="Redis安装">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-16383227748541.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image004-16383227748552.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image005-16383227748554.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image006-16383227748553.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image008-16383227748555.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image009.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image011.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image012.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image013.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image014.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image015.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image016.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image017.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image018.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image019.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image020.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image021.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image022.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image023.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image024.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image025.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image026.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image027.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image028.png">
+<meta property="article:published_time" content="2022-11-02T11:10:19.000Z">
+<meta property="article:modified_time" content="2025-06-20T12:31:38.904Z">
+<meta property="article:author" content="Alisa">
+<meta property="article:tag" content="Redis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-16383227748541.png">
+
+
+<link rel="canonical" href="https://hmxyl.github.io/20221102/c9f6f059.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hmxyl.github.io/20221102/c9f6f059.html","path":"20221102/c9f6f059.html","title":"Redis安装"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Redis安装 | Alisa's Home</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Alisa's Home</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Alisa's Home</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">单机安装：Windows</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">下载地址：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2"><span class="nav-number">1.3.</span> <span class="nav-text">部署</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">单机安装：Centos</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87"><span class="nav-number">2.1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-2"><span class="nav-number">2.2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8redis%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="nav-number">2.3.</span> <span class="nav-text">启动redis的三种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E5%90%AF%E5%8A%A8"><span class="nav-number">2.3.1.</span> <span class="nav-text">直接启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A5%E5%90%8E%E5%8F%B0%E8%BF%9B%E7%A8%8B%E6%96%B9%E5%BC%8F%E5%90%AF%E5%8A%A8redis"><span class="nav-number">2.3.2.</span> <span class="nav-text">以后台进程方式启动redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEredis%E4%B8%BA%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1"><span class="nav-number">2.3.3.</span> <span class="nav-text">设置redis为系统服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95"><span class="nav-number">2.3.4.</span> <span class="nav-text">配置密码登录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99%E5%BC%80%E6%94%BE%E7%AB%AF%E5%8F%A36179"><span class="nav-number">2.4.</span> <span class="nav-text">防火墙开放端口6179</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">Docker安装Redis集群</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="nav-number">3.1.</span> <span class="nav-text">1. 环境准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%88%9B%E5%BB%BA%E5%AE%B9%E5%99%A8"><span class="nav-number">3.2.</span> <span class="nav-text">2. 创建容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E9%98%B2%E7%81%AB%E5%A2%99"><span class="nav-number">3.3.</span> <span class="nav-text">3. 防火墙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE"><span class="nav-number">3.4.</span> <span class="nav-text">4.  集群配置</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Alisa</p>
+  <div class="site-description" itemprop="description">学习笔记、工作心得</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">89</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/20221102/c9f6f059.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Alisa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alisa's Home">
+      <meta itemprop="description" content="学习笔记、工作心得">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Redis安装 | Alisa's Home">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Redis安装
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-11-02 19:10:19" itemprop="dateCreated datePublished" datetime="2022-11-02T19:10:19+08:00">2022-11-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-06-20 20:31:38" itemprop="dateModified" datetime="2025-06-20T20:31:38+08:00">2025-06-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/Redis/" itemprop="url" rel="index"><span itemprop="name">Redis</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1>单机安装：Windows</h1>
+<p>Redis 是一个开源（BSD许可）的，内存中的数据结构存储系统，它可以用作数据库、缓存和消息中间件。</p>
+<h2 id="下载地址：">下载地址：</h2>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">windows版本： https://github.com/MSOpenTech/redis/releases</span><br><span class="line">Linux版本：官网下载： http://www.redis.cn/</span><br><span class="line">git下载：https://github.com/antirez/redis/releases</span><br></pre></td></tr></tbody></table></figure>
+<p>我们现在讨论的是windows下的安装部署，目前windows下最新版本是：3.2.100。下载地址，提供多种下载内容，</p>
+ <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Redis-x64-3.2.100.msi是在windows下，最简单的安装文件，方便，直接会将Redis写入windows服务。</span><br><span class="line">Redis-x64-3.2.100.zip是需要解压安装的，接下来讨论的是这种。</span><br><span class="line">Source code (zip) 源码的zip压缩版</span><br><span class="line">Source code (tar.gz) 源码的tar.gz压缩版 </span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-16383227748541.png" alt="8cc0c90bc2b723d9f6cdc3a1356559b9.png"></p>
+<h2 id="安装">安装</h2>
+<p>解压安装将下载的Redis-x64-3.2.100.zip 解压到某个地址。</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image004-16383227748552.png" alt="5bfe10debe216c18d70d3d0e555be8ae.png"></p>
+<p>启动命令通过cmd指定到该redis目录。<br>
+使用命令：<code>redis-server.exe </code>启动服务</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image005-16383227748554.png" alt="263f236f685ad552e15c64422eda72d6.png"></p>
+<p>出现这种效果，表明启动服务成功。启动另一个cmd，在该redis目录下，使用命令：redis-cli.exe 启动客户端,连接服务器</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image006-16383227748553.png" alt="ff00ad0320f2dbe6e8d3a50aa8e8b1a8.png"></p>
+<p>出现这种效果，表明启动客户度成功。</p>
+<h2 id="部署">部署</h2>
+<p>由于上面虽然启动了redis服务，但是，只要一关闭cmd窗口，redis服务就关闭了。所以，把redis设置为一个windows服务。</p>
+<p>安装之前，windows服务是不包含redis服务的</p>
+<p>安装为windows服务安装命令:</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image008-16383227748555.png" alt="95da60801d83c5caf9c8286ecab1574f.png"></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server.exe --service-install redis.windows.conf</span><br></pre></td></tr></tbody></table></figure>
+<p>使用命令，安装成功，如图所示</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image009.png" alt="cf536a1024ae8ece56703496ca29dbff.png"></p>
+<p>最后的参数<code> --loglevel verbose</code>表示记录日志等级</p>
+<p>安装之后，windows目前的服务列表</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image011.png" alt="ad9747b797fe689579ca4642902afe49.png"></p>
+<p>常用的redis服务命令。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">卸载服务：redis-server --service-uninstall</span><br><span class="line">开启服务：redis-server --service-start</span><br><span class="line">停止服务：redis-server --service-stop</span><br><span class="line">重命名服务：redis-server --service-name name</span><br></pre></td></tr></tbody></table></figure>
+<p>重命名服务，需要写在前三个参数之后</p>
+<p>例如： The following would install and start three separate instances of Redis as a service:</p>
+<p>以下将会安装并启动三个不同的Redis实例作服务：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">redis-server --service-install --service-name redisService1 --port 10001</span><br><span class="line">redis-server --service-start --service-name redisService1</span><br><span class="line"></span><br><span class="line">redis-server --service-install --service-name redisService2 --port 10002</span><br><span class="line">redis-server --service-start --service-name redisService2</span><br><span class="line"></span><br><span class="line">redis-server --service-install --service-name redisService3 --port 10003</span><br><span class="line">redis-server --service-start --service-name redisService3</span><br></pre></td></tr></tbody></table></figure>
+<p>四：测试启动服务</p>
+<p>客户端命令</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server --service-start</span><br></pre></td></tr></tbody></table></figure>
+<p>精简模式</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli.exe</span><br></pre></td></tr></tbody></table></figure>
+<p>指定模式</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli.exe -h 127.0.0.1 -p 6379 -a requirepass</span><br></pre></td></tr></tbody></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-h</td>
+<td>服务器地址</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>指定端口号</td>
+</tr>
+<tr>
+<td>-a</td>
+<td>连接数据库的密码[可以在redis.windows.conf中配置]，默认无密码</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image012.png" alt="05c2f1e1f504cb3480c6a96e746c0554.png"><br>
+安装测试成功。</p>
+<h1>单机安装：Centos</h1>
+<h2 id="准备">准备</h2>
+<ol>
+<li>下载redis安装包</li>
+</ol>
+ <figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://download.redis.io/releases/redis-4.0.6.tar.gz</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image013.png" alt="4500b2d7d6f71a55db9aef7a8050394e.png"></p>
+<ol start="2">
+<li>解压压缩包</li>
+</ol>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf redis-4.0.6.tar.gz</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image014.png" alt="632ce9c44a953178bb01cedd24d4d8ab.png"></p>
+<ol start="3">
+<li>yum安装gcc依赖</li>
+</ol>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="安装-2">安装</h2>
+<ol>
+<li>跳转到redis解压目录下</li>
+</ol>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/software/redis-4.0.6</span><br></pre></td></tr></tbody></table></figure>
+<ol start="2">
+<li>编译安装</li>
+</ol>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image015.png" alt="9760df7be3b6d1534296047905b13e61.png"></p>
+ <figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">将/usr/software/redis-4.0.6/src目录下的文件加到/usr/local/bin目录</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> src &amp;&amp; make install</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image016.png" alt="4aaeefe75f7c20cb5039b355f7062e7f.png"></p>
+<h2 id="启动redis的三种方式">启动redis的三种方式</h2>
+<h3 id="直接启动">直接启动</h3>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">先切换到redis src目录下</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /usr/software/redis-4.0.6/src</span><br></pre></td></tr></tbody></table></figure>
+<p>直接启动redis</p>
+ <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./redis-server</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image017.png" alt="277d11179a4ec94b22e978a0f10f1a36.png"><br>
+如上图：redis启动成功，但是这种启动方式需要一直打开窗口，不能进行其他操作，不太方便。<br>
+按 ctrl + c可以关闭窗口。</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image018.png" alt="19606b9997c671ce2722f2315ddff2dd.png"></p>
+<h3 id="以后台进程方式启动redis">以后台进程方式启动redis</h3>
+<ol>
+<li>
+<p>修改redis.conf文件</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/software/redis-4.0.6</span><br><span class="line">vi redis.conf</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>将 <code>daemonize no</code> 修改 <code>daemonize yes</code></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image019.png" alt="4690346a97fc0b147c66c8220cfb6e70.png"></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image020.png" alt="e5b2377dbc25cbf8dbd5a97341b744db.png"></p>
+</li>
+<li>
+<p>指定redis.conf文件启动</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/software/redis-4.0.6/src</span><br><span class="line">./redis-server /usr/software/redis-4.0.6/redis.conf</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>关闭redis进程</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -aux | grep redis</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image021.png" alt="4b9b6364ca42da21b0e27f1e1dc90824.png"></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -9 11753</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<h3 id="设置redis为系统服务">设置redis为系统服务</h3>
+<ol>
+<li>
+<p>在/etc目录下新建redis目录</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /etc</span><br><span class="line">mkdir redis</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>将 <code>/usr/software/redis-4.0.6/redis.conf </code>文件复制一份到/etc/redis目录下，并命名为6379.conf</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> /usr/software/redis-4.0.6/redis.conf /etc/redis/6379.conf</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>将redis的启动脚本复制一份放到/etc/init.d目录下</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> /usr/software/redis-4.0.6/utils/redis_init_script /etc/init.d/redisd</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>设置redis开机自启动</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/init.d</span><br><span class="line">chkconfig redisd on</span><br></pre></td></tr></tbody></table></figure>
+<p>出现问题1：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service redisd does not support chkconfig　</span><br></pre></td></tr></tbody></table></figure>
+<p>看结果是redisd不支持chkconfig<br>
+解决方法：<code>vi /etc/init.d/redisd</code>，加入如下两行注释，保存退出</p>
+ <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># chkconfig: 2345 90 10</span><br><span class="line"># summary: Redis is a persistent key-value database</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image022.png" alt="ea9dc06f591188ad0d2c8ff4c0e8c4be.png"></p>
+<p>注释的意思是：redis服务必须在运行级2，3，4，5下被启动或关闭，启动的优先级是90，关闭的优先级是10。</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image023.png" alt="48608ef900b2bd7ed0f5a08598d11463.png"></p>
+<p>再次执行开机自启命令，成功</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig redisd on</span><br></pre></td></tr></tbody></table></figure>
+<p>现在可以直接以服务的形式启动和关闭redis了</p>
+<p>再次启动：</p>
+ <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service redisd start</span><br></pre></td></tr></tbody></table></figure>
+<p>出现问题2：</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image024.png" alt="95d24c1fc0745a3f0e55b6140ee87462.png"></p>
+<p>删除：<code>redis_6379.pid</code>后，再次执行：</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image025.png" alt="b401291681b760b35c2643e97dbddb25.png"></p>
+</li>
+<li>
+<p>关闭</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service redisd stop</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<h3 id="配置密码登录">配置密码登录</h3>
+<ol>
+<li>
+<p>修改配置文件，使用密码登录</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /usr/software/redis-4.0.6/redis.conf</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image026.png" alt="89a9f187a67da6a0bdc92f8f05ff54b1.png"></p>
+<p>此时，访问redis客户端查询</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image027.png" alt="7742f0112fb76da057cc87316510da4d.png"></p>
+<p>使用密码后，停止服务会报错：</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service redisd stop</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image028.png" alt="9d88c06e13e7f4116629ae69fdaecd03.png"></p>
+</li>
+<li>
+<p>修改启动配置文件</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/init.d/redisd</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">将其中的</span><br><span class="line">CLIEXEC -p REDISPORT shutdown</span><br><span class="line">改为</span><br><span class="line">CLIEXEC -a "3448395502" -p REDISPORT shutdown</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<h2 id="防火墙开放端口6179">防火墙开放端口6179</h2>
+<ol>
+<li>
+<p>开启6179</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sbin/iptables -I INPUT -p tcp --dport 6179 -j ACCEPT</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>保存</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/rc.d/init.d/iptables save</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>centos 7下执行</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables save</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">参考：</span><br><span class="line">https://blog.csdn.net/zc474235918/article/details/50974483</span><br><span class="line">https://www.cnblogs.com/aqicheng/p/11512153.html</span><br></pre></td></tr></tbody></table></figure>
+<h1>Docker安装Redis集群</h1>
+<blockquote>
+<p>集群至少6个节点</p>
+<ol>
+<li>集群至少3个主节点</li>
+<li>每个主节点至少一个从节点（若一个主节点设置2个从节点，则需要9个节点）</li>
+</ol>
+</blockquote>
+<h2 id="1-环境准备">1. 环境准备</h2>
+<blockquote>
+<p>redis.conf模板文件redis-cluster.tmpl</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># redis端口</span><br><span class="line">port ${NODE_PORT}</span><br><span class="line">requirepass custom_password</span><br><span class="line">masterauth custom_password</span><br><span class="line"></span><br><span class="line"># 开启集群</span><br><span class="line">cluster-enabled yes</span><br><span class="line">appendonly yes</span><br><span class="line">cluster-node-timeout 5000</span><br><span class="line">#protected-mode no</span><br><span class="line"></span><br><span class="line">loglevel notice</span><br><span class="line">logfile /redis/log/redis.log</span><br><span class="line">dir /redis/data</span><br><span class="line"></span><br><span class="line"># 集群节点配置</span><br><span class="line">cluster-announce-ip 172.16.163.128</span><br><span class="line">cluster-announce-port ${NODE_PORT}</span><br><span class="line">cluster-announce-bus-port 1${NODE_PORT}</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>批量生成节点文件的批处理程序：<a target="_blank" rel="noopener" href="http://redis-cluster-config-before.sh">redis-cluster-config-before.sh</a></p>
+</blockquote>
+<p><code> chmod u+x redis-cluster-config-before.sh</code> 修改可执行权限</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash  </span></span><br><span class="line"><span class="comment"># 节点数据</span></span><br><span class="line"><span class="keyword">for</span> port <span class="keyword">in</span> $(<span class="built_in">seq</span> 6381 6386)</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line"> <span class="built_in">rm</span> -rf /opt/docker/redis-cluster-7.0.0/<span class="variable">${port}</span></span><br><span class="line"> <span class="built_in">mkdir</span> -p /opt/docker/redis-cluster-7.0.0/<span class="variable">${port}</span>/data; </span><br><span class="line"> <span class="built_in">mkdir</span> -p /opt/docker/redis-cluster-7.0.0/<span class="variable">${port}</span>/log; </span><br><span class="line"> <span class="built_in">mkdir</span> -p /opt/docker/redis-cluster-7.0.0/<span class="variable">${port}</span>/conf; </span><br><span class="line"> <span class="built_in">chmod</span> 777 /opt/docker/redis-cluster-7.0.0/<span class="variable">${port}</span>/conf</span><br><span class="line"> <span class="built_in">chmod</span> 777 /opt/docker/redis-cluster-7.0.0/<span class="variable">${port}</span>/log</span><br><span class="line"> <span class="built_in">chmod</span> 777 /opt/docker/redis-cluster-7.0.0/<span class="variable">${port}</span>/data</span><br><span class="line"><span class="comment">#  export NODE_PORT=${port}</span></span><br><span class="line"><span class="comment">#  export NODE_INDEX=`expr ${port} - 6379` </span></span><br><span class="line"><span class="comment">#  export NODE_IP=172.19.0.${NODE_INDEX}</span></span><br><span class="line"><span class="comment">#  echo ${NODE_IP} ${NODE_PORT}</span></span><br><span class="line"> NODE_PORT=<span class="variable">${port}</span> envsubst &lt; /opt/docker/redis-cluster-7.0.0/redis-cluster.tmpl &gt; /opt/docker/redis-cluster-7.0.0/<span class="variable">${port}</span>/conf/redis.conf;</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="2-创建容器">2. 创建容器</h2>
+<blockquote>
+<p>docker-compose.yml 文件</p>
+</blockquote>
+<p><code>docker-compose up -d</code></p>
+<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3.7'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">redis_6381:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">'redis:7.0.0'</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">redis_6381</span></span><br><span class="line">    <span class="attr">privileged:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">command:</span></span><br><span class="line">      <span class="string">redis-server</span> <span class="string">/usr/local/etc/redis/redis.conf</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./6381/conf/redis.conf:/usr/local/etc/redis/redis.conf</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./6381/data:/redis/data</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./6381/log:/redis/log</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">"6381:6381"</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">"16381:16381"</span></span><br><span class="line">  </span><br><span class="line">  <span class="attr">redis_6382:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">'redis:7.0.0'</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">redis_6382</span></span><br><span class="line">    <span class="attr">privileged:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">command:</span></span><br><span class="line">      <span class="string">redis-server</span> <span class="string">/usr/local/etc/redis/redis.conf</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./6382/conf/redis.conf:/usr/local/etc/redis/redis.conf</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./6382/data:/redis/data</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./6382/log:/redis/log</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">"6382:6382"</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">"16382:16382"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="attr">redis_6383:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">'redis:7.0.0'</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">redis_6383</span></span><br><span class="line">    <span class="attr">privileged:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">command:</span></span><br><span class="line">      <span class="string">redis-server</span> <span class="string">/usr/local/etc/redis/redis.conf</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./6383/conf/redis.conf:/usr/local/etc/redis/redis.conf</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./6383/data:/redis/data</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./6383/log:/redis/log</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">"6383:6383"</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">"16383:16383"</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">redis_6384:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">'redis:7.0.0'</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">redis_6384</span></span><br><span class="line">    <span class="attr">privileged:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">command:</span></span><br><span class="line">      <span class="string">redis-server</span> <span class="string">/usr/local/etc/redis/redis.conf</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./6384/conf/redis.conf:/usr/local/etc/redis/redis.conf</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./6384/data:/redis/data</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./6384/log:/redis/log</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">"6384:6384"</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">"16384:16384"</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">redis_6385:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">'redis:7.0.0'</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">redis_6385</span></span><br><span class="line">    <span class="attr">privileged:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">command:</span></span><br><span class="line">      <span class="string">redis-server</span> <span class="string">/usr/local/etc/redis/redis.conf</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./6385/conf/redis.conf:/usr/local/etc/redis/redis.conf</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./6385/data:/redis/data</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./6385/log:/redis/log</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">"6385:6385"</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">"16385:16385"</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">redis_6386:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">'redis:7.0.0'</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">redis_6386</span></span><br><span class="line">    <span class="attr">privileged:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">command:</span></span><br><span class="line">      <span class="string">redis-server</span> <span class="string">/usr/local/etc/redis/redis.conf</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./6386/conf/redis.conf:/usr/local/etc/redis/redis.conf</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./6386/data:/redis/data</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./6386/log:/redis/log</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">"6386:6386"</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">"16386:16386"</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="3-防火墙">3. 防火墙</h2>
+<p>开放<code>6381-6386 16381-16386</code>端口</p>
+<ul>
+<li>Urban <code>ufw allow 6381</code> 然后查看 <code>ufw status</code></li>
+<li>Linux   <code>firewall-cmd --zone=public --add-port=6381/tcp --permanent</code> 然后查看 <code>firewall-cmd --zone= public --query-port=6381/tcp</code></li>
+</ul>
+<h2 id="4-集群配置">4.  集群配置</h2>
+<ul>
+<li>进入其中一个节点的容器命令行：<code>docker exec -it redis_6382 bash</code></li>
+<li>集群各个节点自动分配：<code>redis-cli -a custom_password --cluster create 172.16.163.128:6381 172.16.163.128:6382 172.16.163.128:6383 172.16.163.128:6384 172.16.163.128:6385 172.16.163.128:6386 --cluster-replicas 1</code></li>
+<li>集群测试：<code>redis-cli -a custom_password --cluster check 172.16.163.128:6381</code></li>
+<li>集群健康：<code>redis-cli -c -h 172.16.163.128 -p 6381 -a custom_password</code>进入容器，查看<code>cluster info</code></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Redis/" rel="tag"># Redis</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/20221102/574fe2f4.html" rel="prev" title="Redis-持久化">
+                  <i class="fa fa-angle-left"></i> Redis-持久化
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/20221103/709af9d4.html" rel="next" title="Redis-命令记录">
+                  Redis-命令记录 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Alisa</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hmxyl.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.23.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="IDEA配置记录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IDEA配置">
+<meta property="og:url" content="https://hmxyl.github.io/20221026/1a8c2722.html">
+<meta property="og:site_name" content="Alisa&#39;s Home">
+<meta property="og:description" content="IDEA配置记录">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image001-163802678409512.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125093711347.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-16380266644219.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image001-163802676145910.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-163802676145911.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20220304151518515-1678442134982-139.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127232203726-1678441234800-133.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-163802681052513-1678440029357-19.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230244828-1678442048160-136.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image001-1678440029363-29.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230844516-1678442240545-142.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230310180729245.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-1678442240552-146.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-16380259713575-1678442240553-150.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-16380260699266-1678442240553-152.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230207181024546.png">
+<meta property="article:published_time" content="2022-10-26T13:32:25.000Z">
+<meta property="article:modified_time" content="2025-06-20T12:30:57.327Z">
+<meta property="article:author" content="Alisa">
+<meta property="article:tag" content="IDEA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image001-163802678409512.png">
+
+
+<link rel="canonical" href="https://hmxyl.github.io/20221026/1a8c2722.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hmxyl.github.io/20221026/1a8c2722.html","path":"20221026/1a8c2722.html","title":"IDEA配置"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>IDEA配置 | Alisa's Home</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Alisa's Home</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Alisa's Home</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">编码配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E7%BC%96%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">全局编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%BC%96%E7%A0%81"><span class="nav-number">1.2.</span> <span class="nav-text">文件编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E7%A0%81%E7%BB%9F%E4%B8%80"><span class="nav-number">1.3.</span> <span class="nav-text">编码统一</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#File-Encodings"><span class="nav-number">1.3.1.</span> <span class="nav-text">File Encodings</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">文件默认打开方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">字体设置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%95%8C%E9%9D%A2%E5%AD%97%E4%BD%93"><span class="nav-number">3.1.</span> <span class="nav-text">界面字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E5%AD%97%E4%BD%93"><span class="nav-number">3.2.</span> <span class="nav-text">程序字体</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">代码注释</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E7%B1%BB%E6%B3%A8%E9%87%8A%E6%A8%A1%E6%9D%BF"><span class="nav-number">4.1.</span> <span class="nav-text">修改类注释模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E8%A1%8C%E6%B3%A8%E9%87%8A%E3%80%81%E6%B3%A8%E9%87%8A%E5%9D%97"><span class="nav-number">4.2.</span> <span class="nav-text">单行注释、注释块</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">代码提示</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA%E5%BF%AB%E6%8D%B7%E9%94%AE%EF%BC%88Ctrl-%E9%80%97%E5%8F%B7%EF%BC%89"><span class="nav-number">5.1.</span> <span class="nav-text">代码提示快捷键（Ctrl+逗号）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%BC%A0%E6%A0%87%E6%94%BE%E4%B8%8A%E5%8E%BB%E6%8F%90%E7%A4%BA%E5%8F%82%E6%95%B0"><span class="nav-number">5.2.</span> <span class="nav-text">鼠标放上去提示参数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">代码格式化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81%E5%90%8E%EF%BC%8C%E5%A4%9A%E8%A1%8C%E7%A9%BA%E8%A1%8C%E8%BD%AC%E4%B8%BA%E4%B8%80%E8%A1%8C"><span class="nav-number">6.1.</span> <span class="nav-text">格式化代码后，多行空行转为一行</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text">代码查看窗口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AF%E5%88%86%E8%A1%8C%E6%9F%A5%E7%9C%8B%E4%BB%A3%E7%A0%81"><span class="nav-number">7.1.</span> <span class="nav-text">软分行查看代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%89%93%E5%BC%80%E5%88%97%E8%A1%A8%E8%B6%85%E8%BF%87%E4%B8%80%E8%A1%8C%EF%BC%8C%E6%94%BE%E5%A4%9A%E8%A1%8C%E6%98%BE%E7%A4%BA"><span class="nav-number">7.2.</span> <span class="nav-text">文件打开列表超过一行，放多行显示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E4%BB%A3%E7%A0%81%E5%B1%95%E7%A4%BA%E5%BD%A2%E5%BC%8F%EF%BC%88%E6%8A%98%E5%8F%A0-%E5%B1%95%E5%BC%80%EF%BC%89"><span class="nav-number">7.3.</span> <span class="nav-text">默认代码展示形式（折叠&#x2F;展开）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%8C%E5%8F%B7%E5%92%8C%E6%96%B9%E6%B3%95%E5%88%86%E5%89%B2%E7%BA%BF"><span class="nav-number">7.4.</span> <span class="nav-text">行号和方法分割线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A2%9E%E5%8A%A0%E6%89%93%E5%BC%80%E7%9A%84%E6%96%87%E4%BB%B6-Tab-%E4%B8%AA%E6%95%B0"><span class="nav-number">7.5.</span> <span class="nav-text">增加打开的文件 Tab 个数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E6%96%87%E4%BB%B6%E5%A4%9A%E7%AA%97%E5%8F%A3%E6%89%93%E5%BC%80"><span class="nav-number">7.6.</span> <span class="nav-text">单文件多窗口打开</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E9%9A%90%E8%97%8F%E6%B3%A8%E9%87%8A"><span class="nav-number">7.7.</span> <span class="nav-text">默认隐藏注释</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Alisa</p>
+  <div class="site-description" itemprop="description">学习笔记、工作心得</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">89</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/20221026/1a8c2722.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Alisa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alisa's Home">
+      <meta itemprop="description" content="学习笔记、工作心得">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="IDEA配置 | Alisa's Home">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          IDEA配置
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-10-26 21:32:25" itemprop="dateCreated datePublished" datetime="2022-10-26T21:32:25+08:00">2022-10-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-06-20 20:30:57" itemprop="dateModified" datetime="2025-06-20T20:30:57+08:00">2025-06-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7-%E9%83%A8%E7%BD%B2/" itemprop="url" rel="index"><span itemprop="name">工具|部署</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7-%E9%83%A8%E7%BD%B2/IDEA/" itemprop="url" rel="index"><span itemprop="name">IDEA</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1>编码配置</h1>
+<h2 id="全局编码">全局编码</h2>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image001-163802678409512.png" alt="57826dd953a5c863292bed5462025d60.png"></p>
+<h2 id="文件编码">文件编码</h2>
+<p>打开需要设置编码的文件，在右下角进行设置</p>
+<h2 id="编码统一">编码统一</h2>
+<h3 id="File-Encodings">File Encodings</h3>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211125093711347.png" alt="image-20211125093711347"></p>
+<h1>文件默认打开方式</h1>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-16380266644219.png" alt="fce0704d161bda7eec8a5cc4743cc062.png"></p>
+<p>如上图标注 1 所示，该区域的后缀类型文件在 IntelliJ IDEA 中将以标注 2 的方式进行打开。</p>
+<p>如上图标注 3 所示，我们可以在 IntelliJ IDEA 中忽略某些后缀的文件或是文件夹，比如我一般会把 .idea 这个文件夹忽略。</p>
+<h1>字体设置</h1>
+<h2 id="界面字体">界面字体</h2>
+<p>Settings-&gt;Appearance</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image001-163802676145910.png" alt="e8ad5d669969dbce8a1e35d6269013df.png"></p>
+<h2 id="程序字体">程序字体</h2>
+<p>Editor -&gt; Colors &amp; Fonts -&gt; Font</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-163802676145911.png" alt="5e3013e5dad6b0e05e97274216472a90.png"></p>
+<h1>代码注释</h1>
+<h2 id="修改类注释模板">修改类注释模板</h2>
+<p><code>File-&gt;Settings-&gt;File and Code Templates 找到Includes</code></p>
+<h2 id="单行注释、注释块">单行注释、注释块</h2>
+<p>搜索：<code>Add a space at line comment start</code></p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20220304151518515-1678442134982-139.png" alt="image-20220304151518515"></p>
+<h1>代码提示</h1>
+<h2 id="代码提示快捷键（Ctrl-逗号）">代码提示快捷键（Ctrl+逗号）</h2>
+<p>如图所示，默认<code> Ctrl + 空格</code> 快捷键是<code>基础代码提示、补充</code>快捷键，但是由于我们中文系统基本这个快捷键都被输入法占用了，</p>
+<p>所以我们发现不管怎么按都是没有提示代码效果的，原因就是在此。我个人建议修改此快捷键为<code> Ctrl + 逗号</code>。</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127232203726-1678441234800-133.png" alt="image-20211127232203726"></p>
+<h2 id="鼠标放上去提示参数">鼠标放上去提示参数</h2>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-163802681052513-1678440029357-19.png" alt="0e6d5bfa29683800dc3eae4602afc8a8.png"></p>
+<h1>代码格式化</h1>
+<h2 id="格式化代码后，多行空行转为一行">格式化代码后，多行空行转为一行</h2>
+<p>idea格式化代码后会出现最多2行空行，不能像eclipse一样最多只保留一行空行，要想设置的和eclipse效果一样，设置如下</p>
+<p>File --&gt; setting --&gt; 搜索 code style --&gt; 选择 blank lines标签项 --&gt; 保留最大空行数设置为1</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230244828-1678442048160-136.png" alt="image-20211127230244828"></p>
+<h1>代码查看窗口</h1>
+<h2 id="软分行查看代码">软分行查看代码</h2>
+<p>右键</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image001-1678440029363-29.png" alt="9fff17978c4752eeb8d4c127c9e2a554.png"></p>
+<h2 id="文件打开列表超过一行，放多行显示">文件打开列表超过一行，放多行显示</h2>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20211127230844516-1678442240545-142.png" alt="image-20211127230844516"></p>
+<p>如上图标注 1 所示，在打开很多文件的时候，IntelliJ IDEA 默认是把所有打开的文件名 Tab 单行显示的。可以修改为多行</p>
+<h2 id="默认代码展示形式（折叠-展开）">默认代码展示形式（折叠/展开）</h2>
+<p>我们可以对指定代码类型进行默认折叠或是展开的设置，勾选上的表示该类型的代码在文件被打开的时候默认是被折叠的，去掉勾选则反之。</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230310180729245.png" alt="image-20230310180729245"></p>
+<h2 id="行号和方法分割线">行号和方法分割线</h2>
+<p>默认 IntelliJ IDEA 是没有勾选 <code>Show line numbers</code> 显示行数的，但是我建议一般这个要勾选上。</p>
+<p>默认 IntelliJ IDEA 是没有勾选<code> Show method separators</code> 显示方法线的，这种线有助于我们区分开方法，所以也是建议勾选上的。</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-1678442240552-146.png" alt="2c9d0deb2e32bea240016e879acd4cb7.png"></p>
+<h2 id="增加打开的文件-Tab-个数">增加打开的文件 Tab 个数</h2>
+<p>Tab limit</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-16380259713575-1678442240553-150.png" alt="3a13ec2347321bd1c23131c75e5f6808.png"></p>
+<h2 id="单文件多窗口打开">单文件多窗口打开</h2>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/clip_image002-16380260699266-1678442240553-152.png" alt="a1f9f345240dd5190a929ffc0fe14de1.png"></p>
+<h2 id="默认隐藏注释">默认隐藏注释</h2>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/image-20230207181024546.png" alt="image-20230207181024546"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/IDEA/" rel="tag"># IDEA</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/20221025/b6159bfb.html" rel="prev" title="Hexo 搭建博客">
+                  <i class="fa fa-angle-left"></i> Hexo 搭建博客
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/20221026/ee604b16.html" rel="next" title="IDEA插件">
+                  IDEA插件 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Alisa</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
