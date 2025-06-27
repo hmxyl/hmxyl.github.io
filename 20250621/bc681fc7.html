@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hmxyl.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.23.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="1.卸载旧版本Docker 12345678#卸载旧版本dockersudo apt-get remove docker docker-engine docker-ce docker.io  #清空旧版docker占用的内存sudo apt-get remove --auto-remove docker#更新系统源sudo apt-get update 2.配置安装环境 1sudo apt-get">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu安装Docker">
+<meta property="og:url" content="https://hmxyl.github.io/20250621/bc681fc7.html">
+<meta property="og:site_name" content="Alisa&#39;s Home">
+<meta property="og:description" content="1.卸载旧版本Docker 12345678#卸载旧版本dockersudo apt-get remove docker docker-engine docker-ce docker.io  #清空旧版docker占用的内存sudo apt-get remove --auto-remove docker#更新系统源sudo apt-get update 2.配置安装环境 1sudo apt-get">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/20200613220949677.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/3f08ca0f-65ec-427d-87f4-3f3d27fb6f52.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/69c425d9-ff18-4d9d-ac66-2946ae3bd013.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/2020061322045958.png">
+<meta property="og:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/20200613220759470.png">
+<meta property="article:published_time" content="2025-06-21T07:31:57.000Z">
+<meta property="article:modified_time" content="2025-06-23T04:49:35.972Z">
+<meta property="article:author" content="Alisa">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/20200613220949677.png">
+
+
+<link rel="canonical" href="https://hmxyl.github.io/20250621/bc681fc7.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hmxyl.github.io/20250621/bc681fc7.html","path":"20250621/bc681fc7.html","title":"Ubuntu安装Docker"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Ubuntu安装Docker | Alisa's Home</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Alisa's Home</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Alisa's Home</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">1.卸载旧版本Docker</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">2.配置安装环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">3. 添加阿里云的docker GPG密钥</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">4. 添加阿里镜像源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">5. 查看有哪些版本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">6. 安装最新版&#x2F;指定版本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text">7. 重启Docker</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">8.</span> <span class="nav-text">8. 查看Docke版本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">9.</span> <span class="nav-text">9. 配置阿里容器镜像加速器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">10.</span> <span class="nav-text">10. 运行hello-world验证docker-ce是否安装成功</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">11.</span> <span class="nav-text">11. 安装docker-compose</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Alisa</p>
+  <div class="site-description" itemprop="description">学习笔记、工作心得</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/20250621/bc681fc7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Alisa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alisa's Home">
+      <meta itemprop="description" content="学习笔记、工作心得">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Ubuntu安装Docker | Alisa's Home">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Ubuntu安装Docker
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-06-21 15:31:57" itemprop="dateCreated datePublished" datetime="2025-06-21T15:31:57+08:00">2025-06-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-06-23 12:49:35" itemprop="dateModified" datetime="2025-06-23T12:49:35+08:00">2025-06-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux/Ubuntu/" itemprop="url" rel="index"><span itemprop="name">Ubuntu</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1>1.卸载旧版本Docker</h1>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#卸载旧版本docker</span></span><br><span class="line"><span class="built_in">sudo</span> apt-get remove docker docker-engine docker-ce docker.io  </span><br><span class="line"></span><br><span class="line"><span class="comment">#清空旧版docker占用的内存</span></span><br><span class="line"><span class="built_in">sudo</span> apt-get remove --auto-remove docker</span><br><span class="line"></span><br><span class="line"><span class="comment">#更新系统源</span></span><br><span class="line"><span class="built_in">sudo</span> apt-get update</span><br></pre></td></tr></tbody></table></figure>
+<h1>2.配置安装环境</h1>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common</span><br></pre></td></tr></tbody></table></figure>
+<h1>3. 添加阿里云的docker GPG密钥</h1>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | <span class="built_in">sudo</span> apt-key add -</span><br></pre></td></tr></tbody></table></figure>
+<h1>4. 添加阿里镜像源</h1>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> add-apt-repository <span class="string">"deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu <span class="subst">$(lsb_release -cs)</span> stable"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#更新</span></span><br><span class="line"><span class="built_in">sudo</span> apt-get update</span><br></pre></td></tr></tbody></table></figure>
+<h1>5. 查看有哪些版本</h1>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-cache madison docker-ce</span><br></pre></td></tr></tbody></table></figure>
+<p><a target="_blank" rel="noopener" href="https://img-blog.csdnimg.cn/20200613220949677.png"><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/20200613220949677.png" alt="img"></a></p>
+<h1>6. 安装最新版/指定版本</h1>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装最新版</span></span><br><span class="line"><span class="built_in">sudo</span> apt-get install -y docker-ce</span><br><span class="line"></span><br><span class="line"><span class="comment">#安装5:19.03.6~3-0~ubuntu-bionic版</span></span><br><span class="line"><span class="built_in">sudo</span> apt-get install -y docker-ce=5:19.03.6~3-0~ubuntu-bionic</span><br></pre></td></tr></tbody></table></figure>
+<h1>7. 重启Docker</h1>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> service docker restart</span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl restart docker</span><br></pre></td></tr></tbody></table></figure>
+<h1>8. 查看Docke版本</h1>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> docker version</span><br></pre></td></tr></tbody></table></figure>
+<h1>9. 配置阿里容器镜像加速器</h1>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/3f08ca0f-65ec-427d-87f4-3f3d27fb6f52.png" alt="配置阿里容器镜像加速器"></p>
+<ul>
+<li>
+<p>针对Docker客户端版本大于 1.10.0 的用户</p>
+</li>
+<li>
+<p>修改daemon配置文件/etc/docker/daemon.json来使用加速器</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">创建配置文件目录</span><br><span class="line">$ <span class="built_in">sudo</span> <span class="built_in">mkdir</span> /etc/docker</span><br><span class="line"></span><br><span class="line">编辑配置文件，如果文件不存在，以下命令会自动创建。</span><br><span class="line">$ <span class="built_in">sudo</span> nano /etc/docker/daemon.json</span><br><span class="line"></span><br><span class="line">将配置信息粘贴到配置文件中，配置信息为 json 格式，可以根据实际需要设置多个国内的镜像服务器。</span><br><span class="line">{</span><br><span class="line">  <span class="string">"registry-mirrors"</span>: [</span><br><span class="line">    <span class="string">"https://hub-mirror.c.163.com"</span>,</span><br><span class="line">    <span class="string">"https://mirror.baidubce.com"</span></span><br><span class="line">  ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>重启 Docker 服务</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> systemctl daemon-reload </span><br><span class="line">$ <span class="built_in">sudo</span> systemctl restart docker</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>检查设置是否生效</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> docker info</span><br><span class="line"></span><br><span class="line">结果中显示了我们设置的镜像服务器地址，则说明设置已经生效，返回的信息类似下面这样：</span><br><span class="line"></span><br><span class="line">Registry Mirrors:</span><br><span class="line"> https://hub-mirror.c.163.com/</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ul>
+<h1>10. 运行hello-world验证docker-ce是否安装成功</h1>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> docker run hello-world</span><br></pre></td></tr></tbody></table></figure>
+<p>安装成功显示</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/69c425d9-ff18-4d9d-ac66-2946ae3bd013.png" alt="img"></p>
+<h1>11. 安装docker-compose</h1>
+<ul>
+<li>安装pip</li>
+</ul>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install python3-pip</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>更新一下库</li>
+</ul>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get update</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>更新一下pip</li>
+</ul>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pip3 install --upgrade pip</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>安装docker-compose</li>
+</ul>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pip3 install docker-compose</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>
+<p>如果出错</p>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/2020061322045958.png" alt="img"></p>
+</li>
+<li>
+<p>就更新一下 six</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install six --user -U</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>查看docker-compose版本</li>
+</ul>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose --version</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="https://hmxyl-image.oss-cn-hangzhou.aliyuncs.com/note/20200613220759470.png" alt="img"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/20250621/6124f545.html" rel="prev" title="Ubuntu虚拟机搭建">
+                  <i class="fa fa-angle-left"></i> Ubuntu虚拟机搭建
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/20250621/d24c674f.html" rel="next" title="Linux提高打开文件限制量">
+                  Linux提高打开文件限制量 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Alisa</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

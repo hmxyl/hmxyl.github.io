@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hmxyl.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.23.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Linux防火墙 传统防火墙：iptables 基本概念  表(tables)：filter(默认)、nat、mangle、raw 链(chains)：INPUT、OUTPUT、FORWARD(过滤表) 规则(rules)：匹配条件和动作  常用命令   查看当前规则。iptables按顺序匹配规则，第一条匹配的规则将被执行。 1sudo iptables -L -n -v --line-numb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux防火墙">
+<meta property="og:url" content="https://hmxyl.github.io/20250621/e26546c7.html">
+<meta property="og:site_name" content="Alisa&#39;s Home">
+<meta property="og:description" content="Linux防火墙 传统防火墙：iptables 基本概念  表(tables)：filter(默认)、nat、mangle、raw 链(chains)：INPUT、OUTPUT、FORWARD(过滤表) 规则(rules)：匹配条件和动作  常用命令   查看当前规则。iptables按顺序匹配规则，第一条匹配的规则将被执行。 1sudo iptables -L -n -v --line-numb">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-06-21T07:26:43.000Z">
+<meta property="article:modified_time" content="2025-06-23T04:51:18.259Z">
+<meta property="article:author" content="Alisa">
+<meta property="article:tag" content="防火墙">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://hmxyl.github.io/20250621/e26546c7.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hmxyl.github.io/20250621/e26546c7.html","path":"20250621/e26546c7.html","title":"Linux防火墙"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Linux防火墙 | Alisa's Home</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Alisa's Home</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Alisa's Home</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Linux防火墙</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E7%BB%9F%E9%98%B2%E7%81%AB%E5%A2%99%EF%BC%9Aiptables"><span class="nav-number">1.1.</span> <span class="nav-text">传统防火墙：iptables</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.2.</span> <span class="nav-text">常用命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nftables-%E6%96%B0%E4%B8%80%E4%BB%A3%E9%98%B2%E7%81%AB%E5%A2%99"><span class="nav-number">1.2.</span> <span class="nav-text">nftables (新一代防火墙)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-2"><span class="nav-number">1.2.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-2"><span class="nav-number">1.2.2.</span> <span class="nav-text">常用命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ubuntu%E9%98%B2%E7%81%AB%E5%A2%99%EF%BC%9Aufw"><span class="nav-number">1.3.</span> <span class="nav-text">Ubuntu防火墙：ufw</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-3"><span class="nav-number">1.3.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.3.2.</span> <span class="nav-text">常用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS-RHEL%E9%98%B2%E7%81%AB%E5%A2%99%EF%BC%9Afirewalld"><span class="nav-number">1.4.</span> <span class="nav-text">CentOS&#x2F;RHEL防火墙：firewalld</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-4"><span class="nav-number">1.4.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%9C%BA%E6%99%AF-2"><span class="nav-number">1.4.2.</span> <span class="nav-text">常用场景</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Alisa</p>
+  <div class="site-description" itemprop="description">学习笔记、工作心得</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hmxyl.github.io/20250621/e26546c7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Alisa">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alisa's Home">
+      <meta itemprop="description" content="学习笔记、工作心得">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Linux防火墙 | Alisa's Home">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux防火墙
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-06-21 15:26:43" itemprop="dateCreated datePublished" datetime="2025-06-21T15:26:43+08:00">2025-06-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-06-23 12:51:18" itemprop="dateModified" datetime="2025-06-23T12:51:18+08:00">2025-06-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux/%E9%98%B2%E7%81%AB%E5%A2%99/" itemprop="url" rel="index"><span itemprop="name">防火墙</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1>Linux防火墙</h1>
+<h2 id="传统防火墙：iptables">传统防火墙：iptables</h2>
+<h3 id="基本概念">基本概念</h3>
+<ul>
+<li><strong>表(tables)</strong>：filter(默认)、nat、mangle、raw</li>
+<li><strong>链(chains)</strong>：INPUT、OUTPUT、FORWARD(过滤表)</li>
+<li><strong>规则(rules)</strong>：匹配条件和动作</li>
+</ul>
+<h3 id="常用命令">常用命令</h3>
+<ol>
+<li>
+<p>查看当前规则。iptables按顺序匹配规则，第一条匹配的规则将被执行。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> iptables -L -n -v --line-numbers</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>设置默认策略（推荐）：</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> iptables -P INPUT DROP  <span class="comment"># 默认策略(拒绝所有输入)</span></span><br><span class="line"><span class="built_in">sudo</span> iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT  <span class="comment"># 允许已建立的连接</span></span><br><span class="line"><span class="built_in">sudo</span> iptables -A INPUT -i lo -j ACCEPT  <span class="comment"># 允许本地回环</span></span><br><span class="line"><span class="built_in">sudo</span> iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT <span class="comment"># 允许ping</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>保存规则（根据发行版不同）：</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Debian/Ubuntu</span></span><br><span class="line"><span class="built_in">sudo</span> iptables-save &gt; /etc/iptables.rules</span><br><span class="line"><span class="built_in">sudo</span> apt install iptables-persistent  <span class="comment"># 安装持久化包</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># RHEL/CentOS</span></span><br><span class="line"><span class="built_in">sudo</span> iptables-save &gt; /etc/sysconfig/iptables</span><br><span class="line"><span class="built_in">sudo</span> service iptables save</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>允许服务/端口（操作后需要保存更改）</p>
+</li>
+</ol>
+   <figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 允许HTTP/HTTPS ###############################################################################################################</span></span><br><span class="line"><span class="built_in">sudo</span> iptables -A INPUT -p tcp --dport 80 -j ACCEPT</span><br><span class="line"><span class="built_in">sudo</span> iptables -A INPUT -p tcp --dport 443 -j ACCEPT</span><br><span class="line"></span><br><span class="line"><span class="comment"># 允许192.168.1.0/24网段的IP连接SSH端口(22) ######################################################################################</span></span><br><span class="line"><span class="built_in">sudo</span> iptables -A INPUT -p tcp -s 192.168.1.0/24 --dport 22 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT</span><br><span class="line"></span><br><span class="line"><span class="comment"># 记录被拒绝的SSH尝试</span></span><br><span class="line"><span class="built_in">sudo</span> iptables -A INPUT -p tcp --dport 22 -j LOG --log-prefix <span class="string">"SSH Rejected: "</span> --log-level 4</span><br><span class="line"></span><br><span class="line"><span class="comment">#  端口转发</span></span><br><span class="line">iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<ul>
+<li><code>-A INPUT</code>：追加到INPUT链</li>
+<li><code>-p tcp</code>：指定TCP协议</li>
+<li><code>-s 192.168.1.0/24</code>：源IP范围</li>
+<li><code>--dport 22</code>：目标端口22(SSH)</li>
+<li><code>-m conntrack --ctstate NEW,ESTABLISHED</code>：只允许新建和已建立的连接（可选）</li>
+<li><code>-j ACCEPT</code>：接受匹配的数据包</li>
+</ul>
+</blockquote>
+<ol start="5">
+<li>
+<p>限制连接速率（防暴力破解）</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> iptables -A INPUT -p tcp -s 192.168.1.0/24 --dport 80 -m conntrack --ctstate NEW  -m <span class="built_in">limit</span> --<span class="built_in">limit</span> 25/minute --limit-burst 100 -j ACCEPT</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<ul>
+<li><code>--limit 3/min</code>:  限制平均速率为每分钟3个数据包</li>
+<li><code>--limit-burst 3</code> : 初始"令牌桶"容量为3个</li>
+</ul>
+</blockquote>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 限制Ping请求</span></span><br><span class="line"><span class="comment"># 效果：</span></span><br><span class="line"><span class="comment"># 1. 前5个ping请求会立即被允许</span></span><br><span class="line"><span class="comment"># 2. 之后每秒最多允许1个ping请求</span></span><br><span class="line"><span class="comment"># 3. 超出限制的ping请求被丢弃</span></span><br><span class="line">iptables -A INPUT -p icmp --icmp-type echo-request -m <span class="built_in">limit</span> --<span class="built_in">limit</span> 1/s --limit-burst 5 -j ACCEPT</span><br><span class="line">iptables -A INPUT -p icmp --icmp-type echo-request -j DROP</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>使用特定链管理SSH规则（操作后需要保存更改）</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建自定义链 ###############################################################################################################</span></span><br><span class="line"><span class="comment">#  1. 创建专用链</span></span><br><span class="line"><span class="built_in">sudo</span> iptables -N SSH_RULES</span><br><span class="line"><span class="comment">#  2. 添加规则到专用链</span></span><br><span class="line"><span class="built_in">sudo</span> iptables -A SSH_RULES -s 192.168.1.0/24 -p tcp --dport 22 -j ACCEPT</span><br><span class="line"><span class="comment">#  3. 从INPUT链跳转到专用链</span></span><br><span class="line"><span class="built_in">sudo</span> iptables -A INPUT -p tcp --dport 22 -j SSH_RULES</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除自定义链 ###############################################################################################################</span></span><br><span class="line"><span class="comment"># 1. 清空自定义链中的规则</span></span><br><span class="line"><span class="built_in">sudo</span> iptables -F SSH_RULES</span><br><span class="line"><span class="comment"># 2. 删除从INPUT链跳转到自定义链的规则</span></span><br><span class="line"><span class="built_in">sudo</span> iptables -D INPUT -p tcp --dport 22 -j SSH_RULES</span><br><span class="line"><span class="comment"># 3. 删除自定义链</span></span><br><span class="line"><span class="built_in">sudo</span> iptables -X SSH_RULES</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>删除规则（操作后需要保存更改）</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法1：按规则内容删除（推荐） ###################################################</span></span><br><span class="line"><span class="comment"># 删除允许规则</span></span><br><span class="line"><span class="built_in">sudo</span> iptables -D INPUT -p tcp -s 192.168.1.0/24 --dport 22 -j ACCEPT</span><br><span class="line"><span class="comment"># 如果添加了拒绝规则，也一并删除</span></span><br><span class="line"><span class="built_in">sudo</span> iptables -D INPUT -p tcp --dport 22 -j DROP</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法2：按规则编号删除  #########################################################</span></span><br><span class="line"><span class="comment"># 首先查看规则列表及编号</span></span><br><span class="line"><span class="built_in">sudo</span> iptables -L INPUT --line-numbers -n</span><br><span class="line"><span class="comment"># 删除第一条规则</span></span><br><span class="line"><span class="built_in">sudo</span> iptables -D INPUT 1</span><br><span class="line"><span class="comment"># 删除更新后的第一条规则(原第二条)</span></span><br><span class="line"><span class="built_in">sudo</span> iptables -D INPUT 1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法3：清空所有规则    #########################################################</span></span><br><span class="line"><span class="comment"># 清空INPUT链所有规则（谨慎使用！）</span></span><br><span class="line"><span class="built_in">sudo</span> iptables -F INPUT</span><br><span class="line"><span class="comment"># 重置默认策略为ACCEPT</span></span><br><span class="line"><span class="built_in">sudo</span> iptables -P INPUT ACCEPT</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法4：删除自定义链    #########################################################</span></span><br><span class="line"><span class="comment"># 1. 清空自定义链中的规则</span></span><br><span class="line"><span class="built_in">sudo</span> iptables -F SSH_RULES</span><br><span class="line"><span class="comment"># 2. 删除从INPUT链跳转到自定义链的规则</span></span><br><span class="line"><span class="built_in">sudo</span> iptables -D INPUT -p tcp --dport 22 -j SSH_RULES</span><br><span class="line"><span class="comment"># 3. 删除自定义链</span></span><br><span class="line"><span class="built_in">sudo</span> iptables -X SSH_RULES</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<h2 id="nftables-新一代防火墙">nftables (新一代防火墙)</h2>
+<h3 id="基本概念-2">基本概念</h3>
+<ul>
+<li>更高效的语法</li>
+<li>统一了IPv4/IPv6配置</li>
+<li>更简单的规则管理</li>
+</ul>
+<h3 id="常用命令-2">常用命令</h3>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看当前规则集</span></span><br><span class="line">nft list ruleset</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加表</span></span><br><span class="line">nft add table inet filter</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加链</span></span><br><span class="line">nft add chain inet filter input { <span class="built_in">type</span> filter hook input priority 0 \; }</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加规则(允许SSH)</span></span><br><span class="line">nft add rule inet filter input tcp dport 22 accept</span><br><span class="line"></span><br><span class="line"><span class="comment"># 保存规则</span></span><br><span class="line">nft list ruleset &gt; /etc/nftables.conf</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="Ubuntu防火墙：ufw">Ubuntu防火墙：ufw</h2>
+<h3 id="常用命令-3">常用命令</h3>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装防火墙（Ubuntu系统默认是安装了ufw防火墙的）</span></span><br><span class="line"><span class="built_in">sudo</span> apt-get install ufw</span><br><span class="line"><span class="comment"># 启用ufw</span></span><br><span class="line"><span class="built_in">sudo</span> ufw <span class="built_in">enable</span></span><br><span class="line"><span class="comment"># 查看状态. inactive 表示防火墙没有开启，并不是没有安装防火墙。</span></span><br><span class="line"><span class="built_in">sudo</span> ufw status verbose</span><br><span class="line"><span class="comment"># 重启</span></span><br><span class="line"><span class="built_in">sudo</span> ufw reload</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看防火墙的状态</span></span><br><span class="line"><span class="built_in">sudo</span> ufw status</span><br><span class="line"><span class="comment"># 查看端口的监听状态</span></span><br><span class="line"><span class="built_in">sudo</span> netstat -tunlp | grep 8080</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="常用场景">常用场景</h3>
+<ul>
+<li>
+<p>场景：添加/删除指定端口8080</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 允许指定端口</span></span><br><span class="line"><span class="built_in">sudo</span> ufw allow 8080/tcp </span><br><span class="line"><span class="comment"># 重启防火墙</span></span><br><span class="line"><span class="built_in">sudo</span> ufw reload</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拒绝端口规则</span></span><br><span class="line"><span class="built_in">sudo</span> ufw deny 8080/tcp</span><br><span class="line"><span class="comment"># 删除端口规则</span></span><br><span class="line"><span class="built_in">sudo</span> ufw delete allow 8080/tcp</span><br><span class="line"><span class="comment"># 重启防火墙</span></span><br><span class="line"><span class="built_in">sudo</span> ufw reload</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>场景：允许SSH服务</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 允许SSH</span></span><br><span class="line"><span class="built_in">sudo</span> ufw allow ssh </span><br><span class="line"><span class="comment"># 重启防火墙</span></span><br><span class="line"><span class="built_in">sudo</span> ufw reload</span><br><span class="line"><span class="comment"># 查看防火墙的状态</span></span><br><span class="line"><span class="built_in">sudo</span> ufw status</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>场景：添加/删除指定IP权限</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对指定IP开放所有端口规则</span></span><br><span class="line"><span class="built_in">sudo</span> ufw allow from 192.168.1.11</span><br><span class="line"><span class="comment"># 删除指定IP权限</span></span><br><span class="line"><span class="built_in">sudo</span> ufw delete allow from 192.168.1.11</span><br><span class="line"><span class="comment"># 重启防火墙</span></span><br><span class="line"><span class="built_in">sudo</span> ufw reload</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>场景：添加/删除指定端口+指定IP地址权限</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定端口对指定IP地址开放</span></span><br><span class="line"><span class="built_in">sudo</span> ufw allow from 192.168.1.12 to any port 3306</span><br><span class="line"><span class="comment"># 删除指定端口对指定IP地址开放的规则</span></span><br><span class="line"><span class="built_in">sudo</span> ufw delete allow from 192.168.1.12 to any port 3306</span><br><span class="line"><span class="comment"># 重启防火墙</span></span><br><span class="line"><span class="built_in">sudo</span> ufw reload</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ul>
+<h2 id="CentOS-RHEL防火墙：firewalld">CentOS/RHEL防火墙：firewalld</h2>
+<h3 id="常用命令-4">常用命令</h3>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动防火墙</span></span><br><span class="line">systemctl start firewalld</span><br><span class="line"><span class="comment"># 关闭防火墙</span></span><br><span class="line">systemctl stop firewalld</span><br><span class="line"><span class="comment"># 重启防火墙</span></span><br><span class="line">systemctl restart firewalld</span><br><span class="line"><span class="comment"># 开机启动</span></span><br><span class="line">systemctl <span class="built_in">enable</span> firewalld</span><br><span class="line"><span class="comment"># 取消开机启动 </span></span><br><span class="line">systemctl <span class="built_in">disable</span> firewalld</span><br><span class="line"><span class="comment"># 重新载入，更新防火墙规则</span></span><br><span class="line">firewall-cmd --reload</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看状态</span></span><br><span class="line">firewall-cmd --state</span><br><span class="line"><span class="comment"># 查看区域信息</span></span><br><span class="line">firewall-cmd --get-active-zones</span><br><span class="line">firewall-cmd --list-all-zones</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看防火墙规则</span></span><br><span class="line">firewall-cmd --list-all</span><br><span class="line"><span class="comment"># 查看所有端口</span></span><br><span class="line">firewall-cmd --zone=public --list-ports</span><br><span class="line"><span class="comment"># 查看指定端口</span></span><br><span class="line">firewall-cmd --zone=public --query-port=3306/tcp</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="常用场景-2">常用场景</h3>
+<ul>
+<li>
+<p>场景：添加/删除指定端口</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加指定端口</span></span><br><span class="line">firewall-cmd --permanent --zone=public --add-port=8080/tcp</span><br><span class="line"><span class="comment"># 删除端口</span></span><br><span class="line">firewall-cmd  -permanent --remove-port=3306/tcp </span><br><span class="line"><span class="comment"># 重启防火墙</span></span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>场景：添加服务(如HTTP)</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加服务(如HTTP)</span></span><br><span class="line">firewall-cmd --permanent --zone=public --add-service=http</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启防火墙</span></span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>场景：添加/删除指定IP权限</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 限制源IP（服务）</span></span><br><span class="line">firewall-cmd --permanent --zone=public --add-rich-rule=<span class="string">'rule family="ipv4" source address="192.168.1.0/24" service name="ssh" accept'</span></span><br><span class="line"><span class="comment"># 开启某个端口(指定IP可访问)</span></span><br><span class="line">firewall-cmd --permanent --zone=public --add-rich-rule=<span class="string">'rule family="ipv4" source address="192.168.1.0/24" port port="80" accept'</span></span><br><span class="line">firewall-cmd --permanent --zone=public --add-rich-rule=<span class="string">'rule family="ipv4" source address="192.168.1.0/24" ="tcp" port port="80" accept'</span></span><br><span class="line"><span class="comment">#删除策略</span></span><br><span class="line">firewall-cmd --permanent --zone=public --remove-rich-rule=<span class="string">'rule family="ipv4" source address="192.168.1.0/24" port protocol="tcp" port="80" accept'</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>将docker0网桥接口添加到trusted域</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 检查docker0当前所属的防火墙域</span></span><br><span class="line"><span class="built_in">sudo</span> firewall-cmd --get-zone-of-interface=docker0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将docker0添加到trusted域</span></span><br><span class="line"><span class="built_in">sudo</span> firewall-cmd --permanent --zone=trusted --add-interface=docker0 </span><br><span class="line"><span class="built_in">sudo</span> firewall-cmd --permanent --zone=trusted --change-interface=docker0</span><br><span class="line"></span><br><span class="line"><span class="comment">#  重新加载firewalld配置</span></span><br><span class="line"><span class="built_in">sudo</span> firewall-cmd --reload</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<ol>
+<li><strong>Docker服务重启</strong>：如果重启Docker服务，它可能会重新创建docker0接口，需要重新执行上述步骤</li>
+<li><strong>永久生效</strong>：务必使用<code>--permanent</code>参数使更改永久生效，然后<code>--reload</code></li>
+<li><strong>系统影响</strong>：trusted域允许所有流量通过，确保只将内部网络接口(如docker0)添加到此域</li>
+<li><strong>网络模式影响</strong>：如果使用<code>--net=host</code>模式运行容器，会完全绕过 <code>docker0</code> 网桥</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/" rel="tag"># 防火墙</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/20250619/b78998f1.html" rel="prev" title="Cherry书签管理器">
+                  <i class="fa fa-angle-left"></i> Cherry书签管理器
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/20250621/6124f545.html" rel="next" title="Ubuntu虚拟机搭建">
+                  Ubuntu虚拟机搭建 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Alisa</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
